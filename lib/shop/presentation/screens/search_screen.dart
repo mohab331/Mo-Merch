@@ -63,56 +63,59 @@ class SearchScreen extends StatelessWidget {
                     title: AppStrings.emptySearchResult,
                   );
                 } else {
-                  return Expanded(
-                    child: Column(
-                      children: [
-                        Expanded(
-                          child: ListView.builder(
-                            padding: const EdgeInsets.all(15.0),
-                            physics: const BouncingScrollPhysics(),
-                            itemBuilder: (context, index) {
-                              return Container(
-                                margin:
-                                    const EdgeInsets.symmetric(vertical: 10.0),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20.0),
-                                    border: Border.all(
-                                        color: Colors.black, width: 2)),
-                                child: ListTile(
-                                  leading: CircleAvatar(
-                                    radius: 30.0,
-                                    backgroundImage: NetworkImage(
-                                        SearchCubit.get(context)
-                                            .searchProductResults[index]
-                                            .image),
+                  return Builder(builder: (context) {
+                    return Expanded(
+                      child: Column(
+                        children: [
+                          Expanded(
+                            child: ListView.builder(
+                              padding: const EdgeInsets.all(15.0),
+                              physics: const BouncingScrollPhysics(),
+                              itemBuilder: (context, index) {
+                                return Container(
+                                  margin: const EdgeInsets.symmetric(
+                                      vertical: 10.0),
+                                  decoration: BoxDecoration(
+                                      borderRadius:
+                                          BorderRadius.circular(20.0),
+                                      border: Border.all(
+                                          color: Colors.black, width: 2)),
+                                  child: ListTile(
+                                    leading: CircleAvatar(
+                                      radius: 30.0,
+                                      backgroundImage: NetworkImage(
+                                          SearchCubit.get(context)
+                                              .searchProductResults[index]
+                                              .image),
+                                    ),
+                                    title: Text(SearchCubit.get(context)
+                                        .searchProductResults[index]
+                                        .name,style: Theme.of(context).textTheme.bodyMedium,),
+                                    subtitle: Text(SearchCubit.get(context)
+                                        .searchProductResults[index]
+                                        .price
+                                        .toStringAsFixed(1)),
+                                    onTap: () {
+                                      AppFunctions.navigateTo(
+                                        context: context,
+                                        screen: ProductDescriptionScreen(
+                                          product: SearchCubit.get(context)
+                                              .searchProductResults[index],
+                                        ),
+                                      );
+                                    },
                                   ),
-                                  title: Text(SearchCubit.get(context)
-                                      .searchProductResults[index]
-                                      .name),
-                                  subtitle: Text(SearchCubit.get(context)
-                                      .searchProductResults[index]
-                                      .price
-                                      .toStringAsFixed(1)),
-                                  onTap: () {
-                                    AppFunctions.navigateTo(
-                                      context: context,
-                                      screen: ProductDescriptionScreen(
-                                        product: SearchCubit.get(context)
-                                            .searchProductResults[index],
-                                      ),
-                                    );
-                                  },
-                                ),
-                              );
-                            },
-                            itemCount: SearchCubit.get(context)
-                                .searchProductResults
-                                .length,
+                                );
+                              },
+                              itemCount: SearchCubit.get(context)
+                                  .searchProductResults
+                                  .length,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  );
+                        ],
+                      ),
+                    );
+                  });
                 }
               },
             ),

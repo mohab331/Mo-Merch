@@ -24,7 +24,6 @@ class SearchCubit extends Cubit<SearchStates> {
       searchProductResults = [];
       return;
     }
-
     emit(SearchLoadingState());
     final response = await di.sl<SearchUseCase>().call(
           AddUseCaseParameters(

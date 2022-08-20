@@ -73,7 +73,7 @@ class CategoryCubit extends Cubit<CategoryStates> {
                       .id:
                   categoryDetailsResponse
                       .categoryDetailsResponseData.categoryProducts
-                      .elementAt(i)
+                      .elementAt(i).name
             });
           }
           if (ShopCubit.get(context).productsInCartMap.containsKey(
@@ -94,7 +94,7 @@ class CategoryCubit extends Cubit<CategoryStates> {
                       .id:
                   categoryDetailsResponse
                       .categoryDetailsResponseData.categoryProducts
-                      .elementAt(i)
+                      .elementAt(i).name
             });
           }
         }

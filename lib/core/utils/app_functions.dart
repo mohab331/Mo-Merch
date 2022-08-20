@@ -149,15 +149,18 @@ class AppFunctions {
       ShopCubit.get(context).favoriteProductsMap.remove(product.id);
     } else {
       product.inFavorites = true;
-      ShopCubit.get(context).favoriteProductsMap.addAll({product.id: product});
+      ShopCubit.get(context).favoriteProductsMap.addAll({product.id: product.name});
     }
     if (ShopCubit.get(context).homeProductsMap.containsKey(product.id)) {
-      ShopCubit.get(context).homeProductsMap.addAll({product.id: product});
+      Product tempProduct =  ShopCubit.get(context).homeProductsMap[product.id]!;
+      tempProduct.inFavorites = product.inFavorites;
+      ShopCubit.get(context).homeProductsMap.addAll({product.id: tempProduct});
     }
     if (ShopCubit.get(context).productsInCartMap.containsKey(product.id)) {
-      ShopCubit.get(context).productsInCartMap.addAll({product.id: product});
+      ShopCubit.get(context).productsInCartMap.addAll({product.id: product.name});
     }
   }
+
   static void updateCartInMap(BuildContext context,
       {required Product product}) {
     if (ShopCubit.get(context).productsInCartMap.containsKey(product.id)) {
@@ -165,13 +168,15 @@ class AppFunctions {
       ShopCubit.get(context).productsInCartMap.remove(product.id);
     } else {
       product.inCart = true;
-      ShopCubit.get(context).productsInCartMap.addAll({product.id: product});
+      ShopCubit.get(context).productsInCartMap.addAll({product.id: product.name});
     }
     if (ShopCubit.get(context).homeProductsMap.containsKey(product.id)) {
-      ShopCubit.get(context).homeProductsMap.addAll({product.id: product});
+      Product tempProduct = ShopCubit.get(context).homeProductsMap[product.id]!;
+      tempProduct.inCart = product.inCart;
+      ShopCubit.get(context).homeProductsMap.addAll({product.id: tempProduct});
     }
     if (ShopCubit.get(context).favoriteProductsMap.containsKey(product.id)) {
-      ShopCubit.get(context).favoriteProductsMap.addAll({product.id: product});
+      ShopCubit.get(context).favoriteProductsMap.addAll({product.id: product.name});
     }
   }
 

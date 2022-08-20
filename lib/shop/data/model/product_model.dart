@@ -2,9 +2,8 @@ import 'package:shop_app_clean_architecture/shop/domain/entities/product.dart';
 
 class ProductModel extends Product {
   ProductModel._(
-      {
-        required super.name,
-        required super.id,
+      {required super.name,
+      required super.id,
       required super.price,
       required super.discount,
       required super.image,

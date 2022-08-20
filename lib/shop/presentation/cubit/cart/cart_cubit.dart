@@ -114,7 +114,7 @@ class CartCubit extends Cubit<CartStates> {
           });
           ShopCubit.get(context).productsInCartMap.addAll({
             cartResponse.cartResponseData.cartItems.elementAt(i).product.id:
-                cartResponse.cartResponseData.cartItems.elementAt(i).product
+                cartResponse.cartResponseData.cartItems.elementAt(i).product.name
           });
         }
       }

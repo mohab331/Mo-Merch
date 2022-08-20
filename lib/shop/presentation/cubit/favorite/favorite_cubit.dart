@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
 import 'package:shop_app_clean_architecture/core/api/end_points.dart';
 import 'package:shop_app_clean_architecture/core/services/service_locator.dart'
     as di;
@@ -12,7 +11,6 @@ import 'package:shop_app_clean_architecture/shop/presentation/cubit/app/app_cubi
 import 'package:shop_app_clean_architecture/shop/presentation/cubit/shop/shop_cubit.dart';
 
 import '../../../domain/entities/product.dart';
-import '../home/home_cubit.dart';
 import 'favorite_states.dart';
 
 class FavoriteCubit extends Cubit<FavoriteState> {
@@ -54,7 +52,7 @@ class FavoriteCubit extends Cubit<FavoriteState> {
             .add(favoriteResponse.data.favoriteProducts.elementAt(i));
         ShopCubit.get(context).favoriteProductsMap.addAll({
           favoriteResponse.data.favoriteProducts.elementAt(i).id:
-              favoriteResponse.data.favoriteProducts.elementAt(i)
+              favoriteResponse.data.favoriteProducts.elementAt(i).name
         });
       }
       currentFavoritePage = favoriteResponse.data.currentPage;
@@ -67,13 +65,7 @@ class FavoriteCubit extends Cubit<FavoriteState> {
   void removeFromFavorites(BuildContext context,
       {required Product product}) async {
     _instantRemoveFromFavorite(context, product: product);
-    if (Provider.of<ShopCubit?>(context, listen: false) != null) {
-      if (ShopCubit.get(context).homeProductsMap.containsKey(product.id)) {
-        if (Provider.of<HomeCubit?>(context, listen: false) != null) {
-          HomeCubit.get(context).emitChange();
-        }
-      }
-    }
+
     final response = await di.sl<ToggleFavoriteUsecase>().call(
         AddUseCaseParameters(
             data: {'product_id': product.id},
@@ -95,13 +87,6 @@ class FavoriteCubit extends Cubit<FavoriteState> {
       {required Product product}) {
     favoriteProducts.removeWhere((element) => element.id == product.id);
     AppFunctions.updateFavoriteInScreens(context, product: product);
-    if (Provider.of<ShopCubit?>(context, listen: false) != null) {
-      if (ShopCubit.get(context).homeProductsMap.containsKey(product.id)) {
-        if (Provider.of<HomeCubit?>(context, listen: false) != null) {
-          HomeCubit.get(context).emitChange();
-        }
-      }
-    }
     try {
       emit(FavoriteDeleteItemInstantState());
     } on StateError catch (_) {

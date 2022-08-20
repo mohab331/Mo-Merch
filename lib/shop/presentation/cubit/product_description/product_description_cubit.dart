@@ -56,6 +56,8 @@ class ProductDescriptionCubit extends Cubit<ProductDescriptionStates> {
       if (ShopCubit.get(context).homeProductsMap.containsKey(product.id)) {
         if (Provider.of<HomeCubit?>(context, listen: false) != null) {
           HomeCubit.get(context).emitChange();
+        }else if(Provider.of<FavoriteCubit?>(context,listen: false) == null){
+          ShopCubit.get(context).changeScreen();
         }
       }
     }

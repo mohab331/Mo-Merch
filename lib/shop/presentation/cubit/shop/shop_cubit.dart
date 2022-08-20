@@ -32,8 +32,8 @@ class ShopCubit extends Cubit<ShopStates> {
         child: const FavoriteScreen()),
   ];
 
-  Map<int, Product> favoriteProductsMap = {};
-  Map<int, Product> productsInCartMap = {};
+  Map<int, String> favoriteProductsMap = {};
+  Map<int, String> productsInCartMap = {};
   Map<int, Product> homeProductsMap = {};
   List<Banners> banners = [];
 
@@ -73,13 +73,13 @@ class ShopCubit extends Cubit<ShopStates> {
         if (homeResponse.homeData.products.elementAt(i).inFavorites == true) {
           favoriteProductsMap.addAll({
             homeResponse.homeData.products.elementAt(i).id:
-                homeResponse.homeData.products.elementAt(i)
+                homeResponse.homeData.products.elementAt(i).name
           });
         }
         if (homeResponse.homeData.products.elementAt(i).inCart == true) {
           productsInCartMap.addAll({
             homeResponse.homeData.products.elementAt(i).id:
-                homeResponse.homeData.products.elementAt(i)
+                homeResponse.homeData.products.elementAt(i).name
           });
         }
       }
