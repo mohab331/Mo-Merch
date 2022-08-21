@@ -204,6 +204,7 @@ class CartItemBuilder extends StatelessWidget {
                     ),
                     Text(
                       cartData.product.price.toStringAsFixed(2),
+                      style: Theme.of(context).textTheme.bodySmall!.copyWith(color: AppColors.primaryColor),
                     ),
                   ],
                 ),
@@ -231,7 +232,7 @@ class CartItemBuilder extends StatelessWidget {
                         Expanded(
                           child: Text(
                             '${cartData.quantity}',
-                            style: Theme.of(context).textTheme.bodyMedium,
+                            style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.black,),
                             textAlign: TextAlign.center,
                           ),
                         ),

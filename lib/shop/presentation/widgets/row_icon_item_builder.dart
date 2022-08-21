@@ -24,6 +24,7 @@ class RowIconItemBuilder extends StatelessWidget {
           text,
           overflow: TextOverflow.ellipsis,
           maxLines: 1,
+          style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.black),
         )
       ],
     );
