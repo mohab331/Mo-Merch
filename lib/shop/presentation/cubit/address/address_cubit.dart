@@ -45,6 +45,7 @@ class AddressCubit extends Cubit<AddressStates>{
       emit(AddAddressErrorState(errorMessage: failure.failureMessage));
     }, (addressResponse){
       addedAddressData = addressResponse.addressData;
+      print(addedAddressData!.id);
       CheckOutCubit.get(context).addressId = addedAddressData!.id;
       emit(AddAddressSuccessState(message: addressResponse.message));
     });

@@ -126,6 +126,8 @@ class AddAddressScreen extends StatelessWidget {
             AppFunctions.showToast(
                 message: state.errorMessage, color: AppColors.errorColor);
           } else if (state is AddAddressSuccessState) {
+            CheckOutCubit.get(context).toggleIndex(currentIndex: 2,);
+            Navigator.of(context).pop();
             AppFunctions.showToast(
                 message: state.message, color: AppColors.successColor);
           }
@@ -147,8 +149,7 @@ class AddAddressScreen extends StatelessWidget {
                         'latitude': 0.0,
                         'longitude': 0.0,
                       });
-                      CheckOutCubit.get(context).toggleIndex(currentIndex: 2,);
-                      Navigator.of(context).pop();
+
                     }
                   },
             child: const Icon(Icons.arrow_forward_ios_rounded),
