@@ -1,4 +1,4 @@
-import 'package:shop_app_clean_architecture/shop/domain/entities/user.dart';
+import 'package:shop_app_clean_architecture/shop/domain/entities/profile/user_response_entity.dart';
 
 class UserModel extends User {
   UserModel._(

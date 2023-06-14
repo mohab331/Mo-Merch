@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_app_clean_architecture/core/services/service_locator.dart'
     as di;
 
-import 'package:shop_app_clean_architecture/shop/domain/entities/product.dart';
+import 'package:shop_app_clean_architecture/shop/domain/entities/product/product_response_entity.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/cubit/favorite/favorite_cubit.dart';
 
 import 'package:shop_app_clean_architecture/shop/presentation/cubit/shop/shop_states.dart';
@@ -11,7 +11,7 @@ import 'package:shop_app_clean_architecture/shop/presentation/cubit/shop/shop_st
 import '../../../../core/api/end_points.dart';
 import '../../../../core/usecase/base_usecase.dart';
 import '../../../domain/entities/category.dart';
-import '../../../domain/entities/home.dart';
+import '../../../domain/entities/home/home_response_entity.dart';
 import '../../../domain/usecases/category/get_category_usecase.dart';
 import '../../../domain/usecases/home/get_home_usecase.dart';
 import '../../screens/category_screen.dart';
@@ -34,7 +34,7 @@ class ShopCubit extends Cubit<ShopStates> {
 
   Map<int, String> favoriteProductsMap = {};
   Map<int, String> productsInCartMap = {};
-  Map<int, Product> homeProductsMap = {};
+  Map<int, ProductResponseEntity> homeProductsMap = {};
   List<Banners> banners = [];
 
   List<CategoryData> fetchedCategories = [];

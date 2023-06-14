@@ -6,8 +6,8 @@ import 'package:shop_app_clean_architecture/core/usecase/base_usecase.dart';
 import 'package:shop_app_clean_architecture/core/utils/app_functions.dart';
 import 'package:shop_app_clean_architecture/shop/domain/usecases/favorite/toggle_favorite_usecase.dart';
 
-import '../../../domain/entities/home.dart';
-import '../../../domain/entities/product.dart';
+import '../../../domain/entities/home/home_response_entity.dart';
+import '../../../domain/entities/product/product_response_entity.dart';
 import '../app/app_cubit.dart';
 import 'home_states.dart';
 
@@ -22,16 +22,16 @@ class HomeCubit extends Cubit<HomeStates> {
    emit(HomeInstantToggleIsFavoriteState());
  }
 
-  void _instantToggle(BuildContext context , {required Product product}){
+  void _instantToggle(BuildContext context , {required ProductResponseEntity product}){
     AppFunctions.updateFavoriteInScreens(context,product: product,);
     emit(HomeInstantToggleIsFavoriteState());
   }
-  void _errorInToggle(BuildContext context , {required Product product,}){
+  void _errorInToggle(BuildContext context , {required ProductResponseEntity product,}){
     AppFunctions.updateFavoriteInScreens(context,product: product,);
   }
 
   void toggleIsFavorite(BuildContext context,
-      {required Product product}) async{
+      {required ProductResponseEntity product}) async{
     _instantToggle(context, product:product, );
     final response = await di.sl<ToggleFavoriteUsecase>().call(AddUseCaseParameters(data:{'product_id':product.id}, url: Endpoints.favorites,token: AppCubit.get(context).getUserToken(),));
     response.fold((failure){

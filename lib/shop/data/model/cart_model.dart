@@ -1,5 +1,5 @@
 import 'package:shop_app_clean_architecture/shop/data/model/product_model.dart';
-import 'package:shop_app_clean_architecture/shop/domain/entities/cart.dart';
+import 'package:shop_app_clean_architecture/shop/domain/entities/cart/cart_response_entity.dart';
 
 class CartResponseModel extends CartResponse {
   CartResponseModel._(

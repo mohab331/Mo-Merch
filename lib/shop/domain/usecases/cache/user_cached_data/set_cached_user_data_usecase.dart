@@ -1,22 +1,20 @@
 import 'package:dartz/dartz.dart';
+import 'package:shop_app_clean_architecture/core/error/failure.dart';
 import 'package:shop_app_clean_architecture/core/usecase/base_usecase.dart';
+import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 
-import '../../../../../core/error/failure.dart';
-import '../../../repository/base_shop_repository.dart';
+class SetCachedUserDataUsecase
+    implements BaseUsecase<bool, SaveUserDataRequestEntity> {
+  SetCachedUserDataUsecase({required this.baseLocalStorageRepo});
 
-
-class SetCachedUserDataUsecase implements BaseUsecase<bool , SetCachedUserDataUsecaseParameters>{
-  BaseShopRepository baseShopRepository;
-  SetCachedUserDataUsecase({required this.baseShopRepository});
+  BaseLocalStorageRepo baseLocalStorageRepo;
 
   @override
-  Future<Either<Failure, bool>> call(SetCachedUserDataUsecaseParameters parameters) async{
-    return await baseShopRepository.setUserData(parameters: parameters);
+  Future<Either<Failure, bool>> call(
+    SaveUserDataRequestEntity saveUserDataRequestEntity,
+  ) async {
+    return await baseLocalStorageRepo.setUserData(
+      saveUserDataRequestEntity: saveUserDataRequestEntity,
+    );
   }
-
-}
-class SetCachedUserDataUsecaseParameters{
-  final String name;
-  final String token;
-  SetCachedUserDataUsecaseParameters({required this.token , required this.name,});
 }

@@ -6,7 +6,7 @@ import 'package:shop_app_clean_architecture/core/services/service_locator.dart'
     as di;
 import 'package:shop_app_clean_architecture/core/usecase/base_usecase.dart';
 import 'package:shop_app_clean_architecture/core/utils/app_strings.dart';
-import 'package:shop_app_clean_architecture/shop/domain/entities/user.dart';
+import 'package:shop_app_clean_architecture/shop/domain/entities/profile/user_response_entity.dart';
 import 'package:shop_app_clean_architecture/shop/domain/usecases/cache/app_theme/get_app_theme_usecase.dart';
 import 'package:shop_app_clean_architecture/shop/domain/usecases/cache/app_theme/toggle_app_theme_usecase.dart';
 import 'package:shop_app_clean_architecture/shop/domain/usecases/cache/on_boarding/get_on_boarding_usecase.dart';

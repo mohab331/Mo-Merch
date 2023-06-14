@@ -1,18 +1,22 @@
 import 'package:dartz/dartz.dart';
-import 'package:shop_app_clean_architecture/shop/domain/entities/cart.dart';
+import 'package:shop_app_clean_architecture/core/error/failure.dart';
+import 'package:shop_app_clean_architecture/core/usecase/base_usecase.dart';
+import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 
-import '../../../../core/error/failure.dart';
-import '../../../../core/usecase/base_usecase.dart';
+class UpdateCartUsecase
+    implements
+        BaseUsecase<BaseResponseEntity<CartUpdateResponseEntity>,
+            UpdateCartRequestEntity> {
+  UpdateCartUsecase({required this.baseCartRepo});
 
-import '../../repository/base_shop_repository.dart';
-
-class UpdateCartUsecase implements BaseUsecase<CartUpdateResponse ,UpdateUseCaseParameters >{
-  BaseShopRepository baseShopRepository;
-  UpdateCartUsecase({required this.baseShopRepository});
+  BaseCartRepo baseCartRepo;
 
   @override
-  Future<Either<Failure, CartUpdateResponse>> call(UpdateUseCaseParameters parameters) async{
-    return await baseShopRepository.updateCart(parameters: parameters,);
+  Future<Either<Failure, BaseResponseEntity<CartUpdateResponseEntity>>> call(
+    UpdateCartRequestEntity updateCartRequestEntity,
+  ) async {
+    return await baseCartRepo.updateCart(
+      updateCartRequestEntity: updateCartRequestEntity,
+    );
   }
 }
-

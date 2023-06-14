@@ -1,4 +1,4 @@
-import 'package:shop_app_clean_architecture/shop/domain/entities/address.dart';
+import 'package:shop_app_clean_architecture/shop/domain/entities/address/address_response_entity.dart';
 
 class AddressResponseModel extends AddressResponse {
   AddressResponseModel._(

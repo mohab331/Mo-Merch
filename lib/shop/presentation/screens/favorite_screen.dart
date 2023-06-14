@@ -10,7 +10,7 @@ import 'package:shop_app_clean_architecture/core/widgets/loading_data_widget.dar
 import 'package:shop_app_clean_architecture/core/widgets/network_error_widget.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/screens/product_description_screen.dart';
 
-import '../../domain/entities/product.dart';
+import '../../domain/entities/product/product_response_entity.dart';
 import '../cubit/favorite/favorite_cubit.dart';
 import '../cubit/favorite/favorite_states.dart';
 import '../widgets/animated_favorite_button.dart';
@@ -128,7 +128,7 @@ class FavoriteProductItem extends StatelessWidget {
     Key? key,
     required this.product,
   }) : super(key: key);
-  final Product product;
+  final ProductResponseEntity product;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

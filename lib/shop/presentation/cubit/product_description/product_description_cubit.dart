@@ -8,7 +8,7 @@ import 'package:shop_app_clean_architecture/core/services/service_locator.dart'
 import 'package:shop_app_clean_architecture/core/usecase/base_usecase.dart';
 import 'package:shop_app_clean_architecture/core/utils/app_functions.dart';
 import 'package:shop_app_clean_architecture/core/utils/app_strings.dart';
-import 'package:shop_app_clean_architecture/shop/domain/entities/product.dart';
+import 'package:shop_app_clean_architecture/shop/domain/entities/product/product_response_entity.dart';
 import 'package:shop_app_clean_architecture/shop/domain/usecases/cart/add_to_cart_usecase.dart';
 import 'package:shop_app_clean_architecture/shop/domain/usecases/favorite/toggle_favorite_usecase.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/cubit/app/app_cubit.dart';
@@ -23,7 +23,7 @@ class ProductDescriptionCubit extends Cubit<ProductDescriptionStates> {
   static ProductDescriptionCubit get(context) => BlocProvider.of(context);
 
   void addOrRemoveProductFromCart(BuildContext context,
-      {required Product product}) async {
+      {required ProductResponseEntity product}) async {
     emit(ProductDescriptionLoadingAddState());
     final response = await di.sl<AddToCartUseCase>().call(AddUseCaseParameters(
         data: {'product_id': product.id},
@@ -51,7 +51,7 @@ class ProductDescriptionCubit extends Cubit<ProductDescriptionStates> {
       return AppStrings.addToCart;
     }
   }
-  void _updateScreens(BuildContext context, {required Product product}) {
+  void _updateScreens(BuildContext context, {required ProductResponseEntity product}) {
     if (Provider.of<ShopCubit?>(context, listen: false) != null) {
       if (ShopCubit.get(context).homeProductsMap.containsKey(product.id)) {
         if (Provider.of<HomeCubit?>(context, listen: false) != null) {
@@ -72,7 +72,7 @@ class ProductDescriptionCubit extends Cubit<ProductDescriptionStates> {
     }
   }
   void toggleAddToFavorite(BuildContext context,
-      {required Product product}) async {
+      {required ProductResponseEntity product}) async {
     AppFunctions.updateFavoriteInScreens(
       context,
       product: product,

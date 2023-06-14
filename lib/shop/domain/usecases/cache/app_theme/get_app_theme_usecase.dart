@@ -1,14 +1,13 @@
 import 'package:dartz/dartz.dart';
+import 'package:shop_app_clean_architecture/core/error/failure.dart';
+import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 
-import '../../../../../core/error/failure.dart';
-import '../../../repository/base_shop_repository.dart';
+class GetAppThemeUseCase {
+  GetAppThemeUseCase({required this.baseLocalStorageRepo});
 
-
-class GetAppThemeUseCase{
-  BaseShopRepository baseShopRepository;
-  GetAppThemeUseCase({required this.baseShopRepository});
+  BaseLocalStorageRepo baseLocalStorageRepo;
 
   Either<Failure, dynamic> call() {
-    return baseShopRepository.getAppThemeMode();
+    return baseLocalStorageRepo.getAppThemeMode();
   }
 }

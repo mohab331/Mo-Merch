@@ -10,7 +10,7 @@ import 'package:shop_app_clean_architecture/core/network/network_checker.dart';
 import 'package:shop_app_clean_architecture/shop/data/datasource/local/base_shop_local_data_source.dart';
 import 'package:shop_app_clean_architecture/shop/data/datasource/remote/base_shop_remote_data_source.dart';
 import 'package:shop_app_clean_architecture/shop/data/repository/shop_repository.dart';
-import 'package:shop_app_clean_architecture/shop/domain/repository/base_shop_repository.dart';
+import 'package:shop_app_clean_architecture/shop/domain/repository/cache/base_local_storage_repo.dart';
 import 'package:shop_app_clean_architecture/shop/domain/usecases/address/add_address_usecase.dart';
 import 'package:shop_app_clean_architecture/shop/domain/usecases/address/delete_address_usecase.dart';
 import 'package:shop_app_clean_architecture/shop/domain/usecases/address/get_address_usecase.dart';

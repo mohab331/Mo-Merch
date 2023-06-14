@@ -10,7 +10,7 @@ import 'package:shop_app_clean_architecture/shop/domain/usecases/favorite/toggle
 import 'package:shop_app_clean_architecture/shop/presentation/cubit/app/app_cubit.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/cubit/shop/shop_cubit.dart';
 
-import '../../../domain/entities/product.dart';
+import '../../../domain/entities/product/product_response_entity.dart';
 import 'favorite_states.dart';
 
 class FavoriteCubit extends Cubit<FavoriteState> {
@@ -18,7 +18,7 @@ class FavoriteCubit extends Cubit<FavoriteState> {
 
   static FavoriteCubit get(context) => BlocProvider.of(context);
 
-  List<Product> favoriteProducts = [];
+  List<ProductResponseEntity> favoriteProducts = [];
   bool hasMoreFavoriteData = true;
   int currentFavoritePage = 1;
   void emitChange() {
@@ -63,7 +63,7 @@ class FavoriteCubit extends Cubit<FavoriteState> {
   }
 
   void removeFromFavorites(BuildContext context,
-      {required Product product}) async {
+      {required ProductResponseEntity product}) async {
     _instantRemoveFromFavorite(context, product: product);
 
     final response = await di.sl<ToggleFavoriteUsecase>().call(
@@ -84,7 +84,7 @@ class FavoriteCubit extends Cubit<FavoriteState> {
   }
 
   void _instantRemoveFromFavorite(BuildContext context,
-      {required Product product}) {
+      {required ProductResponseEntity product}) {
     favoriteProducts.removeWhere((element) => element.id == product.id);
     AppFunctions.updateFavoriteInScreens(context, product: product);
     try {
@@ -95,7 +95,7 @@ class FavoriteCubit extends Cubit<FavoriteState> {
   }
 
   void _errorInRemoveFavorite(BuildContext context,
-      {required Product product, required String errorMessage}) {
+      {required ProductResponseEntity product, required String errorMessage}) {
     favoriteProducts.add(product);
     AppFunctions.updateFavoriteInScreens(context, product: product);
     emit(FavoriteErrorDataState(errorMessage: errorMessage));

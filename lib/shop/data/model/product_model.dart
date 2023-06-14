@@ -1,6 +1,6 @@
-import 'package:shop_app_clean_architecture/shop/domain/entities/product.dart';
+import 'package:shop_app_clean_architecture/shop/domain/entities/product/product_response_entity.dart';
 
-class ProductModel extends Product {
+class ProductModel extends ProductResponseEntity {
   ProductModel._(
       {required super.name,
       required super.id,

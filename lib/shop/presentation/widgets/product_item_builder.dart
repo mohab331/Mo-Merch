@@ -6,7 +6,7 @@ import 'package:shop_app_clean_architecture/core/services/service_locator.dart'
 import 'package:shop_app_clean_architecture/core/utils/app_colors.dart';
 import 'package:shop_app_clean_architecture/core/utils/app_functions.dart';
 import 'package:shop_app_clean_architecture/core/widgets/cached_network_image.dart';
-import 'package:shop_app_clean_architecture/shop/domain/entities/product.dart';
+import 'package:shop_app_clean_architecture/shop/domain/entities/product/product_response_entity.dart';
 
 import '../../../core/utils/app_strings.dart';
 import '../cubit/home/home_cubit.dart';
@@ -19,7 +19,7 @@ class ProductItemBuilder extends StatelessWidget {
     Key? key,
     required this.product,
   }) : super(key: key);
-  final Product product;
+  final ProductResponseEntity product;
 
   @override
   Widget build(BuildContext context) {

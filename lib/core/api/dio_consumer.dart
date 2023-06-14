@@ -80,7 +80,7 @@ class DioConsumer implements ApiConsumer {
       Map<String, dynamic>? queryMap,
       required Map<String, dynamic> data,
       String lang = 'en',
-      required String token}) async {
+      required String token,}) async {
     return await dio.put(
       url,
       queryParameters: queryMap,

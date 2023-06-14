@@ -10,7 +10,7 @@ import 'package:shop_app_clean_architecture/shop/domain/usecases/profile/update_
 import 'package:shop_app_clean_architecture/shop/presentation/cubit/app/app_cubit.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/cubit/profile/profile_states.dart';
 
-import '../../../domain/entities/user.dart';
+import '../../../domain/entities/profile/user_response_entity.dart';
 
 class ProfileCubit extends Cubit<ProfileStates> {
   ProfileCubit() : super(ProfileInitialState());

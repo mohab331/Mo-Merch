@@ -1,4 +1,4 @@
-import '../network/error_model.dart';
+import 'package:shop_app_clean_architecture/core/network/error_model.dart';
 
 class ServerException implements Exception{
   final ErrorModel errorModel;

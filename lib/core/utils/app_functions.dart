@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shop_app_clean_architecture/core/utils/app_strings.dart';
 
-import '../../shop/domain/entities/product.dart';
+import '../../shop/domain/entities/product/product_response_entity.dart';
 import '../../shop/presentation/cubit/shop/shop_cubit.dart';
 
 class AppFunctions {
@@ -142,7 +142,7 @@ class AppFunctions {
 
   static void updateFavoriteInScreens(
     BuildContext context, {
-    required Product product,
+    required ProductResponseEntity product,
   }) {
     if (ShopCubit.get(context).favoriteProductsMap.containsKey(product.id)) {
       product.inFavorites = false;
@@ -152,7 +152,7 @@ class AppFunctions {
       ShopCubit.get(context).favoriteProductsMap.addAll({product.id: product.name});
     }
     if (ShopCubit.get(context).homeProductsMap.containsKey(product.id)) {
-      Product tempProduct =  ShopCubit.get(context).homeProductsMap[product.id]!;
+      ProductResponseEntity tempProduct =  ShopCubit.get(context).homeProductsMap[product.id]!;
       tempProduct.inFavorites = product.inFavorites;
       ShopCubit.get(context).homeProductsMap.addAll({product.id: tempProduct});
     }
@@ -162,7 +162,7 @@ class AppFunctions {
   }
 
   static void updateCartInMap(BuildContext context,
-      {required Product product}) {
+      {required ProductResponseEntity product}) {
     if (ShopCubit.get(context).productsInCartMap.containsKey(product.id)) {
       product.inCart = false;
       ShopCubit.get(context).productsInCartMap.remove(product.id);
@@ -171,7 +171,7 @@ class AppFunctions {
       ShopCubit.get(context).productsInCartMap.addAll({product.id: product.name});
     }
     if (ShopCubit.get(context).homeProductsMap.containsKey(product.id)) {
-      Product tempProduct = ShopCubit.get(context).homeProductsMap[product.id]!;
+      ProductResponseEntity tempProduct = ShopCubit.get(context).homeProductsMap[product.id]!;
       tempProduct.inCart = product.inCart;
       ShopCubit.get(context).homeProductsMap.addAll({product.id: tempProduct});
     }
@@ -184,7 +184,7 @@ class AppFunctions {
 
   static void errorToggle(
     BuildContext context, {
-    required Product product,
+    required ProductResponseEntity product,
   }) {
     updateFavoriteInScreens(
       context,

@@ -8,7 +8,7 @@ import 'package:shop_app_clean_architecture/core/utils/app_functions.dart';
 import 'package:shop_app_clean_architecture/core/widgets/cached_network_image.dart';
 
 import '../../../core/utils/app_strings.dart';
-import '../../domain/entities/product.dart';
+import '../../domain/entities/product/product_response_entity.dart';
 import '../cubit/product_description/product_description_cubit.dart';
 import '../cubit/product_description/product_description_states.dart';
 import '../widgets/animated_favorite_button.dart';
@@ -19,7 +19,7 @@ class ProductDescriptionScreen extends StatelessWidget {
     Key? key,
     required this.product,
   }) : super(key: key);
-  final Product product;
+  final ProductResponseEntity product;
 
   @override
   Widget build(BuildContext context) {

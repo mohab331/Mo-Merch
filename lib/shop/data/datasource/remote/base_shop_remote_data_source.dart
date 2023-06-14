@@ -14,18 +14,18 @@ import 'package:shop_app_clean_architecture/shop/data/model/order_model.dart';
 import 'package:shop_app_clean_architecture/shop/data/model/register_model.dart';
 import 'package:shop_app_clean_architecture/shop/data/model/search_model.dart';
 import 'package:shop_app_clean_architecture/shop/data/model/update_profile_model.dart';
-import 'package:shop_app_clean_architecture/shop/domain/entities/address.dart';
-import 'package:shop_app_clean_architecture/shop/domain/entities/cart.dart';
+import 'package:shop_app_clean_architecture/shop/domain/entities/address/address_response_entity.dart';
+import 'package:shop_app_clean_architecture/shop/domain/entities/cart/cart_response_entity.dart';
 import 'package:shop_app_clean_architecture/shop/domain/entities/category.dart';
-import 'package:shop_app_clean_architecture/shop/domain/entities/change_password.dart';
-import 'package:shop_app_clean_architecture/shop/domain/entities/favorite.dart';
-import 'package:shop_app_clean_architecture/shop/domain/entities/home.dart';
+import 'package:shop_app_clean_architecture/shop/domain/entities/profile/change_password_response_entity.dart';
+import 'package:shop_app_clean_architecture/shop/domain/entities/favorite/favorite_response_entity.dart';
+import 'package:shop_app_clean_architecture/shop/domain/entities/home/home_response_entity.dart';
 import 'package:shop_app_clean_architecture/shop/domain/entities/login.dart';
 import 'package:shop_app_clean_architecture/shop/domain/entities/logout.dart';
 import 'package:shop_app_clean_architecture/shop/domain/entities/order.dart';
 import 'package:shop_app_clean_architecture/shop/domain/entities/profile.dart';
 import 'package:shop_app_clean_architecture/shop/domain/entities/register.dart';
-import 'package:shop_app_clean_architecture/shop/domain/entities/search.dart';
+import 'package:shop_app_clean_architecture/shop/domain/entities/search/search_response_entity.dart';
 
 abstract class BaseShopRemoteDataSource {
   //home

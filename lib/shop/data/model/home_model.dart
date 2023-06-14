@@ -1,5 +1,5 @@
 import 'package:shop_app_clean_architecture/shop/data/model/product_model.dart';
-import 'package:shop_app_clean_architecture/shop/domain/entities/home.dart';
+import 'package:shop_app_clean_architecture/shop/domain/entities/home/home_response_entity.dart';
 
 class HomeResponseModel extends HomeResponse {
   HomeResponseModel._(

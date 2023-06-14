@@ -1,17 +1,24 @@
 import 'package:dartz/dartz.dart';
-import 'package:shop_app_clean_architecture/shop/domain/entities/profile.dart';
+import 'package:shop_app_clean_architecture/core/error/failure.dart';
+import 'package:shop_app_clean_architecture/core/usecase/base_usecase.dart';
+import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 
-import '../../../../core/error/failure.dart';
-import '../../../../core/usecase/base_usecase.dart';
-import '../../repository/base_shop_repository.dart';
+class UpdateProfileUseCase
+    implements
+        BaseUsecase<BaseResponseEntity<UserResponseEntity>,
+            UpdateProfileRequestEntity> {
+  UpdateProfileUseCase({
+    required this.baseProfileRepo,
+  });
 
-class UpdateProfileUseCase implements BaseUsecase<ProfileResponse ,UpdateUseCaseParameters >{
-  BaseShopRepository baseShopRepository;
-  UpdateProfileUseCase({required this.baseShopRepository});
+  BaseProfileRepo baseProfileRepo;
 
   @override
-  Future<Either<Failure, ProfileResponse>> call(UpdateUseCaseParameters parameters) async{
-    return await baseShopRepository.updateUserProfile(parameters: parameters);
+  Future<Either<Failure, BaseResponseEntity<UserResponseEntity>>> call(
+    UpdateProfileRequestEntity updateProfileRequestEntity,
+  ) async {
+    return await baseProfileRepo.updateUserProfile(
+      updateProfileRequestEntity: updateProfileRequestEntity,
+    );
   }
 }
-

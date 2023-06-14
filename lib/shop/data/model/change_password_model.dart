@@ -1,4 +1,4 @@
-import 'package:shop_app_clean_architecture/shop/domain/entities/change_password.dart';
+import 'package:shop_app_clean_architecture/shop/domain/entities/profile/change_password_response_entity.dart';
 
 class ChangePasswordResponseModel extends ChangePasswordResponse {
   ChangePasswordResponseModel._(

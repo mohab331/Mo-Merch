@@ -1,21 +1,22 @@
 import 'package:dartz/dartz.dart';
+import 'package:shop_app_clean_architecture/core/error/failure.dart';
+import 'package:shop_app_clean_architecture/core/usecase/base_usecase.dart';
+import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 
-import '../../../../../core/error/failure.dart';
-import '../../../../../core/usecase/base_usecase.dart';
-import '../../../repository/base_shop_repository.dart';
+class ToggleAppThemeUseCase
+    implements BaseUsecase<bool, AppThemeRequestEntity> {
+  ToggleAppThemeUseCase({
+    required this.baseLocalStorageRepo,
+  });
 
-
-class ToggleAppThemeUseCase implements BaseUsecase<bool ,ToggleAppThemeUsecaseParameters >{
-  BaseShopRepository baseShopRepository;
-  ToggleAppThemeUseCase({required this.baseShopRepository});
+  BaseLocalStorageRepo baseLocalStorageRepo;
 
   @override
-  Future<Either<Failure, bool>> call(ToggleAppThemeUsecaseParameters parameters) async{
-    return await baseShopRepository.toggleAppTheme(parameters: parameters);
+  Future<Either<Failure, bool>> call(
+    AppThemeRequestEntity appThemeRequestEntity,
+  ) async {
+    return await baseLocalStorageRepo.toggleAppTheme(
+      appThemeRequestEntity: appThemeRequestEntity,
+    );
   }
-}
-
-class ToggleAppThemeUsecaseParameters{
-  final bool theme;
-  ToggleAppThemeUsecaseParameters({required this.theme});
 }

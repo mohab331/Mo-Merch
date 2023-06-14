@@ -1,5 +1,5 @@
 import 'package:shop_app_clean_architecture/shop/data/model/product_model.dart';
-import 'package:shop_app_clean_architecture/shop/domain/entities/favorite.dart';
+import 'package:shop_app_clean_architecture/shop/domain/entities/favorite/favorite_response_entity.dart';
 
 class FavoriteResponseModel extends FavoriteResponse {
   FavoriteResponseModel._(

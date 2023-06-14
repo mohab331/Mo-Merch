@@ -1,15 +1,20 @@
 import 'package:dartz/dartz.dart';
+import 'package:shop_app_clean_architecture/core/error/failure.dart';
+import 'package:shop_app_clean_architecture/core/usecase/base_usecase.dart';
+import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 
-import '../../../../core/error/failure.dart';
-import '../../../../core/usecase/base_usecase.dart';
-import '../../repository/base_shop_repository.dart';
+class DeleteCartUseCase
+    implements BaseUsecase<String, DeleteCartItemRequestEntity> {
+  DeleteCartUseCase({required this.baseCartRepo,});
 
-class DeleteCartUseCase implements BaseUsecase<String ,DeleteUseCaseParameters >{
-  BaseShopRepository baseShopRepository;
-  DeleteCartUseCase({required this.baseShopRepository});
+  BaseCartRepo baseCartRepo;
 
   @override
-  Future<Either<Failure, String>> call(DeleteUseCaseParameters parameters) async{
-    return await baseShopRepository.removeFromCart(parameters: parameters);
+  Future<Either<Failure, String>> call(
+    DeleteCartItemRequestEntity deleteCartItemRequestEntity,
+  ) async {
+    return await baseCartRepo.removeFromCart(
+      deleteCartItemRequestEntity: deleteCartItemRequestEntity,
+    );
   }
 }

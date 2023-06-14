@@ -1,17 +1,20 @@
 import 'package:dartz/dartz.dart';
-import 'package:shop_app_clean_architecture/shop/domain/entities/address.dart';
+import 'package:shop_app_clean_architecture/core/error/failure.dart';
+import 'package:shop_app_clean_architecture/core/usecase/base_usecase.dart';
+import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 
-import '../../../../core/error/failure.dart';
-import '../../../../core/usecase/base_usecase.dart';
-import '../../repository/base_shop_repository.dart';
+class GetAddressUseCase
+    implements
+        BaseUsecase<BaseListResponseEntity<AddressResponseEntity>,
+            NoParameters> {
+  GetAddressUseCase({required this.baseAddressRepo});
 
-class GetAddressUseCase implements BaseUsecase<GetAddressResponse ,GetUseCaseParameters >{
-  BaseShopRepository baseShopRepository;
-  GetAddressUseCase({required this.baseShopRepository});
+  BaseAddressRepo baseAddressRepo;
 
   @override
-  Future<Either<Failure, GetAddressResponse>> call(GetUseCaseParameters parameters) async{
-    return await baseShopRepository.getUserAddress(parameters: parameters,);
+  Future<Either<Failure, BaseListResponseEntity<AddressResponseEntity>>> call(
+    NoParameters parameters,
+  ) async {
+    return await baseAddressRepo.getUserAddress();
   }
 }
-

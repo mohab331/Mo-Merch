@@ -103,7 +103,7 @@ class AppStrings{
   static const String actionOk = 'Ok';
 
 
-//product
+  //product
   static const String discount = 'Discount';
 
   // App Cubit

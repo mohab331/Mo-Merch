@@ -1,17 +1,19 @@
 import 'package:dartz/dartz.dart';
-import 'package:shop_app_clean_architecture/shop/domain/entities/home.dart';
+import 'package:shop_app_clean_architecture/core/error/failure.dart';
+import 'package:shop_app_clean_architecture/core/usecase/base_usecase.dart';
+import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 
-import '../../../../core/error/failure.dart';
-import '../../../../core/usecase/base_usecase.dart';
-import '../../repository/base_shop_repository.dart';
+class GetHomeUsecase
+    implements
+        BaseUsecase<BaseResponseEntity<HomeResponseEntity>, NoParameters> {
+  GetHomeUsecase({required this.baseHomeRepo});
 
-class GetHomeUsecase implements BaseUsecase<HomeResponse ,GetUseCaseParameters >{
-  BaseShopRepository baseShopRepository;
-  GetHomeUsecase({required this.baseShopRepository});
+  BaseHomeRepo baseHomeRepo;
 
   @override
-  Future<Either<Failure, HomeResponse>> call(GetUseCaseParameters parameters) async{
-    return await baseShopRepository.getHomeData(parameters: parameters);
+  Future<Either<Failure, BaseResponseEntity<HomeResponseEntity>>> call(
+    NoParameters parameters,
+  ) async {
+    return await baseHomeRepo.getHomeData();
   }
 }
-

@@ -4,7 +4,7 @@ import 'package:shop_app_clean_architecture/core/api/end_points.dart';
 import 'package:shop_app_clean_architecture/core/services/service_locator.dart'
     as di;
 import 'package:shop_app_clean_architecture/core/usecase/base_usecase.dart';
-import 'package:shop_app_clean_architecture/shop/domain/entities/cart.dart';
+import 'package:shop_app_clean_architecture/shop/domain/entities/cart/cart_response_entity.dart';
 import 'package:shop_app_clean_architecture/shop/domain/usecases/cart/delete_cart_usecase.dart';
 import 'package:shop_app_clean_architecture/shop/domain/usecases/cart/get_cart_usecase.dart';
 import 'package:shop_app_clean_architecture/shop/domain/usecases/cart/update_cart_usecase.dart';
@@ -114,7 +114,10 @@ class CartCubit extends Cubit<CartStates> {
           });
           ShopCubit.get(context).productsInCartMap.addAll({
             cartResponse.cartResponseData.cartItems.elementAt(i).product.id:
-                cartResponse.cartResponseData.cartItems.elementAt(i).product.name
+                cartResponse.cartResponseData.cartItems
+                    .elementAt(i)
+                    .product
+                    .name
           });
         }
       }

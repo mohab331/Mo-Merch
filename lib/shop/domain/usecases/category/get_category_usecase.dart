@@ -1,16 +1,21 @@
 import 'package:dartz/dartz.dart';
-import 'package:shop_app_clean_architecture/shop/domain/entities/category.dart';
+import 'package:shop_app_clean_architecture/core/error/failure.dart';
+import 'package:shop_app_clean_architecture/core/usecase/base_usecase.dart';
+import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 
-import '../../../../core/error/failure.dart';
-import '../../../../core/usecase/base_usecase.dart';
-import '../../repository/base_shop_repository.dart';
+class GetCategoryUsecase
+    implements
+        BaseUsecase<BaseListResponseEntity<CategoryResponseEntity>,
+            NoParameters> {
+  GetCategoryUsecase({
+    required this.baseCategoryRepo,
+  });
 
-class GetCategoryUsecase implements BaseUsecase<CategoryResponse ,GetUseCaseParameters >{
-  BaseShopRepository baseShopRepository;
-  GetCategoryUsecase({required this.baseShopRepository});
+  BaseCategoryRepo baseCategoryRepo;
 
   @override
-  Future<Either<Failure, CategoryResponse>> call(GetUseCaseParameters parameters) async{
-    return await baseShopRepository.getCategoryData(parameters: parameters);
+  Future<Either<Failure, BaseListResponseEntity<CategoryResponseEntity>>> call(
+      NoParameters parameters) async {
+    return await baseCategoryRepo.getCategoryData();
   }
 }

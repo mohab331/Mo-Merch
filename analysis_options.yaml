@@ -9,21 +9,106 @@
 # packages, and plugins designed to encourage good coding practices.
 include: package:flutter_lints/flutter.yaml
 
-linter:
-  # The lint rules applied to this project can be customized in the
-  # section below to disable rules from the `package:flutter_lints/flutter.yaml`
-  # included above or to enable additional rules. A list of all available lints
-  # and their documentation is published at
-  # https://dart-lang.github.io/linter/lints/index.html.
-  #
-  # Instead of disabling a lint rule for the entire project in the
-  # section below, it can also be suppressed for a single line of code
-  # or a specific dart file by using the `// ignore: name_of_lint` and
-  # `// ignore_for_file: name_of_lint` syntax on the line or in the file
-  # producing the lint.
-  rules:
-    # avoid_print: false  # Uncomment to disable the `avoid_print` rule
-    # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
 
-# Additional information about this file can be found at
-# https://dart.dev/guides/language/analysis-options
+# analysis_options.yaml
+
+# Lint rules configuration for the project
+linter:
+  rules:
+    # Import rules
+    - always_use_package_imports
+    - avoid_relative_lib_imports
+    - package_prefixed_library_names
+
+    # Constructor rules
+    - prefer_const_constructors
+    - prefer_const_constructors_in_immutables
+    - prefer_const_declarations
+    - prefer_const_literals_to_create_immutables
+
+    # Null rules
+    - avoid_catches_without_on_clauses
+    - avoid_null_checks_in_equality_operators
+    - avoid_returning_null
+    - avoid_returning_null_for_void
+    - avoid_types_on_closure_parameters
+    - nullable_type_in_catch_clause
+    - prefer_asserts_in_initializer_lists
+    - prefer_null_aware_operators
+    - unnecessary_null_in_if_null_operators
+    - require_trailing_commas: true
+    # Unused arguments rules
+    - avoid_unused_constructor_parameters
+    - unused_element
+    - unused_import
+    - unused_local_variable
+    - unused_field
+    # Add trailing comma rule
+    - always_put_required_named_parameters_first
+    - always_put_required_positional_parameters_first
+    - always_require_non_null_named_parameters
+    - always_require_non_null_positional_parameters
+    - avoid_annotating_with_dynamic
+    - avoid_empty_else
+    - avoid_init_to_null
+    - avoid_null_checks_in_equality_operators
+    - avoid_returning_null
+    - avoid_return_types_on_setters
+    - avoid_types_as_parameter_names
+    - avoid_types_on_closure_parameters
+    - cascade_invocations
+    - constant_identifier_names
+    - empty_catches
+    - empty_constructor_bodies
+    - hash_and_equals
+    - lines_longer_than_80_chars
+    - no_duplicate_case_values
+    - omit_local_variable_types
+    - prefer_const_constructors
+    - prefer_const_declarations
+    - prefer_final_fields
+    - prefer_is_empty
+    - prefer_single_quotes
+    - prefer_typing_uninitialized_variables
+    - sort_constructors_first
+    - sort_unnamed_constructors_first
+    - test_types_in_equals
+    - unnecessary_const
+    - unnecessary_lambdas
+    - unnecessary_new
+    - unnecessary_this
+    - prefer_inlined_adds
+    - prefer_inlined_calls
+    - prefer_iterable_whereType
+    - prefer_iterable_whereType_test
+    - prefer_single_child_layouts
+    - prefer_spread_collections
+    - prefer_void_to_null
+    - prefer_asserts_with_message
+    - prefer_trailing_comma_in_collection_literals  # Add this rule
+    - avoid_types_as_parameter_names:
+        enabled: true
+        severity: warning
+# Specify the strong mode for static analysis
+analyzer:
+  strong-mode: true
+  exclude:
+    - some_directory/**
+    - another_directory/file.dart
+  errors:
+    - '*'
+# Specify code organization and formatting settings
+dart_style:
+  enabled: true
+  line_length: 80
+  indent: 2
+  uses_tabs: false
+  always_use_braces: false
+  allow_single_quotes: true
+  implicit_cascade_style: never
+  spaces_around_ranges: true
+  single_member_annotations: true
+  space_before_function_call_arguments: false
+  split_named_parameters: false
+  wrap_lists: true
+  wrap_collections: true

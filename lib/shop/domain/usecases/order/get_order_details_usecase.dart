@@ -1,17 +1,22 @@
 import 'package:dartz/dartz.dart';
-import 'package:shop_app_clean_architecture/shop/domain/entities/order.dart';
+import 'package:shop_app_clean_architecture/core/error/failure.dart';
+import 'package:shop_app_clean_architecture/core/usecase/base_usecase.dart';
+import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 
-import '../../../../core/error/failure.dart';
-import '../../../../core/usecase/base_usecase.dart';
-import '../../repository/base_shop_repository.dart';
+class GetOrderDetailsUsecase
+    implements
+        BaseUsecase<BaseResponseEntity<OrderDetailsResponseEntity>,
+            OrderDetailsRequestEntity> {
+  GetOrderDetailsUsecase({required this.baseOrderRepo});
 
-class GetOrderDetailsUsecase implements BaseUsecase<OrderDetailsResponse ,GetUseCaseParameters >{
-  BaseShopRepository baseShopRepository;
-  GetOrderDetailsUsecase({required this.baseShopRepository});
+  BaseOrderRepo baseOrderRepo;
 
   @override
-  Future<Either<Failure, OrderDetailsResponse>> call(GetUseCaseParameters parameters) async{
-    return await baseShopRepository.getOrderDetails(parameters: parameters);
+  Future<Either<Failure, BaseResponseEntity<OrderDetailsResponseEntity>>> call(
+    OrderDetailsRequestEntity orderDetailsRequestEntity,
+  ) async {
+    return await baseOrderRepo.getOrderDetails(
+      orderDetailsRequestEntity: orderDetailsRequestEntity,
+    );
   }
 }
-
