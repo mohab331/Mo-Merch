@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_add_to_cart_button/flutter_add_to_cart_button.dart';
-import 'package:shop_app_clean_architecture/core/utils/app_assets.dart';
+import 'package:shop_app_clean_architecture/core/utils/app_images.dart';
 
 
 import '../../../core/utils/app_colors.dart';

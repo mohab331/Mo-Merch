@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_app_clean_architecture/core/api/end_points.dart';
 import 'package:shop_app_clean_architecture/core/services/service_locator.dart' as di;
 import 'package:shop_app_clean_architecture/core/usecase/base_usecase.dart';
-import 'package:shop_app_clean_architecture/shop/domain/entities/address/address_response_entity.dart';
+import 'package:shop_app_clean_architecture/shop/domain/entities/address/address_response_model.dart';
 import 'package:shop_app_clean_architecture/shop/domain/usecases/address/add_address_usecase.dart';
 import 'package:shop_app_clean_architecture/shop/domain/usecases/address/get_address_usecase.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/cubit/address/address_states.dart';

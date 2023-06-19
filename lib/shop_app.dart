@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_app_clean_architecture/config/app_theme/app_theme.dart';
-import 'package:shop_app_clean_architecture/core/services/service_locator.dart'
-    as di;
-import 'package:shop_app_clean_architecture/core/utils/app_colors.dart';
-import 'package:shop_app_clean_architecture/core/utils/app_functions.dart';
-import 'package:shop_app_clean_architecture/core/utils/app_strings.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/cubit/app/app_cubit.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/cubit/app/app_states.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/cubit/shop/shop_cubit.dart';

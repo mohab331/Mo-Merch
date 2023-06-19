@@ -5,18 +5,18 @@ import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 /// Abstract class that defines the contract for interacting with cart-related operations.
 abstract class BaseCartRepo {
   /// Adds an item to the cart based on the provided [addToCartRequestEntity].
-  /// Returns a [Future] of [Either] containing either a [Failure] or a [String] representing the operation result.
-  Future<Either<Failure, String>> addToCart({
+  /// Returns a [Future] of [Either] containing either a [Failure] or a [BaseResponseEntity] of [EmptyResponseEntity] representing the operation result.
+  Future<Either<Failure, BaseResponseEntity<EmptyResponseEntity>>> addToCart({
     required AddToCartRequestEntity addToCartRequestEntity,
   });
 
   /// Retrieves the cart data.
-  /// Returns a [Future] of [Either] containing either a [Failure] or a [CartResponseEntity] representing the cart data.
-  Future<Either<Failure, CartResponseEntity>> getCartData();
+  /// Returns a [Future] of [Either] containing either a [Failure] or a [BaseResponseEntity] of [CartResponseEntity] representing the cart data.
+  Future<Either<Failure, BaseResponseEntity<CartResponseEntity>>> getCartData();
 
   /// Removes an item from the cart based on the provided [deleteCartItemRequestEntity].
-  /// Returns a [Future] of [Either] containing either a [Failure] or a [String] representing the operation result.
-  Future<Either<Failure, String>> removeFromCart({
+  /// Returns a [Future] of [Either] containing either a [Failure] or a [BaseResponseEntity] of [EmptyResponseEntity] representing the operation result.
+  Future<Either<Failure, BaseResponseEntity<EmptyResponseEntity>>> removeFromCart({
     required DeleteCartItemRequestEntity deleteCartItemRequestEntity,
   });
 

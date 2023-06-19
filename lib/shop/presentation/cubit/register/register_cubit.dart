@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_app_clean_architecture/core/api/end_points.dart';
 import 'package:shop_app_clean_architecture/core/services/service_locator.dart' as di;
 import 'package:shop_app_clean_architecture/core/usecase/base_usecase.dart';
-import 'package:shop_app_clean_architecture/core/utils/app_functions.dart';
+import 'package:shop_app_clean_architecture/core/utils/functions.dart';
 import 'package:shop_app_clean_architecture/shop/domain/usecases/register/register_usecase.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/cubit/register/register_states.dart';
 

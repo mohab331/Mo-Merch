@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_app_clean_architecture/core/services/service_locator.dart' as di;
-import 'package:shop_app_clean_architecture/core/utils/app_functions.dart';
+import 'package:shop_app_clean_architecture/core/utils/functions.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/cubit/search/search_cubit.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/screens/search_screen.dart';
 

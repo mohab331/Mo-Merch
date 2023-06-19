@@ -6,7 +6,7 @@ import 'package:shop_app_clean_architecture/core/services/service_locator.dart'
     as di;
 import 'package:shop_app_clean_architecture/core/usecase/base_usecase.dart';
 import 'package:shop_app_clean_architecture/core/utils/app_strings.dart';
-import 'package:shop_app_clean_architecture/shop/domain/entities/profile/user_response_entity.dart';
+import 'package:shop_app_clean_architecture/shop/domain/entities/profile/user_response_model.dart';
 import 'package:shop_app_clean_architecture/shop/domain/usecases/cache/app_theme/get_app_theme_usecase.dart';
 import 'package:shop_app_clean_architecture/shop/domain/usecases/cache/app_theme/toggle_app_theme_usecase.dart';
 import 'package:shop_app_clean_architecture/shop/domain/usecases/cache/on_boarding/get_on_boarding_usecase.dart';
@@ -15,7 +15,7 @@ import 'package:shop_app_clean_architecture/shop/domain/usecases/cache/user_cach
 import 'package:shop_app_clean_architecture/shop/domain/usecases/logout/logout_usecase.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/cubit/app/app_states.dart';
 
-import '../../../../core/utils/app_functions.dart';
+import '../../../../core/utils/functions.dart';
 import '../../screens/login_screen.dart';
 import '../../screens/on_boarding_screen.dart';
 import '../../screens/shop_layout.dart';

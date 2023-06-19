@@ -6,8 +6,8 @@ import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 abstract class BaseSearchRepo {
   /// Searches for products based on the provided [searchRequestEntity].
   ///
-  /// Returns a [Future] of [Either] containing either a [Failure] or a [SearchResponseEntity] representing the search results.
-  Future<Either<Failure, SearchResponseEntity>> searchProduct({
+  /// Returns a [Future] of [Either] containing either a [Failure] or a [BaseListResponseEntity] of [ProductResponseEntity] representing the search results.
+  Future<Either<Failure, BaseListResponseEntity<ProductResponseEntity>>> searchProduct({
     required SearchRequestEntity searchRequestEntity,
   });
 }

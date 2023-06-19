@@ -1,85 +1,106 @@
-import 'package:shop_app_clean_architecture/core/cache/cache_consumer.dart';
-import 'package:shop_app_clean_architecture/core/cache/shared_preference_constants.dart';
 import 'package:shop_app_clean_architecture/core/error/exception.dart';
+import 'package:shop_app_clean_architecture/shop/data/datasource/local/cache/local_storage_constants.dart';
 
-abstract class BaseShopLocalDataSource {
-  Future<bool> setOnBoarding({
-    required data,
+import 'package:shop_app_clean_architecture/shop/data/datasource/local/cache/base_local_storage_consumer.dart';
+
+/// An abstract class representing the local data source for storing and retrieving data.
+abstract class BaseLocalDS {
+  /// Saves the show on boarding flag to the local storage.
+  ///
+  /// if it is first time for user show on boarding else save to false
+  Future<bool> saveShowOnBoarding({
+    required bool data,
   });
 
-  dynamic getAppThemeMode();
+  /// Retrieves the show onboarding flag from the local storage.
+  bool getShowOnBoarding();
 
-  Future<bool> toggleAppTheme({
-    required data,
+  /// Saves the app theme mode to the local storage.[light] or [dark]
+  Future<bool> saveThemeMode({
+    required bool data,
   });
 
-  Future<bool> setUserData({
-    required data,
+  /// Retrieves the current app theme mode from the local storage.[light] or [dark]
+  bool getAppThemeMode();
+
+  /// Saves the user data to the local storage. [token] and [name]
+  Future<bool> saveUserData({
+    required Map<String, dynamic> data,
   });
 
-  dynamic getUserData();
+  /// Retrieves the user data from the local storage.
+  Map<String, dynamic> getUserData();
 
-  dynamic getOnBoarding();
-
-  Future<bool> clearUserData();
+  /// Clears the saved user data from the local storage.
+  Future<void> clearSavedUserData();
 }
 
-class ShopLocalDataSourceImplementation implements BaseShopLocalDataSource {
-  CacheConsumer cacheConsumer;
-  ShopLocalDataSourceImplementation({required this.cacheConsumer});
+/// A concrete implementation of the [BaseLocalDS] abstract class.
+class BaseLocalDSImpl implements BaseLocalDS {
+  const BaseLocalDSImpl({
+    required this.localStorageConsumer,
+  });
+  final BaseAppLocalStorageConsumer localStorageConsumer;
 
-  @override
-  dynamic getAppThemeMode() {
-    return cacheConsumer.getData(
-      key: SharedPreferenceConstants.appTheme,
-    );
-  }
-
-  @override
-  dynamic getUserData() {
-    return cacheConsumer.getData(
-      key: SharedPreferenceConstants.userData,
-    );
-  }
-
-  @override
-  Future<bool> setOnBoarding({required data}) async {
-    return await cacheConsumer
-        .setData(key: SharedPreferenceConstants.onBoarding, data: data)
+  /// Saves data to the local storage using [cacheConsumer].
+  Future<bool> _saveDataToLocalStorage({
+    required String key,
+    required data,
+  }) async {
+    return await localStorageConsumer
+        .setData(key: key, data: data)
         .onError((error, stackTrace) {
       throw CacheException(errorMessage: error.toString());
     });
   }
 
   @override
-  Future<bool> setUserData({required data}) async {
-    return await cacheConsumer
-        .setData(key: SharedPreferenceConstants.userData, data: data)
-        .onError((error, stackTrace) {
-      throw CacheException(errorMessage: error.toString());
-    });
+  bool getAppThemeMode() {
+    return localStorageConsumer.getData(
+      key: LocalStorageConstants.appTheme,
+    ) as bool;
   }
 
   @override
-  Future<bool> toggleAppTheme({required data}) async {
-    return await cacheConsumer
-        .setData(key: SharedPreferenceConstants.appTheme, data: data)
-        .onError((error, stackTrace) {
-      throw CacheException(errorMessage: error.toString());
-    });
-  }
+  bool getShowOnBoarding() => localStorageConsumer.getData(
+    key: LocalStorageConstants.onBoarding,
+  );
 
   @override
-  Future<bool> clearUserData() async {
-    return await cacheConsumer
-        .clearUserData(key: SharedPreferenceConstants.userData)
-        .onError((error, stackTrace) {
-      throw CacheException(errorMessage: error.toString());
-    });
-  }
+  Map<String, dynamic> getUserData() => localStorageConsumer.getData(
+    key: LocalStorageConstants.userData,
+  ) as Map<String, dynamic>;
 
   @override
-  getOnBoarding() {
-    return cacheConsumer.getData(key: SharedPreferenceConstants.onBoarding,);
+  Future<bool> saveShowOnBoarding({required bool data}) async =>
+      _saveDataToLocalStorage(
+        key: LocalStorageConstants.onBoarding,
+        data: data,
+      );
+
+  @override
+  Future<bool> saveUserData({required Map<String, dynamic> data}) async =>
+      _saveDataToLocalStorage(
+        key: LocalStorageConstants.userData,
+        data: data,
+      );
+
+  @override
+  Future<bool> saveThemeMode({required bool data}) async =>
+      _saveDataToLocalStorage(
+        key: LocalStorageConstants.appTheme,
+        data: data,
+      );
+
+  @override
+  Future<void> clearSavedUserData() async {
+    return await localStorageConsumer
+        .clearUserData(
+      key: LocalStorageConstants.userData,
+    ).onError((error, stackTrace) {
+      throw CacheException(
+        errorMessage: error.toString(),
+      );
+    });
   }
 }

@@ -25,7 +25,6 @@ dependencies:
   carousel_slider: ^4.1.1
   internet_connection_checker: ^0.0.1+4
   fluttertoast: ^8.0.9
-  shared_preferences: ^2.0.15
   flutter_add_to_cart_button: ^1.1.0
   smooth_page_indicator: ^1.0.0+2
   hexcolor: ^2.0.7
@@ -33,6 +32,7 @@ dependencies:
   cached_network_image: ^3.2.1
   flutter_svg: ^1.1.3
   provider: ^6.0.3
+  flutter_secure_storage: ^8.0.0
 
 dev_dependencies:
   flutter_test:

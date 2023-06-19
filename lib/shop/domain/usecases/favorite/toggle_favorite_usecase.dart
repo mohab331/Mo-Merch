@@ -4,13 +4,13 @@ import 'package:shop_app_clean_architecture/core/usecase/base_usecase.dart';
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 
 class ToggleFavoriteUsecase
-    implements BaseUsecase<Map<String, dynamic>, FavoriteRequestEntity> {
+    implements BaseUsecase<BaseResponseEntity<ToggleFavoriteResponseEntity>, FavoriteRequestEntity> {
   ToggleFavoriteUsecase({required this.baseFavoriteRepo});
 
   BaseFavoriteRepo baseFavoriteRepo;
 
   @override
-  Future<Either<Failure, Map<String, dynamic>>> call(
+  Future<Either<Failure, BaseResponseEntity<ToggleFavoriteResponseEntity>>> call(
       FavoriteRequestEntity favoriteRequestEntity) async {
     return await baseFavoriteRepo.toggleFavorite(
         favoriteRequestEntity: favoriteRequestEntity);

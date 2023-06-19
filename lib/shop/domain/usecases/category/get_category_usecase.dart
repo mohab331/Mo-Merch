@@ -16,6 +16,6 @@ class GetCategoryUsecase
   @override
   Future<Either<Failure, BaseListResponseEntity<CategoryResponseEntity>>> call(
       NoParameters parameters) async {
-    return await baseCategoryRepo.getCategoryData();
+    return await baseCategoryRepo.getCategories();
   }
 }

@@ -1,4 +1,4 @@
-import '../../../domain/entities/profile/user_response_entity.dart';
+import '../../../domain/entities/profile/user_response_model.dart';
 
 abstract class LoginStates {}
 

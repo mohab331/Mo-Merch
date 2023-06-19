@@ -7,12 +7,12 @@ abstract class BaseCategoryRepo {
   /// Retrieves the category data.
   /// Returns a [Future] of [Either] containing either a [Failure] or a [BaseListResponseEntity] of [CategoryResponseEntity] representing the category data.
   Future<Either<Failure, BaseListResponseEntity<CategoryResponseEntity>>>
-      getCategoryData();
+      getCategories();
 
   /// Retrieves the details of a specific category based on the provided [categoryProductsRequestEntity].
   /// Returns a [Future] of [Either] containing either a [Failure] or a [BaseListResponseEntity] of [ProductResponseEntity] representing the products in the category.
   Future<Either<Failure, BaseListResponseEntity<ProductResponseEntity>>>
-      getCategoryDetails({
+  getCategoryProductsByCategoryId({
     required CategoryProductsRequestEntity categoryProductsRequestEntity,
   });
 }

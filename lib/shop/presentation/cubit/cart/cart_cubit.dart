@@ -4,14 +4,14 @@ import 'package:shop_app_clean_architecture/core/api/end_points.dart';
 import 'package:shop_app_clean_architecture/core/services/service_locator.dart'
     as di;
 import 'package:shop_app_clean_architecture/core/usecase/base_usecase.dart';
-import 'package:shop_app_clean_architecture/shop/domain/entities/cart/cart_response_entity.dart';
+import 'package:shop_app_clean_architecture/shop/domain/entities/cart/cart_response_model.dart';
 import 'package:shop_app_clean_architecture/shop/domain/usecases/cart/delete_cart_usecase.dart';
 import 'package:shop_app_clean_architecture/shop/domain/usecases/cart/get_cart_usecase.dart';
 import 'package:shop_app_clean_architecture/shop/domain/usecases/cart/update_cart_usecase.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/cubit/app/app_cubit.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/cubit/shop/shop_cubit.dart';
 
-import '../../../../core/utils/app_functions.dart';
+import '../../../../core/utils/functions.dart';
 import 'cart_states.dart';
 
 class CartCubit extends Cubit<CartStates> {

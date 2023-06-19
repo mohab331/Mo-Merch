@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_app_clean_architecture/core/media_query.dart';
 import 'package:shop_app_clean_architecture/core/utils/app_colors.dart';
-import 'package:shop_app_clean_architecture/core/utils/app_functions.dart';
+import 'package:shop_app_clean_architecture/core/utils/functions.dart';
 import 'package:shop_app_clean_architecture/core/utils/app_strings.dart';
 import 'package:shop_app_clean_architecture/core/widgets/cached_network_image.dart';
 import 'package:shop_app_clean_architecture/core/widgets/empty_widget.dart';
@@ -10,7 +10,7 @@ import 'package:shop_app_clean_architecture/core/widgets/loading_data_widget.dar
 import 'package:shop_app_clean_architecture/core/widgets/network_error_widget.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/screens/product_description_screen.dart';
 
-import '../../domain/entities/product/product_response_entity.dart';
+import '../../domain/entities/product/product_response_model.dart';
 import '../cubit/favorite/favorite_cubit.dart';
 import '../cubit/favorite/favorite_states.dart';
 import '../widgets/animated_favorite_button.dart';

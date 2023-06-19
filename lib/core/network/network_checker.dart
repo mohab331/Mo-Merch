@@ -3,8 +3,8 @@ abstract class NetworkChecker{
   Future<bool> get isConnected;
 }
 class NetworkCheckerImplementation implements NetworkChecker{
+const NetworkCheckerImplementation(this._internetConnectionChecker);
 final InternetConnectionChecker _internetConnectionChecker;
-NetworkCheckerImplementation(this._internetConnectionChecker);
   @override
 
   Future<bool> get isConnected async=> await _internetConnectionChecker.hasConnection;

@@ -4,7 +4,7 @@ import 'package:shop_app_clean_architecture/core/api/end_points.dart';
 import 'package:shop_app_clean_architecture/core/services/service_locator.dart'
     as di;
 import 'package:shop_app_clean_architecture/core/usecase/base_usecase.dart';
-import 'package:shop_app_clean_architecture/shop/domain/entities/product/product_response_entity.dart';
+import 'package:shop_app_clean_architecture/shop/domain/entities/product/product_response_model.dart';
 import 'package:shop_app_clean_architecture/shop/domain/usecases/category/get_category_products_usecase.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/cubit/app/app_cubit.dart';
 

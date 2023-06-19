@@ -1,0 +1,1 @@
+export 'toggle_favorite_response_model.dart';

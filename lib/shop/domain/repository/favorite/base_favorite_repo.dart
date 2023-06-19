@@ -12,8 +12,9 @@ abstract class BaseFavoriteRepo {
 
   /// Toggles the favorite status based on the provided [favoriteRequestEntity].
   ///
-  /// Returns a [Future] of [Either] containing either a [Failure] or a [Map] of [String, dynamic] representing the result of toggling the favorite status.
-  Future<Either<Failure, Map<String, dynamic>>> toggleFavorite({
+  /// Returns a [Future] of [Either] containing either a [Failure] or a [BaseResponseEntity] of [ToggleFavoriteResponseEntity] representing the result of toggling the favorite status.
+  Future<Either<Failure, BaseResponseEntity<ToggleFavoriteResponseEntity>>>
+      toggleFavorite({
     required FavoriteRequestEntity favoriteRequestEntity,
   });
 }

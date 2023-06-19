@@ -5,7 +5,7 @@ class FavoriteRequestEntity implements BaseRequestEntity {
     required this.productId,
   });
 
-  final String productId;
+  final int productId;
 
   @override
   Map<String, dynamic> toJson() {

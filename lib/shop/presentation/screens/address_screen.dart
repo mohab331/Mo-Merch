@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_app_clean_architecture/core/services/service_locator.dart'
     as di;
-import 'package:shop_app_clean_architecture/core/utils/app_functions.dart';
+import 'package:shop_app_clean_architecture/core/utils/functions.dart';
 import 'package:shop_app_clean_architecture/core/utils/app_strings.dart';
 import 'package:shop_app_clean_architecture/core/widgets/custom_list_tile.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/cubit/address/address_cubit.dart';
