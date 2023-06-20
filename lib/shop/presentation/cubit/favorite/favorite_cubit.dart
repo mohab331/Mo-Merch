@@ -4,7 +4,7 @@ import 'package:shop_app_clean_architecture/core/api/end_points.dart';
 import 'package:shop_app_clean_architecture/core/services/service_locator.dart'
     as di;
 import 'package:shop_app_clean_architecture/core/usecase/base_usecase.dart';
-import 'package:shop_app_clean_architecture/core/utils/functions.dart';
+import 'package:shop_app_clean_architecture/core/utils/app_functions.dart';
 import 'package:shop_app_clean_architecture/shop/domain/usecases/favorite/get_favorite_usecase.dart';
 import 'package:shop_app_clean_architecture/shop/domain/usecases/favorite/toggle_favorite_usecase.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/cubit/app/app_cubit.dart';

@@ -6,7 +6,7 @@ import 'package:shop_app_clean_architecture/core/services/service_locator.dart'
 import 'package:shop_app_clean_architecture/core/utils/app_colors.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/screens/register_screen.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/screens/shop_layout.dart';
-import '../../../core/utils/functions.dart';
+import '../../../core/utils/app_functions.dart';
 import '../../../core/utils/app_strings.dart';
 import '../../../core/widgets/default_text_form_field.dart';
 import '../../../core/widgets/submit_button.dart';

@@ -11,7 +11,7 @@ import 'package:shop_app_clean_architecture/shop/domain/usecases/cart/update_car
 import 'package:shop_app_clean_architecture/shop/presentation/cubit/app/app_cubit.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/cubit/shop/shop_cubit.dart';
 
-import '../../../../core/utils/functions.dart';
+import '../../../../core/utils/app_functions.dart';
 import 'cart_states.dart';
 
 class CartCubit extends Cubit<CartStates> {

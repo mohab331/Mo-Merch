@@ -1,0 +1,1 @@
+export 'user_data_response_model.dart';

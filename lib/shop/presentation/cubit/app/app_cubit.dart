@@ -15,7 +15,7 @@ import 'package:shop_app_clean_architecture/shop/domain/usecases/cache/user_cach
 import 'package:shop_app_clean_architecture/shop/domain/usecases/logout/logout_usecase.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/cubit/app/app_states.dart';
 
-import '../../../../core/utils/functions.dart';
+import '../../../../core/utils/app_functions.dart';
 import '../../screens/login_screen.dart';
 import '../../screens/on_boarding_screen.dart';
 import '../../screens/shop_layout.dart';

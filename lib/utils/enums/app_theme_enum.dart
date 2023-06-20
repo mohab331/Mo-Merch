@@ -1,13 +1,13 @@
 /// Enum that represents the available application themes.
 enum AppThemeEnum {
   /// Dark theme
-  dark(isDarkTheme: true),
+  dark(value: true),
   /// Light theme
 
-  light(isDarkTheme: false);
+  light(value: false);
 
   const AppThemeEnum({
-    required this.isDarkTheme,
+    required this.value,
   });
-  final bool isDarkTheme;
+  final bool value;
 }

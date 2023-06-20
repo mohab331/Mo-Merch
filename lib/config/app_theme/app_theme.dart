@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:shop_app_clean_architecture/core/utils/app_colors.dart';
+import 'package:shop_app_clean_architecture/core/index.dart';
 
+/// A class that defines the dark and light themes for the application.
+/// The themes consist of various styling configurations for different UI elements.
 class AppTheme {
+  /// Returns the dark theme for the application.
   static ThemeData darkTheme() => ThemeData(
         appBarTheme: AppBarTheme(
           iconTheme: const IconThemeData(
             color: Colors.white,
           ),
-          backgroundColor: AppColors.appBackgroundDarkThemeColor,
+          backgroundColor: R.colors.appBackgroundDarkThemeColor,
           actionsIconTheme: const IconThemeData(
             color: Colors.white,
           ),
@@ -19,11 +22,12 @@ class AppTheme {
             fontSize: 24.0,
           ),
           systemOverlayStyle: SystemUiOverlayStyle(
-            statusBarColor: AppColors.appBackgroundDarkThemeColor,
+            statusBarColor: R.colors.appBackgroundDarkThemeColor,
             statusBarBrightness: Brightness.light,
           ),
         ),
         textTheme: const TextTheme(
+          // Custom text styles for different sizes and purposes
           bodyLarge: TextStyle(
             color: Colors.white,
             fontSize: 18.0,
@@ -44,19 +48,19 @@ class AppTheme {
             color: Colors.white,
             fontWeight: FontWeight.bold,
           ),
-         displaySmall: TextStyle(
+          displaySmall: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
             fontSize: 10.0,
           ),
         ),
-        primarySwatch: AppColors.primaryColor,
-        scaffoldBackgroundColor: AppColors.appBackgroundDarkThemeColor,
+        primarySwatch: R.colors.primaryColor,
+        scaffoldBackgroundColor: R.colors.appBackgroundDarkThemeColor,
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           elevation: 20.0,
-          backgroundColor: AppColors.appBackgroundDarkThemeColor,
+          backgroundColor: R.colors.appBackgroundDarkThemeColor,
           unselectedItemColor: Colors.white,
-          selectedItemColor: AppColors.primaryColor,
+          selectedItemColor: R.colors.primaryColor,
           type: BottomNavigationBarType.fixed,
         ),
         iconTheme: const IconThemeData(
@@ -64,48 +68,50 @@ class AppTheme {
         ),
         drawerTheme: DrawerThemeData(
           elevation: 20.0,
-          backgroundColor: AppColors.appBackgroundDarkThemeColor,
+          backgroundColor: R.colors.appBackgroundDarkThemeColor,
         ),
-        unselectedWidgetColor: Colors.white, // <-- your color
+        unselectedWidgetColor: Colors.white, // Color for unselected widgets
         inputDecorationTheme: InputDecorationTheme(
-            border: const OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.white,
-                width: 2,
-              ),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(5.0),
-              borderSide: const BorderSide(
-                color: Colors.white,
-              ),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(5.0),
-              borderSide: const BorderSide(
-                color: Colors.white,
-              ),
-            ),
-            labelStyle: const TextStyle(
+          border: const OutlineInputBorder(
+            borderSide: BorderSide(
               color: Colors.white,
-              fontSize: 16.0,
-              fontWeight: FontWeight.bold,
+              width: 2,
             ),
-            prefixIconColor: Colors.white,
-            suffixIconColor: Colors.white,
-            errorBorder: const OutlineInputBorder(
-              borderSide: BorderSide(
-                color: AppColors.errorColor,
-                width: 2,
-              ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(5.0),
+            borderSide: const BorderSide(
+              color: Colors.white,
             ),
-            focusedErrorBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.white, width: 2),
-            )),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(5.0),
+            borderSide: const BorderSide(
+              color: Colors.white,
+            ),
+          ),
+          labelStyle: const TextStyle(
+            color: Colors.white,
+            fontSize: 16.0,
+            fontWeight: FontWeight.bold,
+          ),
+          prefixIconColor: Colors.white,
+          suffixIconColor: Colors.white,
+          errorBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: R.colors.errorColor,
+              width: 2,
+            ),
+          ),
+          focusedErrorBorder: const OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.white, width: 2),
+          ),
+        ),
       );
 
+  /// Returns the light theme for the application.
   static ThemeData lightTheme() => ThemeData(
-        primarySwatch: AppColors.primaryColor,
+        primarySwatch: R.colors.primaryColor,
         appBarTheme: const AppBarTheme(
           iconTheme: IconThemeData(
             color: Colors.black,
@@ -126,6 +132,7 @@ class AppTheme {
           ),
         ),
         textTheme: const TextTheme(
+          // Custom text styles for different sizes and purposes
           bodyLarge: TextStyle(
             color: Colors.black,
             fontSize: 18.0,
@@ -157,7 +164,7 @@ class AppTheme {
           elevation: 20.0,
           backgroundColor: Colors.white,
           unselectedItemColor: Colors.black,
-          selectedItemColor: AppColors.primaryColor,
+          selectedItemColor: R.colors.primaryColor,
           type: BottomNavigationBarType.fixed,
         ),
         iconTheme: const IconThemeData(
@@ -174,39 +181,40 @@ class AppTheme {
           minLeadingWidth: 0.0,
         ),
         inputDecorationTheme: InputDecorationTheme(
-            border: const OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.black,
-                width: 2,
-              ),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(5.0),
-              borderSide: const BorderSide(
-                color: Colors.black,
-              ),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(5.0),
-              borderSide: const BorderSide(
-                color: Colors.black,
-              ),
-            ),
-            labelStyle: const TextStyle(
+          border: const OutlineInputBorder(
+            borderSide: BorderSide(
               color: Colors.black,
-              fontSize: 16.0,
-              fontWeight: FontWeight.bold,
+              width: 2,
             ),
-            prefixIconColor: Colors.black,
-            suffixIconColor: Colors.black,
-            errorBorder: const OutlineInputBorder(
-              borderSide: BorderSide(
-                color: AppColors.errorColor,
-                width: 2,
-              ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(5.0),
+            borderSide: const BorderSide(
+              color: Colors.black,
             ),
-            focusedErrorBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.black, width: 2),
-            )),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(5.0),
+            borderSide: const BorderSide(
+              color: Colors.black,
+            ),
+          ),
+          labelStyle: const TextStyle(
+            color: Colors.black,
+            fontSize: 16.0,
+            fontWeight: FontWeight.bold,
+          ),
+          prefixIconColor: Colors.black,
+          suffixIconColor: Colors.black,
+          errorBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: R.colors.errorColor,
+              width: 2,
+            ),
+          ),
+          focusedErrorBorder: const OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.black, width: 2),
+          ),
+        ),
       );
 }

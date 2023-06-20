@@ -9,4 +9,5 @@ export 'home/index.dart';
 export 'order/index.dart';
 export 'product/index.dart';
 export 'profile/index.dart';
+export 'cache/user_data_response_entity.dart';
 export 'empty_response_entity.dart';
