@@ -44,7 +44,7 @@ abstract class BaseLocalStorageRepo {
   ///
   /// Returns an `Either` containing a `Failure` object in case of any errors,
   /// or a `dynamic` value representing the user data.
-  Future<Either<Failure, UserDataResponseEntity>> getUserData();
+  Future<Either<Failure, UserResponseEntity?>> getUserData();
 
   /// Retrieves the onBoarding data from the local storage.
   ///

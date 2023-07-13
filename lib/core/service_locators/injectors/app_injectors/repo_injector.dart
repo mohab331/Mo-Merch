@@ -47,7 +47,7 @@ class RepositoryInjector implements BaseInjector {
             appThemeRequestMapper: AppThemeRequestMapper(),
             baseLocalDS: diInstance.get<BaseLocalDS>(),
             saveUserDataRequestMapper: SaveUserDataRequestMapper(),
-            userDataResponseMapper: UserDataResponseMapper(),
+            userResponseMapper: UserResponseMapper(),
           ),
         ),
     // Registering CartRepoImpl
@@ -90,9 +90,9 @@ class RepositoryInjector implements BaseInjector {
     () => diInstance.registerLazySingleton<BaseFavoriteRepo>(
           () => FavoriteRepoImpl(
             baseShopRemoteDS: diInstance.get<BaseShopRemoteDS>(),
-            baseListProductResponseMapper: BaseListResponseMapper<
-                ProductResponseModel, ProductResponseEntity>(
-              mapper: ProductResponseMapper(),
+            baseListFavoriteResponseMapper: BaseListResponseMapper<
+                FavoriteResponseModel, FavoriteResponseEntity>(
+              mapper: FavoriteResponseMapper(),
             ),
             baseToggleFavoriteResponseMapper: BaseResponseMapper<
                 ToggleFavoriteResponseModel, ToggleFavoriteResponseEntity>(
@@ -156,6 +156,16 @@ class RepositoryInjector implements BaseInjector {
               mapper: ProductResponseMapper(),
             ),
             searchRequestMapper: SearchRequestMapper(),
+          ),
+        ),
+    // Registering ProductDetailsRepoImpl
+    () => diInstance.registerLazySingleton<BaseProductDetailsRepo>(
+          () => ProductDetailsRepoImpl(
+            baseShopRemoteDS: diInstance.get<BaseShopRemoteDS>(),
+            productResponseMapper:
+                BaseResponseMapper<ProductResponseModel, ProductResponseEntity>(
+              mapper: ProductResponseMapper(),
+            ),
           ),
         ),
   ];

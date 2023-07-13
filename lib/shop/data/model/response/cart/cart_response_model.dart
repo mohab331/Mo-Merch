@@ -10,7 +10,7 @@ class CartResponseModel
 
   });
 
-  final double? totalCost;
+  final int? totalCost;
   final List<CartItemModel>? cartItems;
 
   @override
@@ -21,7 +21,7 @@ class CartResponseModel
                 e,
               );
             }).toList(),
-      totalCost: jsonMap?['total'],
+      totalCost: (jsonMap?['total'] as num?)?.toInt(),
     );
   }
 }

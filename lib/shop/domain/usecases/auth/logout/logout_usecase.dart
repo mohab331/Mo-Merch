@@ -8,14 +8,27 @@ class LogoutUsecase
         BaseUsecase<BaseResponseEntity<LogoutResponseEntity>, NoParameters> {
   LogoutUsecase({
     required this.baseAuthRepo,
+    required this.baseLocalStorageRepo,
   });
 
   BaseAuthRepo baseAuthRepo;
+  BaseLocalStorageRepo baseLocalStorageRepo;
 
   @override
   Future<Either<Failure, BaseResponseEntity<LogoutResponseEntity>>> call(
     NoParameters parameters,
   ) async {
-    return await baseAuthRepo.logout();
+    final response = await baseAuthRepo.logout();
+    response.fold((l) {
+
+    }, (logoutResponse) async{
+      await _clearUserData();
+    });
+    return response;
+  }
+
+  Future<Either<Failure, bool>> _clearUserData() async {
+     return baseLocalStorageRepo.clearUserData();
+
   }
 }

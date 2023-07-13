@@ -11,7 +11,7 @@ class GetOnBoardingUsecase implements BaseUsecase<bool , NoParameters>{
 
   @override
   Future<Either<Failure, bool>> call(NoParameters parameters) async{
-    return await baseLocalStorageRepo.getOnBoardingData();
+    return  baseLocalStorageRepo.getOnBoardingData();
   }
 
 

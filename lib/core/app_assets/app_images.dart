@@ -2,6 +2,9 @@ const String baseAsset = 'assets/images';
 
 class AppImages {
   const AppImages();
+  // Logo Image
+  final String moLogo = '$baseAsset/Mo-logo.png';
+
   // Onboarding 1 Image
   final String onBoarding1 = '$baseAsset/onBoard1.png';
 
@@ -19,4 +22,7 @@ class AppImages {
 
   // Empty Cart Image
   final String emptyCart = '$baseAsset/empty-cart.svg';
+
+  // Google Logo
+  final String googleLogo = '$baseAsset/google_logo.svg';
 }

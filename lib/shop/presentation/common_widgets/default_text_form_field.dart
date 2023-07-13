@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-
-class DefaultTextFormField extends StatefulWidget {
+class DefaultTextFormField extends HookWidget {
   const DefaultTextFormField({
-    Key? key,
     required this.textController,
     required this.textInputType,
     required this.prefixIcon,
     required this.label,
+    required this.onValidateFunction,
     this.suffixIcon,
     this.maxLength,
     this.focusNode,
-    required this.onValidateFunction,
     this.onFieldSubmittedFunction,
     this.onChanged,
     this.isPasswordTextFormField = false,
+    Key? key,
   }) : super(key: key);
   final TextEditingController textController;
   final FocusNode? focusNode;
@@ -23,61 +23,48 @@ class DefaultTextFormField extends StatefulWidget {
   final String label;
   final IconData prefixIcon;
   final IconData? suffixIcon;
-  final Function onValidateFunction;
-  final Function? onFieldSubmittedFunction;
-  final Function? onChanged;
+  final String? Function(String?) onValidateFunction;
+  final Function(String)? onFieldSubmittedFunction;
+  final Function(String?)? onChanged;
   final bool isPasswordTextFormField;
 
   @override
-  State<DefaultTextFormField> createState() => _DefaultTextFormFieldState();
-}
-
-class _DefaultTextFormFieldState extends State<DefaultTextFormField> {
-  bool obscurePassword = true;
-  IconData? iconData = Icons.visibility_off;
-  @override
   Widget build(BuildContext context) {
+    final obscurePassword = useState(true);
+    final iconData = useState(Icons.visibility_off);
     return TextFormField(
-      onChanged: widget.onChanged != null
-          ? (String? value) {
-              widget.onChanged!(value);
-            }
-          : null,
-      controller: widget.textController,
-      focusNode: widget.focusNode,
+      onChanged: onChanged,
+      controller: textController,
+      focusNode: focusNode,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       decoration: InputDecoration(
-        labelText: widget.label,
-        labelStyle: Theme.of(context).textTheme.bodyLarge,
+        labelText: label,
         prefixIcon: Icon(
-          widget.prefixIcon,
+          prefixIcon,
         ),
-        suffixIcon: widget.isPasswordTextFormField && widget.suffixIcon != null
+        suffixIcon: isPasswordTextFormField
             ? IconButton(
                 onPressed: () {
-                  setState(() {
-                    iconData = widget.suffixIcon;
-                    obscurePassword = !obscurePassword;
-                    if (!obscurePassword) {
-                      iconData = Icons.visibility;
-                    } else {
-                      iconData = widget.suffixIcon;
-                    }
-                  });
+                  iconData.value = Icons.visibility_off;
+                  obscurePassword.value = !obscurePassword.value;
+                  if (!obscurePassword.value) {
+                    iconData.value = Icons.visibility;
+                  } else {
+                    iconData.value = Icons.visibility_off!;
+                  }
                 },
-                icon: Icon(iconData),
+                icon: Icon(
+                  iconData.value,
+                ),
               )
             : null,
       ),
-      style: Theme.of(context).textTheme.bodyLarge,
-      keyboardType: widget.textInputType,
-      obscureText:
-          widget.isPasswordTextFormField && obscurePassword ? true : false,
+      keyboardType: textInputType,
+      obscureText: (isPasswordTextFormField && obscurePassword.value),
       textInputAction: TextInputAction.done,
-      maxLength: widget.maxLength,
-      onFieldSubmitted: widget.onFieldSubmittedFunction != null
-          ? (_) => widget.onFieldSubmittedFunction!(context)
-          : null,
-      validator: (String? value) => widget.onValidateFunction(value),
+      maxLength: maxLength,
+      onFieldSubmitted: onFieldSubmittedFunction,
+      validator: onValidateFunction,
     );
   }
 }

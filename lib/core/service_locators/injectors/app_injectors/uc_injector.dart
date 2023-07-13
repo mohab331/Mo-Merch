@@ -8,29 +8,31 @@ class UsecaseInjector implements BaseInjector {
   /// The list of injector functions for registering the use cases.
 
   final _usecasesInjectorsList = [
-    () => diInstance.registerLazySingleton<BaseUsecase>(
+    () => diInstance.registerLazySingleton<AddNewAddressUseCase>(
           () => AddNewAddressUseCase(
             baseAddressRepo: diInstance.get<BaseAddressRepo>(),
           ),
         ),
-    () => diInstance.registerLazySingleton<BaseUsecase>(
+    () => diInstance.registerLazySingleton<GetAddressUseCase>(
           () => GetAddressUseCase(
             baseAddressRepo: diInstance.get<BaseAddressRepo>(),
           ),
         ),
-    () => diInstance.registerLazySingleton<BaseUsecase>(
+    () => diInstance.registerLazySingleton<LoginUsecase>(
           () => LoginUsecase(
             baseAuthRepo: diInstance.get<BaseAuthRepo>(),
+            baseLocalStorageRepo: diInstance.get<BaseLocalStorageRepo>(),
           ),
         ),
-    () => diInstance.registerLazySingleton<BaseUsecase>(
+    () => diInstance.registerLazySingleton<RegisterUsecase>(
           () => RegisterUsecase(
             baseAuthRepo: diInstance.get<BaseAuthRepo>(),
           ),
         ),
-    () => diInstance.registerLazySingleton<BaseUsecase>(
+    () => diInstance.registerLazySingleton<LogoutUsecase>(
           () => LogoutUsecase(
             baseAuthRepo: diInstance.get<BaseAuthRepo>(),
+            baseLocalStorageRepo: diInstance.get<BaseLocalStorageRepo>(),
           ),
         ),
     () => diInstance.registerLazySingleton<GetAppThemeUseCase>(
@@ -38,17 +40,17 @@ class UsecaseInjector implements BaseInjector {
             baseLocalStorageRepo: diInstance.get<BaseLocalStorageRepo>(),
           ),
         ),
-    () => diInstance.registerLazySingleton<BaseUsecase>(
+    () => diInstance.registerLazySingleton<ClearCachedUserDataUsecase>(
           () => ClearCachedUserDataUsecase(
             baseLocalStorageRepo: diInstance.get<BaseLocalStorageRepo>(),
           ),
         ),
-    () => diInstance.registerLazySingleton<BaseUsecase>(
+    () => diInstance.registerLazySingleton<SetCachedUserDataUsecase>(
           () => SetCachedUserDataUsecase(
             baseLocalStorageRepo: diInstance.get<BaseLocalStorageRepo>(),
           ),
         ),
-    () => diInstance.registerLazySingleton<BaseUsecase>(
+    () => diInstance.registerLazySingleton<SetOnBoardingUsecase>(
           () => SetOnBoardingUsecase(
             baseLocalStorageRepo: diInstance.get<BaseLocalStorageRepo>(),
           ),
@@ -58,7 +60,7 @@ class UsecaseInjector implements BaseInjector {
             baseLocalStorageRepo: diInstance.get<BaseLocalStorageRepo>(),
           ),
         ),
-    () => diInstance.registerLazySingleton<BaseUsecase>(
+    () => diInstance.registerLazySingleton<ToggleAppThemeUseCase>(
           () => ToggleAppThemeUseCase(
             baseLocalStorageRepo: diInstance.get<BaseLocalStorageRepo>(),
           ),
@@ -68,81 +70,91 @@ class UsecaseInjector implements BaseInjector {
             baseLocalStorageRepo: diInstance.get<BaseLocalStorageRepo>(),
           ),
         ),
-    () => diInstance.registerLazySingleton<BaseUsecase>(
+    () => diInstance.registerLazySingleton<AddToCartUseCase>(
           () => AddToCartUseCase(
             baseCartRepo: diInstance.get<BaseCartRepo>(),
           ),
         ),
-    () => diInstance.registerLazySingleton<BaseUsecase>(
+        () => diInstance.registerLazySingleton<GetCartUseCase>(
+          () => GetCartUseCase(
+        baseCartRepo: diInstance.get<BaseCartRepo>(),
+      ),
+    ),
+    () => diInstance.registerLazySingleton<DeleteCartUseCase>(
           () => DeleteCartUseCase(
             baseCartRepo: diInstance.get<BaseCartRepo>(),
           ),
         ),
-    () => diInstance.registerLazySingleton<BaseUsecase>(
+    () => diInstance.registerLazySingleton<UpdateCartUsecase>(
           () => UpdateCartUsecase(
             baseCartRepo: diInstance.get<BaseCartRepo>(),
           ),
         ),
-    () => diInstance.registerLazySingleton<BaseUsecase>(
+    () => diInstance.registerLazySingleton<GetCategoryUsecase>(
           () => GetCategoryUsecase(
             baseCategoryRepo: diInstance.get<BaseCategoryRepo>(),
           ),
         ),
-    () => diInstance.registerLazySingleton<BaseUsecase>(
+    () => diInstance.registerLazySingleton<GetCategoryProductsUsecase>(
           () => GetCategoryProductsUsecase(
             baseCategoryRepo: diInstance.get<BaseCategoryRepo>(),
           ),
         ),
-    () => diInstance.registerLazySingleton<BaseUsecase>(
+    () => diInstance.registerLazySingleton<GetFavoriteUsecase>(
           () => GetFavoriteUsecase(
             baseFavoriteRepo: diInstance.get<BaseFavoriteRepo>(),
           ),
         ),
-    () => diInstance.registerLazySingleton<BaseUsecase>(
+    () => diInstance.registerLazySingleton<ToggleFavoriteUsecase>(
           () => ToggleFavoriteUsecase(
             baseFavoriteRepo: diInstance.get<BaseFavoriteRepo>(),
           ),
         ),
-    () => diInstance.registerLazySingleton<BaseUsecase>(
+    () => diInstance.registerLazySingleton<GetHomeUsecase>(
           () => GetHomeUsecase(
             baseHomeRepo: diInstance.get<BaseHomeRepo>(),
           ),
         ),
-    () => diInstance.registerLazySingleton<BaseUsecase>(
+    () => diInstance.registerLazySingleton<AddOrderUseCase>(
           () => AddOrderUseCase(
             baseOrderRepo: diInstance.get<BaseOrderRepo>(),
           ),
         ),
-    () => diInstance.registerLazySingleton<BaseUsecase>(
+    () => diInstance.registerLazySingleton<GetOrderDetailsUsecase>(
           () => GetOrderDetailsUsecase(
             baseOrderRepo: diInstance.get<BaseOrderRepo>(),
           ),
         ),
-    () => diInstance.registerLazySingleton<BaseUsecase>(
+    () => diInstance.registerLazySingleton<GetOrderUsecase>(
           () => GetOrderUsecase(
             baseOrderRepo: diInstance.get<BaseOrderRepo>(),
           ),
         ),
-    () => diInstance.registerLazySingleton<BaseUsecase>(
+    () => diInstance.registerLazySingleton<ChangePasswordUsecase>(
           () => ChangePasswordUsecase(
             baseProfileRepo: diInstance.get<BaseProfileRepo>(),
           ),
         ),
-    () => diInstance.registerLazySingleton<BaseUsecase>(
+    () => diInstance.registerLazySingleton<GetProfileUseCase>(
           () => GetProfileUseCase(
             baseProfileRepo: diInstance.get<BaseProfileRepo>(),
           ),
         ),
-    () => diInstance.registerLazySingleton<BaseUsecase>(
+    () => diInstance.registerLazySingleton<UpdateProfileUseCase>(
           () => UpdateProfileUseCase(
             baseProfileRepo: diInstance.get<BaseProfileRepo>(),
           ),
         ),
-    () => diInstance.registerLazySingleton<BaseUsecase>(
+    () => diInstance.registerLazySingleton<SearchUseCase>(
           () => SearchUseCase(
             baseSearchRepo: diInstance.get<BaseSearchRepo>(),
           ),
         ),
+        () => diInstance.registerLazySingleton<GetProductDetailsUc>(
+          () => GetProductDetailsUc(
+            baseProductDetailsRepo:diInstance.get<BaseProductDetailsRepo>() ,
+      ),
+    ),
   ];
 
   @override

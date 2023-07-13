@@ -16,9 +16,9 @@ class ProductResponseModel implements JsonConverter<ProductResponseModel> {
 
   final int? id;
   final String? name;
-  final double? price;
-  final double? oldPrice;
-  final double? discount;
+  final int? price;
+  final int? oldPrice;
+  final int? discount;
   final String? image;
   final String? description;
   final List<String>? images;
@@ -30,8 +30,8 @@ class ProductResponseModel implements JsonConverter<ProductResponseModel> {
     return ProductResponseModel(
         id: jsonMap?['id'],
         name: jsonMap?['name'],
-        price: jsonMap?['price'],
-        discount: jsonMap?['discount'],
+        price: (jsonMap?['price'] as num?)?.toInt(),
+        discount: (jsonMap?['discount'] as num?)?.toInt(),
         image: jsonMap?['image'],
         inCart: jsonMap?['in_cart'] ?? false,
         images: jsonMap?['images'] != null
@@ -41,7 +41,7 @@ class ProductResponseModel implements JsonConverter<ProductResponseModel> {
             : null,
         description: jsonMap?['description'],
         inFavorites: jsonMap?['in_favorites'],
-        oldPrice: jsonMap?['old_price']
+        oldPrice: (jsonMap?['old_price'] as num?)?.toInt(),
     );
   }
 }

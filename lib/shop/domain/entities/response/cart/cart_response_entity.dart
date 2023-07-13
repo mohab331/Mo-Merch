@@ -6,6 +6,6 @@ class CartResponseEntity {
     required this.totalCost,
   });
 
-  final double totalCost;
+  final int totalCost;
   final List<CartItem> cartItems;
 }

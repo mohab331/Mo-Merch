@@ -27,7 +27,7 @@ abstract class BaseLocalDS {
   });
 
   /// Retrieves the user data from the local storage.
-  Future<UserDataResponseModel> getUserData();
+  Future<UserResponseModel?> getUserData();
 
   /// Clears the saved user data from the local storage.
   Future<void> clearSavedUserData();
@@ -45,7 +45,7 @@ class BaseLocalDSImpl implements BaseLocalDS {
     required String key,
     required data,
   }) async {
-    return await localStorageConsumer.setData(
+    return localStorageConsumer.setData(
       key: key,
       data: data,
     );
@@ -68,11 +68,16 @@ class BaseLocalDSImpl implements BaseLocalDS {
   }
 
   @override
-  Future<UserDataResponseModel> getUserData() async {
+  Future<UserResponseModel?> getUserData() async {
     final response = await localStorageConsumer.getData(
       key: SecureStorageConstants.userData,
     );
-    return UserDataResponseModel.fromJson(jsonMap: response.toMap(),);
+    if (response == null) {
+      return null;
+    }
+    return UserResponseModel().fromJson(
+      response.toMap(),
+    );
   }
 
   @override
@@ -88,7 +93,7 @@ class BaseLocalDSImpl implements BaseLocalDS {
   }) async =>
       _saveDataToLocalStorage(
         key: SecureStorageConstants.userData,
-        data: saveUserDataRequestModel,
+        data: saveUserDataRequestModel.toJson(),
       );
 
   @override
@@ -97,12 +102,12 @@ class BaseLocalDSImpl implements BaseLocalDS {
   }) async =>
       _saveDataToLocalStorage(
         key: SecureStorageConstants.appTheme,
-        data: appThemeRequestModel,
+        data: appThemeRequestModel.isDarkTheme.value,
       );
 
   @override
   Future<void> clearSavedUserData() async {
-    return await localStorageConsumer.clearUserData(
+    return localStorageConsumer.clearUserData(
       key: SecureStorageConstants.userData,
     );
   }

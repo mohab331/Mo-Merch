@@ -14,6 +14,7 @@ class CategoryProductsRequestMapper
       categoryId: NullReplacements.intReplacement.replaceIfNull(
         model?.categoryId,
       ),
+      page: model?.page ?? 1,
     );
   }
 
@@ -23,6 +24,7 @@ class CategoryProductsRequestMapper
   }) {
     return CategoryProductsRequestModel(
       categoryId: entity.categoryId,
+      page: entity.page,
     );
   }
 }

@@ -16,7 +16,7 @@ class ChangePasswordUsecase
       call(
     ChangePasswordRequestEntity changePasswordRequestEntity,
   ) async {
-    return await baseProfileRepo.changeUserPassword(
+    return  baseProfileRepo.changeUserPassword(
       changePasswordRequestEntity: changePasswordRequestEntity,
     );
   }

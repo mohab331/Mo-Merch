@@ -28,11 +28,11 @@ class CategoryRepoImpl
   /// or a [Failure] if an error occurs.
   @override
   Future<Either<Failure, BaseListResponseEntity<CategoryResponseEntity>>>
-      getCategories() async {
-    return await executeWithNetworkAndExceptionHandling<
+      getCategories({required int page,}) async {
+    return executeWithNetworkAndExceptionHandling<
         BaseListResponseEntity<CategoryResponseEntity>>(
       () async {
-        final response = await baseShopRemoteDS.getCategories();
+        final response = await baseShopRemoteDS.getCategories(page: page,);
         return baseListCategoryResponseMapper.mapToEntity(
           model: response,
         );

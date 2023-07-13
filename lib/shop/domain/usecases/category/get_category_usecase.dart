@@ -6,7 +6,7 @@ import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 class GetCategoryUsecase
     implements
         BaseUsecase<BaseListResponseEntity<CategoryResponseEntity>,
-            NoParameters> {
+            int> {
   GetCategoryUsecase({
     required this.baseCategoryRepo,
   });
@@ -15,7 +15,7 @@ class GetCategoryUsecase
 
   @override
   Future<Either<Failure, BaseListResponseEntity<CategoryResponseEntity>>> call(
-      NoParameters parameters) async {
-    return await baseCategoryRepo.getCategories();
+      int page,) async {
+    return  baseCategoryRepo.getCategories(page: page,);
   }
 }

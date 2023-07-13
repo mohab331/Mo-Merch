@@ -5,15 +5,15 @@ import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 
 class GetFavoriteUsecase
     implements
-        BaseUsecase<BaseListResponseEntity<ProductResponseEntity>,
-            NoParameters> {
+        BaseUsecase<BaseListResponseEntity<FavoriteResponseEntity>,
+            int> {
   GetFavoriteUsecase({required this.baseFavoriteRepo});
 
   BaseFavoriteRepo baseFavoriteRepo;
 
   @override
-  Future<Either<Failure, BaseListResponseEntity<ProductResponseEntity>>> call(
-      NoParameters parameters) async {
-    return await baseFavoriteRepo.getFavoriteData();
+  Future<Either<Failure, BaseListResponseEntity<FavoriteResponseEntity>>> call(
+      int page) async {
+    return  baseFavoriteRepo.getFavoriteData(page: page,);
   }
 }

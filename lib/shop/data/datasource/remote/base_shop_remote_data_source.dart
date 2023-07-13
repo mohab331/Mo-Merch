@@ -1,4 +1,3 @@
-
 import 'package:shop_app_clean_architecture/shop/data/model/index.dart';
 
 abstract class BaseShopRemoteDS {
@@ -45,7 +44,9 @@ abstract class BaseShopRemoteDS {
   /// Removes a product from the cart.
   ///
   /// Returns a [BaseResponseModel] with [EmptyResponseModel] if successful.
-  Future<BaseResponseModel<EmptyResponseModel>> removeFromCart({required DeleteCartItemRequestModel deleteCartItemRequestModel,});
+  Future<BaseResponseModel<EmptyResponseModel>> removeFromCart({
+    required DeleteCartItemRequestModel deleteCartItemRequestModel,
+  });
 
   // User Profile
 
@@ -94,7 +95,7 @@ abstract class BaseShopRemoteDS {
   /// Retrieves categories.
   ///
   /// Returns a [BaseListResponseModel] containing a list of [CategoryResponseModel].
-  Future<BaseListResponseModel<CategoryResponseModel>> getCategories();
+  Future<BaseListResponseModel<CategoryResponseModel>> getCategories({required int page,});
 
   /// Retrieves products by category ID.
   ///
@@ -107,8 +108,8 @@ abstract class BaseShopRemoteDS {
 
   /// Retrieves favorite products.
   ///
-  /// Returns a [BaseListResponseModel] containing a list of [ProductResponseModel] representing the user's favorites.
-  Future<BaseListResponseModel<ProductResponseModel>> getFavoriteData();
+  /// Returns a [BaseListResponseModel] containing a list of [FavoriteResponseModel] representing the user's favorites.
+  Future<BaseListResponseModel<FavoriteResponseModel>> getFavoriteData({required int page,});
 
   /// Adds or deletes a product from favorites.
   ///
@@ -125,6 +126,15 @@ abstract class BaseShopRemoteDS {
   /// Returns a [BaseListResponseModel] containing a list of [ProductResponseModel] matching the search query.
   Future<BaseListResponseModel<ProductResponseModel>> searchProduct({
     required SearchRequestModel searchRequestModel,
+  });
+
+  // product
+
+  /// get product details.
+  ///
+  /// Returns a [BaseResponseModel] containing   [ProductResponseModel] matching the product id.
+  Future<BaseResponseModel<ProductResponseModel>> getProductDetails({
+    required int productId,
   });
 
   // Authentication

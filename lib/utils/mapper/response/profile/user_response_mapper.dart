@@ -15,7 +15,7 @@ class UserResponseMapper
       name: NullReplacements.stringReplacement.replaceIfNull(
         model?.name,
       ),
-      credit: NullReplacements.doubleReplacement.replaceIfNull(
+      credit: NullReplacements.intReplacement.replaceIfNull(
         model?.credit,
       ),
       token: NullReplacements.stringReplacement.replaceIfNull(

@@ -1,6 +1,5 @@
 /// A generic class that represents a replacement value for null values.
 class NullReplacement<T> {
-
   /// Constructs a [NullReplacement] with the specified [value].
   const NullReplacement(this.value);
   final T value;
@@ -16,13 +15,15 @@ class NullReplacement<T> {
 /// A utility class that provides default replacements for different types.
 class NullReplacements {
   /// Represents a replacement for null integer values.
-  static NullReplacement<int> intReplacement = const NullReplacement<int>(0);
+  static NullReplacement<int> intReplacement = const NullReplacement<int>(-1);
 
   /// Represents a replacement for null string values.
-  static NullReplacement<String> stringReplacement = const NullReplacement<String>('');
+  static NullReplacement<String> stringReplacement =
+      const NullReplacement<String>('');
 
   /// Represents a replacement for null double values.
-  static NullReplacement<double> doubleReplacement = const NullReplacement<double>(0.0);
+  static NullReplacement<double> doubleReplacement =
+      const NullReplacement<double>(0.0);
 
   /// Returns a [NullReplacement] for null lists of type [T].
   ///

@@ -47,7 +47,7 @@ class ProfileRepoImpl
       changeUserPassword({
     required ChangePasswordRequestEntity changePasswordRequestEntity,
   }) async {
-    return await executeWithNetworkAndExceptionHandling<
+    return  executeWithNetworkAndExceptionHandling<
         BaseResponseEntity<ChangePasswordResponseEntity>>(
       () async {
         final response = await baseShopRemoteDS.changeUserPassword(

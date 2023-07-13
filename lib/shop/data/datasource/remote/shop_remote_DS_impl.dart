@@ -104,6 +104,7 @@ class ShopRemoteDSImpl implements BaseShopRemoteDS {
       url: Endpoints.address,
       data: addAddressRequestModel.toJson(),
       modelInstance: const AddressResponseModel(),
+      requiresToken: true,
     );
   }
 
@@ -163,10 +164,15 @@ class ShopRemoteDSImpl implements BaseShopRemoteDS {
   }
 
   @override
-  Future<BaseListResponseModel<CategoryResponseModel>> getCategories() async {
+  Future<BaseListResponseModel<CategoryResponseModel>> getCategories({
+    required int page,
+  }) async {
     final response = await apiConsumer.getData(
       url: Endpoints.categories,
       requiresToken: false,
+      queryMap: {
+        'page': page,
+      },
     );
     _checkResponseError(response);
     return BaseListResponseModel<CategoryResponseModel>.fromJson(
@@ -185,6 +191,7 @@ class ShopRemoteDSImpl implements BaseShopRemoteDS {
         id: categoryProductsRequestModel.categoryId,
       ),
       requiresToken: false,
+      queryMap: categoryProductsRequestModel.toJson(),
     );
     _checkResponseError(response);
     return BaseListResponseModel<ProductResponseModel>.fromJson(
@@ -194,14 +201,15 @@ class ShopRemoteDSImpl implements BaseShopRemoteDS {
   }
 
   @override
-  Future<BaseListResponseModel<ProductResponseModel>> getFavoriteData() async {
+  Future<BaseListResponseModel<FavoriteResponseModel>> getFavoriteData({required int page,}) async {
     final response = await apiConsumer.getData(
       url: Endpoints.favorites,
+      queryMap: {'page':page,}
     );
     _checkResponseError(response);
-    return BaseListResponseModel<ProductResponseModel>.fromJson(
+    return BaseListResponseModel<FavoriteResponseModel>.fromJson(
       jsonData: response.data,
-      instance: const ProductResponseModel(),
+      instance: const FavoriteResponseModel(),
     );
   }
 
@@ -212,6 +220,7 @@ class ShopRemoteDSImpl implements BaseShopRemoteDS {
     return _getRequest(
       url: Endpoints.home,
       modelInstance: const HomeResponseModel(),
+      requiresToken: false,
     );
   }
 
@@ -353,6 +362,19 @@ class ShopRemoteDSImpl implements BaseShopRemoteDS {
       url: Endpoints.updateProfile,
       data: updateProfileRequestModel.toJson(),
       modelInstance: const UserResponseModel(),
+    );
+  }
+
+  @override
+  Future<BaseResponseModel<ProductResponseModel>> getProductDetails({
+    required int productId,
+  }) async {
+    return _getRequest(
+      url: Endpoints.concatenateEndPoint(
+        endPoint: Endpoints.productDetails,
+        id: productId,
+      ),
+      modelInstance: const ProductResponseModel(),
     );
   }
 }

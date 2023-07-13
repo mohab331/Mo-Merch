@@ -30,28 +30,18 @@ class AppTheme {
           // Custom text styles for different sizes and purposes
           bodyLarge: TextStyle(
             color: Colors.white,
-            fontSize: 18.0,
-            fontWeight: FontWeight.bold,
           ),
           bodyMedium: TextStyle(
             color: Colors.white,
-            fontSize: 16.0,
-            fontWeight: FontWeight.bold,
           ),
           bodySmall: TextStyle(
             color: Colors.grey,
-            fontSize: 14.0,
-            fontWeight: FontWeight.bold,
           ),
           displayLarge: TextStyle(
-            fontSize: 34,
             color: Colors.white,
-            fontWeight: FontWeight.bold,
           ),
           displaySmall: TextStyle(
             color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 10.0,
           ),
         ),
         primarySwatch: R.colors.primaryColor,
@@ -79,13 +69,17 @@ class AppTheme {
             ),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5.0),
+            borderRadius: BorderRadius.circular(
+              5.0,
+            ),
             borderSide: const BorderSide(
               color: Colors.white,
             ),
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5.0),
+            borderRadius: BorderRadius.circular(
+              5.0,
+            ),
             borderSide: const BorderSide(
               color: Colors.white,
             ),
@@ -104,7 +98,10 @@ class AppTheme {
             ),
           ),
           focusedErrorBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.white, width: 2),
+            borderSide: BorderSide(
+              color: Colors.white,
+              width: 2,
+            ),
           ),
         ),
       );
@@ -135,18 +132,12 @@ class AppTheme {
           // Custom text styles for different sizes and purposes
           bodyLarge: TextStyle(
             color: Colors.black,
-            fontSize: 18.0,
-            fontWeight: FontWeight.bold,
           ),
           bodyMedium: TextStyle(
             color: Colors.black,
-            fontSize: 16.0,
-            fontWeight: FontWeight.bold,
           ),
           bodySmall: TextStyle(
             color: Colors.grey,
-            fontSize: 14.0,
-            fontWeight: FontWeight.bold,
           ),
           displayLarge: TextStyle(
             fontSize: 34,
@@ -155,8 +146,6 @@ class AppTheme {
           ),
           displaySmall: TextStyle(
             color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 10.0,
           ),
         ),
         scaffoldBackgroundColor: Colors.white,
@@ -175,7 +164,7 @@ class AppTheme {
           backgroundColor: Colors.white,
         ),
         listTileTheme: const ListTileThemeData(
-          contentPadding: EdgeInsets.all(0),
+          contentPadding: EdgeInsets.zero,
           dense: true,
           horizontalTitleGap: 0.0,
           minLeadingWidth: 0.0,
@@ -183,20 +172,17 @@ class AppTheme {
         inputDecorationTheme: InputDecorationTheme(
           border: const OutlineInputBorder(
             borderSide: BorderSide(
-              color: Colors.black,
               width: 2,
             ),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5.0),
-            borderSide: const BorderSide(
-              color: Colors.black,
+            borderRadius: BorderRadius.circular(
+              5.0,
             ),
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5.0),
-            borderSide: const BorderSide(
-              color: Colors.black,
+            borderRadius: BorderRadius.circular(
+              5.0,
             ),
           ),
           labelStyle: const TextStyle(
@@ -213,7 +199,9 @@ class AppTheme {
             ),
           ),
           focusedErrorBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black, width: 2),
+            borderSide: BorderSide(
+              width: 2,
+            ),
           ),
         ),
       );

@@ -17,8 +17,9 @@ class UpdateProfileUseCase
   Future<Either<Failure, BaseResponseEntity<UserResponseEntity>>> call(
     UpdateProfileRequestEntity updateProfileRequestEntity,
   ) async {
-    return await baseProfileRepo.updateUserProfile(
+    final response =  await baseProfileRepo.updateUserProfile(
       updateProfileRequestEntity: updateProfileRequestEntity,
     );
+    return response;
   }
 }

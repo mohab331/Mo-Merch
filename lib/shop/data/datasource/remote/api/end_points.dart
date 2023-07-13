@@ -14,6 +14,7 @@ class Endpoints {
   static const String changePassword = '/change-password';
   static const String orders = '/orders';
   static const String address = '/addresses';
+  static const String productDetails = '/products';
 
   /// Concatenates an endpoint URL with an ID.
   ///

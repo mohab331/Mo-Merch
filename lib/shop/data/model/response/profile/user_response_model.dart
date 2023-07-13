@@ -16,15 +16,17 @@ class UserResponseModel implements JsonConverter<UserResponseModel> {
   final String? email;
   final String? phone;
   final int? points;
-  final double? credit;
+  final int? credit;
   final String? token;
+
+
 
   @override
   UserResponseModel fromJson(Map<String, dynamic>? jsonMap) {
     return UserResponseModel(
         id: jsonMap?['id'],
         name: jsonMap?['name'],
-        credit: jsonMap?['credit'],
+        credit: (jsonMap?['credit'] as num?)?.toInt(),
         token: jsonMap?['token'],
         email: jsonMap?['email'],
         points: jsonMap?['points'],

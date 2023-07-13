@@ -14,6 +14,6 @@ class UserResponseEntity {
   final String email;
   final String phone;
   final int points;
-  final double credit;
+  final int credit;
   final String token;
 }

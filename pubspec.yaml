@@ -33,20 +33,31 @@ dependencies:
   flutter_svg: ^1.1.3
   provider: ^6.0.3
   flutter_secure_storage: ^8.0.0
-
+  flutter_screenutil: ^5.7.0
+  flutter_hooks: ^0.18.6
+  go_router: ^8.0.5
+  flutter_advanced_drawer: ^1.3.5
+  dot_navigation_bar: ^1.0.2
+  infinite_scroll_pagination: ^3.2.0
+  loading_animation_widget: ^1.2.0+4
+  intl: ^0.18.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  flutter_launcher_icons: ^0.12.0
+  flutter_native_splash: ^2.2.18
 
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/Mo-logo.png"
 
-
-
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: assets/images/Mo-logo.png
 flutter:
-
-
   uses-material-design: true
-
 
   assets:
     - assets/images/onBoard1.png
@@ -56,6 +67,8 @@ flutter:
     - assets/images/empty-order.svg
     - assets/images/empty-cart.svg
     - assets/images/address.svg
+    - assets/images/Mo-logo.png
+    - assets/images/google_logo.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

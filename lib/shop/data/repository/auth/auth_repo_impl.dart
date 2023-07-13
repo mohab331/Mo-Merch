@@ -33,7 +33,7 @@ class AuthRepoImpl
   Future<Either<Failure, BaseResponseEntity<UserResponseEntity>>> loginUser({
     required LoginRequestEntity loginRequestEntity,
   }) async {
-    return await executeWithNetworkAndExceptionHandling<
+    return  executeWithNetworkAndExceptionHandling<
         BaseResponseEntity<UserResponseEntity>>(
       () async {
         final response = await baseShopRemoteDataSource.loginUser(
@@ -55,7 +55,7 @@ class AuthRepoImpl
   @override
   Future<Either<Failure, BaseResponseEntity<LogoutResponseEntity>>>
       logout() async {
-    return await executeWithNetworkAndExceptionHandling<
+    return  executeWithNetworkAndExceptionHandling<
         BaseResponseEntity<LogoutResponseEntity>>(
       () async {
         final response = await baseShopRemoteDataSource.logout();
@@ -74,7 +74,7 @@ class AuthRepoImpl
   Future<Either<Failure, BaseResponseEntity<UserResponseEntity>>> registerUser({
     required RegisterRequestEntity registerRequestEntity,
   }) async {
-    return await executeWithNetworkAndExceptionHandling<
+    return  executeWithNetworkAndExceptionHandling<
         BaseResponseEntity<UserResponseEntity>>(
       () async {
         final response = await baseShopRemoteDataSource.registerUser(

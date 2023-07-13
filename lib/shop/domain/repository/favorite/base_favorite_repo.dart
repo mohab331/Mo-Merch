@@ -7,8 +7,8 @@ abstract class BaseFavoriteRepo {
   /// Retrieves the favorite data.
   ///
   /// Returns a [Future] of [Either] containing either a [Failure] or a [BaseListResponseEntity] of [ProductResponseEntity] representing the favorite data.
-  Future<Either<Failure, BaseListResponseEntity<ProductResponseEntity>>>
-      getFavoriteData();
+  Future<Either<Failure, BaseListResponseEntity<FavoriteResponseEntity>>>
+      getFavoriteData({required int page,});
 
   /// Toggles the favorite status based on the provided [favoriteRequestEntity].
   ///

@@ -8,3 +8,4 @@ export 'home/index.dart';
 export 'order/index.dart';
 export 'profile/index.dart';
 export 'search/index.dart';
+export 'product/index.dart';

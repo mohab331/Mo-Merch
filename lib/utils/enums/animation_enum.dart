@@ -1,0 +1,4 @@
+enum AnimationEnum{
+  slide,
+  size;
+}

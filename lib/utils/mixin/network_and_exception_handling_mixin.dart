@@ -18,7 +18,8 @@ mixin NetworkAndExceptionHandlingMixin {
   ) async {
     try {
       await _checkNetworkConnectivity();
-      return Right(await tryBlock());
+      final response = await tryBlock();
+      return Right(response);
     } on ServerException catch (error) {
       return Left(_handleCatchException(error));
     }

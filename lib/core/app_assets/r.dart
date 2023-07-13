@@ -15,4 +15,7 @@ class R {
 
   /// Accessor for the `AppStrings` instance.
   static AppStrings strings = const AppStrings();
+
+  /// Accessor for the `AppConstants` instance.
+  static AppConstants constants = const AppConstants();
 }

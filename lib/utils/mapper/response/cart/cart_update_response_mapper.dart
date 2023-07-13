@@ -15,8 +15,9 @@ class CartUpdateResponseMapper
   }
 
   @override
-  CartUpdateResponseModel mapToModel(
-      {required CartUpdateResponseEntity entity}) {
+  CartUpdateResponseModel mapToModel({
+    required CartUpdateResponseEntity entity,
+  }) {
     return CartUpdateResponseModel(
       total: entity.total,
     );

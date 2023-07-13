@@ -22,7 +22,7 @@ class BaseListResponseModel<T extends JsonConverter> {
       nextPageUrl: jsonData?['next_page_url'],
       modelList: jsonData?[dataKey] != null
           ? List<T>.from(
-        jsonData?[dataKey].map(
+        jsonData?[dataKey]['data'].map(
               (model) => instance.fromJson(model),
         ),
       )

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:shop_app_clean_architecture/core/index.dart';
 
 import 'package:shop_app_clean_architecture/shop/data/index.dart';
 
@@ -27,7 +28,7 @@ class DioConsumer implements ApiConsumer {
         ApiConstants.contentType: ApiConstants.applicationJson,
       }
       ..connectTimeout = 12000
-      ..receiveTimeout = 6000
+      ..receiveTimeout = 12000
       ..receiveDataWhenStatusError = true;
   }
 
@@ -36,16 +37,12 @@ class DioConsumer implements ApiConsumer {
   /// This method adds custom interceptors to the Dio instance for handling request and response logging, as well as applying additional logic.
   void _addInterceptors() {
     dio.interceptors.add(
-      ShopAppInterceptor(),
+      diInstance.get<ShopAppInterceptor>(),
     );
     dio.interceptors.add(
       LogInterceptor(
-        error: true,
-        request: true,
         requestBody: true,
-        requestHeader: true,
         responseBody: true,
-        responseHeader: true,
       ),
     );
   }
@@ -58,13 +55,12 @@ class DioConsumer implements ApiConsumer {
     bool requiresToken = true,
   }) async {
     final options = Options();
-    _addTokenHeader(options, requiresToken);
-    return await dio.delete(
+    return dio.delete(
       url,
       queryParameters: queryMap,
       data: data,
-      options: options,
-    );
+      options: _addTokenHeader(options, requiresToken),
+    ).onError((error, stackTrace) => throw ServerException(errorModel: ErrorModel.fromJson(jsonMap: {'message':error.toString(),}),),);
   }
 
   @override
@@ -74,12 +70,11 @@ class DioConsumer implements ApiConsumer {
     bool requiresToken = true,
   }) async {
     final options = Options();
-    _addTokenHeader(options, requiresToken);
-    return await dio.get(
+    return dio.get(
       url,
       queryParameters: queryMap,
-      options: options,
-    );
+      options: _addTokenHeader(options, requiresToken),
+    ).onError((error, stackTrace) => throw ServerException(errorModel: ErrorModel.fromJson(jsonMap: {'message':error.toString(),}),),);
   }
 
   @override
@@ -90,13 +85,12 @@ class DioConsumer implements ApiConsumer {
     bool requiresToken = true,
   }) async {
     final options = Options();
-    _addTokenHeader(options, requiresToken);
-    return await dio.post(
+    return dio.post(
       url,
       queryParameters: queryMap,
       data: data,
-      options: options,
-    );
+      options: _addTokenHeader(options, requiresToken),
+    ).onError((error, stackTrace) => throw ServerException(errorModel: ErrorModel.fromJson(jsonMap: {'message':error.toString(),}),),);
   }
 
   @override
@@ -107,22 +101,26 @@ class DioConsumer implements ApiConsumer {
     bool requiresToken = true,
   }) async {
     final options = Options();
-    _addTokenHeader(options, requiresToken);
-    return await dio.put(
+    return dio.put(
       url,
       queryParameters: queryMap,
       data: data,
-      options: options,
-    );
+      options: _addTokenHeader(options, requiresToken),
+    ).onError((error, stackTrace) => throw ServerException(errorModel: ErrorModel.fromJson(jsonMap: {'message':error.toString(),}),),);
   }
 
   /// Adds the `requiresToken` header to the request options if required.
   ///
   /// The [options] is the request options object.
   /// The [requiresToken] flag indicates whether the request requires a token or not.
-  void _addTokenHeader(Options options, bool requiresToken) {
+  Options _addTokenHeader(Options options, bool requiresToken) {
     if (requiresToken) {
-      options.headers?['requiresToken'] = true;
+      if (options.headers == null) {
+        options.headers = {'requiresToken': true};
+      } else {
+        options.headers?.addAll({'requiresToken': true});
+      }
     }
+    return options;
   }
 }

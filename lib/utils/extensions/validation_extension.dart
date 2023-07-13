@@ -1,6 +1,6 @@
 import 'package:shop_app_clean_architecture/core/index.dart';
 
-extension ValidationExtension on String {
+extension ValidationExtension on String? {
   /// Validates an email address.
   ///
   /// Returns an error message if the email address is empty or invalid.
@@ -13,13 +13,13 @@ extension ValidationExtension on String {
   /// - The domain part after the @ symbol consists of one or more subdomains separated by dots.
   ///   Each subdomain starts and ends with a lowercase letter or digit and can include hyphens (-) in between.
 
-   String? validateEmailAddress(String? value) {
-    if (value == null || value.isEmpty) {
+   String? validateEmailAddress() {
+    if (this == null || this!.isEmpty) {
       return R.strings.emptyEmailAddress;
     }
     else if (RegExp(
         r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
-        .hasMatch(value) == false) {
+        .hasMatch(this!) == false) {
       return R.strings.invalidEmail;
     }
     else {
@@ -34,8 +34,8 @@ extension ValidationExtension on String {
   ///
   /// The user name is considered valid if it is not empty.
   ///
-   String? validateUserName(String? value) {
-    if (value == null || value.isEmpty) {
+   String? validateUserName() {
+    if (this == null || this!.isEmpty) {
       return R.strings.emptyName;
     }
     else {
@@ -54,11 +54,11 @@ extension ValidationExtension on String {
   /// The password is considered valid if it is not empty. If a confirmation password
   /// is provided, it should match the password for validation to pass.
   ///
-   String? validatePassword(String? value, {String? confirmationPassword}) {
-    if (value == null || value.isEmpty) {
+   String? validatePassword({String? confirmationPassword}) {
+    if (this == null || this!.isEmpty) {
       return R.strings.emptyPassword;
     }
-    else if (confirmationPassword != null && confirmationPassword != value) {
+    else if (confirmationPassword != null && confirmationPassword != this) {
       return R.strings.wrongConfirmPassword;
     }
     else {
@@ -67,8 +67,8 @@ extension ValidationExtension on String {
   }
 
 
-   String? validateIsEmpty(String? value) {
-    if (value == null || value.isEmpty) {
+   String? validateIsEmpty() {
+    if (this == null || this!.isEmpty) {
       return R.strings.emptyValue;
     }
     return null;

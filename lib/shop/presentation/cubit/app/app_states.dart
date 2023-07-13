@@ -1,19 +1,18 @@
-abstract class AppStates{}
-class AppInitialState extends AppStates{}
-class AppThemeChangeState extends AppStates{
-  final String message;
-  AppThemeChangeState({required this.message});
+import'package:flutter/material.dart';
+abstract class AppState{
+  const AppState({this.message,this.toastColor});
+  final String? message;
+  final Color? toastColor;
 }
-class AppThemeChangeErrorState extends AppStates{
-  final String message;
-  AppThemeChangeErrorState({required this.message});
+class AppInitialState extends AppState{}
+class AppThemeChangeState extends AppState{
+  AppThemeChangeState({super.message,super.toastColor,});
 }
-class AppLogoutLoadingState extends AppStates{}
-class AppLogoutUserSuccessState extends AppStates{
-  final String message;
-  AppLogoutUserSuccessState({required this.message});
+class AppLoadingDataState extends AppState{}
+class AppSuccessDataState extends AppState{}
+class AppErrorDataState extends AppState{
+  const AppErrorDataState({super.message,super.toastColor,});
 }
-class AppLogoutErrorState extends AppStates{
-  final String errorMessage;
-  AppLogoutErrorState({required this.errorMessage});
+class AppThemeChangeErrorState extends AppState{
+  const AppThemeChangeErrorState({super.message,super.toastColor,});
 }

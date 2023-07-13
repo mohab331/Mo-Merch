@@ -31,7 +31,7 @@ class SecureStorageConsumer implements BaseSecureStorageConsumer {
   Future<String?> getData({
     required String key,
   }) async {
-    return await secureStorage.read(key: key).onError(
+    return  secureStorage.read(key: key).onError(
           (error, stackTrace) => throw CacheException(
             errorMessage: error.toString(),
           ),

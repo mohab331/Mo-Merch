@@ -15,6 +15,15 @@ class SaveUserDataRequestMapper
       token: NullReplacements.stringReplacement.replaceIfNull(
         model?.token,
       ),
+      email: NullReplacements.stringReplacement.replaceIfNull(
+        model?.email,
+      ),
+      phone: NullReplacements.stringReplacement.replaceIfNull(
+        model?.phone,
+      ),
+      id: NullReplacements.intReplacement.replaceIfNull(
+        model?.id,
+      ),
     );
   }
 
@@ -23,8 +32,11 @@ class SaveUserDataRequestMapper
     required SaveUserDataRequestEntity entity,
   }) {
     return SaveUserDataRequestModel(
-      token: entity.token,
       name: entity.name,
+      token: entity.token,
+      id: entity.id,
+      phone: entity.phone,
+      email: entity.email,
     );
   }
 }

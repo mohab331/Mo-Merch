@@ -18,7 +18,7 @@ class FavoriteRepoImpl
   /// The [favoriteRequestMapper] is the mapper for converting favorite request entities to models.
   FavoriteRepoImpl({
     required this.baseShopRemoteDS,
-    required this.baseListProductResponseMapper,
+    required this.baseListFavoriteResponseMapper,
     required this.baseToggleFavoriteResponseMapper,
     required this.favoriteRequestMapper,
   });
@@ -27,8 +27,8 @@ class FavoriteRepoImpl
   final BaseShopRemoteDS baseShopRemoteDS;
 
   /// Mapper for converting product response models to entities.
-  final BaseListResponseMapper<ProductResponseModel, ProductResponseEntity>
-      baseListProductResponseMapper;
+  final BaseListResponseMapper<FavoriteResponseModel, FavoriteResponseEntity>
+      baseListFavoriteResponseMapper;
 
   /// Mapper for converting toggle favorite response models to entities.
   final BaseResponseMapper<ToggleFavoriteResponseModel,
@@ -45,13 +45,13 @@ class FavoriteRepoImpl
   /// Returns a `Future` that resolves to either a `Failure` object indicating an error,
   /// or a `BaseListResponseEntity<ProductResponseEntity>` containing the mapped entity objects on success.
   @override
-  Future<Either<Failure, BaseListResponseEntity<ProductResponseEntity>>>
-      getFavoriteData() async {
-    return await executeWithNetworkAndExceptionHandling<
-        BaseListResponseEntity<ProductResponseEntity>>(
+  Future<Either<Failure, BaseListResponseEntity<FavoriteResponseEntity>>>
+      getFavoriteData({required int page,}) async {
+    return  executeWithNetworkAndExceptionHandling<
+        BaseListResponseEntity<FavoriteResponseEntity>>(
       () async {
-        final response = await baseShopRemoteDS.getFavoriteData();
-        return baseListProductResponseMapper.mapToEntity(
+        final response = await baseShopRemoteDS.getFavoriteData(page: page,);
+        return baseListFavoriteResponseMapper.mapToEntity(
           model: response,
         );
       },
