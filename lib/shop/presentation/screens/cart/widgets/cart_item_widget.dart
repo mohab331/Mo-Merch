@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shop_app_clean_architecture/core/index.dart';
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
+
 class CartItemWidget extends StatelessWidget {
   const CartItemWidget({
     required this.cartData,
@@ -19,20 +19,28 @@ class CartItemWidget extends StatelessWidget {
         child: Row(
           children: [
             Padding(
-              padding: const EdgeInsets.all(10.0,),
+              padding: const EdgeInsets.all(
+                10.0,
+              ),
               child: Card(
                 elevation: 5,
-                child: HeroCachedNetworkImage(id: cartData.id,
+                child: HeroCachedNetworkImage(
+                  id: cartData.id,
                   imageUrl: cartData.product.image,
                   imageHeight: 100,
-                  imageWidth: 100,),
+                  imageWidth: 100,
+                ),
               ),
             ),
-            CartItemInformationWidget(cartItem: cartData,),
+            CartItemInformationWidget(
+              cartItem: cartData,
+            ),
             SizedBox(
               width: 20.w,
             ),
-            CartItemUpdateWidget(cartItem: cartData),
+            CartItemUpdateWidget(
+              cartID: cartData.id,
+            ),
           ],
         ),
       ),

@@ -3,17 +3,18 @@ import 'package:shop_app_clean_architecture/shop/data/model/response/index.dart'
 
 class OrderResponseModel implements JsonConverter<OrderResponseModel> {
   const OrderResponseModel({
-     this.id,
-     this.points,
-     this.total,
-     this.discount,
-     this.paymentMethod,
-     this.vat,
-     this.products,
-     this.cost,
+    this.id,
+    this.points,
+    this.total,
+    this.discount,
+    this.paymentMethod,
+    this.vat,
+    this.products,
+    this.cost,
   });
+
   final String? paymentMethod;
-  final double? cost;
+  final int? cost;
   final double? vat;
   final double? discount;
   final int? points;
@@ -26,14 +27,14 @@ class OrderResponseModel implements JsonConverter<OrderResponseModel> {
     return OrderResponseModel(
       id: jsonMap?['id'],
       points: jsonMap?['points'],
-      total: jsonMap?['total'],
-      discount: jsonMap?['discount'],
+      total: (jsonMap?['total'] as num?)?.toDouble(),
+      discount: (jsonMap?['discount'] as num?)?.toDouble(),
       paymentMethod: jsonMap?['payment_method'],
-      vat: jsonMap?['vat'],
-      cost: jsonMap?['cost'],
+      vat: (jsonMap?['vat'] as num?)?.toDouble(),
+      cost: (jsonMap?['cost'] as num?)?.toInt(),
       products: (jsonMap?['products'] as List?)
-              ?.map((e) => ProductResponseModel().fromJson(e))
-              .toList(),
+          ?.map((e) => ProductResponseModel().fromJson(e))
+          .toList(),
     );
   }
 }

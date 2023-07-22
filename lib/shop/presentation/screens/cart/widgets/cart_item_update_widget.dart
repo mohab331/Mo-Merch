@@ -3,15 +3,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop_app_clean_architecture/core/index.dart';
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
-
 import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
 
 class CartItemUpdateWidget extends StatelessWidget {
-  const CartItemUpdateWidget({required this.cartItem, Key? key})
+  const CartItemUpdateWidget({required this.cartID, Key? key})
       : super(key: key);
-  final CartItem cartItem;
+  final int cartID;
+
   @override
   Widget build(BuildContext context) {
+    final cartItem = context.read<CartCubit>().getCartItem(cartID);
+
     return Expanded(
       child: Column(
         children: [
@@ -21,7 +23,7 @@ class CartItemUpdateWidget extends StatelessWidget {
                 icon: Icons.add,
                 onButtonTap: () => _handleButtonPressed(
                   context,
-                  cartId: cartItem.id,
+                  cartItem: cartItem,
                   quantity: 1,
                 ),
               ),
@@ -39,19 +41,19 @@ class CartItemUpdateWidget extends StatelessWidget {
                 icon: Icons.remove,
                 onButtonTap: () => _handleButtonPressed(
                   context,
-                  cartId: cartItem.id,
+                  cartItem: cartItem,
                   quantity: -1,
                 ),
               ),
-
             ],
           ),
-          SizedBox(height: 20.h,),
+          SizedBox(
+            height: 20.h,
+          ),
           SizedBox(
             width: 100.w,
             height: 35.h,
-            child:
-            CustomTextButton(
+            child: CustomTextButton(
               label: 'Remove',
               onPressed: () => _handleOnDeleteCartPressed(
                 context,
@@ -75,12 +77,12 @@ class CartItemUpdateWidget extends StatelessWidget {
 
   void _handleButtonPressed(
     BuildContext context, {
-    required int cartId,
+    required CartItem cartItem,
     required int quantity,
-  }) {
-    context.read<CartCubit>().updateCart(
+  }) async {
+    await context.read<CartCubit>().updateCart(
           quantity: quantity,
-          cartID: cartId,
+          cartItem: cartItem,
         );
   }
 

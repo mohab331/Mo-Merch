@@ -18,7 +18,9 @@ abstract class BaseShopRemoteDS {
   /// Retrieves user addresses.
   ///
   /// Returns a [BaseListResponseModel] containing a list of [AddressResponseModel].
-  Future<BaseListResponseModel<AddressResponseModel>> getUserAddress();
+  Future<BaseListResponseModel<AddressResponseModel>> getUserAddress({
+    required int page,
+  });
 
   // Cart
 

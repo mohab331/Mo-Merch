@@ -24,9 +24,8 @@ class SplashContent extends StatelessWidget {
       if (state.showOnBoarding == true) {
         context.navigator.navigateToOnBoardingScreen();
       } else if (!state.showOnBoarding && _isUserDataCached(state)) {
-        context.navigator.navigateToShopLayout(
-          extras: state.userDataResponseEntity,
-        );
+        context.read<AuthCubit>().setLoggedInUser(state.userDataResponseEntity);
+        context.navigator.navigateToShopLayout();
       } else {
         context.navigator.navigateToLoginScreen();
       }

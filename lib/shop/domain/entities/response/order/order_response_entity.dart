@@ -1,5 +1,4 @@
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
-import 'package:shop_app_clean_architecture/utils/enums/index.dart';
 
 class OrderResponseEntity {
 
@@ -13,8 +12,9 @@ class OrderResponseEntity {
     required this.products,
     required this.cost,
   });
+
   final String paymentMethod;
-  final double cost;
+  final int cost;
   final double vat;
   final double discount;
   final int points;

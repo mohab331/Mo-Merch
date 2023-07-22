@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:shop_app_clean_architecture/core/error/exception.dart';
 import 'package:shop_app_clean_architecture/core/network/error_model.dart';
 import 'package:shop_app_clean_architecture/shop/data/datasource/remote/index.dart';
-
 import 'package:shop_app_clean_architecture/shop/data/model/index.dart';
 import 'package:shop_app_clean_architecture/shop/data/model/json_converter.dart';
 
@@ -252,10 +251,13 @@ class ShopRemoteDSImpl implements BaseShopRemoteDS {
   }
 
   @override
-  Future<BaseListResponseModel<AddressResponseModel>> getUserAddress() async {
-    final response = await apiConsumer.getData(
-      url: Endpoints.address,
-    );
+  Future<BaseListResponseModel<AddressResponseModel>> getUserAddress({
+    required int page,
+  }) async {
+    final response =
+        await apiConsumer.getData(url: Endpoints.address, queryMap: {
+      'page': page,
+    });
     _checkResponseError(response);
     return BaseListResponseModel<AddressResponseModel>.fromJson(
       jsonData: response.data,

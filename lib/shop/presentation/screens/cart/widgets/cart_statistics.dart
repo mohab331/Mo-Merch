@@ -11,16 +11,16 @@ class CartStatistics extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final cartTotal = context.watch<CartCubit>().cartTotal.toInt().formatPrice();
+    final cartTotal = context.watch<CartCubit>().cartTotal.toInt();
+    final pay = cartTotal + (cartTotal * 0.14);
     return Container(
-      height: 100.h,
+      height: 150.h,
       width: double.infinity,
       color: Colors.black12,
       padding: const EdgeInsets.all(
         20.0,
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Expanded(
             child: Column(
@@ -28,11 +28,22 @@ class CartStatistics extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 StatisticsRow(
-                  title: R.strings.cartTotal,
-                  information: cartTotal,
+                  title: '${R.strings.cartTotal} \$',
+                  information: cartTotal.formatPrice(),
                 ),
                 SizedBox(
-                  height: 20.h,
+                  height: 15.h,
+                ),
+                const StatisticsRow(
+                  title: 'vat: ',
+                  information: '14%',
+                ),
+                SizedBox(
+                  height: 15.h,
+                ),
+                StatisticsRow(
+                  title: 'pay: ',
+                  information: '$pay \$',
                 ),
               ],
             ),

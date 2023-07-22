@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:intl/intl.dart';
 
 
 /// An extension on [String?] that provides methods to convert a string to various types.
@@ -58,14 +57,6 @@ extension StringConversionExtension on String? {
       }
     } on FormatException catch (_) {
       return null;
-    }
-  }
-  String formatPrice() {
-    final priceFormat = NumberFormat?.currency(locale: 'en_US',decimalDigits: 0,symbol: '',);
-    if (this != null) {
-      return priceFormat.format(this!);
-    } else {
-      return '';
     }
   }
 }

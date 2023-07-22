@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:shop_app_clean_architecture/core/index.dart';
-
 import 'package:shop_app_clean_architecture/shop/data/index.dart';
 
 /// A class that encapsulates Dio HTTP client and provides methods for making API requests.
@@ -27,8 +26,8 @@ class DioConsumer implements ApiConsumer {
       ..headers = {
         ApiConstants.contentType: ApiConstants.applicationJson,
       }
-      ..connectTimeout = 12000
-      ..receiveTimeout = 12000
+      ..connectTimeout = const Duration(seconds: 2)
+      ..receiveTimeout = const Duration(seconds: 2)
       ..receiveDataWhenStatusError = true;
   }
 

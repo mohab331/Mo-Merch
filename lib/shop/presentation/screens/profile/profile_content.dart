@@ -14,6 +14,7 @@ class ProfileContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final profileState = context.watch<ProfileCubit>().state;
+    final profileCubit = context.read<ProfileCubit>();
 
     return BlocListener<ProfileCubit, ProfileState>(
       listener: (context, state) {
@@ -27,6 +28,8 @@ class ProfileContent extends StatelessWidget {
       child: StateHandlingWidget(
         isLoading: (profileState is ProfileLoadingState),
         hasError: (profileState is ProfileErrorState),
+        onRetryButtonPressed: () =>
+            _onReloadButtonPressed(context, profileCubit),
         successWidget: profileState is ProfileSuccessState
             ? Stack(
                 alignment: Alignment.bottomCenter,
@@ -98,5 +101,9 @@ class ProfileContent extends StatelessWidget {
 
   void _handleOnTapEditPassword(BuildContext context) {
     context.navigator.navigateToChangePasswordScreen();
+  }
+
+  void _onReloadButtonPressed(BuildContext context, ProfileCubit profileCubit) {
+    profileCubit.getUerProfile();
   }
 }

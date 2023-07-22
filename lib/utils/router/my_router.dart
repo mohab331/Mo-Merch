@@ -88,11 +88,8 @@ class MyRouter {
       path: PostAuthRoutes.shopLayout.routeModel.path,
       name: PostAuthRoutes.shopLayout.routeModel.name,
       pageBuilder: (context, state) {
-        final extra = state.extra as UserResponseEntity?;
         return MaterialPage(
-          child: ShopLayout(
-            loggedInUser: extra,
-          ),
+          child: ShopLayout(),
           key: state.pageKey,
         );
       },
@@ -109,7 +106,7 @@ class MyRouter {
       path: PostAuthRoutes.favorite.routeModel.path,
       name: PostAuthRoutes.favorite.routeModel.name,
       pageBuilder: (context, state) => MaterialPage(
-        child:  FavoriteScreen(),
+        child: const FavoriteScreen(),
         key: state.pageKey,
       ),
     ),
@@ -130,7 +127,7 @@ class MyRouter {
       path: PostAuthRoutes.productDescription.routeModel.path,
       name: PostAuthRoutes.productDescription.routeModel.name,
       pageBuilder: (context, state) {
-        final extra = state.extra as Map<String,dynamic>;
+        final extra = state.extra as Map<String, dynamic>;
         return MaterialPage(
           child: ProductDetailsScreen(
             product: extra['product'],
@@ -146,6 +143,25 @@ class MyRouter {
       pageBuilder: (context, state) {
         return MaterialPage(
           child: const CartScreen(),
+          key: state.pageKey,
+        );
+      },
+    ),
+    GoRoute(
+      path: PostAuthRoutes.checkOut.routeModel.path,
+      name: PostAuthRoutes.checkOut.routeModel.name,
+      pageBuilder: (context, state) => MaterialPage(
+        child: const CheckOutScreen(),
+        key: state.pageKey,
+      ),
+    ),
+    GoRoute(
+      path: PostAuthRoutes.address.routeModel.path,
+      name: PostAuthRoutes.address.routeModel.name,
+      pageBuilder: (context, state) {
+        final extra = state.extra as Function(AddressResponseEntity?);
+        return MaterialPage(
+          child: AddressScreen(onLongPressed: extra),
           key: state.pageKey,
         );
       },
@@ -176,7 +192,9 @@ class MyRouter {
       pageBuilder: (context, state) {
         final extra = state.extra as UserResponseEntity;
         return MaterialPage(
-          child:  EditPersonalDataScreen(user: extra,),
+          child: EditPersonalDataScreen(
+            user: extra,
+          ),
           key: state.pageKey,
         );
       },

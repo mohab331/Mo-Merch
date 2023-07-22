@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app_clean_architecture/shop/presentation/common_widgets/error/index.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/common_widgets/loading_widget.dart';
 
 class StateHandlingWidget extends StatelessWidget {
@@ -6,6 +7,7 @@ class StateHandlingWidget extends StatelessWidget {
     required this.isLoading,
     required this.hasError,
     required this.successWidget,
+    required this.onRetryButtonPressed,
     this.loadingIconSize,
     this.loadingWidgetHeight,
     this.loadingWidget,
@@ -19,6 +21,8 @@ class StateHandlingWidget extends StatelessWidget {
   final Widget successWidget;
   final Widget? loadingWidget;
   final Widget? errorWidget;
+  final Function() onRetryButtonPressed;
+
   @override
   Widget build(BuildContext context) {
     return isLoading
@@ -28,7 +32,11 @@ class StateHandlingWidget extends StatelessWidget {
               loadingHeight: loadingWidgetHeight,
             )
         : hasError
-            ? errorWidget ?? Container()
+            ? errorWidget ??
+                NetworkErrorWidget(
+                  onRetry:  onRetryButtonPressed,
+                  isLoading: isLoading,
+                )
             : successWidget;
   }
 }

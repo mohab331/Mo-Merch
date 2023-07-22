@@ -18,12 +18,12 @@ class RegisterContent extends HookWidget {
         child: BlocListener<AuthCubit, AuthState>(
           listener: (context, state) {
             if (state is AuthenticatedState) {
-              context.navigator.navigateToShopLayout(extras: state.user,);
+              context.navigator.navigateToShopLayout();
             }
             else if (state is AuthenticationErrorState) {
               R.functions.showToast(
                 message:
-                    state.errorMessage ?? 'Error Occurred While Registering',
+                    state.message ?? 'Error Occurred While Registering',
                 color: Colors.red,
               );
             }else{}

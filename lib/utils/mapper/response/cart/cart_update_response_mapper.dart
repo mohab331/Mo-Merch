@@ -8,7 +8,7 @@ class CartUpdateResponseMapper
   CartUpdateResponseEntity mapToEntity(
       {required CartUpdateResponseModel? model}) {
     return CartUpdateResponseEntity(
-      total: NullReplacements.doubleReplacement.replaceIfNull(
+      total: NullReplacements.intReplacement.replaceIfNull(
         model?.total,
       ),
     );

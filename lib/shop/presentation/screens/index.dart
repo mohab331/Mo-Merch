@@ -3,6 +3,7 @@ export 'cart/index.dart';
 export 'categories/index.dart';
 export 'category_products/index.dart';
 export 'change_password/index.dart';
+export 'check_out/index.dart';
 export 'edit_personal_data/index.dart';
 export 'edit_personal_data/index.dart';
 export 'favorites/index.dart';

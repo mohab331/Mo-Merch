@@ -9,7 +9,7 @@ class ShopCubit extends Cubit<ShopLayoutState> {
   List<Widget> screens = [
     const HomeScreen(),
     const SearchScreen(),
-     FavoriteScreen(),
+    const FavoriteScreen(),
   ];
   List<String> screenTitles = [
     R.strings.home,

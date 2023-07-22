@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:shop_app_clean_architecture/core/index.dart';
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/cubit/auth/index.dart';
@@ -18,6 +17,12 @@ class AuthCubit extends Cubit<AuthState> {
   final LogoutUsecase logoutUsecase;
   final GetCachedUserDataUsecase getCachedUserDataUsecase;
 
+  UserResponseEntity? loggedInUser;
+
+  void setLoggedInUser(UserResponseEntity? user) {
+    loggedInUser = user;
+  }
+
   void registerUser({
     required RegisterRequestEntity registerRequestEntity,
   }) async {
@@ -30,14 +35,15 @@ class AuthCubit extends Cubit<AuthState> {
     response.fold((failure) {
       emit(
         AuthenticationErrorState(
-          errorMessage: failure.failureMessage,
+          message: failure.failureMessage,
         ),
       );
     }, (registerResponse) {
+      loggedInUser = registerResponse.entity;
       emit(
         AuthenticatedState(
           user: registerResponse.entity,
-          successMessage: registerResponse.message,
+          message: registerResponse.message,
         ),
       );
     });
@@ -54,15 +60,16 @@ class AuthCubit extends Cubit<AuthState> {
       (failure) {
         emit(
           AuthenticationErrorState(
-            errorMessage: failure.failureMessage,
+            message: failure.failureMessage,
           ),
         );
       },
       (loginResponse) {
+        loggedInUser = loginResponse.entity;
         emit(
           AuthenticatedState(
             user: loginResponse.entity,
-            successMessage: loginResponse.message,
+            message: loginResponse.message,
           ),
         );
       },
@@ -79,13 +86,13 @@ class AuthCubit extends Cubit<AuthState> {
     response.fold((failure) {
       emit(
         AuthenticationErrorState(
-          errorMessage: failure.failureMessage,
+          message: failure.failureMessage,
         ),
       );
     }, (logoutResponse) {
       emit(
         UnAuthenticatedState(
-          logoutResponse.message,
+          message: logoutResponse.message,
         ),
       );
     });
@@ -100,6 +107,7 @@ class AuthCubit extends Cubit<AuthState> {
       if (cacheResponse?.token.isEmpty == true) {
         return null;
       } else {
+        loggedInUser = cacheResponse;
         return cacheResponse;
       }
     });

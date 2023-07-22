@@ -14,5 +14,7 @@ abstract class BaseAddressRepo {
   /// Retrieves the user's addresses.
   /// Returns a [Future] of [Either] containing either a [Failure] or a [BaseListResponseEntity] of [AddressResponseEntity].
   Future<Either<Failure, BaseListResponseEntity<AddressResponseEntity>>>
-      getUserAddress();
+      getUserAddress({
+    required int page,
+  });
 }

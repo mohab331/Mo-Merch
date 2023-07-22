@@ -47,7 +47,7 @@ class CubitInjector implements BaseInjector {
             addToCartUseCase: diInstance.get<AddToCartUseCase>(),
             deleteCartUseCase: diInstance.get<DeleteCartUseCase>(),
             getCartUseCase: diInstance.get<GetCartUseCase>(),
-            updateCartUsecase: diInstance.get<UpdateCartUsecase>(),
+            updateCartUseCase: diInstance.get<UpdateCartUsecase>(),
           ),
         ),
     () => diInstance.registerFactory<ProductDetailsCubit>(
@@ -87,11 +87,22 @@ class CubitInjector implements BaseInjector {
             toggleFavoriteUsecase: diInstance.get<ToggleFavoriteUsecase>(),
           ),
         ),
-        () => diInstance.registerFactory<AppCubit>(
+    () => diInstance.registerFactory<CheckOutCubit>(
+          () => CheckOutCubit(
+            addOrderUseCase: diInstance.get<AddOrderUseCase>(),
+          ),
+        ),
+    () => diInstance.registerFactory<AppCubit>(
           () => AppCubit(
-        getFavoriteUsecase: diInstance.get<GetFavoriteUsecase>(),
-      ),
-    ),
+            getFavoriteUsecase: diInstance.get<GetFavoriteUsecase>(),
+          ),
+        ),
+    () => diInstance.registerFactory<AddressCubit>(
+          () => AddressCubit(
+            getAddressUseCase: diInstance.get<GetAddressUseCase>(),
+            addNewAddressUseCase: diInstance.get<AddNewAddressUseCase>(),
+          ),
+        ),
   ];
 
   @override

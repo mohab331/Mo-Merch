@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart';
-
 import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
 
 enum PreAuthRoutes {
@@ -79,6 +78,18 @@ enum PostAuthRoutes {
     RouteModel(
       name: CartScreen.routeName,
       path: CartScreen.routePath,
+    ),
+  ),
+  checkOut(
+    RouteModel(
+      name: CheckOutScreen.routeName,
+      path: CheckOutScreen.routePath,
+    ),
+  ),
+  address(
+    RouteModel(
+      name: AddressScreen.routeName,
+      path: AddressScreen.routePath,
     ),
   ),
   profile(

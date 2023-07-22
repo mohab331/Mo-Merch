@@ -1,3 +1,4 @@
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 
 class AddAddressRequestEntity implements BaseRequestEntity {
@@ -16,8 +17,8 @@ class AddAddressRequestEntity implements BaseRequestEntity {
   final String region;
   final String details;
   final String notes;
-  final double latitude;
-  final double longitude;
+  double latitude;
+  double longitude;
 
   @override
   Map<String, dynamic> toJson() => {
@@ -26,7 +27,12 @@ class AddAddressRequestEntity implements BaseRequestEntity {
         'region': region,
         'details': details,
         'notes': notes,
-        'latitude': 0.0,
-        'longitude': 0.0,
+        'latitude': latitude,
+        'longitude': longitude,
       };
+
+  void setLatLng(LatLng value) {
+    latitude = value.latitude;
+    longitude = value.longitude;
+  }
 }

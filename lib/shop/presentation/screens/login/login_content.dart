@@ -17,14 +17,12 @@ class LoginContent extends StatelessWidget {
         child: BlocListener<AuthCubit, AuthState>(
           listener: (context, state) {
             if (state is AuthenticatedState) {
-              context.navigator.navigateToShopLayout(
-                extras: state.user,
-              );
+              context.navigator.navigateToShopLayout();
             } else if (state is AuthenticationErrorState) {
               R.functions.showToast(
                 message:
-                    state.errorMessage ?? 'Error Occurred While Logging In',
-                color: Colors.red,
+                    state.message ?? 'Error Occurred While Logging In',
+                color: state.toastColor ?? Colors.red,
               );
             }else{}
           },

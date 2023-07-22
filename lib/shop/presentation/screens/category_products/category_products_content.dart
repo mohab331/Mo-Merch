@@ -28,8 +28,14 @@ class CategoryProductsContent extends HookWidget {
       isLoading:
           (categoryProductsState is CategoryProductsLoadingState && !isLoading),
       hasError: categoryProductsState is CategoryProductsErrorState,
+      onRetryButtonPressed: () => _onReloadButtonPressed(
+        categoryProductsCubit,
+        category.id,
+      ),
       successWidget: PaginatedList<ProductResponseEntity>(
         controller: scrollController,
+        onEmptyReloadButtonPressed: () =>
+            _onReloadButtonPressed(categoryProductsCubit, category.id),
         isEmpty: (productsInCategory.isEmpty),
         isLoading: isLoading,
         listChild: ProductGridView(
@@ -48,5 +54,11 @@ class CategoryProductsContent extends HookWidget {
     final currentPage = context.read<CategoryProductsCubit>().currentPage;
     context.read<CategoryProductsCubit>().getCategoryProductsByID(
         categoryId: category.id, page: (currentPage + 1));
+  }
+
+  void _onReloadButtonPressed(
+      CategoryProductsCubit categoryProductsCubit, int categoryId) {
+    categoryProductsCubit.getCategoryProductsByID(
+        page: categoryProductsCubit.currentPage, categoryId: categoryId);
   }
 }

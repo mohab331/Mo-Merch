@@ -36,7 +36,7 @@ class OrderResponseMapper
               )
               .toList() ??
           [],
-      cost: NullReplacements.doubleReplacement.replaceIfNull(
+      cost: NullReplacements.intReplacement.replaceIfNull(
         model?.cost,
       ),
     );

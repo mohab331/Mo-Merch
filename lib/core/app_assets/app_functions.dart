@@ -11,7 +11,7 @@ class AppFunctions {
     required String message,
     required Color color,
   }) async {
-    return await Fluttertoast.showToast(
+    return Fluttertoast.showToast(
       msg: message,
       fontSize: 16,
       backgroundColor: color,
@@ -31,6 +31,7 @@ class AppFunctions {
     required Widget content,
     required String title,
     bool showNoAction = true,
+    bool showOkAction = true,
   }) async {
     return showCupertinoDialog(
       context: context,
@@ -38,22 +39,31 @@ class AppFunctions {
         title: Text(title),
         content: content,
         actions:  [
-                CupertinoButton(
-                  child: Text(R.strings.actionOk),
-                  onPressed: () {
-                    Navigator.of(context).pop(true);
-                  },
-                ),
+          if (showOkAction)
+            CupertinoButton(
+              child: Text(R.strings.actionOk),
+              onPressed: () {
+                Navigator.of(context).pop(true);
+              },
+            ),
                 if(showNoAction)
                 CupertinoButton(
-                  child: const Text('NO'),
-                  onPressed: () {
-                    Navigator.of(context).pop(false);
-                  },
-                ),
-              ]
-            ,
+              child: const Text('NO'),
+              onPressed: () {
+                Navigator.of(context).pop(false);
+              },
+            ),
+        ],
       ),
+    );
+  }
+
+  void showBottomSheet(BuildContext context, Widget child) {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return child;
+      },
     );
   }
 }

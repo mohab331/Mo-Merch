@@ -32,6 +32,10 @@ class FavoriteContent extends HookWidget {
         isLoading: favoriteState is FavoriteLoadingState &&
             appCubit.favoriteProductsMap.isEmpty,
         hasError: favoriteState is FavoriteErrorState,
+        onRetryButtonPressed: () => _onReloadButtonPressed(
+          context,
+          favoriteCubit,
+        ),
         successWidget: Column(
           children: [
             Expanded(
@@ -42,7 +46,11 @@ class FavoriteContent extends HookWidget {
                   controller: scrollController,
                   isEmpty: favoriteList.isEmpty,
                   listEmptyIcon: Icons.favorite_outlined,
-                  iconColor: Colors.red[900],
+                  onEmptyReloadButtonPressed: () => _onReloadButtonPressed(
+                    context,
+                    favoriteCubit,
+                  ),
+                  emptyIconColor: Colors.red[900],
                   listEmptyTitle:
                       'No Favorite Item, Start adding your beloved products',
                   onScrollCallBack: _onScroll,
@@ -80,5 +88,13 @@ class FavoriteContent extends HookWidget {
           context,
           page: page,
         );
+  }
+
+  void _onReloadButtonPressed(
+      BuildContext context, FavoriteCubit favoriteCubit) {
+    favoriteCubit.getFavoriteData(
+      context,
+      page: favoriteCubit.currentPage,
+    );
   }
 }

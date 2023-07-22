@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:shop_app_clean_architecture/core/index.dart';
+import 'package:shop_app_clean_architecture/shop/data/index.dart';
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 import 'package:shop_app_clean_architecture/utils/index.dart';
-import 'package:shop_app_clean_architecture/shop/data/index.dart';
 
 /// A repository implementation for handling address-related operations.
 class AddressRepoImpl
@@ -50,11 +50,14 @@ class AddressRepoImpl
   /// or a [Failure] if an error occurs.
   @override
   Future<Either<Failure, BaseListResponseEntity<AddressResponseEntity>>>
-      getUserAddress() async {
-    return await executeWithNetworkAndExceptionHandling<
+      getUserAddress({
+    required int page,
+  }) async {
+    return executeWithNetworkAndExceptionHandling<
         BaseListResponseEntity<AddressResponseEntity>>(
       () async {
-        final response = await baseShopRemoteDataSource.getUserAddress();
+        final response =
+            await baseShopRemoteDataSource.getUserAddress(page: page);
         return baseListResponseMapper.mapToEntity(
           model: response,
         );

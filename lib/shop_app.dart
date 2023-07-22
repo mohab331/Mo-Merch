@@ -22,28 +22,32 @@ class ShopApp extends StatelessWidget {
           create: (context) => diInstance.get<CartCubit>()..getCart(),
         ),
         BlocProvider(
-          create: (context) => diInstance.get<AppCubit>()..getFavoriteData(page: 1,),
+          create: (context) => diInstance.get<AppCubit>()
+            ..getFavoriteData(
+              page: 1,
+            ),
         ),
       ],
-      child: ScreenUtilInit(
-        builder: (context, child) {
-          return MaterialApp.router(
-            debugShowCheckedModeBanner: false,
-            title: R.strings.appTitle,
-            theme: AppTheme.lightTheme(),
-            themeMode: ThemeMode.light,
-            routerDelegate: MyRouter.router.routerDelegate,
-            routeInformationParser: MyRouter.router.routeInformationParser,
-            routeInformationProvider: MyRouter.router.routeInformationProvider,
-          );
-        },
-        designSize: const Size(
-          393,
-          830,
+      child:ScreenUtilInit(
+          builder: (context, child) {
+            return MaterialApp.router(
+              debugShowCheckedModeBanner: false,
+              title: R.strings.appTitle,
+              theme: AppTheme.lightTheme(),
+              themeMode: ThemeMode.light,
+              routerDelegate: MyRouter.router.routerDelegate,
+              routeInformationParser: MyRouter.router.routeInformationParser,
+              routeInformationProvider:
+                  MyRouter.router.routeInformationProvider,
+            );
+          },
+          designSize: const Size(
+            393,
+            830,
+          ),
+          minTextAdapt: true,
+          child: SplashScreen(),
         ),
-        minTextAdapt: true,
-        child: SplashScreen(),
-      ),
-    );
+      );
   }
 }

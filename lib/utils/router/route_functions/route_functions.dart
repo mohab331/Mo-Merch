@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:shop_app_clean_architecture/shop/domain/entities/index.dart';
-
+import 'package:shop_app_clean_architecture/shop/domain/index.dart';
+import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
 import 'package:shop_app_clean_architecture/utils/router/index.dart';
 
-import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
-
 abstract class AppNavigation {
-  void navigateToShopLayout({
-    required Object? extras,
-  });
+  void navigateToShopLayout();
+
   void navigateToRegisterScreen();
   void navigateToLoginScreen();
   void navigateToCategoryScreen();
@@ -21,13 +18,24 @@ abstract class AppNavigation {
     required ProductResponseEntity product,
     required FavoriteCubit favoriteCubit,
   });
+
   void navigateToChangePasswordScreen();
+
   void navigateToEditPersonalDataScreen({
     required Object extras,
   });
+
   void navigateToCartScreen();
+
   void navigateToProfileScreen();
+
   void navigateToFavoriteScreen();
+
+  void navigateToCheckOutScreen();
+
+  void navigateToAddressScreen({
+    required Function(AddressResponseEntity? chosenAddress) onAddressPressed,
+  });
 }
 
 class AppNavigationImpl implements AppNavigation {
@@ -35,11 +43,11 @@ class AppNavigationImpl implements AppNavigation {
     required this.context,
   });
   final BuildContext context;
+
   @override
-  void navigateToShopLayout({required Object? extras}) {
+  void navigateToShopLayout() {
     context.goNamed(
       PostAuthRoutes.shopLayout.routeModel.name,
-      extra: extras,
     );
   }
 
@@ -124,6 +132,23 @@ class AppNavigationImpl implements AppNavigation {
   void navigateToFavoriteScreen() {
     context.pushNamed(
       PostAuthRoutes.favorite.routeModel.name,
+    );
+  }
+
+  @override
+  void navigateToCheckOutScreen() {
+    context.pushNamed(
+      PostAuthRoutes.checkOut.routeModel.name,
+    );
+  }
+
+  @override
+  void navigateToAddressScreen({
+    required Function(AddressResponseEntity? chosenAddress) onAddressPressed,
+  }) {
+    context.pushNamed(
+      PostAuthRoutes.address.routeModel.name,
+      extra: onAddressPressed,
     );
   }
 }

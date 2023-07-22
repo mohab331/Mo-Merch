@@ -1,15 +1,16 @@
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 
 class AddOrderRequestEntity implements BaseRequestEntity {
-  final int addressId;
-  final int paymentMethod;
-  final bool usePoints;
 
-  AddOrderRequestEntity({
+  const AddOrderRequestEntity({
     required this.addressId,
     required this.paymentMethod,
     this.usePoints = false,
   });
+
+  final int addressId;
+  final int paymentMethod;
+  final bool usePoints;
 
   @override
   Map<String, dynamic> toJson() {

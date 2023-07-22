@@ -52,12 +52,16 @@ class _SearchContentState extends State<SearchContent> {
           SizedBox(
             height: 8.h,
           ),
-          if(searchState is SearchLoadingState)
+          if (searchState is SearchLoadingState)
             const LinearProgressIndicator(),
           Expanded(
             child: StateHandlingWidget(
               isLoading: false,
               hasError: searchState is SearchErrorState,
+              onRetryButtonPressed: () => _search(
+                context,
+                word: searchTextEditingController.text,
+              ),
               successWidget: searchState is SearchSuccessState
                   ? (searchState.products.isNotEmpty)
                       ? ListView.separated(
@@ -71,9 +75,9 @@ class _SearchContentState extends State<SearchContent> {
                           itemCount: searchState.products.length,
                         )
                       : EmptyListWidget(
-                          isLoading: searchState is SearchLoadingState,
-                          emptyTitle: R.strings.emptySearchResult,
-                          icon: Icons.search_off_outlined,
+                isLoading: searchState is SearchLoadingState,
+                          emptyString: R.strings.emptySearchResult,
+                          emptyIcon: Icons.search_off_outlined,
                           onReloadButtonPressed: () => _search(
                             context,
                             word: searchTextEditingController.text,
@@ -105,4 +109,3 @@ class _SearchContentState extends State<SearchContent> {
     }
   }
 }
-

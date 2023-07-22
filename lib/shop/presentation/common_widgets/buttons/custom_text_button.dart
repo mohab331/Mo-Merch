@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:shop_app_clean_architecture/core/index.dart';
-
 class CustomTextButton extends StatelessWidget {
   const CustomTextButton({
     required this.label,
     required this.onPressed,
+    this.isLoading = false,
     this.textColor,
     this.buttonColor,
     this.buttonPadding,
@@ -24,21 +23,22 @@ class CustomTextButton extends StatelessWidget {
   final BorderRadius? buttonBorderRadius;
   final TextStyle? labelStyle;
   final double? labelFontSize;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: onPressed,
+      onPressed: isLoading ? null : onPressed,
       style: TextButton.styleFrom(
         padding: buttonPadding ?? EdgeInsets.zero,
         backgroundColor: buttonColor,
         shape: buttonBorderRadius != null
             ? RoundedRectangleBorder(
-          borderRadius: buttonBorderRadius!,
-        )
+                borderRadius: buttonBorderRadius!,
+              )
             : null,
       ),
-      child:  FittedBox(
+      child: FittedBox(
         fit: BoxFit.scaleDown,
           child: Text(
             label,

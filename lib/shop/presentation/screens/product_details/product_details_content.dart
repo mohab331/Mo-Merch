@@ -15,6 +15,8 @@ class ProductDetailsContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final productDescriptionState = context.watch<ProductDetailsCubit>().state;
+    final productDetailsCubit = context.read<ProductDetailsCubit>();
+
     final productResponseEntity =
         (productDescriptionState is ProductDescriptionSuccessState)
             ? productDescriptionState.productResponseEntity
@@ -22,6 +24,10 @@ class ProductDetailsContent extends StatelessWidget {
     return StateHandlingWidget(
       isLoading: productDescriptionState is ProductDescriptionLoadingState,
       hasError: productDescriptionState is ProductDescriptionErrorState,
+      onRetryButtonPressed: () => _onReloadButtonPressed(
+        productDetailsCubit,
+        productResponseEntity.id,
+      ),
       successWidget: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -76,5 +82,12 @@ class ProductDetailsContent extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _onReloadButtonPressed(
+    ProductDetailsCubit productDetailsCubit,
+    int productId,
+  ) {
+    productDetailsCubit.getProductDetails(productId: productId);
   }
 }

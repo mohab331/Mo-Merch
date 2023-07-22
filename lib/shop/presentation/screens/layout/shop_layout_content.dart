@@ -5,7 +5,7 @@ import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
 
 
 class ShopLayoutContent extends StatelessWidget {
-  ShopLayoutContent({
+  const ShopLayoutContent({
     required this.advancedDrawerController,
     required this.userName,
     Key? key,
@@ -14,7 +14,6 @@ class ShopLayoutContent extends StatelessWidget {
   final AdvancedDrawerController advancedDrawerController;
   @override
   Widget build(BuildContext context) {
-    print('Rebuild Shop Layout');
     return BlocBuilder<ShopCubit, ShopLayoutState>(
       builder: (context, state) {
         final screenIndex =

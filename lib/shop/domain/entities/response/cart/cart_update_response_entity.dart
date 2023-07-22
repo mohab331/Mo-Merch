@@ -3,5 +3,5 @@ class CartUpdateResponseEntity {
     required this.total,
   });
 
-  final double total;
+  final int total;
 }
