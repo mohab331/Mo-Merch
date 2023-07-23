@@ -41,7 +41,7 @@ class CartContent extends StatelessWidget {
                     ),
                   ),
                   const CartStatistics(),
-                  SubmitButton(
+                  customElevatedButton(
                     label: R.strings.placeOrder,
                     onButtonPressed: (context) {
                       context.navigator.navigateToCheckOutScreen();

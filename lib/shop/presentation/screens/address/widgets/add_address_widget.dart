@@ -60,7 +60,7 @@ class AddAddressWidget extends HookWidget {
                       ),
                       addressData.value?.latLng,
                     ),
-                    isLoading: addressCubit.state is AddAddressLoadingState,
+                    isEnabled: (addressCubit.state is! AddAddressLoadingState),
                   ),
                 ),
                 DefaultTextFormField(

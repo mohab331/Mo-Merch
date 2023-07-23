@@ -76,7 +76,7 @@ class _MapsWidgetState extends State<MapsWidget> {
               trafficEnabled: true,
             ),
           ),
-          SubmitButton(
+          customElevatedButton(
             label: 'Save',
             onButtonPressed: (context) => _getLocationToSave(),
           ),

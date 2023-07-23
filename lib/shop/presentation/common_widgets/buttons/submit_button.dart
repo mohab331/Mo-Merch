@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
-class SubmitButton extends StatelessWidget {
-  const SubmitButton({
+class customElevatedButton extends StatelessWidget {
+  const customElevatedButton({
     required this.label,
     required this.onButtonPressed,
     this.buttonWidth = double.infinity,

@@ -5,7 +5,7 @@ class CustomTextButton extends StatelessWidget {
   const CustomTextButton({
     required this.label,
     required this.onPressed,
-    this.isLoading = false,
+    this.isEnabled = true,
     this.textColor,
     this.buttonColor,
     this.buttonPadding,
@@ -23,12 +23,12 @@ class CustomTextButton extends StatelessWidget {
   final BorderRadius? buttonBorderRadius;
   final TextStyle? labelStyle;
   final double? labelFontSize;
-  final bool isLoading;
+  final bool isEnabled;
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: isLoading ? null : onPressed,
+      onPressed: !isEnabled ? null : onPressed,
       style: TextButton.styleFrom(
         padding: buttonPadding ?? EdgeInsets.zero,
         backgroundColor: buttonColor,

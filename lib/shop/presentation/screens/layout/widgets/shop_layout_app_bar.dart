@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
 
 class ShopLayoutAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -34,8 +35,9 @@ class ShopLayoutAppBar extends StatelessWidget implements PreferredSizeWidget {
           },
         ),
       ),
-      actions: const [
-        CartIcon(),
+      actions:  [
+        CartIcon(
+        ),
       ],
     );
   }

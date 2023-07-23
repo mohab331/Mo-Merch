@@ -98,7 +98,7 @@ class RegisterForm extends HookWidget {
             SizedBox(
               height: 50.h,
             ),
-            SubmitButton(
+            customElevatedButton(
               label: R.strings.register,
               isLoading: isRegisterButtonLoading,
               onButtonPressed: (context) => _onRegisterButtonPressed(

@@ -26,7 +26,7 @@ class LoginContent extends StatelessWidget {
               );
             }else{}
           },
-          child: LoginForm(),
+          child: const LoginForm(),
         ),
       ),
     );

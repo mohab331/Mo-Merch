@@ -107,7 +107,7 @@ class ChangePasswordContent extends HookWidget {
               SizedBox(
                 height: 40.h,
               ),
-              SubmitButton(
+              customElevatedButton(
                 label: 'Change',
                 isLoading: changePasswordState is ChangePasswordLoadingState,
                 onButtonPressed: (context) => _onChangeTapped(

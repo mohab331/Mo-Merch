@@ -83,7 +83,7 @@ class LoginForm extends HookWidget {
                 onPressed: () {},
               ),
             ),
-            SubmitButton(
+            customElevatedButton(
               label: R.strings.login,
               onButtonPressed: (context) => _onLoginButtonPressed(
                 context,

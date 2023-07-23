@@ -40,7 +40,7 @@ class NetworkErrorWidget extends StatelessWidget {
               style: TextStyle(fontSize: 16.sp),
             ),
             SizedBox(height: 20.h),
-            SubmitButton(
+            customElevatedButton(
               label: 'Retry',
               onButtonPressed: (context) => onRetry(),
               borderRadius: 15.r,

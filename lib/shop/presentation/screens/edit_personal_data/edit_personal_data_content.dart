@@ -113,7 +113,7 @@ class _EditPersonalDataContentState extends State<EditPersonalDataContent> {
               SizedBox(
                 height: 40.h,
               ),
-              SubmitButton(
+              customElevatedButton(
                 label: R.strings.updatePersonalData,
                 onButtonPressed: (context) => onUpdateButtonPressed(
                   context,
