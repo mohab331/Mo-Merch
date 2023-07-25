@@ -27,11 +27,21 @@ abstract class AppNavigation {
 
   void navigateToCartScreen();
 
+  void navigateToOrderScreen();
+
   void navigateToProfileScreen();
 
   void navigateToFavoriteScreen();
 
   void navigateToCheckOutScreen();
+  void navigateToOrderDetailsScreen({
+    required int orderId,
+    required EditOrderCubit editOrderCubit,
+  });
+  void navigateToMapScreen(
+      {double? initialLongitude,
+      double? initialLatitude,
+      Function(LocationInfo?)? onLocationSaved});
 
   void navigateToAddressScreen({
     required Function(AddressResponseEntity? chosenAddress) onAddressPressed,
@@ -149,6 +159,41 @@ class AppNavigationImpl implements AppNavigation {
     context.pushNamed(
       PostAuthRoutes.address.routeModel.name,
       extra: onAddressPressed,
+    );
+  }
+
+  @override
+  void navigateToOrderScreen() {
+    context.pushNamed(
+      PostAuthRoutes.order.routeModel.name,
+    );
+  }
+
+  @override
+  void navigateToOrderDetailsScreen(
+      {required int orderId, required EditOrderCubit editOrderCubit}) {
+    context.pushNamed(
+      PostAuthRoutes.orderDetails.routeModel.name,
+      extra: {
+        'orderId': orderId,
+        'cubit': editOrderCubit,
+      },
+    );
+  }
+
+  @override
+  void navigateToMapScreen({
+    double? initialLongitude,
+    double? initialLatitude,
+    Function(LocationInfo?)? onLocationSaved,
+  }) {
+    context.pushNamed(
+      PostAuthRoutes.map.routeModel.name,
+      extra: {
+        'initialLongitude': initialLongitude,
+        'initialLatitude': initialLatitude,
+        'onLocationSaved': onLocationSaved,
+      },
     );
   }
 }

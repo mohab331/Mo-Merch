@@ -23,11 +23,7 @@ class GetAddressErrorState extends AddressState {
 }
 
 class GetAddressSuccessState extends AddressState {
-  const GetAddressSuccessState({
-    required this.addressResponse,
-  });
-
-  final List<AddressResponseEntity> addressResponse;
+  const GetAddressSuccessState();
 }
 
 class AddAddressLoadingState extends AddressState {}
@@ -41,10 +37,8 @@ class AddAddressErrorState extends AddressState {
 
 class AddAddressSuccessState extends AddressState {
   AddAddressSuccessState({
-    required this.addressResponse,
     super.message,
     super.toastColor = Colors.green,
   });
 
-  final List<AddressResponseEntity> addressResponse;
 }

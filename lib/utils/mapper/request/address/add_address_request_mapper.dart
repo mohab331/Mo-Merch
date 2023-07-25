@@ -23,6 +23,12 @@ class AddAddressRequestMapper
       notes: NullReplacements.stringReplacement.replaceIfNull(
         model?.notes,
       ),
+      latitude: NullReplacements.doubleReplacement.replaceIfNull(
+        model?.latitude,
+      ),
+      longitude: NullReplacements.doubleReplacement.replaceIfNull(
+        model?.longitude,
+      ),
     );
   }
 
@@ -34,6 +40,8 @@ class AddAddressRequestMapper
       region: entity.region,
       details: entity.details,
       notes: entity.notes,
+      longitude: entity.longitude,
+      latitude: entity.latitude,
     );
   }
 }

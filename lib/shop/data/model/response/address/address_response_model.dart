@@ -8,8 +8,9 @@ class AddressResponseModel implements JsonConverter<AddressResponseModel> {
     this.region,
     this.details,
     this.notes,
-  })  : latitude = 0.0,
-        longitude = 0.0;
+    this.latitude,
+    this.longitude,
+  });
 
   final int? id;
   final String? name;
@@ -31,6 +32,8 @@ class AddressResponseModel implements JsonConverter<AddressResponseModel> {
       region: jsonMap?['region'],
       details: jsonMap?['details'],
       notes: jsonMap?['notes'],
+      latitude: (jsonMap?['latitude'] as num?)?.toDouble(),
+      longitude: (jsonMap?['longitude'] as num?)?.toDouble(),
     );
   }
 }

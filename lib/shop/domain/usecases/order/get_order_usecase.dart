@@ -5,7 +5,7 @@ import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 
 class GetOrderUsecase
     implements
-        BaseUsecase<BaseListResponseEntity<OrderResponseEntity>, NoParameters> {
+        BaseUsecase<BaseListResponseEntity<OrderResponseEntity>, int> {
   GetOrderUsecase({
     required this.baseOrderRepo,
   });
@@ -14,8 +14,8 @@ class GetOrderUsecase
 
   @override
   Future<Either<Failure, BaseListResponseEntity<OrderResponseEntity>>> call(
-    NoParameters parameters,
+    int page,
   ) async {
-    return await baseOrderRepo.getOrders();
+    return  baseOrderRepo.getOrders(page: page);
   }
 }

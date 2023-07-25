@@ -18,6 +18,7 @@ class ProductImagesWidget extends HookWidget {
     final selectedImageIndex = useState(-1);
     final transformController = useTransformationController();
     Matrix4 initialController = Matrix4.identity();
+    print(product.image);
     return Row(
       children: [
         InteractiveProductImage(

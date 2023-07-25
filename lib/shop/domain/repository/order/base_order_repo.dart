@@ -13,12 +13,18 @@ abstract class BaseOrderRepo {
   /// Retrieves the list of orders.
   /// Returns a [Future] of [Either] containing either a [Failure] or a [BaseListResponseEntity] of [OrderResponseEntity] representing the list of orders.
   Future<Either<Failure, BaseListResponseEntity<OrderResponseEntity>>>
-      getOrders();
+      getOrders({required int page,});
 
   /// Retrieves the details of a specific order based on the provided [orderDetailsRequestEntity].
   /// Returns a [Future] of [Either] containing either a [Failure] or a [BaseResponseEntity] of [OrderDetailsResponseEntity] representing the order details.
   Future<Either<Failure, BaseResponseEntity<OrderDetailsResponseEntity>>>
       getOrderDetails({
     required OrderDetailsRequestEntity orderDetailsRequestEntity,
+  });
+
+
+  Future<Either<Failure, BaseResponseEntity<EmptyResponseEntity>>>
+  editOrder({
+    required int orderId,
   });
 }

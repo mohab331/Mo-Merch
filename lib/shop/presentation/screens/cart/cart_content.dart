@@ -23,7 +23,7 @@ class CartContent extends StatelessWidget {
         successWidget: cartItemsList.isEmpty
             ? EmptyListWidget(
                 emptyString: R.strings.emptyCart,
-                emptyIcon: Icons.add_shopping_cart,
+                emptyWidget: const Icon(Icons.add_shopping_cart),
                 onReloadButtonPressed: () => _onReloadButtonPressed(cartCubit),
                 isLoading: cartState is CartLoadingState,
               )

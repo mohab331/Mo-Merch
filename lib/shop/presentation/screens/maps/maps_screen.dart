@@ -9,23 +9,26 @@ import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
 
 // Class to display a map and allow the user to select a location.
-class MapsWidget extends StatefulWidget {
-  const MapsWidget({
-    required this.onLocationSaved,
+class MapsScreen extends StatefulWidget {
+  const MapsScreen({
+    this.onLocationSaved,
     this.initialLatitude,
     this.initialLongitude,
     Key? key,
   }) : super(key: key);
+
+  static const String routeName = 'MapsScreen';
+  static const String routePath = '/MapsScreen';
 
   final double? initialLatitude;
   final double? initialLongitude;
   final Function(LocationInfo?)? onLocationSaved;
 
   @override
-  _MapsWidgetState createState() => _MapsWidgetState();
+  _MapsScreenState createState() => _MapsScreenState();
 }
 
-class _MapsWidgetState extends State<MapsWidget> {
+class _MapsScreenState extends State<MapsScreen> {
   GoogleMapController? _mapController;
   LatLng? _currentLocation;
   Set<Marker> _markers = <Marker>{};
@@ -69,6 +72,7 @@ class _MapsWidgetState extends State<MapsWidget> {
               onTap: _onMapTap,
               markers: _markers,
               myLocationEnabled: true,
+              zoomGesturesEnabled: _shouldEnableInteractions(),
               rotateGesturesEnabled: _shouldEnableInteractions(),
               zoomControlsEnabled: _shouldEnableInteractions(),
               scrollGesturesEnabled: _shouldEnableInteractions(),
@@ -76,6 +80,7 @@ class _MapsWidgetState extends State<MapsWidget> {
               trafficEnabled: true,
             ),
           ),
+          if(widget.initialLatitude == null || widget.initialLongitude == null)
           customElevatedButton(
             label: 'Save',
             onButtonPressed: (context) => _getLocationToSave(),

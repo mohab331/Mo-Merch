@@ -7,8 +7,9 @@ class AddressResponseEntity {
     required this.region,
     required this.details,
     required this.notes,
-  })  : latitude = 0.0,
-        longitude = 0.0;
+     required this.latitude,
+     required this.longitude,
+  }) ;
 
   final int id;
   final String name;

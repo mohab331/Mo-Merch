@@ -209,5 +209,44 @@ class MyRouter {
         );
       },
     ),
+    GoRoute(
+      path: PostAuthRoutes.order.routeModel.path,
+      name: PostAuthRoutes.order.routeModel.name,
+      pageBuilder: (context, state) {
+        return MaterialPage(
+          child: const OrderScreen(),
+          key: state.pageKey,
+        );
+      },
+    ),
+    GoRoute(
+      path: PostAuthRoutes.orderDetails.routeModel.path,
+      name: PostAuthRoutes.orderDetails.routeModel.name,
+      pageBuilder: (context, state) {
+        final extra = state.extra as Map<String, dynamic>;
+        return MaterialPage(
+          child: OrderDetailsScreen(
+            orderId: extra['orderId'],
+            editOrderCubit: extra['cubit'],
+          ),
+          key: state.pageKey,
+        );
+      },
+    ),
+    GoRoute(
+      path: PostAuthRoutes.map.routeModel.path,
+      name: PostAuthRoutes.map.routeModel.name,
+      pageBuilder: (context, state) {
+        final extra = state.extra as Map<String, dynamic>?;
+        return MaterialPage(
+          child: MapsScreen(
+            initialLatitude: extra?['initialLatitude'],
+            initialLongitude: extra?['initialLongitude'],
+            onLocationSaved: extra?['onLocationSaved'],
+          ),
+          key: state.pageKey,
+        );
+      },
+    ),
   ];
 }

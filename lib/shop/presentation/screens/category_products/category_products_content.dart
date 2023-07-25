@@ -43,7 +43,7 @@ class CategoryProductsContent extends HookWidget {
           controller: scrollController,
           isScrollable: true,
         ),
-        listEmptyIcon: Icons.category_outlined,
+        listEmptyWidget: Icon(Icons.category_outlined),
         listEmptyTitle: R.strings.emptyCategoryProducts,
         onScrollCallBack: _onScroll,
       ),

@@ -13,31 +13,12 @@ class OrderResponseMapper
       id: NullReplacements.intReplacement.replaceIfNull(
         model?.id,
       ),
-      points: NullReplacements.intReplacement.replaceIfNull(
-        model?.points,
-      ),
+      date: NullReplacements.stringReplacement.replaceIfNull(
+      model?.orderDate,
+    ),
+      orderStatus: NullReplacements.stringReplacement.replaceIfNull(model?.orderStatus,),
       total: NullReplacements.doubleReplacement.replaceIfNull(
         model?.total,
-      ),
-      discount: NullReplacements.doubleReplacement.replaceIfNull(
-        model?.discount,
-      ),
-      paymentMethod: NullReplacements.stringReplacement.replaceIfNull(
-        model?.paymentMethod,
-      ),
-      vat: NullReplacements.doubleReplacement.replaceIfNull(
-        model?.vat,
-      ),
-      products: model?.products
-              ?.map(
-                (e) => productResponseMapper.mapToEntity(
-                  model: e,
-                ),
-              )
-              .toList() ??
-          [],
-      cost: NullReplacements.intReplacement.replaceIfNull(
-        model?.cost,
       ),
     );
   }
@@ -49,18 +30,8 @@ class OrderResponseMapper
     return OrderResponseModel(
       id: entity.id,
       total: entity.total,
-      discount: entity.discount,
-      cost: entity.cost,
-      paymentMethod: entity.paymentMethod,
-      points: entity.points,
-      products: entity.products
-          .map(
-            (e) => productResponseMapper.mapToModel(
-              entity: e,
-            ),
-          )
-          .toList(),
-      vat: entity.vat,
+      orderStatus: entity.orderStatus,
+      orderDate: entity.date,
     );
   }
 }

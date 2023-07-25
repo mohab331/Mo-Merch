@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop_app_clean_architecture/core/index.dart';
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
-import 'package:shop_app_clean_architecture/shop/presentation/common_widgets/index.dart';
+import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
 
 class SearchItem extends StatelessWidget {
   const SearchItem({required this.product, Key? key}) : super(key: key);
@@ -58,8 +58,9 @@ class SearchItem extends StatelessWidget {
                   Text(
                     '${product.price.toStringAsFixed(1)} \$',
                     style: TextStyle(
-                        color: R.colors.primaryColor,
-                        fontWeight: FontWeight.w600),
+                      color: R.colors.primaryColor,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ],
               ),

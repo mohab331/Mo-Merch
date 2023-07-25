@@ -28,7 +28,7 @@ class CategoryContent extends HookWidget {
         isLoading: isLoading,
         controller: scrollController,
         onScrollCallBack: _onScroll,
-        listEmptyIcon: Icons.category,
+        listEmptyWidget: Icon(Icons.category),
         listEmptyTitle: R.strings.emptyCategories,
         onEmptyReloadButtonPressed: () => _onRetryButtonPressed(categoryCubit),
         listChild: CustomAnimatedList(

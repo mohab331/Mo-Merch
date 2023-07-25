@@ -90,8 +90,8 @@ abstract class BaseShopRemoteDS {
   /// Retrieves user orders.
   ///
   /// Returns a [BaseListResponseModel] containing a list of [OrderResponseModel].
-  Future<BaseListResponseModel<OrderResponseModel>> getOrders();
-
+  Future<BaseListResponseModel<OrderResponseModel>> getOrders({required int page,});
+  Future<BaseResponseModel<EmptyResponseModel>> editOrder({required int orderId,});
   // Category
 
   /// Retrieves categories.

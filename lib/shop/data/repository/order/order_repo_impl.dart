@@ -10,7 +10,6 @@ import 'package:shop_app_clean_architecture/utils/index.dart';
 class OrderRepoImpl
     with NetworkAndExceptionHandlingMixin
     implements BaseOrderRepo {
-
   /// Constructs an instance of `OrderRepoImpl` with the required dependencies.
   ///
   /// The [baseShopRemoteDS] is the remote data source for the shop.
@@ -26,6 +25,7 @@ class OrderRepoImpl
     required this.orderDetailsRequestMapper,
     required this.baseOrderDetailsResponseMapper,
     required this.baseListOrderResponseMapper,
+    required this.emptyResponseMapper,
   });
   final BaseShopRemoteDS baseShopRemoteDS;
   final BaseMapper<AddOrderRequestModel, AddOrderRequestEntity>
@@ -38,6 +38,8 @@ class OrderRepoImpl
       OrderDetailsResponseEntity> baseOrderDetailsResponseMapper;
   final BaseListResponseMapper<OrderResponseModel, OrderResponseEntity>
       baseListOrderResponseMapper;
+  final BaseResponseMapper<EmptyResponseModel, EmptyResponseEntity>
+      emptyResponseMapper;
 
   /// Creates a new order.
   ///
@@ -98,15 +100,25 @@ class OrderRepoImpl
   /// or a `BaseListResponseEntity<OrderResponseEntity>` containing the mapped entity object on success.
   @override
   Future<Either<Failure, BaseListResponseEntity<OrderResponseEntity>>>
-      getOrders() async {
-    return await executeWithNetworkAndExceptionHandling<
+      getOrders({required int page}) async {
+    return executeWithNetworkAndExceptionHandling<
         BaseListResponseEntity<OrderResponseEntity>>(
       () async {
-        final response = await baseShopRemoteDS.getOrders();
+        final response = await baseShopRemoteDS.getOrders(page: page);
         return baseListOrderResponseMapper.mapToEntity(
           model: response,
         );
       },
     );
+  }
+
+  @override
+  Future<Either<Failure, BaseResponseEntity<EmptyResponseEntity>>> editOrder(
+      {required int orderId}) {
+    return executeWithNetworkAndExceptionHandling<
+        BaseResponseEntity<EmptyResponseEntity>>(() async {
+      final response = await baseShopRemoteDS.editOrder(orderId: orderId);
+      return emptyResponseMapper.mapToEntity(model: response);
+    });
   }
 }

@@ -68,9 +68,7 @@ class UserBalanceWidget extends StatelessWidget {
             fontWeight: FontWeight.w500,
           ),
         ),
-        SizedBox(
-          width: 20.w,
-        ),
+        const VerticalDivider(color: Colors.black,width: 2),
         Text(
           '${R.strings.orderPoints}$points',
           style: TextStyle(

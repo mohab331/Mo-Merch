@@ -129,6 +129,10 @@ class RepositoryInjector implements BaseInjector {
                 BaseListResponseMapper<OrderResponseModel, OrderResponseEntity>(
               mapper: OrderResponseMapper(),
             ),
+            emptyResponseMapper:
+                BaseResponseMapper<EmptyResponseModel, EmptyResponseEntity>(
+              mapper: EmptyResponseMapper(),
+            ),
           ),
         ),
     // Registering ProfileRepoImpl

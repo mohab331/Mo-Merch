@@ -4,8 +4,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop_app_clean_architecture/core/index.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
-import 'package:shop_app_clean_architecture/shop/presentation/screens/favorites/widgets/favorite_item.dart';
-import 'package:shop_app_clean_architecture/utils/enums/index.dart';
 
 class FavoriteContent extends HookWidget {
   const FavoriteContent({
@@ -18,7 +16,9 @@ class FavoriteContent extends HookWidget {
     final favoriteCubit = context.read<FavoriteCubit>();
     final appCubit = context.read<AppCubit>();
     final favoriteState = context.watch<FavoriteCubit>().state;
-    final favoriteList = appCubit.favoriteProductsMap.values.toList();
+    final favoriteList =
+        appCubit.favoriteProductsMap.values.toList();
+
     return BlocListener<FavoriteCubit, FavoriteState>(
       listener: (context, state) {
         if (state.message != null) {
@@ -45,7 +45,11 @@ class FavoriteContent extends HookWidget {
                   isLoading: (favoriteState is FavoriteLoadingState),
                   controller: scrollController,
                   isEmpty: favoriteList.isEmpty,
-                  listEmptyIcon: Icons.favorite_outlined,
+                  listEmptyWidget: const Icon(
+                    Icons.favorite_outlined,
+                    color: Colors.red,
+                    size: 60,
+                  ),
                   onEmptyReloadButtonPressed: () => _onReloadButtonPressed(
                     context,
                     favoriteCubit,
@@ -54,20 +58,21 @@ class FavoriteContent extends HookWidget {
                   listEmptyTitle:
                       'No Favorite Item, Start adding your beloved products',
                   onScrollCallBack: _onScroll,
-                  listChild: CustomAnimatedList(
+                  listChild: ListView.builder(
                     itemBuilder: (context, index) {
                       final favoriteProduct = favoriteList[index];
                       return FavoriteItem(
                         favoriteProduct: favoriteProduct,
-                        onRemoveIconPressed: () => favoriteCubit.toggleFavorite(
-                          appCubit,
-                          product: favoriteProduct,
-                        ),
+                        onRemoveIconPressed: () {
+                          favoriteCubit.toggleFavorite(
+                            appCubit,
+                            product: favoriteProduct,
+                          );
+                        },
                       );
                     },
-                    products: favoriteList,
                     controller: scrollController,
-                    animationType: AnimationEnum.slide,
+                    itemCount: favoriteList.length,
                   ),
                   loadingWidgetHeight: 100,
                 ),

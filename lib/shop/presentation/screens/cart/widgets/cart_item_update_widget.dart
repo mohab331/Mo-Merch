@@ -52,7 +52,7 @@ class CartItemUpdateWidget extends StatelessWidget {
           ),
           SizedBox(
             width: 100.w,
-            height: 35.h,
+            height: 40.h,
             child: CustomTextButton(
               label: 'Remove',
               onPressed: () => _handleOnDeleteCartPressed(

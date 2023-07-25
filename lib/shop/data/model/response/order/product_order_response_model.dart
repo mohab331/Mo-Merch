@@ -21,7 +21,7 @@ class ProductOrderResponseModel implements JsonConverter<ProductOrderResponseMod
     return ProductOrderResponseModel(id: jsonMap?['id'],
       name: jsonMap?['name'],
       quantity: jsonMap?['quantity'],
-      price: jsonMap?['price'],
+      price: (jsonMap?['price'] as num).toDouble(),
       image: jsonMap?['image'],
     );
   }

@@ -103,6 +103,21 @@ class CubitInjector implements BaseInjector {
             addNewAddressUseCase: diInstance.get<AddNewAddressUseCase>(),
           ),
         ),
+    () => diInstance.registerFactory<OrderCubit>(
+          () => OrderCubit(
+            getOrderUsecase: diInstance.get<GetOrderUsecase>(),
+          ),
+        ),
+    () => diInstance.registerFactory<OrderDetailsCubit>(
+          () => OrderDetailsCubit(
+            getOrderDetailsUsecase: diInstance.get<GetOrderDetailsUsecase>(),
+          ),
+        ),
+        () => diInstance.registerFactory<EditOrderCubit>(
+          () => EditOrderCubit(
+        editOrderUseCase: diInstance.get<EditOrderUseCase>(),
+      ),
+    ),
   ];
 
   @override

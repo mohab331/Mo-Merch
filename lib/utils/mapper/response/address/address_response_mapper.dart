@@ -27,6 +27,12 @@ class AddressResponseMapper
       notes: NullReplacements.stringReplacement.replaceIfNull(
         model?.notes,
       ),
+      longitude: NullReplacements.doubleReplacement.replaceIfNull(
+        model?.longitude,
+      ),
+      latitude: NullReplacements.doubleReplacement.replaceIfNull(
+        model?.latitude,
+      ),
     );
   }
 
@@ -39,6 +45,8 @@ class AddressResponseMapper
       details: entity.details,
       notes: entity.notes,
       region: entity.region,
+      latitude: entity.latitude,
+      longitude: entity.longitude,
     );
   }
 }

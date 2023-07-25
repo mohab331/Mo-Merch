@@ -8,8 +8,8 @@ class AddAddressRequestModel implements BaseRequestModel {
     required this.region,
     required this.details,
     required this.notes,
-    this.latitude = 0.0,
-    this.longitude = 0.0,
+    required this.latitude,
+    required this.longitude,
   });
 
   final String name;
@@ -27,7 +27,7 @@ class AddAddressRequestModel implements BaseRequestModel {
         'region': region,
         'details': details,
         'notes': notes,
-        'latitude': 0.0,
-        'longitude': 0.0,
+        'latitude': latitude,
+        'longitude': longitude,
       };
 }

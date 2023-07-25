@@ -6,14 +6,14 @@ import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
 class EmptyListWidget extends StatelessWidget {
   const EmptyListWidget({
     required this.emptyString,
-    required this.emptyIcon,
+    required this.emptyWidget,
     required this.onReloadButtonPressed,
     required this.isLoading,
     this.iconColor,
     this.iconSize,
     Key? key,
   }) : super(key: key);
-  final IconData emptyIcon;
+  final Widget emptyWidget;
   final double? iconSize;
   final Color? iconColor;
   final String emptyString;
@@ -34,11 +34,7 @@ class EmptyListWidget extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
-                  emptyIcon,
-                  size: iconSize ?? 90,
-                  color: iconColor ?? R.colors.primaryColor,
-                ),
+                emptyWidget,
                 SizedBox(
                   height: 15.h,
                 ),

@@ -26,8 +26,8 @@ class DioConsumer implements ApiConsumer {
       ..headers = {
         ApiConstants.contentType: ApiConstants.applicationJson,
       }
-      ..connectTimeout = const Duration(seconds: 2)
-      ..receiveTimeout = const Duration(seconds: 2)
+      ..connectTimeout = const Duration(seconds: 10)
+      ..receiveTimeout = const Duration(seconds: 10)
       ..receiveDataWhenStatusError = true;
   }
 

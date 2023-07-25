@@ -10,3 +10,14 @@ extension PriceFormatExtension on int? {
     }
   }
 }
+
+extension Format on double? {
+  String doubleToPrice() {
+    final priceFormat = NumberFormat.currency(locale: 'en_US',decimalDigits: 0,symbol: '',);
+    if (this != null) {
+      return priceFormat.format(this!);
+    } else {
+      return '';
+    }
+  }
+}

@@ -56,6 +56,12 @@ enum PostAuthRoutes {
       path: HomeScreen.routePath,
     ),
   ),
+  map(
+    RouteModel(
+      name: MapsScreen.routeName,
+      path: MapsScreen.routePath,
+    ),
+  ),
   category(
     RouteModel(
       name: CategoryScreen.routeName,
@@ -114,6 +120,18 @@ enum PostAuthRoutes {
     RouteModel(
       name: FavoriteScreen.routeName,
       path: FavoriteScreen.routePath,
+    ),
+  ),
+  order(
+    RouteModel(
+      name: OrderScreen.routeName,
+      path: OrderScreen.routePath,
+    ),
+  ),
+  orderDetails(
+    RouteModel(
+      name: OrderDetailsScreen.routeName,
+      path: OrderDetailsScreen.routePath,
     ),
   ),
   productDescription(

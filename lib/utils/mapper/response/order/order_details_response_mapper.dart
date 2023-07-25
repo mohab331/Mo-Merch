@@ -14,17 +14,29 @@ class OrderDetailsResponseMapper
     required OrderDetailsResponseModel? model,
   }) {
     return OrderDetailsResponseEntity(
-      status: NullReplacements.stringReplacement.replaceIfNull(
-        model?.status,
-      ),
       orderData: orderResponseMapper.mapToEntity(
         model: model?.orderData,
       ),
       addressData: addressResponseMapper.mapToEntity(
         model: model?.addressData,
       ),
-      date: NullReplacements.stringReplacement.replaceIfNull(
-        model?.date,
+
+
+      discount: NullReplacements.doubleReplacement.replaceIfNull(
+        model?.discount,
+      ),
+      paymentMethod: NullReplacements.stringReplacement.replaceIfNull(
+        model?.paymentMethod,
+      ),
+      vat: NullReplacements.doubleReplacement.replaceIfNull(
+        model?.vat,
+      ),
+
+      total: NullReplacements.doubleReplacement.replaceIfNull(
+        model?.total,
+      ),
+      cost: NullReplacements.doubleReplacement.replaceIfNull(
+        model?.cost,
       ),
       promoCode: NullReplacements.stringReplacement.replaceIfNull(
         model?.promoCode,
@@ -45,11 +57,9 @@ class OrderDetailsResponseMapper
     required OrderDetailsResponseEntity entity,
   }) {
     return OrderDetailsResponseModel(
-      status: entity.status,
       addressData: addressResponseMapper.mapToModel(
         entity: entity.addressData,
       ),
-      date: entity.date,
       orderData: orderResponseMapper.mapToModel(
         entity: entity.orderData,
       ),
@@ -57,6 +67,11 @@ class OrderDetailsResponseMapper
           .map((e) => productOrderResponseMapper.mapToModel(entity: e))
           .toList(),
       promoCode: entity.promoCode,
+      discount: entity.discount,
+      cost: entity.cost,
+      paymentMethod: entity.paymentMethod,
+      total: entity.total,
+      vat: entity.vat,
     );
   }
 }

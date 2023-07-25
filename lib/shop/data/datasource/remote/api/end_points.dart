@@ -15,6 +15,9 @@ class Endpoints {
   static const String orders = '/orders';
   static const String address = '/addresses';
   static const String productDetails = '/products';
+  static String cancelOrder({required int orderId}){
+    return '/orders/$orderId/cancel';
+  }
 
   /// Concatenates an endpoint URL with an ID.
   ///

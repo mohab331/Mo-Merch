@@ -78,13 +78,12 @@ class CartCubit extends Cubit<CartState> {
           productsInCart.clear();
         }
         cartTotal = getCartResponse.entity.totalCost;
-        // emit(
-        //   GetCartSuccessState(
-        //     message: getCartResponse.message,
-        //     cart: getCartResponse.entity.cartItems,
-        //   ),
-        // );
-        emit(CartErrorState(message: 'failure.failureMessage'));
+        emit(
+          GetCartSuccessState(
+            message: getCartResponse.message,
+            cart: getCartResponse.entity.cartItems,
+          ),
+        );
       },
     );
   }

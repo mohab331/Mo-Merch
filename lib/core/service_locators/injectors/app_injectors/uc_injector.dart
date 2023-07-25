@@ -75,11 +75,11 @@ class UsecaseInjector implements BaseInjector {
             baseCartRepo: diInstance.get<BaseCartRepo>(),
           ),
         ),
-        () => diInstance.registerLazySingleton<GetCartUseCase>(
+    () => diInstance.registerLazySingleton<GetCartUseCase>(
           () => GetCartUseCase(
-        baseCartRepo: diInstance.get<BaseCartRepo>(),
-      ),
-    ),
+            baseCartRepo: diInstance.get<BaseCartRepo>(),
+          ),
+        ),
     () => diInstance.registerLazySingleton<DeleteCartUseCase>(
           () => DeleteCartUseCase(
             baseCartRepo: diInstance.get<BaseCartRepo>(),
@@ -120,6 +120,11 @@ class UsecaseInjector implements BaseInjector {
             baseOrderRepo: diInstance.get<BaseOrderRepo>(),
           ),
         ),
+    () => diInstance.registerLazySingleton<EditOrderUseCase>(
+          () => EditOrderUseCase(
+            baseOrderRepo: diInstance.get<BaseOrderRepo>(),
+          ),
+        ),
     () => diInstance.registerLazySingleton<GetOrderDetailsUsecase>(
           () => GetOrderDetailsUsecase(
             baseOrderRepo: diInstance.get<BaseOrderRepo>(),
@@ -150,11 +155,11 @@ class UsecaseInjector implements BaseInjector {
             baseSearchRepo: diInstance.get<BaseSearchRepo>(),
           ),
         ),
-        () => diInstance.registerLazySingleton<GetProductDetailsUc>(
+    () => diInstance.registerLazySingleton<GetProductDetailsUc>(
           () => GetProductDetailsUc(
-            baseProductDetailsRepo:diInstance.get<BaseProductDetailsRepo>() ,
-      ),
-    ),
+            baseProductDetailsRepo: diInstance.get<BaseProductDetailsRepo>(),
+          ),
+        ),
   ];
 
   @override

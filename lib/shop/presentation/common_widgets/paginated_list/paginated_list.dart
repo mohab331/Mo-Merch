@@ -7,7 +7,7 @@ class PaginatedList<T> extends HookWidget {
     required this.isLoading,
     required this.onScrollCallBack,
     required this.onEmptyReloadButtonPressed,
-    required this.listEmptyIcon,
+    required this.listEmptyWidget,
     required this.listEmptyTitle,
     required this.listChild,
     required this.isEmpty,
@@ -23,7 +23,7 @@ class PaginatedList<T> extends HookWidget {
   final Function(BuildContext context) onScrollCallBack;
   final Function() onEmptyReloadButtonPressed;
   final String listEmptyTitle;
-  final IconData listEmptyIcon;
+  final Widget listEmptyWidget;
   final Widget listChild;
   final bool isEmpty;
   final Color? emptyIconColor;
@@ -43,7 +43,7 @@ class PaginatedList<T> extends HookWidget {
         ? EmptyListWidget(
             isLoading: false,
             onReloadButtonPressed: onEmptyReloadButtonPressed,
-            emptyIcon: listEmptyIcon,
+            emptyWidget: listEmptyWidget,
             emptyString: listEmptyTitle,
             iconColor: emptyIconColor,
           )

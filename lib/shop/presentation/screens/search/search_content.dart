@@ -77,7 +77,7 @@ class _SearchContentState extends State<SearchContent> {
                       : EmptyListWidget(
                 isLoading: searchState is SearchLoadingState,
                           emptyString: R.strings.emptySearchResult,
-                          emptyIcon: Icons.search_off_outlined,
+                          emptyWidget: Icon(Icons.search_off_outlined,),
                           onReloadButtonPressed: () => _search(
                             context,
                             word: searchTextEditingController.text,

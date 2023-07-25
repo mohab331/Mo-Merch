@@ -43,7 +43,7 @@ class CartStatistics extends StatelessWidget {
                 ),
                 StatisticsRow(
                   title: 'pay: ',
-                  information: '$pay \$',
+                  information: '${pay.doubleToPrice()} \$',
                 ),
               ],
             ),

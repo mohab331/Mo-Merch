@@ -4,7 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:shop_app_clean_architecture/core/index.dart';
-import 'package:shop_app_clean_architecture/shop/domain/entities/index.dart';
+import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
 import 'package:shop_app_clean_architecture/utils/index.dart';
 
@@ -38,11 +38,9 @@ class AddAddressWidget extends HookWidget {
         child: Form(
           key: _formKey,
           child: Container(
-            padding: const EdgeInsets.all(
-              20.0,
-            ),
             margin: const EdgeInsets.symmetric(vertical: 20.0),
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
@@ -57,6 +55,8 @@ class AddAddressWidget extends HookWidget {
                         region: regionTextEditingController.text,
                         details: detailsTextEditingController.text,
                         notes: notesTextEditingController.text,
+                        longitude: addressData.value?.latLng?.longitude ?? 0.0,
+                        latitude: addressData.value?.latLng?.latitude ?? 0.0,
                       ),
                       addressData.value?.latLng,
                     ),
@@ -127,30 +127,10 @@ class AddAddressWidget extends HookWidget {
                 SizedBox(
                   height: 20.h,
                 ),
-                ListTile(
-                  leading: const Icon(
-                    Icons.map_outlined,
-                    color: Colors.green,
-                  ),
-                  title: Text(
-                    addressData.value != null
-                        ? ' ${addressData.value?.address?.street}'
-                        : 'set location on maps',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16.sp,
-                    ),
-                  ),
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => MapsWidget(
-                          onLocationSaved: (value) => setLatLng(value),
-                        ),
-                      ),
-                    );
-                  },
-                ),
+                SetLocationListTile(
+                  addressData: addressData.value,
+                  setLatLng: (value) => setLatLng(value),
+                )
               ],
             ),
           ),
@@ -171,6 +151,7 @@ class AddAddressWidget extends HookWidget {
       addressCubit.addNewAddress(
         addressData: addedAddress,
       );
+      Navigator.of(context).pop();
     }
   }
 }

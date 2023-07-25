@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:shop_app_clean_architecture/core/index.dart';
-import 'package:shop_app_clean_architecture/shop/presentation/cubit/auth/auth_cubit.dart';
-import 'package:shop_app_clean_architecture/utils/extensions/index.dart';
+import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
+import 'package:shop_app_clean_architecture/utils/index.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({required this.userName, Key? key,}) : super(key: key);
@@ -44,6 +43,14 @@ class CustomDrawer extends StatelessWidget {
                     onItemTapped: () {
                       // Todo Implement
                     },
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  DrawerTileWidget(
+                    title: R.strings.orders,
+                    icon: Icons.price_check,
+                    onItemTapped: () => context.navigator.navigateToOrderScreen(),
                   ),
                   SizedBox(
                     height: 10.h,
@@ -92,29 +99,3 @@ class CustomDrawer extends StatelessWidget {
   }
 }
 
-class DrawerTileWidget extends StatelessWidget {
-  const DrawerTileWidget({
-    required this.title,
-    required this.icon,
-    required this.onItemTapped,
-    Key? key,
-  }) : super(key: key);
-  final Function() onItemTapped;
-  final String title;
-  final IconData icon;
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      onTap: onItemTapped,
-      leading: Icon(icon),
-      title: Text(
-        title,
-        style: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.w600,
-          fontSize: 18.sp,
-        ),
-      ),
-    );
-  }
-}

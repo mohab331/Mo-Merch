@@ -13,13 +13,13 @@ class AddressCubit extends Cubit<AddressState> {
 
   int currentPage = 1;
   bool hasMoreData = true;
-  List<AddressResponseEntity> userAddresses = [];
+  Map<int , AddressResponseEntity> userAddresses = {};
 
   void getUserAddresses({
     required int page,
   }) async {
     if (page == 1) {
-      userAddresses = [];
+      userAddresses.clear();
       hasMoreData = true;
     }
     if (hasMoreData == false) {
@@ -34,13 +34,27 @@ class AddressCubit extends Cubit<AddressState> {
     }, (getAddressResponse) {
       currentPage = getAddressResponse.currentPage ?? 1;
       hasMoreData = getAddressResponse.nextPageUrl != null;
-      userAddresses.addAll(getAddressResponse.entityList);
-      emit(GetAddressSuccessState(
-        addressResponse: userAddresses,
-      ));
+        _addUserAddressesToMap(getAddressResponse.entityList);
+        emit(const GetAddressSuccessState());
     });
   }
 
+  void _addUserAddressesToMap(List<AddressResponseEntity> addresses){
+    for(int i = 0;i<addresses.length;i++){
+        _addAddressToMap(addresses[i]);
+    }
+  }
+  void _addAddressToMap(AddressResponseEntity address){
+    if(_isAddressInMap(address)) return;
+    userAddresses.addAll({address.id:address});
+  }
+  bool _isAddressInMap(AddressResponseEntity address){
+    return userAddresses.containsKey(address.id);
+  }
+  void _deleteAddressFromMap(AddressResponseEntity address){
+    if(!_isAddressInMap(address)) return;
+    userAddresses.removeWhere((key, value) => key == address.id);
+  }
   void addNewAddress({required AddAddressRequestEntity addressData}) async {
     emit(AddAddressLoadingState());
     final response = await addNewAddressUseCase.call(
@@ -49,12 +63,12 @@ class AddressCubit extends Cubit<AddressState> {
     response.fold((failure) {
       emit(AddAddressErrorState(message: failure.failureMessage));
     }, (addressResponse) {
-      userAddresses.add(addressResponse.entity);
+      _addAddressToMap(addressResponse.entity);
       emit(
-        GetAddressSuccessState(
-          addressResponse: userAddresses,
-        ),
+        AddAddressSuccessState(),
       );
     });
   }
+
+  void deleteAddress({required int addressId}){}
 }

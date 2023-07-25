@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop_app_clean_architecture/utils/enums/index.dart';
 
 /// A custom animated list widget that animates the insertion of items in the list.
@@ -8,11 +9,12 @@ class CustomAnimatedList<T> extends StatefulWidget {
   /// The [products] parameter is the list of items to be displayed in the animated list.
   /// The [itemBuilder] is a callback function that builds the widgets for each item in the list.
   /// The [controller] is an optional [ScrollController] for controlling the scroll position of the list.
-  const CustomAnimatedList({
+    CustomAnimatedList({
     required this.products,
     required this.itemBuilder,
     this.animationType = AnimationEnum.size,
     this.controller,
+     this.deletedItem,
     Key? key,
   }) : super(key: key);
 
@@ -21,8 +23,9 @@ class CustomAnimatedList<T> extends StatefulWidget {
 
   /// A callback function that builds the widgets for each item in the list.
   final IndexedWidgetBuilder itemBuilder;
+  T? deletedItem;
 
-  /// An optional [ScrollController] for controlling the scroll position of the list.
+   /// An optional [ScrollController] for controlling the scroll position of the list.
   final ScrollController? controller;
 
   /// The type of animation to use for item insertion.
@@ -41,11 +44,10 @@ class _CustomAnimatedListState<T> extends State<CustomAnimatedList<T>> {
   @override
   void initState() {
     super.initState();
-
     /// [addPostFrameCallback] method is used to schedule the execution of a function after the current frame is
     /// finished rendering. It is commonly used to perform initialization tasks or trigger actions that require
     /// the UI to be fully rendered.
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       _loadItemsWithAnimation();
     });
   }
@@ -58,7 +60,6 @@ class _CustomAnimatedListState<T> extends State<CustomAnimatedList<T>> {
       });
     }
   }
-
   /// Adds an item to the list and animates its insertion.
   void _addItem(T item) {
     _items.add(item);
@@ -67,21 +68,25 @@ class _CustomAnimatedListState<T> extends State<CustomAnimatedList<T>> {
 
   /// Removes an item from the list and animates its removal.
   void deleteItem(T item) {
-    final index = _items.indexOf(item);
-    if (index != -1) {
-      _items.removeAt(index);
-      widget.products.removeAt(index);
-      _listKey.currentState?.removeItem(
-        index,
-        (context, animation) => widget.itemBuilder(
-          context,
+    if(_items.contains(item)) {
+      final index = _items.indexOf(item);
+      if(index != -1) {
+        _items.removeAt(index);
+        _listKey.currentState?.removeItem(
           index,
-        ),
-      );
+              (context, animation) => const SizedBox(),
+        );
+        widget.deletedItem = null;
+      }
     }
   }
 
+  @override
   Widget build(BuildContext context) {
+      if(widget.deletedItem != null) {
+        deleteItem(widget.deletedItem as T);
+      }
+
     return AnimatedList(
       key: _listKey,
       initialItemCount: _items.length,

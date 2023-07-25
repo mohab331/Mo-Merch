@@ -8,8 +8,8 @@ class AddAddressRequestEntity implements BaseRequestEntity {
     required this.region,
     required this.details,
     required this.notes,
-    this.latitude = 0.0,
-    this.longitude = 0.0,
+     required this.latitude,
+     required this.longitude,
   });
 
   final String name;

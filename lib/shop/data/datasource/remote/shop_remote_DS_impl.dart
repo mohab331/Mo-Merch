@@ -239,9 +239,10 @@ class ShopRemoteDSImpl implements BaseShopRemoteDS {
   }
 
   @override
-  Future<BaseListResponseModel<OrderResponseModel>> getOrders() async {
+  Future<BaseListResponseModel<OrderResponseModel>> getOrders({required int page,}) async {
     final response = await apiConsumer.getData(
       url: Endpoints.orders,
+      queryMap: {'page':page,}
     );
     _checkResponseError(response);
     return BaseListResponseModel<OrderResponseModel>.fromJson(
@@ -378,5 +379,10 @@ class ShopRemoteDSImpl implements BaseShopRemoteDS {
       ),
       modelInstance: const ProductResponseModel(),
     );
+  }
+
+  @override
+  Future<BaseResponseModel<EmptyResponseModel>> editOrder({required int orderId}) {
+    return _getRequest(url: Endpoints.cancelOrder(orderId: orderId), modelInstance: EmptyResponseModel(),);
   }
 }

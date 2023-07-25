@@ -40,7 +40,7 @@ class ProductDetailsContent extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     ProductImagesWidget(
-                      product: product,
+                      product: productResponseEntity,
                     ),
                     SizedBox(
                       height: 30.0.h,
