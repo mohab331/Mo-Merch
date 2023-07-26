@@ -15,9 +15,11 @@ class HomeCubit extends Cubit<HomeStates> {
       const NoParameters(),
     );
     response.fold((failure) {
-      emit(HomeDataErrorState(
-        errorMessage: failure.failureMessage,
-      ));
+      emit(
+        HomeDataErrorState(
+          errorMessage: failure.failureMessage,
+        ),
+      );
     }, (homeResponse) {
       emit(
         HomeDataSuccessState(

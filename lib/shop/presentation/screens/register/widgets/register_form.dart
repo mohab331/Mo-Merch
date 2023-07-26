@@ -4,8 +4,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop_app_clean_architecture/core/index.dart';
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
-import 'package:shop_app_clean_architecture/shop/presentation/cubit/auth/auth_cubit.dart';
-import 'package:shop_app_clean_architecture/shop/presentation/cubit/auth/auth_state.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
 import 'package:shop_app_clean_architecture/utils/index.dart';
 
@@ -37,7 +35,7 @@ class RegisterForm extends HookWidget {
             Text(
               R.strings.register,
               style: TextStyle(
-                color: Colors.black,
+                color: R.colors.blackColor,
                 fontSize: 28.sp,
                 fontWeight: FontWeight.bold,
               ),
@@ -98,7 +96,7 @@ class RegisterForm extends HookWidget {
             SizedBox(
               height: 50.h,
             ),
-            customElevatedButton(
+            CustomElevatedButton(
               label: R.strings.register,
               isLoading: isRegisterButtonLoading,
               onButtonPressed: (context) => _onRegisterButtonPressed(

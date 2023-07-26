@@ -13,7 +13,9 @@ class CartItemUpdateWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cartItem = context.read<CartCubit>().getCartItem(cartID);
-
+    final cartState = context.watch<CartCubit>().state;
+    final isMinusButtonEnabled =
+        !(cartItem.quantity == 1 && cartState is DeleteCartLoadingState);
     return Expanded(
       child: Column(
         children: [
@@ -30,8 +32,8 @@ class CartItemUpdateWidget extends StatelessWidget {
               Expanded(
                 child: Text(
                   '${cartItem.quantity}',
-                  style: const TextStyle(
-                    color: Colors.black,
+                  style: TextStyle(
+                    color: R.colors.blackColor,
                     fontWeight: FontWeight.bold,
                   ),
                   textAlign: TextAlign.center,
@@ -44,6 +46,7 @@ class CartItemUpdateWidget extends StatelessWidget {
                   cartItem: cartItem,
                   quantity: -1,
                 ),
+                isEnabled: isMinusButtonEnabled,
               ),
             ],
           ),
@@ -59,8 +62,8 @@ class CartItemUpdateWidget extends StatelessWidget {
                 context,
                 cartItem: cartItem,
               ),
-              buttonColor: R.colors.removeColor,
-              textColor: Colors.white,
+              buttonColor: R.colors.redColor,
+              textColor: R.colors.whiteColor,
               buttonPadding: const EdgeInsets.all(
                 10.0,
               ),
@@ -68,6 +71,7 @@ class CartItemUpdateWidget extends StatelessWidget {
                 20.r,
               ),
               labelFontSize: 14,
+              isEnabled: cartState is! DeleteCartLoadingState,
             ),
           ),
         ],

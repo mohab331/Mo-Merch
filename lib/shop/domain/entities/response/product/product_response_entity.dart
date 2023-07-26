@@ -14,9 +14,9 @@ class ProductResponseEntity {
 
   final int id;
   final String name;
-  final int price;
-  final int oldPrice;
-  final int discount;
+  final double price;
+  final double oldPrice;
+  final double discount;
   final String image;
   final String? description;
   final List<String>? images;

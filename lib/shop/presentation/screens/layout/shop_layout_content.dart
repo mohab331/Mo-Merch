@@ -51,14 +51,18 @@ class ShopLayoutContent extends StatelessWidget {
   }
 
   void _handleOnRetry(
-      BuildContext context, CartState cartState, AppState appState,int currentScreenIndex) {
+    BuildContext context,
+    CartState cartState,
+    AppState appState,
+    int currentScreenIndex,
+  ) {
     if (cartState is CartErrorState) {
       context.read<CartCubit>().getCart();
     }
     if (appState is AppErrorDataState) {
       context.read<AppCubit>().getFavoriteData(page: 1);
     }
-    if(currentScreenIndex != 0) {
+    if (currentScreenIndex != 0) {
       context.read<ShopCubit>().toggleIndex(0);
     }
   }

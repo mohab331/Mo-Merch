@@ -1,5 +1,4 @@
-import 'package:shop_app_clean_architecture/shop/data/model/request/index.dart';
-import 'package:shop_app_clean_architecture/shop/domain/index.dart';
+import 'package:shop_app_clean_architecture/shop/data/index.dart';
 
 class FavoriteRequestModel implements BaseRequestModel {
   const FavoriteRequestModel({

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shop_app_clean_architecture/core/index.dart';
 
 class ProgressRow extends StatelessWidget {
   const ProgressRow({required this.selectedContainerIndex, Key? key})
@@ -16,7 +17,7 @@ class ProgressRow extends StatelessWidget {
             30.0.r,
           ),
         ),
-        color: Colors.grey[200],
+        color: R.colors.lightGrey,
       ),
       padding: EdgeInsets.symmetric(
         vertical: 16.0.h,
@@ -27,18 +28,22 @@ class ProgressRow extends StatelessWidget {
         children: [
           ProgressCircleAvatar(
             value: '1',
-            circleAvatarColor:
-                selectedContainerIndex == 0 ? Colors.green : Colors.white,
-            textColor:
-                selectedContainerIndex == 0 ? Colors.white : Colors.black,
+            circleAvatarColor: selectedContainerIndex == 0
+                ? R.colors.greenColor
+                : R.colors.whiteColor,
+            textColor: selectedContainerIndex == 0
+                ? R.colors.whiteColor
+                : R.colors.blackColor,
           ),
           const HorizontalSeparator(),
           ProgressCircleAvatar(
             value: '2',
-            circleAvatarColor:
-                selectedContainerIndex == 1 ? Colors.green : Colors.white,
-            textColor:
-                selectedContainerIndex == 1 ? Colors.white : Colors.black,
+            circleAvatarColor: selectedContainerIndex == 1
+                ? R.colors.greenColor
+                : R.colors.whiteColor,
+            textColor: selectedContainerIndex == 1
+                ? R.colors.whiteColor
+                : R.colors.blackColor,
           ),
         ],
       ),
@@ -65,9 +70,10 @@ class ProgressCircleAvatar extends StatelessWidget {
       height: 50.h,
       width: 45.w,
       decoration: BoxDecoration(
-          // borderRadius: BorderRadius.circular(40.0.r,),
-          color: circleAvatarColor,
-          shape: BoxShape.circle),
+        // borderRadius: BorderRadius.circular(40.0.r,),
+        color: circleAvatarColor,
+        shape: BoxShape.circle,
+      ),
       alignment: Alignment.center,
       child: Text(
         value,
@@ -90,7 +96,7 @@ class HorizontalSeparator extends StatelessWidget {
       height: 3.h,
       width: 60.w,
       decoration: BoxDecoration(
-        color: Colors.black,
+        color: R.colors.blackColor,
         borderRadius: BorderRadius.circular(
           50.0.r,
         ),

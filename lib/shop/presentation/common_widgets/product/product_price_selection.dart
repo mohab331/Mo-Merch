@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop_app_clean_architecture/core/index.dart';
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
+import 'package:shop_app_clean_architecture/utils/extensions/index.dart';
 
 class ProductPriceSection extends StatelessWidget {
   const ProductPriceSection({
@@ -20,7 +21,7 @@ class ProductPriceSection extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              '${product.price.toStringAsFixed(1)} \$',
+              '${product.price.doubleToPrice()} \$',
               style: TextStyle(
                 fontSize: 14.0.sp,
                 fontWeight: FontWeight.bold,
@@ -30,7 +31,7 @@ class ProductPriceSection extends StatelessWidget {
             SizedBox(height: 10.h),
             if (product.discount != 0)
               Text(
-                '${product.oldPrice.toStringAsFixed(1)} \$',
+                '${product.oldPrice.doubleToPrice()} \$',
                 style: TextStyle(
                   fontSize: 12.0.sp,
                   fontWeight: FontWeight.bold,
@@ -40,8 +41,14 @@ class ProductPriceSection extends StatelessWidget {
               ),
           ],
         ),
-        if(showDiscountPercent && product.discount != 0)
-          Text('Discount: ${product.discount}%',style: const TextStyle(color: Colors.red,fontWeight: FontWeight.bold,),),
+        if (showDiscountPercent && product.discount != 0)
+          Text(
+            'Discount: ${product.discount}%',
+            style: TextStyle(
+              color: R.colors.redColor,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
       ],
     );
   }

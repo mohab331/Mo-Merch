@@ -49,6 +49,10 @@ class DeleteCartSuccessState extends CartState {
   });
 }
 
+class DeleteCartLoadingState extends CartState {
+  DeleteCartLoadingState();
+}
+
 class InstantToggleCartState extends CartState {}
 
 class CartErrorState extends CartState {

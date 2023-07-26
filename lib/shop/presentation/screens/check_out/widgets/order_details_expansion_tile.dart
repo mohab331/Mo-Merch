@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
-
 import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
 
 class OrderDetailsExpansionTile extends StatelessWidget {
   const OrderDetailsExpansionTile({
-
     required this.cartItemsList,
     super.key,
   });
@@ -17,7 +14,8 @@ class OrderDetailsExpansionTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final pay = context.read<CartCubit>().cartTotal + (context.read<CartCubit>().cartTotal*0.14);
+    final pay = context.read<CartCubit>().cartTotal +
+        (context.read<CartCubit>().cartTotal * 0.14);
     return ExpansionTile(
       title: Text(
         'Click to expand',
@@ -25,8 +23,7 @@ class OrderDetailsExpansionTile extends StatelessWidget {
       ),
       children: [
         SizedBox(
-
-          height:   (cartItemsList.length * 70).h ,
+          height: (cartItemsList.length * 100).h,
           child: ListView.builder(
             itemBuilder: (context, index) {
               return Padding(

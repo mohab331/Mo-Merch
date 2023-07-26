@@ -20,7 +20,6 @@ linter:
     - avoid_relative_lib_imports
     - package_prefixed_library_names
     - sort_child_properties_last
-    - sort_pub_dependencies
     - avoid_redundant_argument_values
     - always_declare_return_types
     - file_names
@@ -68,9 +67,7 @@ linter:
     - empty_catches
     - empty_constructor_bodies
     - hash_and_equals
-    - lines_longer_than_80_chars
     - no_duplicate_case_values
-    - omit_local_variable_types
     - prefer_const_constructors
     - prefer_const_declarations
     - prefer_final_fields

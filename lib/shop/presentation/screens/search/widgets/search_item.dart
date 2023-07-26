@@ -1,19 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop_app_clean_architecture/core/index.dart';
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
+import 'package:shop_app_clean_architecture/utils/extensions/index.dart';
 
 class SearchItem extends StatelessWidget {
-  const SearchItem({required this.product, Key? key}) : super(key: key);
+  const SearchItem({
+    required this.product,
+    Key? key,
+  }) : super(key: key);
   final ProductResponseEntity product;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => {},
+      onTap: () => context.navigator.navigateToProductDescriptionScreen(
+        product: product,
+        favoriteCubit: context.read<FavoriteCubit>(),
+      ),
       child: Container(
-        height: 100.h,
+        height: 130.h,
         padding: const EdgeInsets.all(
           10.0,
         ),
@@ -55,12 +63,18 @@ class SearchItem extends StatelessWidget {
                   SizedBox(
                     height: 12.h,
                   ),
-                  Text(
-                    '${product.price.toStringAsFixed(1)} \$',
-                    style: TextStyle(
-                      color: R.colors.primaryColor,
-                      fontWeight: FontWeight.w600,
-                    ),
+                  Row(
+                    children: [
+                      Text(
+                        '${product.price.doubleToPrice()} \$',
+                        style: TextStyle(
+                          color: R.colors.primaryColor,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      const Spacer(),
+                      AnimatedProductFavoriteButton(product: product),
+                    ],
                   ),
                 ],
               ),

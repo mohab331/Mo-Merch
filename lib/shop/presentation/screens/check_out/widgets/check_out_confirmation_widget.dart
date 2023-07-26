@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shop_app_clean_architecture/core/index.dart';
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
 import 'package:shop_app_clean_architecture/utils/index.dart';
 
-import '../../../../../core/index.dart';
-
 class CheckOutConfirmationWidget extends StatefulWidget {
-  const CheckOutConfirmationWidget(
-      {required this.orderResponseEntity, Key? key})
-      : super(key: key);
+  const CheckOutConfirmationWidget({
+    required this.orderResponseEntity,
+    Key? key,
+  }) : super(key: key);
   final OrderResponseEntity? orderResponseEntity;
 
   @override
@@ -22,7 +22,11 @@ class _CheckOutConfirmationWidgetState
     extends State<CheckOutConfirmationWidget> {
   @override
   void initState() {
-    R.functions.showToast(message: 'You will be returned to home screen in 5 seconds', color: Colors.green,);
+    R.functions.showToast(
+      message: 'You will be returned to home screen in 5 seconds',
+      color: R.colors.greenColor,
+    );
+
     /// [addPostFrameCallback] method is used to schedule the execution of a function after the current frame is
     /// finished rendering. It is commonly used to perform initialization tasks or trigger actions that require
     /// the UI to be fully rendered.
@@ -81,9 +85,9 @@ class _CheckOutConfirmationWidgetState
             ),
             Container(
               alignment: Alignment.center,
-              child: const Icon(
+              child: Icon(
                 Icons.check_circle_outline_rounded,
-                color: Colors.green,
+                color: R.colors.greenColor,
                 size: 150,
               ),
             ),

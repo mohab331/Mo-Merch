@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app_clean_architecture/core/index.dart';
 
 class CardContainer extends StatelessWidget {
   const CardContainer({
@@ -17,7 +18,7 @@ class CardContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: cardColor ?? Colors.white,
+      color: cardColor ?? R.colors.whiteColor,
       elevation: cardElevation ?? 2,
       margin: EdgeInsets.zero,
       child: Padding(

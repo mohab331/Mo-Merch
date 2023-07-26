@@ -1,5 +1,4 @@
-import 'package:shop_app_clean_architecture/core/service_locators/index.dart';
-import 'package:shop_app_clean_architecture/utils/index.dart';
+import 'package:shop_app_clean_architecture/core/index.dart';
 
 class UtilInjector implements BaseInjector{
 

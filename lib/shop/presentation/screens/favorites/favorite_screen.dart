@@ -13,8 +13,8 @@ class FavoriteScreen extends StatelessWidget {
     return BlocProvider<FavoriteCubit>(
       create: (context) => diInstance.get<FavoriteCubit>()..getFavoriteData(context, page: 1,),
       child: Scaffold(
-        backgroundColor: Colors.grey[200],
-        body: FavoriteContent(),
+        backgroundColor: R.colors.lightGrey,
+        body: const FavoriteContent(),
       ),
     );
   }

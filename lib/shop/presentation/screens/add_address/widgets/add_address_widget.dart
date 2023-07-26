@@ -35,6 +35,8 @@ class AddAddressWidget extends HookWidget {
     return BlocProvider.value(
       value: addressCubit,
       child: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
+        physics: const BouncingScrollPhysics(),
         child: Form(
           key: _formKey,
           child: Container(
@@ -46,7 +48,7 @@ class AddAddressWidget extends HookWidget {
                 Container(
                   alignment: Alignment.topRight,
                   child: CustomTextButton(
-                    label: 'Save',
+                    label: 'Save Location',
                     onPressed: () => _onAddPressed(
                       context,
                       AddAddressRequestEntity(
@@ -62,6 +64,9 @@ class AddAddressWidget extends HookWidget {
                     ),
                     isEnabled: (addressCubit.state is! AddAddressLoadingState),
                   ),
+                ),
+                SizedBox(
+                  height: 10.h,
                 ),
                 DefaultTextFormField(
                   textController: nameTextEditingController,
@@ -92,7 +97,7 @@ class AddAddressWidget extends HookWidget {
                   textController: regionTextEditingController,
                   textInputType: TextInputType.text,
                   prefixIcon: Icons.location_on_outlined,
-                  label: R.strings.addressRegionLabel,
+                  label: 'Country',
                   onValidateFunction: (value) => value?.validateIsEmpty(),
                   focusNode: regionFocusNode,
                   onFieldSubmittedFunction: (_) =>
@@ -119,7 +124,9 @@ class AddAddressWidget extends HookWidget {
                   textInputType: TextInputType.text,
                   prefixIcon: Icons.notes,
                   label: R.strings.addressNotesLabel,
-                  onValidateFunction: (value) => value?.validateIsEmpty(),
+                  onValidateFunction: (_) {
+                    return null;
+                  },
                   focusNode: notesFocusNode,
                   onFieldSubmittedFunction: (_) =>
                       FocusScope.of(context).unfocus(),

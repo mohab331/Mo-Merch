@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:shop_app_clean_architecture/core/index.dart';
 import 'package:shop_app_clean_architecture/shop/data/index.dart';
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
@@ -109,14 +108,17 @@ class LocalStorageImpl implements BaseLocalStorageRepo {
     );
   }
 
-  Future<Either<Failure, T>> _execute<T>(
-      {required Future<T> Function() tryBlock}) async {
+  Future<Either<Failure, T>> _execute<T>({
+    required Future<T> Function() tryBlock,
+  }) async {
     try {
       return Right(await tryBlock());
     } on Exception catch (error) {
-      return Left(CacheFailure(
-        failureMessage: error.toString(),
-      ),);
+      return Left(
+        CacheFailure(
+          failureMessage: error.toString(),
+        ),
+      );
     }
   }
 }

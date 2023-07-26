@@ -69,6 +69,10 @@ class RepositoryInjector implements BaseInjector {
             ),
             deleteCartRequestMapper: DeleteCartItemRequestMapper(),
             updateCartRequestMapper: UpdateCartRequestMapper(),
+            baseCartItemResponseMapper:
+                BaseResponseMapper<CartItemModel, CartItem>(
+              mapper: CartItemMapper(),
+            ),
           ),
         ),
     // Registering CategoryRepoImpl

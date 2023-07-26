@@ -44,10 +44,12 @@ class _SearchContentState extends State<SearchContent> {
             prefixIcon: Icons.search,
             label: R.strings.searchLabel,
             onValidateFunction: (value) => value.validateIsEmpty(),
-            onChanged: (value) => _search(
-              context,
-              word: value,
-            ),
+            onChanged: (value) {
+              _search(
+                context,
+                word: value,
+              );
+            },
           ),
           SizedBox(
             height: 8.h,
@@ -65,9 +67,14 @@ class _SearchContentState extends State<SearchContent> {
               successWidget: searchState is SearchSuccessState
                   ? (searchState.products.isNotEmpty)
                       ? ListView.separated(
-                          physics: const BouncingScrollPhysics(),
-                          itemBuilder: (context, index) => SearchItem(
-                            product: searchState.products[index],
+                physics: const BouncingScrollPhysics(),
+                          itemBuilder: (context, index) =>
+                              BlocProvider<FavoriteCubit>(
+                            create: (context) =>
+                                diInstance.get<FavoriteCubit>(),
+                            child: SearchItem(
+                              product: searchState.products[index],
+                            ),
                           ),
                           separatorBuilder: (context, index) => Divider(
                             height: 10.h,
@@ -77,7 +84,9 @@ class _SearchContentState extends State<SearchContent> {
                       : EmptyListWidget(
                 isLoading: searchState is SearchLoadingState,
                           emptyString: R.strings.emptySearchResult,
-                          emptyWidget: Icon(Icons.search_off_outlined,),
+                          emptyWidget: const Icon(
+                            Icons.search_off_outlined,
+                          ),
                           onReloadButtonPressed: () => _search(
                             context,
                             word: searchTextEditingController.text,

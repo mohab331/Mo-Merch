@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:shop_app_clean_architecture/core/index.dart';
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
-import 'package:shop_app_clean_architecture/shop/presentation/common_widgets/product/index.dart';
+import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
 
 class ProductItemContent extends StatelessWidget {
   const ProductItemContent({
@@ -31,7 +31,7 @@ class ProductItemContent extends StatelessWidget {
             textAlign: TextAlign.start,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
-              color: Colors.black,
+              color: R.colors.blackColor,
               fontWeight: FontWeight.w600,
               fontSize: 17.sp,
             ),

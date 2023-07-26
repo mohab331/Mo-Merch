@@ -70,7 +70,7 @@ class FavoriteRepoImpl
       toggleFavorite({
     required FavoriteRequestEntity favoriteRequestEntity,
   }) async {
-    return await executeWithNetworkAndExceptionHandling<
+    return executeWithNetworkAndExceptionHandling<
         BaseResponseEntity<ToggleFavoriteResponseEntity>>(
       () async {
         final response = await baseShopRemoteDS.addOrDeleteFromFavorites(

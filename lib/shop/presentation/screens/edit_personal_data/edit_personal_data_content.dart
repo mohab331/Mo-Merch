@@ -57,8 +57,9 @@ class _EditPersonalDataContentState extends State<EditPersonalDataContent> {
     return BlocListener<EditPersonalDataCubit, EditPersonalDataState>(
       listener: (context, state) {
         if (state.message != null) {
-          final toastColor =
-              state is EditPersonalDataSuccessState ? Colors.green : Colors.red;
+          final toastColor = state is EditPersonalDataSuccessState
+              ? R.colors.greenColor
+              : R.colors.redColor;
           R.functions.showToast(
             message: state.message!,
             color: toastColor,
@@ -113,17 +114,17 @@ class _EditPersonalDataContentState extends State<EditPersonalDataContent> {
               SizedBox(
                 height: 40.h,
               ),
-              customElevatedButton(
+              CustomElevatedButton(
                 label: R.strings.updatePersonalData,
                 onButtonPressed: (context) => onUpdateButtonPressed(
                   context,
                   userUpdatedData: UpdateProfileRequestEntity(
-                      name : nameTextEditingController.text,
-                      email:emailTextEditingController.text,
-                      phone:phoneTextEditingController.text,
+                    name: nameTextEditingController.text,
+                    email: emailTextEditingController.text,
+                    phone: phoneTextEditingController.text,
                   ),
                 ),
-                buttonHeight: 80.h,
+                buttonHeight: 50.h,
                 borderRadius: 30.r,
                 isLoading:
                     editPersonalDataState is EditPersonalDataLoadingState,

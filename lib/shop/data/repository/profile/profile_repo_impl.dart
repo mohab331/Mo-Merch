@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:shop_app_clean_architecture/core/error/failure.dart';
-import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 import 'package:shop_app_clean_architecture/shop/data/index.dart';
+import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 import 'package:shop_app_clean_architecture/utils/index.dart';
 
 /// Implementation of the `BaseProfileRepo` interface.
@@ -71,7 +71,7 @@ class ProfileRepoImpl
   @override
   Future<Either<Failure, BaseResponseEntity<UserResponseEntity>>>
       getUserProfile() async {
-    return await executeWithNetworkAndExceptionHandling<
+    return executeWithNetworkAndExceptionHandling<
         BaseResponseEntity<UserResponseEntity>>(
       () async {
         final response = await baseShopRemoteDS.getUserProfile();
@@ -93,7 +93,7 @@ class ProfileRepoImpl
       updateUserProfile({
     required UpdateProfileRequestEntity updateProfileRequestEntity,
   }) async {
-    return await executeWithNetworkAndExceptionHandling<
+    return executeWithNetworkAndExceptionHandling<
         BaseResponseEntity<UserResponseEntity>>(
       () async {
         final response = await baseShopRemoteDS.updateUserProfile(

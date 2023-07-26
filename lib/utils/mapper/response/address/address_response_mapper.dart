@@ -1,7 +1,6 @@
-import 'package:shop_app_clean_architecture/shop/domain/entities/index.dart';
-import 'package:shop_app_clean_architecture/utils/index.dart';
-
 import 'package:shop_app_clean_architecture/shop/data/index.dart';
+import 'package:shop_app_clean_architecture/shop/domain/index.dart';
+import 'package:shop_app_clean_architecture/utils/index.dart';
 
 /// Represents an address response entity.
 class AddressResponseMapper

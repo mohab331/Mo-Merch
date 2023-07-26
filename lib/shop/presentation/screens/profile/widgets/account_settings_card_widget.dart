@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:shop_app_clean_architecture/core/index.dart';
 
 class AccountSettingsCardWidget extends HookWidget {
   const AccountSettingsCardWidget({
@@ -19,7 +19,11 @@ class AccountSettingsCardWidget extends HookWidget {
   final IconData leadingIcon;
   @override
   Widget build(BuildContext context) {
-    final animationController = useAnimationController(duration: Duration(seconds: 1,))..forward();
+    final animationController = useAnimationController(
+        duration: const Duration(
+      seconds: 1,
+    ),)
+      ..forward();
     return SlideTransition(
       position: Tween<Offset>(
         end: Offset.zero,
@@ -32,8 +36,8 @@ class AccountSettingsCardWidget extends HookWidget {
       ),
       child: Card(
         elevation: 7.0,
-        shadowColor: Colors.black,
-        color: Colors.grey[200],
+        shadowColor: R.colors.blackColor,
+        color: R.colors.lightGrey,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
             20.r,
@@ -59,7 +63,7 @@ class AccountSettingsCardWidget extends HookWidget {
             ),
             child: Icon(
               leadingIcon,
-              color: Colors.deepOrange,
+              color: R.colors.primaryColor,
             ),
           ),
           onTap: () => onTap(context),

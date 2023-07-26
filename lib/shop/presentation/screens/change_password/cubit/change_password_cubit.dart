@@ -10,8 +10,10 @@ class ChangePasswordCubit extends Cubit<ChangePasswordState> {
         );
   final ChangePasswordUsecase changePasswordUsecase;
 
-  void changePassword(
-      {required String oldPassword, required String newPassword}) async {
+  void changePassword({
+    required String oldPassword,
+    required String newPassword,
+  }) async {
     emit(ChangePasswordLoadingState());
     final response = await changePasswordUsecase.call(
       ChangePasswordRequestEntity(

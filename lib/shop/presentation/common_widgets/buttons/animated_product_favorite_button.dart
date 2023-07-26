@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-
 import 'package:shop_app_clean_architecture/core/index.dart';
 import 'package:shop_app_clean_architecture/shop/domain/entities/index.dart';
-
 import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
 
 class AnimatedProductFavoriteButton extends HookWidget {
@@ -28,8 +26,9 @@ class AnimatedProductFavoriteButton extends HookWidget {
     return BlocConsumer<FavoriteCubit, FavoriteState>(
       listener: (context, state) {
         if (state.message != null) {
-          final toastColor =
-              state is FavoriteToggleSuccessState ? Colors.green : Colors.red;
+          final toastColor = state is FavoriteToggleSuccessState
+              ? R.colors.greenColor
+              : R.colors.redColor;
           R.functions.showToast(
             message: state.message ?? '',
             color: toastColor,
@@ -66,14 +65,14 @@ class AnimatedProductFavoriteButton extends HookWidget {
               id: product.id,
             )
                 ? Icon(
-                    Icons.favorite,
+              Icons.favorite,
                     size: 30,
-                    color: R.colors.loveColor,
+                    color: R.colors.redColor,
                   )
                 : Icon(
-                    Icons.favorite_border,
+              Icons.favorite_border,
                     size: iconSize ?? 40,
-                    color: Colors.grey,
+                    color: R.colors.greyColor,
                   ),
           ),
         );

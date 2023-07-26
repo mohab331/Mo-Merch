@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shop_app_clean_architecture/core/index.dart';
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
-
 import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
 import 'package:shop_app_clean_architecture/utils/index.dart';
 
@@ -46,12 +46,12 @@ class OrderInfoSection extends StatelessWidget {
           mainText: 'Order ',
           spanText: '${orderData.id}',
           mainTextStyle: TextStyle(
-            color: Colors.black,
+            color: R.colors.blackColor,
             fontWeight: FontWeight.bold,
             fontSize: 20.sp,
           ),
           spanTextStyle: TextStyle(
-            color: Colors.deepOrange,
+            color: R.colors.primaryColor,
             fontWeight: FontWeight.bold,
             fontSize: 20.sp,
           ),
@@ -112,8 +112,8 @@ class StatusIndicator extends StatelessWidget {
       color: _getStatusColor(status),
       child: Text(
         status,
-        style: const TextStyle(
-          color: Colors.white,
+        style: TextStyle(
+          color: R.colors.whiteColor,
           fontWeight: FontWeight.bold,
         ),
       ),
@@ -122,8 +122,8 @@ class StatusIndicator extends StatelessWidget {
 
   Color _getStatusColor(String status) {
     return status.toLowerCase() == 'new'
-        ? Colors.green
-        : Colors.red[900] ?? Colors.red;
+        ? R.colors.greenColor
+        : R.colors.darkRed;
   }
 }
 
@@ -141,11 +141,11 @@ class CancelButton extends StatelessWidget {
                 orderId: orderID,
               ),
       child: CustomContainer(
-        color: Colors.red[900] ?? Colors.red,
-        child: const Text(
+        color: R.colors.darkRed,
+        child: Text(
           'cancel',
           style: TextStyle(
-            color: Colors.white,
+            color: R.colors.whiteColor,
             fontWeight: FontWeight.bold,
           ),
         ),

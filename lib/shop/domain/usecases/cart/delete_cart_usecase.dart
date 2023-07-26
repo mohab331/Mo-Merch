@@ -13,7 +13,7 @@ class DeleteCartUseCase
   Future<Either<Failure, BaseResponseEntity<EmptyResponseEntity>>> call(
     DeleteCartItemRequestEntity deleteCartItemRequestEntity,
   ) async {
-    return await baseCartRepo.removeFromCart(
+    return baseCartRepo.removeFromCart(
       deleteCartItemRequestEntity: deleteCartItemRequestEntity,
     );
   }

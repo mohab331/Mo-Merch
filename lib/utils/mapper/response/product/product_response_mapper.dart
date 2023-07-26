@@ -13,10 +13,10 @@ class ProductResponseMapper
       name: NullReplacements.stringReplacement.replaceIfNull(
         model?.name,
       ),
-      price: NullReplacements.intReplacement.replaceIfNull(
+      price: NullReplacements.doubleReplacement.replaceIfNull(
         model?.price,
       ),
-      discount: NullReplacements.intReplacement.replaceIfNull(
+      discount: NullReplacements.doubleReplacement.replaceIfNull(
         model?.discount,
       ),
       image: NullReplacements.stringReplacement.replaceIfNull(
@@ -26,7 +26,7 @@ class ProductResponseMapper
       images: model?.images,
       description: model?.description,
       inFavorites: model?.inFavorites,
-      oldPrice: NullReplacements.intReplacement.replaceIfNull(
+      oldPrice: NullReplacements.doubleReplacement.replaceIfNull(
         model?.oldPrice,
       ),
     );

@@ -122,13 +122,13 @@ class ShopRemoteDSImpl implements BaseShopRemoteDS {
   }
 
   @override
-  Future<BaseResponseModel<EmptyResponseModel>> addToCart({
+  Future<BaseResponseModel<CartItemModel>> addToCart({
     required AddToCartRequestModel addToCartRequestModel,
   }) async {
     return _postRequest(
       url: Endpoints.carts,
       data: addToCartRequestModel.toJson(),
-      modelInstance: const EmptyResponseModel(),
+      modelInstance: const CartItemModel(),
     );
   }
 
@@ -200,10 +200,14 @@ class ShopRemoteDSImpl implements BaseShopRemoteDS {
   }
 
   @override
-  Future<BaseListResponseModel<FavoriteResponseModel>> getFavoriteData({required int page,}) async {
+  Future<BaseListResponseModel<FavoriteResponseModel>> getFavoriteData({
+    required int page,
+  }) async {
     final response = await apiConsumer.getData(
       url: Endpoints.favorites,
-      queryMap: {'page':page,}
+      queryMap: {
+        'page': page,
+      },
     );
     _checkResponseError(response);
     return BaseListResponseModel<FavoriteResponseModel>.fromJson(
@@ -239,10 +243,14 @@ class ShopRemoteDSImpl implements BaseShopRemoteDS {
   }
 
   @override
-  Future<BaseListResponseModel<OrderResponseModel>> getOrders({required int page,}) async {
+  Future<BaseListResponseModel<OrderResponseModel>> getOrders({
+    required int page,
+  }) async {
     final response = await apiConsumer.getData(
       url: Endpoints.orders,
-      queryMap: {'page':page,}
+      queryMap: {
+        'page': page,
+      },
     );
     _checkResponseError(response);
     return BaseListResponseModel<OrderResponseModel>.fromJson(
@@ -255,10 +263,12 @@ class ShopRemoteDSImpl implements BaseShopRemoteDS {
   Future<BaseListResponseModel<AddressResponseModel>> getUserAddress({
     required int page,
   }) async {
-    final response =
-        await apiConsumer.getData(url: Endpoints.address, queryMap: {
-      'page': page,
-    });
+    final response = await apiConsumer.getData(
+      url: Endpoints.address,
+      queryMap: {
+        'page': page,
+      },
+    );
     _checkResponseError(response);
     return BaseListResponseModel<AddressResponseModel>.fromJson(
       jsonData: response.data,
@@ -382,7 +392,12 @@ class ShopRemoteDSImpl implements BaseShopRemoteDS {
   }
 
   @override
-  Future<BaseResponseModel<EmptyResponseModel>> editOrder({required int orderId}) {
-    return _getRequest(url: Endpoints.cancelOrder(orderId: orderId), modelInstance: EmptyResponseModel(),);
+  Future<BaseResponseModel<EmptyResponseModel>> editOrder({
+    required int orderId,
+  }) {
+    return _getRequest(
+      url: Endpoints.cancelOrder(orderId: orderId),
+      modelInstance: const EmptyResponseModel(),
+    );
   }
 }

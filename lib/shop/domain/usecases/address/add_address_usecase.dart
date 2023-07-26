@@ -15,7 +15,7 @@ class AddNewAddressUseCase
   Future<Either<Failure, BaseResponseEntity<AddressResponseEntity>>> call(
     AddAddressRequestEntity addAddressRequestEntity,
   ) async {
-    return await baseAddressRepo.addNewAddress(
+    return baseAddressRepo.addNewAddress(
       addAddressRequestEntity: addAddressRequestEntity,
     );
   }

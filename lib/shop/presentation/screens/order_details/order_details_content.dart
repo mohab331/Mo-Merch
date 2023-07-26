@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shop_app_clean_architecture/core/index.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
-
-import '../../../../core/index.dart';
 
 class OrderDetailsContent extends StatelessWidget {
   const OrderDetailsContent({required this.orderId, Key? key})
@@ -18,7 +17,10 @@ class OrderDetailsContent extends StatelessWidget {
     return BlocListener<EditOrderCubit, EditOrderState>(
       listener: (context, state) {
         if(state.message != null){
-          R.functions.showToast(message: state.message ?? '', color: state.toastColor ?? Colors.transparent,);
+          R.functions.showToast(
+            message: state.message ?? '',
+            color: state.toastColor ?? R.colors.transparent,
+          );
         }
       },
       child: StateHandlingWidget(

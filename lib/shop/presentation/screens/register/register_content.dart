@@ -22,9 +22,8 @@ class RegisterContent extends HookWidget {
             }
             else if (state is AuthenticationErrorState) {
               R.functions.showToast(
-                message:
-                    state.message ?? 'Error Occurred While Registering',
-                color: Colors.red,
+                message: state.message ?? 'Error Occurred While Registering',
+                color: R.colors.redColor,
               );
             }else{}
           },

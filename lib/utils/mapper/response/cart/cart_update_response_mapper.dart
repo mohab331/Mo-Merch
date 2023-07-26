@@ -5,10 +5,11 @@ import 'package:shop_app_clean_architecture/utils/index.dart';
 class CartUpdateResponseMapper
     implements BaseMapper<CartUpdateResponseModel, CartUpdateResponseEntity> {
   @override
-  CartUpdateResponseEntity mapToEntity(
-      {required CartUpdateResponseModel? model}) {
+  CartUpdateResponseEntity mapToEntity({
+    required CartUpdateResponseModel? model,
+  }) {
     return CartUpdateResponseEntity(
-      total: NullReplacements.intReplacement.replaceIfNull(
+      total: NullReplacements.doubleReplacement.replaceIfNull(
         model?.total,
       ),
     );

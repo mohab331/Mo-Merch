@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shop_app_clean_architecture/core/index.dart';
+
 // PaymentDetails Widget
 class PaymentDetailsWidget extends StatelessWidget {
   const PaymentDetailsWidget({
@@ -13,10 +15,10 @@ class PaymentDetailsWidget extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Icon(
+        Icon(
           Icons.payment,
           size: 25,
-          color: Colors.grey,
+          color: R.colors.greyColor,
         ),
         SizedBox(
           width: 10.w,

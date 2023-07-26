@@ -16,6 +16,6 @@ class GetProfileUseCase
   Future<Either<Failure, BaseResponseEntity<UserResponseEntity>>> call(
     NoParameters parameters,
   ) async {
-    return await baseProfileRepo.getUserProfile();
+    return baseProfileRepo.getUserProfile();
   }
 }

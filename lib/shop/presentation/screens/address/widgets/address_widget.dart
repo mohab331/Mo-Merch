@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:shop_app_clean_architecture/core/index.dart';
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
-import 'package:shop_app_clean_architecture/shop/presentation/common_widgets/buttons/custom_text_button.dart';
+import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
 import 'package:shop_app_clean_architecture/utils/index.dart';
 
 class AddressWidget extends StatelessWidget {
@@ -17,9 +17,12 @@ class AddressWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AddressListTile(
-      address: address,
-      onLongPressed: onLongPressed,
+    return GestureDetector(
+      onTap: () => onLongPressed(address),
+      child: AddressListTile(
+        address: address,
+        onLongPressed: onLongPressed,
+      ),
     );
   }
 }
@@ -94,9 +97,9 @@ class AddressRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Icon(
+        Icon(
           Icons.location_on,
-          color: Colors.grey,
+          color: R.colors.greyColor,
           size: 30,
         ),
         SizedBox(
@@ -112,20 +115,33 @@ class AddressRow extends StatelessWidget {
         ),
         const Spacer(),
         CustomTextButton(
-          onPressed: () => onLongPressed(address),
+          onPressed: () {},
           label: 'delete',
-          textColor: Colors.red[900] ?? Colors.red,
+          textColor: R.colors.darkRed,
         ),
         if (address.latitude != 0.0 && address.longitude != 0.0)
-          CustomTextButton(onPressed: () =>_handleOnViewOnMapPressed(context, addressLatitude: address.latitude, addressLongitude: address.longitude,), label: 'view on map'),
+          CustomTextButton(
+            onPressed: () => _handleOnViewOnMapPressed(
+              context,
+              addressLatitude: address.latitude,
+              addressLongitude: address.longitude,
+            ),
+            label: 'view on map',
+          ),
       ],
     );
   }
 
-  void _handleOnViewOnMapPressed(BuildContext context,{required double addressLatitude ,required double addressLongitude}){
-    context.navigator.navigateToMapScreen(initialLongitude: addressLongitude,initialLatitude:addressLatitude,);
+  void _handleOnViewOnMapPressed(
+    BuildContext context, {
+    required double addressLatitude,
+    required double addressLongitude,
+  }) {
+    context.navigator.navigateToMapScreen(
+      initialLongitude: addressLongitude,
+      initialLatitude: addressLatitude,
+    );
   }
-
 }
 
 class AddressInfoRow extends StatelessWidget {
@@ -143,7 +159,10 @@ class AddressInfoRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin:EdgeInsets.only(left: 30.w,bottom: 15.h,),
+      margin: EdgeInsets.only(
+        left: 30.w,
+        bottom: 15.h,
+      ),
       child: Row(
         children: [
           Text(

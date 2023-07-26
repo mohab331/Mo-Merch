@@ -4,7 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop_app_clean_architecture/core/index.dart';
 
 class CustomAddAnimatedButton extends StatefulWidget {
-  const CustomAddAnimatedButton({Key? key,required this.onButtonPressed,required this.buttonLabel}) : super(key: key);
+  const CustomAddAnimatedButton({
+    required this.buttonLabel,
+    required this.onButtonPressed,
+    Key? key,
+  }) : super(key: key);
   final Function onButtonPressed;
   final String buttonLabel;
 
@@ -22,7 +26,7 @@ class _CustomAddAnimatedButtonState extends State<CustomAddAnimatedButton> {
         R.images.icCart,
         width: 24.w,
         height: 24.h,
-        color: Colors.white,
+        color: R.colors.whiteColor,
       ),
       text: Text(
         widget.buttonLabel,
@@ -33,23 +37,23 @@ class _CustomAddAnimatedButtonState extends State<CustomAddAnimatedButton> {
         maxLines: 1,
         overflow: TextOverflow.fade,
       ),
-      check: const SizedBox(
-        width: 48,
-        height: 48,
+      check: SizedBox(
+        width: 48.w,
+        height: 48.h,
         child: Icon(
           Icons.check,
-          color: Colors.white,
+          color: R.colors.whiteColor,
           size: 24,
         ),
       ),
-      borderRadius: BorderRadius.circular(24),
+      borderRadius: BorderRadius.circular(24.r),
       backgroundColor: R.colors.primaryColor,
       onPressed: (id) {
         if (id == AddToCartButtonStateId.idle) {
           widget.onButtonPressed();
           setState(() {
             stateId = AddToCartButtonStateId.loading;
-            Future.delayed(const Duration(seconds: 3), () {
+            Future.delayed(const Duration(seconds: 2), () {
               if (mounted) {
                 setState(() {
                   stateId = AddToCartButtonStateId.done;

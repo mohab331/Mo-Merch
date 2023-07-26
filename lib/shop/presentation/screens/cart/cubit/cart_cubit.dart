@@ -22,15 +22,16 @@ class CartCubit extends Cubit<CartState> {
   final UpdateCartUsecase updateCartUseCase;
 
   /// The map that stores the products currently in the cart, with their IDs as keys.
-  Map<int, ProductResponseEntity> productsInCart = {};
+  Map<int, CartItem> productsInCart = {};
 
   /// The map that stores the cart items, with their IDs as keys.
   Map<int, CartItem> cartItems = {};
 
   /// The total cost of the items in the cart.
-  int cartTotal = 0;
+  double cartTotal = 0.0;
 
   /// Adds a product to the cart.
+  ///
   /// Emits `CartLoadingState` initially, then calls the `addToCartUseCase` to add the product to the cart.
   /// If successful, updates the cart locally and emits `AddToCartSuccessState`.
   /// If there is an error, emits `CartErrorState` with the error message.
@@ -48,13 +49,14 @@ class CartCubit extends Cubit<CartState> {
         emit(CartErrorState(message: failure.failureMessage));
       },
       (addToCartResponse) {
-        _handleAddingProductsToCart(product);
+        _handleAddingProductsToCart(addToCartResponse.entity);
         emit(AddToCartSuccessState(message: addToCartResponse.message));
       },
     );
   }
 
   /// Retrieves the cart items and total cost from the server.
+  ///
   /// Emits `CartLoadingState` initially, then calls the `getCartUseCase` to fetch the cart data.
   /// If successful, updates the cart locally and emits `GetCartSuccessState`.
   /// If there is an error, emits `CartErrorState` with the error message.
@@ -69,10 +71,10 @@ class CartCubit extends Cubit<CartState> {
       },
       (getCartResponse) {
         if (getCartResponse.entity.cartItems.isNotEmpty) {
-          getCartResponse.entity.cartItems.forEach((element) {
-            _handleAddingProductsToCart(element.product);
+          for (var element in getCartResponse.entity.cartItems) {
+            _handleAddingProductsToCart(element);
             cartItems[element.id] = element;
-          });
+          }
         } else {
           cartItems.clear();
           productsInCart.clear();
@@ -89,6 +91,7 @@ class CartCubit extends Cubit<CartState> {
   }
 
   /// Updates the quantity of a cart item.
+  ///
   /// Emits `InstantToggleCartState` to trigger an instant UI update before the API call.
   /// Calls the `updateCartUseCase` to update the cart item's quantity.
   /// If successful, updates the cart locally and emits `UpdateCartSuccessState`.
@@ -128,25 +131,25 @@ class CartCubit extends Cubit<CartState> {
   }
 
   /// Deletes a cart item.
-  /// Emits `InstantToggleCartState` to trigger an instant UI update before the API call.
-  /// Calls the `deleteCartUseCase` to remove the cart item from the server.
+  ///
+  /// Emits `DeleteCartLoadingState` initially, then calls the `deleteCartUseCase` to remove the cart item from the server.
   /// If successful, removes the cart item locally and emits `DeleteCartSuccessState`.
-  /// If there is an error, reverts the changes and emits `CartErrorState` with the error message.
+  /// If there is an error, emits `CartErrorState` with the error message.
   void deleteFromCart({
     required CartItem cartItem,
   }) async {
-    _handleInstantCartDelete(cartItem);
-    emit(InstantToggleCartState());
+    emit(DeleteCartLoadingState());
 
     final response = await deleteCartUseCase.call(
       DeleteCartItemRequestEntity(cartItemId: cartItem.id),
     );
+
     response.fold(
       (failure) {
-        _handleInstantCartDeleteErrorState(cartItem);
         emit(CartErrorState(message: failure.failureMessage));
       },
       (deleteCartResponse) {
+        _handleCartDelete(cartItem);
         emit(DeleteCartSuccessState(message: deleteCartResponse.message));
       },
     );
@@ -158,10 +161,11 @@ class CartCubit extends Cubit<CartState> {
   }
 
   /// Handles the addition of products to the cart locally.
+  ///
   /// If the product is not already in the cart, adds it to the `productsInCart` map.
-  void _handleAddingProductsToCart(ProductResponseEntity product) {
-    if (!isProductInCart(productId: product.id)) {
-      productsInCart[product.id] = product;
+  void _handleAddingProductsToCart(CartItem cartItem) {
+    if (!isProductInCart(productId: cartItem.product.id)) {
+      productsInCart[cartItem.product.id] = cartItem;
     }
   }
 
@@ -180,29 +184,20 @@ class CartCubit extends Cubit<CartState> {
 
   /// Handles the instant update of the cart item's quantity if there is an error during the API call.
   void _handleInstantCartErrorUpdate(int cartID, int quantity) {
-    _handleInstantCartUpdate(
-      cartID,
-      (quantity * -1),
-    );
+    _handleInstantCartUpdate(cartID, (quantity * -1));
   }
 
   /// Handles the instant removal of a cart item.
+  ///
   /// Updates the `cartTotal`, `productsInCart`, and `cartItems` locally.
-  void _handleInstantCartDelete(CartItem cartItem) {
+  void _handleCartDelete(CartItem cartItem) {
     cartTotal -= cartItem.product.price * cartItem.quantity;
     productsInCart.remove(cartItem.product.id);
     cartItems.remove(cartItem.id);
   }
 
-  /// Handles the instant restoration of a cart item if there is an error during the API call.
-  /// Restores the `cartTotal`, `productsInCart`, and `cartItems` to their previous state.
-  void _handleInstantCartDeleteErrorState(CartItem cartItem) {
-    cartTotal += cartItem.product.price * cartItem.quantity;
-    productsInCart[cartItem.product.id] = cartItem.product;
-    cartItems[cartItem.id] = cartItem;
-  }
-
   /// Retrieves the cart item with the given `cartId` from the `cartItems` map.
+  ///
   /// If the cart item exists, returns it; otherwise, returns a default `CartItem`.
   CartItem getCartItem(int cartId) {
     if (_isCartItemInCart(cartId)) {
@@ -229,13 +224,15 @@ class CartCubit extends Cubit<CartState> {
 
   /// Toggles the cart by adding or removing the given `product` based on its presence in the cart.
   void toggleCart(ProductResponseEntity product) {
-    if (isProductInCart(productId: product.id)) {
-      deleteFromCart(cartItem: cartItems[product.id]!);
+    if (isProductInCart(productId: product.id) &&
+        productsInCart[product.id] != null) {
+      deleteFromCart(cartItem: productsInCart[product.id]!);
     } else {
       addToCart(product: product);
     }
   }
 
+  /// Clears the cart items and the products in the cart.
   void clearCartItems() {
     cartItems.clear();
     productsInCart.clear();

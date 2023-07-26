@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:shop_app_clean_architecture/core/error/failure.dart';
-import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 import 'package:shop_app_clean_architecture/shop/data/index.dart';
+import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 import 'package:shop_app_clean_architecture/utils/index.dart';
 
 /// Implementation of the `BaseSearchRepo` interface.
@@ -36,7 +36,7 @@ class SearchRepoImpl
       searchProduct({
     required SearchRequestEntity searchRequestEntity,
   }) async {
-    return await executeWithNetworkAndExceptionHandling<
+    return executeWithNetworkAndExceptionHandling<
         BaseListResponseEntity<ProductResponseEntity>>(
       () async {
         final response = await baseShopRemoteDS.searchProduct(

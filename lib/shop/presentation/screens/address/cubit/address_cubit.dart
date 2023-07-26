@@ -28,9 +28,11 @@ class AddressCubit extends Cubit<AddressState> {
     emit(GetAddressLoadingState());
     final response = await getAddressUseCase.call(page);
     response.fold((failure) {
-      emit(GetAddressErrorState(
-        message: failure.failureMessage,
-      ));
+      emit(
+        GetAddressErrorState(
+          message: failure.failureMessage,
+        ),
+      );
     }, (getAddressResponse) {
       currentPage = getAddressResponse.currentPage ?? 1;
       hasMoreData = getAddressResponse.nextPageUrl != null;

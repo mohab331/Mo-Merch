@@ -75,7 +75,7 @@ class BaseLocalDSImpl implements BaseLocalDS {
     if (response == null) {
       return null;
     }
-    return UserResponseModel().fromJson(
+    return const UserResponseModel().fromJson(
       response.toMap(),
     );
   }

@@ -29,7 +29,7 @@ class HomeRepoImpl
   @override
   Future<Either<Failure, BaseResponseEntity<HomeResponseEntity>>>
       getHomeData() async {
-    return await executeWithNetworkAndExceptionHandling<
+    return executeWithNetworkAndExceptionHandling<
         BaseResponseEntity<HomeResponseEntity>>(
       () async {
         final response = await baseShopRemoteDS.getHomeData();

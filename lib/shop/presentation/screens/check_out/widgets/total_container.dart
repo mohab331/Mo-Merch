@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
+import 'package:shop_app_clean_architecture/utils/extensions/index.dart';
 
 class TotalContainer extends StatelessWidget {
   const TotalContainer({
@@ -22,7 +23,7 @@ class TotalContainer extends StatelessWidget {
         children: [
           TextWithSpan(
             mainText: 'Total: ',
-            spanText: '$totalCartPrice \$',
+            spanText: '${totalCartPrice.doubleToPrice()} \$',
           ),
           SizedBox(height: 10.h),
           TextWithSpan(

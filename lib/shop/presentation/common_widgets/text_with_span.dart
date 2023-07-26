@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:shop_app_clean_architecture/core/index.dart';
 
 class TextWithSpan extends StatelessWidget {
@@ -23,7 +22,7 @@ class TextWithSpan extends StatelessWidget {
         text: mainText,
         style: mainTextStyle ??
             TextStyle(
-              color: Colors.black,
+              color: R.colors.blackColor,
               fontWeight: FontWeight.bold,
               fontSize: 18.sp,
             ),

@@ -15,7 +15,7 @@ class AppFunctions {
       msg: message,
       fontSize: 16,
       backgroundColor: color,
-      textColor: Colors.white,
+      textColor: R.colors.whiteColor,
       gravity: ToastGravity.BOTTOM,
       timeInSecForIosWeb: 5,
       toastLength: Toast.LENGTH_SHORT,

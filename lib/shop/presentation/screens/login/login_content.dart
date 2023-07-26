@@ -20,9 +20,8 @@ class LoginContent extends StatelessWidget {
               context.navigator.navigateToShopLayout();
             } else if (state is AuthenticationErrorState) {
               R.functions.showToast(
-                message:
-                    state.message ?? 'Error Occurred While Logging In',
-                color: state.toastColor ?? Colors.red,
+                message: state.message ?? 'Error Occurred While Logging In',
+                color: state.toastColor ?? R.colors.redColor,
               );
             }else{}
           },

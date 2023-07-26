@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:intl/intl.dart';
 
 
 /// An extension on [String?] that provides methods to convert a string to various types.

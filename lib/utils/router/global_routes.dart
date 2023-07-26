@@ -98,6 +98,12 @@ enum PostAuthRoutes {
       path: AddressScreen.routePath,
     ),
   ),
+  addAddress(
+    RouteModel(
+      name: AddAddressScreen.routeName,
+      path: AddAddressScreen.routePath,
+    ),
+  ),
   profile(
     RouteModel(
       name: ProfileScreen.routeName,

@@ -12,7 +12,7 @@ class CartResponseMapper
               ?.map((e) => cartItemMapper.mapToEntity(model: e))
               .toList() ??
           [],
-      totalCost: NullReplacements.intReplacement.replaceIfNull(
+      totalCost: NullReplacements.doubleReplacement.replaceIfNull(
         model?.totalCost,
       ),
     );
@@ -22,9 +22,11 @@ class CartResponseMapper
   CartResponseModel mapToModel({required CartResponseEntity entity}) {
     return CartResponseModel(
       cartItems: entity.cartItems
-          .map((e) => cartItemMapper.mapToModel(
-                entity: e,
-              ))
+          .map(
+            (e) => cartItemMapper.mapToModel(
+              entity: e,
+            ),
+          )
           .toList(),
       totalCost: entity.totalCost,
     );

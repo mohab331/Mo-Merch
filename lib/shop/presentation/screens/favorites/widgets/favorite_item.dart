@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:shop_app_clean_architecture/core/index.dart';
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
-import 'package:shop_app_clean_architecture/shop/presentation/common_widgets/index.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
 import 'package:shop_app_clean_architecture/utils/index.dart';
 
@@ -104,7 +103,7 @@ class FavoriteCard extends StatelessWidget {
                         child: Text(
                           favoriteProduct.name,
                           style: TextStyle(
-                            color: Colors.black,
+                            color: R.colors.blackColor,
                             fontWeight: FontWeight.bold,
                             fontSize: 17.sp,
                             overflow: TextOverflow.ellipsis,
@@ -170,7 +169,7 @@ class RemoveIconContainer extends StatelessWidget {
         height: 50.h,
         width: 47.w,
         decoration: BoxDecoration(
-          color: Colors.redAccent,
+          color: R.colors.lightRed,
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(
               30.r,
@@ -205,11 +204,11 @@ class PriceRowWidget extends StatelessWidget {
         children: [
           Expanded(
             child: CircleAvatar(
-              backgroundColor: Colors.deepOrange,
+              backgroundColor: R.colors.primaryColor,
               radius: 15.r,
-              child: const Icon(
+              child: Icon(
                 Icons.attach_money,
-                color: Colors.white,
+                color: R.colors.blackColor,
                 size: 20,
               ),
             ),
@@ -218,7 +217,7 @@ class PriceRowWidget extends StatelessWidget {
           Expanded(
             flex: 3,
             child: Text(
-              favoriteProduct.price.formatPrice(),
+              favoriteProduct.price.doubleToPrice(),
               style: TextStyle(
                 fontSize: 16.0.sp,
                 fontWeight: FontWeight.bold,
@@ -233,7 +232,7 @@ class PriceRowWidget extends StatelessWidget {
                 vertical: 4.0.h,
               ),
               decoration: BoxDecoration(
-                color: Colors.red,
+                color: R.colors.redColor,
                 borderRadius: BorderRadius.circular(
                   12.r,
                 ),
@@ -245,7 +244,7 @@ class PriceRowWidget extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 12.0.sp,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: R.colors.whiteColor,
                   ),
                 ),
               ),

@@ -6,12 +6,12 @@ class CartUpdateResponseModel
     this.total,
   });
 
-  final int? total;
+  final double? total;
 
   @override
   CartUpdateResponseModel fromJson(Map<String, dynamic>? jsonMap) {
     return CartUpdateResponseModel(
-      total: jsonMap?['total'],
+      total: (jsonMap?['total'] as num?)?.toDouble(),
     );
   }
 }

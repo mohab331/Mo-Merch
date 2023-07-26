@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop_app_clean_architecture/core/index.dart';
 
 /// A class that defines the dark and light themes for the application.
@@ -8,40 +9,40 @@ class AppTheme {
   /// Returns the dark theme for the application.
   static ThemeData darkTheme() => ThemeData(
         appBarTheme: AppBarTheme(
-          iconTheme: const IconThemeData(
-            color: Colors.white,
+          iconTheme: IconThemeData(
+            color: R.colors.whiteColor,
           ),
           backgroundColor: R.colors.appBackgroundDarkThemeColor,
-          actionsIconTheme: const IconThemeData(
-            color: Colors.white,
+          actionsIconTheme: IconThemeData(
+            color: R.colors.whiteColor,
           ),
           elevation: 0.0,
-          titleTextStyle: const TextStyle(
-            color: Colors.white,
+          titleTextStyle: TextStyle(
+            color: R.colors.whiteColor,
             fontWeight: FontWeight.bold,
-            fontSize: 24.0,
+            fontSize: 24.0.sp,
           ),
           systemOverlayStyle: SystemUiOverlayStyle(
             statusBarColor: R.colors.appBackgroundDarkThemeColor,
             statusBarBrightness: Brightness.light,
           ),
         ),
-        textTheme: const TextTheme(
+    textTheme: TextTheme(
           // Custom text styles for different sizes and purposes
           bodyLarge: TextStyle(
-            color: Colors.white,
+            color: R.colors.whiteColor,
           ),
           bodyMedium: TextStyle(
-            color: Colors.white,
+            color: R.colors.whiteColor,
           ),
           bodySmall: TextStyle(
-            color: Colors.grey,
+            color: R.colors.greyColor,
           ),
           displayLarge: TextStyle(
-            color: Colors.white,
+            color: R.colors.whiteColor,
           ),
           displaySmall: TextStyle(
-            color: Colors.white,
+            color: R.colors.whiteColor,
           ),
         ),
         primarySwatch: R.colors.primaryColor,
@@ -49,58 +50,59 @@ class AppTheme {
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           elevation: 20.0,
           backgroundColor: R.colors.appBackgroundDarkThemeColor,
-          unselectedItemColor: Colors.white,
+          unselectedItemColor: R.colors.whiteColor,
           selectedItemColor: R.colors.primaryColor,
           type: BottomNavigationBarType.fixed,
         ),
-        iconTheme: const IconThemeData(
-          color: Colors.white,
+        iconTheme: IconThemeData(
+          color: R.colors.whiteColor,
         ),
         drawerTheme: DrawerThemeData(
           elevation: 20.0,
           backgroundColor: R.colors.appBackgroundDarkThemeColor,
         ),
-        unselectedWidgetColor: Colors.white, // Color for unselected widgets
+        unselectedWidgetColor: R.colors.whiteColor,
+        // Color for unselected widgets
         inputDecorationTheme: InputDecorationTheme(
-          border: const OutlineInputBorder(
+          border: OutlineInputBorder(
             borderSide: BorderSide(
-              color: Colors.white,
-              width: 2,
+              color: R.colors.whiteColor,
+              width: 2.w,
             ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(
-              5.0,
+              5.0.r,
             ),
-            borderSide: const BorderSide(
-              color: Colors.white,
+            borderSide: BorderSide(
+              color: R.colors.whiteColor,
             ),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(
-              5.0,
+              5.0.r,
             ),
-            borderSide: const BorderSide(
-              color: Colors.white,
+            borderSide: BorderSide(
+              color: R.colors.whiteColor,
             ),
           ),
-          labelStyle: const TextStyle(
-            color: Colors.white,
-            fontSize: 16.0,
+          labelStyle: TextStyle(
+            color: R.colors.whiteColor,
+            fontSize: 16.0.sp,
             fontWeight: FontWeight.bold,
           ),
-          prefixIconColor: Colors.white,
-          suffixIconColor: Colors.white,
+          prefixIconColor: R.colors.whiteColor,
+          suffixIconColor: R.colors.whiteColor,
           errorBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: R.colors.errorColor,
-              width: 2,
+              color: R.colors.redColor,
+              width: 2.w,
             ),
           ),
-          focusedErrorBorder: const OutlineInputBorder(
+          focusedErrorBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: Colors.white,
-              width: 2,
+              color: R.colors.whiteColor,
+              width: 2.w,
             ),
           ),
         ),
@@ -109,59 +111,59 @@ class AppTheme {
   /// Returns the light theme for the application.
   static ThemeData lightTheme() => ThemeData(
         primarySwatch: R.colors.primaryColor,
-        appBarTheme: const AppBarTheme(
+    appBarTheme: AppBarTheme(
           iconTheme: IconThemeData(
-            color: Colors.black,
+            color: R.colors.blackColor,
           ),
-          backgroundColor: Colors.white,
+          backgroundColor: R.colors.whiteColor,
           actionsIconTheme: IconThemeData(
-            color: Colors.black,
+            color: R.colors.blackColor,
           ),
           elevation: 0.0,
           titleTextStyle: TextStyle(
-            color: Colors.black,
+            color: R.colors.blackColor,
             fontWeight: FontWeight.bold,
-            fontSize: 24.0,
+            fontSize: 24.0.sp,
           ),
           systemOverlayStyle: SystemUiOverlayStyle(
-            statusBarColor: Colors.transparent,
+            statusBarColor: R.colors.transparent,
             statusBarBrightness: Brightness.dark,
           ),
         ),
-        textTheme: const TextTheme(
+    textTheme: TextTheme(
           // Custom text styles for different sizes and purposes
           bodyLarge: TextStyle(
-            color: Colors.black,
+            color: R.colors.blackColor,
           ),
           bodyMedium: TextStyle(
-            color: Colors.black,
+            color: R.colors.blackColor,
           ),
           bodySmall: TextStyle(
-            color: Colors.grey,
+            color: R.colors.greyColor,
           ),
           displayLarge: TextStyle(
-            fontSize: 34,
-            color: Colors.black,
+            fontSize: 34.sp,
+            color: R.colors.blackColor,
             fontWeight: FontWeight.bold,
           ),
           displaySmall: TextStyle(
-            color: Colors.white,
+            color: R.colors.whiteColor,
           ),
         ),
-        scaffoldBackgroundColor: Colors.white,
+        scaffoldBackgroundColor: R.colors.whiteColor,
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           elevation: 20.0,
-          backgroundColor: Colors.white,
-          unselectedItemColor: Colors.black,
+          backgroundColor: R.colors.whiteColor,
+          unselectedItemColor: R.colors.blackColor,
           selectedItemColor: R.colors.primaryColor,
           type: BottomNavigationBarType.fixed,
         ),
-        iconTheme: const IconThemeData(
-          color: Colors.black,
+        iconTheme: IconThemeData(
+          color: R.colors.blackColor,
         ),
-        drawerTheme: const DrawerThemeData(
+        drawerTheme: DrawerThemeData(
           elevation: 20.0,
-          backgroundColor: Colors.white,
+          backgroundColor: R.colors.whiteColor,
         ),
         listTileTheme: const ListTileThemeData(
           contentPadding: EdgeInsets.zero,
@@ -170,14 +172,14 @@ class AppTheme {
           minLeadingWidth: 0.0,
         ),
         inputDecorationTheme: InputDecorationTheme(
-          border: const OutlineInputBorder(
+          border: OutlineInputBorder(
             borderSide: BorderSide(
-              width: 2,
+              width: 2.w,
             ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(
-              5.0,
+              5.0.r,
             ),
           ),
           enabledBorder: OutlineInputBorder(
@@ -185,22 +187,22 @@ class AppTheme {
               5.0,
             ),
           ),
-          labelStyle: const TextStyle(
-            color: Colors.black,
-            fontSize: 16.0,
+          labelStyle: TextStyle(
+            color: R.colors.blackColor,
+            fontSize: 16.0.sp,
             fontWeight: FontWeight.bold,
           ),
-          prefixIconColor: Colors.black,
-          suffixIconColor: Colors.black,
+          prefixIconColor: R.colors.blackColor,
+          suffixIconColor: R.colors.blackColor,
           errorBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: R.colors.errorColor,
-              width: 2,
+              color: R.colors.redColor,
+              width: 2.w,
             ),
           ),
-          focusedErrorBorder: const OutlineInputBorder(
+          focusedErrorBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              width: 2,
+              width: 2.w,
             ),
           ),
         ),

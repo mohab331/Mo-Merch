@@ -13,8 +13,9 @@ class GetCategoryProductsUsecase
 
   @override
   Future<Either<Failure, BaseListResponseEntity<ProductResponseEntity>>> call(
-      CategoryProductsRequestEntity categoryProductsRequestEntity) async {
-    return await baseCategoryRepo.getCategoryProductsByCategoryId(
+    CategoryProductsRequestEntity categoryProductsRequestEntity,
+  ) async {
+    return baseCategoryRepo.getCategoryProductsByCategoryId(
       categoryProductsRequestEntity: categoryProductsRequestEntity,
     );
   }

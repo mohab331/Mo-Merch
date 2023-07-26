@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:shop_app_clean_architecture/core/index.dart';
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
-
 import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
 
 // AddressDetails Widget
@@ -20,9 +19,14 @@ class OrderAddressPaymentDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        GestureDetector(onTap: ()=>_handleOnAddressTapped(context),child: DeliveryAddressSection(addressData: addressData)),
+        GestureDetector(
+            onTap: () => _handleOnAddressTapped(context),
+            child: DeliveryAddressSection(addressData: addressData,),),
         SizedBox(height: 10.h),
-        const Divider(color: Colors.grey, thickness: 1,),
+        Divider(
+          color: R.colors.greyColor,
+          thickness: 1,
+        ),
         SizedBox(height: 10.h),
         PaymentDetailsWidget(paymentMethod: paymentMethod),
       ],
@@ -30,12 +34,14 @@ class OrderAddressPaymentDetails extends StatelessWidget {
   }
   void _handleOnAddressTapped(BuildContext context) {
     if (addressData.longitude != 0.0 && addressData.latitude != 0.0) {
-      Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => MapsScreen(
-          initialLatitude: addressData.latitude,
-          initialLongitude: addressData.longitude,
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => MapsScreen(
+            initialLatitude: addressData.latitude,
+            initialLongitude: addressData.longitude,
+          ),
         ),
-      ));
+      );
     }
   }
 }
@@ -54,10 +60,10 @@ class DeliveryAddressSection extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Icon(
+        Icon(
           Icons.location_on_outlined,
           size: 25,
-          color: Colors.grey,
+          color: R.colors.greyColor,
         ),
         SizedBox(
           width: 10.w,
@@ -106,8 +112,13 @@ class AddressDetailsSection extends StatelessWidget {
         SizedBox(
           height: 10.h,
         ),
-        if(address.longitude!=0.0 && address.latitude != 0.0)
-        const Text('Tap to view on map',style: TextStyle(color: Colors.grey),),
+        if (address.longitude != 0.0 && address.latitude != 0.0)
+          Text(
+            'Tap to view on map',
+            style: TextStyle(
+              color: R.colors.greyColor,
+            ),
+          ),
       ],
     );
   }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shop_app_clean_architecture/core/index.dart';
+
 class AddressPaymentListTile extends StatelessWidget {
   const AddressPaymentListTile({required this.title,this.leading,this.trailingIcon,this.onListTapped,super.key,});
   final Widget? leading;
@@ -20,7 +22,7 @@ class AddressPaymentListTile extends StatelessWidget {
       trailing: Icon(
         trailingIcon,
         size: 25,
-        color: Colors.black,
+        color: R.colors.blackColor,
       ),
       onTap: onListTapped,
     );

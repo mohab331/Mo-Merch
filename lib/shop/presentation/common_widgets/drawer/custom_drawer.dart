@@ -12,8 +12,8 @@ class CustomDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: ListTileTheme(
-        textColor: Colors.white,
-        iconColor: Colors.white,
+        textColor: R.colors.whiteColor,
+        iconColor: R.colors.whiteColor,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -23,14 +23,15 @@ class CustomDrawer extends StatelessWidget {
                   Container(
                     alignment: Alignment.center,
                     height: 150.h,
-                    padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+                    padding: EdgeInsets.symmetric(
+                        vertical: 30.h, horizontal: 20.w,),
                     width: double.infinity,
                     child: FittedBox(
                       fit: BoxFit.fitWidth,
                       child: Text(
                         'Welcome, $userName',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: R.colors.whiteColor,
                           fontSize: 23.sp,
                           fontWeight: FontWeight.bold,
                         ),
@@ -79,11 +80,13 @@ class CustomDrawer extends StatelessWidget {
               title: R.strings.logout,
               icon: Icons.logout,
               onItemTapped: () => context.read<AuthCubit>().logout(),
+              isLoading: context.watch<AuthCubit>().state
+                  is AuthenticationLoadingState,
             ),
             DefaultTextStyle(
               style: TextStyle(
                 fontSize: 14.sp,
-                color: Colors.white54,
+                color: R.colors.lightWhite,
               ),
               child: Container(
                 margin: const EdgeInsets.symmetric(

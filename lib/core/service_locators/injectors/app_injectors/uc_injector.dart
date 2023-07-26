@@ -1,7 +1,5 @@
 import 'package:shop_app_clean_architecture/core/index.dart';
-import 'package:shop_app_clean_architecture/core/service_locators/index.dart';
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
-import 'package:shop_app_clean_architecture/shop/domain/usecases/order/get_order_usecase.dart';
 
 /// The injector class responsible for registering the use cases into the dependency injection container.
 class UsecaseInjector implements BaseInjector {

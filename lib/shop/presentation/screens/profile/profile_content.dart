@@ -21,7 +21,7 @@ class ProfileContent extends StatelessWidget {
         if (state is ProfileErrorState) {
           R.functions.showToast(
             message: state.errorMessage ?? R.strings.unKnownError,
-            color: R.colors.errorColor,
+            color: R.colors.redColor,
           );
         }
       },
@@ -35,7 +35,7 @@ class ProfileContent extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 children: [
                   Container(
-                    color: Colors.black,
+                    color: R.colors.blackColor,
                     child: UserDataWidget(
                       userData: profileState.userProfile,
                     ),
@@ -47,7 +47,7 @@ class ProfileContent extends StatelessWidget {
                     height: 440.h,
                     padding: const EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: R.colors.whiteColor,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(
                           40.0.r,
@@ -93,7 +93,9 @@ class ProfileContent extends StatelessWidget {
   }
 
   void _handleOnTapEditPersonalData(
-      BuildContext context, UserResponseEntity user) {
+    BuildContext context,
+    UserResponseEntity user,
+  ) {
     context.navigator.navigateToEditPersonalDataScreen(
       extras: user,
     );

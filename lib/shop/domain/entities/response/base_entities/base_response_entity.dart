@@ -1,8 +1,8 @@
 class BaseResponseEntity<T> {
   BaseResponseEntity({
+    required this.entity,
     this.message,
     this.status,
-    required this.entity,
   });
 
   final bool? status;

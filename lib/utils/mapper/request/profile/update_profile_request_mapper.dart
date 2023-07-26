@@ -6,8 +6,9 @@ class UpdateProfileRequestMapper
     implements
         BaseMapper<UpdateProfileRequestModel, UpdateProfileRequestEntity> {
   @override
-  UpdateProfileRequestEntity mapToEntity(
-      {required UpdateProfileRequestModel? model}) {
+  UpdateProfileRequestEntity mapToEntity({
+    required UpdateProfileRequestModel? model,
+  }) {
     return UpdateProfileRequestEntity(
       name: NullReplacements.stringReplacement.replaceIfNull(
         model?.name,
@@ -22,8 +23,9 @@ class UpdateProfileRequestMapper
   }
 
   @override
-  UpdateProfileRequestModel mapToModel(
-      {required UpdateProfileRequestEntity entity}) {
+  UpdateProfileRequestModel mapToModel({
+    required UpdateProfileRequestEntity entity,
+  }) {
     return UpdateProfileRequestModel(
       name: entity.name,
       email: entity.email,

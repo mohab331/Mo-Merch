@@ -10,9 +10,12 @@ class ToggleFavoriteUsecase
   BaseFavoriteRepo baseFavoriteRepo;
 
   @override
-  Future<Either<Failure, BaseResponseEntity<ToggleFavoriteResponseEntity>>> call(
-      FavoriteRequestEntity favoriteRequestEntity) async {
-    return await baseFavoriteRepo.toggleFavorite(
-        favoriteRequestEntity: favoriteRequestEntity);
+  Future<Either<Failure, BaseResponseEntity<ToggleFavoriteResponseEntity>>>
+      call(
+    FavoriteRequestEntity favoriteRequestEntity,
+  ) async {
+    return baseFavoriteRepo.toggleFavorite(
+      favoriteRequestEntity: favoriteRequestEntity,
+    );
   }
 }

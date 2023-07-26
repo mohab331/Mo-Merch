@@ -18,7 +18,6 @@ class ProductImagesWidget extends HookWidget {
     final selectedImageIndex = useState(-1);
     final transformController = useTransformationController();
     Matrix4 initialController = Matrix4.identity();
-    print(product.image);
     return Row(
       children: [
         InteractiveProductImage(
@@ -121,7 +120,7 @@ class SelectedImageWidget extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border.all(
           width: 2,
-          color: isSelected ? R.colors.primaryColor : Colors.grey,
+          color: isSelected ? R.colors.primaryColor : R.colors.greyColor,
         ),
       ),
       child: CachedNetworkImageBuilder(

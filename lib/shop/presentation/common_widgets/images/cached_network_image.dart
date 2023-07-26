@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:shop_app_clean_architecture/core/index.dart';
 
 class CachedNetworkImageBuilder extends StatelessWidget {
   const CachedNetworkImageBuilder({
@@ -23,12 +25,12 @@ class CachedNetworkImageBuilder extends StatelessWidget {
       width: width,
       height: height,
       placeholder: (context, url) => Shimmer.fromColors(
-        baseColor: Colors.grey[850]!,
-        highlightColor: Colors.grey[800]!,
+        baseColor: R.colors.darkGrey,
+        highlightColor: R.colors.mediumGrey,
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.black,
-            borderRadius: BorderRadius.circular(8.0),
+            color: R.colors.blackColor,
+            borderRadius: BorderRadius.circular(8.0.r),
           ),
         ),
       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shop_app_clean_architecture/core/index.dart';
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
 import 'package:shop_app_clean_architecture/utils/index.dart';
@@ -72,7 +73,7 @@ class OrderProductImageWidget extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             border: Border.all(
-              color: Colors.grey,
+              color: R.colors.greyColor,
             ),
           ),
           child: CachedNetworkImageBuilder(
@@ -83,7 +84,7 @@ class OrderProductImageWidget extends StatelessWidget {
         ),
         Card(
           elevation: 5.0,
-          color: Colors.white,
+          color: R.colors.whiteColor,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
@@ -122,7 +123,7 @@ class OrderProductDetailsWidget extends StatelessWidget {
             mainText: 'EGP',
             spanText: ' ${product.price.doubleToPrice()}',
             spanTextStyle: TextStyle(
-              color: Colors.black,
+              color: R.colors.blackColor,
               fontSize: 18.sp,
               fontWeight: FontWeight.normal,
             ),

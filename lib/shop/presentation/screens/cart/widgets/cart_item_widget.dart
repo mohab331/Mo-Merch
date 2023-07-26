@@ -29,6 +29,7 @@ class CartItemWidget extends StatelessWidget {
                   imageUrl: cartData.product.image,
                   imageHeight: 100,
                   imageWidth: 100,
+                  imageFit: BoxFit.contain,
                 ),
               ),
             ),

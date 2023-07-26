@@ -24,7 +24,10 @@ class ShopLayout extends StatelessWidget {
         listener: (context, state) {
           if(state is UnAuthenticatedState){
             context.navigator.navigateToLoginScreen();
-            R.functions.showToast(message: state.message ?? 'Logged Out', color: state.toastColor ?? Colors.green,);
+            R.functions.showToast(
+              message: state.message ?? 'Logged Out',
+              color: state.toastColor ?? R.colors.greenColor,
+            );
           }
         },
         child: WillPopScope(
@@ -38,8 +41,8 @@ class ShopLayout extends StatelessWidget {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
-                    Colors.deepOrange.withOpacity(0.8),
-                    Colors.blueGrey.withOpacity(0.7)
+                    R.colors.deepOrangeWithOpacity,
+                    R.colors.blueGreyWithOpacity,
                   ],
                 ),
               ),

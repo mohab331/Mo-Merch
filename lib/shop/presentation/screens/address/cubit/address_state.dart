@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 
 abstract class AddressState {
   const AddressState({

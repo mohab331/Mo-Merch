@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shop_app_clean_architecture/core/index.dart';
 
 class OnBoardingWidget extends StatelessWidget {
   const OnBoardingWidget({
@@ -26,7 +27,7 @@ class OnBoardingWidget extends StatelessWidget {
           title,
           style: TextStyle(
             fontSize: 18.0.sp,
-            color: Colors.black,
+            color: R.colors.blackColor,
             fontWeight: FontWeight.bold,
           ),
         ),

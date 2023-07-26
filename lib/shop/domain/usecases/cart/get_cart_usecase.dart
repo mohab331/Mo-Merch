@@ -12,6 +12,6 @@ class GetCartUseCase implements BaseUsecase<BaseResponseEntity<CartResponseEntit
   Future<Either<Failure, BaseResponseEntity<CartResponseEntity>>> call(
     NoParameters parameters,
   ) async {
-    return await baseCartRepo.getCartData();
+    return baseCartRepo.getCartData();
   }
 }

@@ -19,8 +19,8 @@ class CartItemInformationWidget extends StatelessWidget {
           Text(
             cartItem.product.name,
             overflow: TextOverflow.ellipsis,
-            style: const TextStyle(
-              color: Colors.black,
+            style: TextStyle(
+              color: R.colors.blackColor,
             ),
           ),
           Text(

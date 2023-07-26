@@ -13,7 +13,7 @@ class SetCachedUserDataUsecase
   Future<Either<Failure, bool>> call(
     SaveUserDataRequestEntity saveUserDataRequestEntity,
   ) async {
-    return await baseLocalStorageRepo.setUserData(
+    return baseLocalStorageRepo.setUserData(
       saveUserDataRequestEntity: saveUserDataRequestEntity,
     );
   }

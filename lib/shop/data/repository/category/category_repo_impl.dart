@@ -49,7 +49,7 @@ class CategoryRepoImpl
       getCategoryProductsByCategoryId({
     required CategoryProductsRequestEntity categoryProductsRequestEntity,
   }) async {
-    return await executeWithNetworkAndExceptionHandling<
+    return executeWithNetworkAndExceptionHandling<
         BaseListResponseEntity<ProductResponseEntity>>(
       () async {
         final response = await baseShopRemoteDS.getCategoryProductsById(

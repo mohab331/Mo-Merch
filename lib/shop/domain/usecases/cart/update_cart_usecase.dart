@@ -15,7 +15,7 @@ class UpdateCartUsecase
   Future<Either<Failure, BaseResponseEntity<CartUpdateResponseEntity>>> call(
     UpdateCartRequestEntity updateCartRequestEntity,
   ) async {
-    return await baseCartRepo.updateCart(
+    return baseCartRepo.updateCart(
       updateCartRequestEntity: updateCartRequestEntity,
     );
   }

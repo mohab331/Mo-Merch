@@ -1,6 +1,5 @@
-import 'package:shop_app_clean_architecture/utils/index.dart';
-
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
+import 'package:shop_app_clean_architecture/utils/index.dart';
 
 abstract class SplashState {}
 

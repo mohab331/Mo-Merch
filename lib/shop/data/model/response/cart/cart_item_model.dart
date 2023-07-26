@@ -14,7 +14,7 @@ class CartItemModel implements JsonConverter<CartItemModel> {
   @override
   CartItemModel fromJson(Map<String, dynamic>? jsonMap) {
     return CartItemModel(
-      product: ProductResponseModel().fromJson(
+      product: const ProductResponseModel().fromJson(
         jsonMap?['product'],
       ),
       id: jsonMap?['id'],

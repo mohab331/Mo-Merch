@@ -50,7 +50,7 @@ class DefaultTextFormField extends HookWidget {
                   if (!obscurePassword.value) {
                     iconData.value = Icons.visibility;
                   } else {
-                    iconData.value = Icons.visibility_off!;
+                    iconData.value = Icons.visibility_off;
                   }
                 },
                 icon: Icon(

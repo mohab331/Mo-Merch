@@ -9,5 +9,6 @@ export 'images/index.dart';
 export 'loading_widget.dart';
 export 'paginated_list/index.dart';
 export 'product/index.dart';
+export 'product/index.dart';
 export 'state_handling_widget.dart';
 export 'text_with_span.dart';

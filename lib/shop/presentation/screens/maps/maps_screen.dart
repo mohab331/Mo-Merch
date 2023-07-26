@@ -71,20 +71,21 @@ class _MapsScreenState extends State<MapsScreen> {
               },
               onTap: _onMapTap,
               markers: _markers,
-              myLocationEnabled: true,
+              myLocationEnabled: _shouldEnableInteractions(),
               zoomGesturesEnabled: _shouldEnableInteractions(),
               rotateGesturesEnabled: _shouldEnableInteractions(),
               zoomControlsEnabled: _shouldEnableInteractions(),
               scrollGesturesEnabled: _shouldEnableInteractions(),
               tiltGesturesEnabled: _shouldEnableInteractions(),
+              myLocationButtonEnabled: _shouldEnableInteractions(),
               trafficEnabled: true,
             ),
           ),
           if(widget.initialLatitude == null || widget.initialLongitude == null)
-          customElevatedButton(
-            label: 'Save',
-            onButtonPressed: (context) => _getLocationToSave(),
-          ),
+            CustomElevatedButton(
+              label: 'Save',
+              onButtonPressed: (context) => _getLocationToSave(),
+            ),
         ],
       ),
     );
@@ -212,9 +213,7 @@ class _MapsScreenState extends State<MapsScreen> {
       );
     } else {
       return CameraPosition(
-        target: markerLatLng != null
-            ? markerLatLng
-            : _currentLocation ?? const LatLng(0.0, 0.0),
+        target: markerLatLng ?? _currentLocation ?? const LatLng(0.0, 0.0),
         zoom: 20.0,
       );
     }

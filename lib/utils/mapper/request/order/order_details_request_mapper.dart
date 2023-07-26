@@ -5,8 +5,9 @@ import 'package:shop_app_clean_architecture/utils/index.dart';
 class OrderDetailsRequestMapper
     implements BaseMapper<OrderDetailsRequestModel, OrderDetailsRequestEntity> {
   @override
-  OrderDetailsRequestEntity mapToEntity(
-      {required OrderDetailsRequestModel? model}) {
+  OrderDetailsRequestEntity mapToEntity({
+    required OrderDetailsRequestModel? model,
+  }) {
     return OrderDetailsRequestEntity(
       orderId: NullReplacements.intReplacement.replaceIfNull(
         model?.orderId,
@@ -15,8 +16,9 @@ class OrderDetailsRequestMapper
   }
 
   @override
-  OrderDetailsRequestModel mapToModel(
-      {required OrderDetailsRequestEntity entity}) {
+  OrderDetailsRequestModel mapToModel({
+    required OrderDetailsRequestEntity entity,
+  }) {
     return OrderDetailsRequestModel(
       orderId: entity.orderId,
     );

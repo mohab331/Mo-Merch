@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:shop_app_clean_architecture/core/index.dart';
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
 
@@ -23,7 +22,10 @@ class AppCubit extends Cubit<AppState> {
       page,
     );
     response.fold((error) {
-      emit(AppErrorDataState(message: error.failureMessage,toastColor: Colors.red,));
+      emit(AppErrorDataState(
+        message: error.failureMessage,
+        toastColor: R.colors.redColor,
+      ),);
     }, (favoriteResponse) {
       addProductsToFavoriteMap(
         favoriteResponse.entityList,

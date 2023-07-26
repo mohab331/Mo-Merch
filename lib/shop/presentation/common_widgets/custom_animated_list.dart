@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shop_app_clean_architecture/utils/enums/index.dart';
+import 'package:shop_app_clean_architecture/utils/index.dart';
 
 /// A custom animated list widget that animates the insertion of items in the list.
 class CustomAnimatedList<T> extends StatefulWidget {

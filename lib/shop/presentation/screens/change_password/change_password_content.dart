@@ -25,8 +25,9 @@ class ChangePasswordContent extends HookWidget {
     return BlocListener<ChangePasswordCubit, ChangePasswordState>(
       listener: (context, state) {
         if (state.message != null) {
-          final toastColor =
-              state is ChangePasswordSuccessState ? Colors.green : Colors.red;
+          final toastColor = state is ChangePasswordSuccessState
+              ? R.colors.greenColor
+              : R.colors.redColor;
           R.functions.showToast(
             message: state.message ?? '',
             color: toastColor,
@@ -54,7 +55,7 @@ class ChangePasswordContent extends HookWidget {
               Text(
                 'Your new password must be different from previous used password.',
                 style: TextStyle(
-                  color: Colors.grey,
+                  color: R.colors.greyColor,
                   fontSize: 18.sp,
                 ),
               ),
@@ -98,7 +99,9 @@ class ChangePasswordContent extends HookWidget {
                 prefixIcon: Icons.lock,
                 label: 'Confirm password',
                 onValidateFunction: (value) => _validateConfirmPassword(
-                    value, newPasswordTextEditingController.text),
+                  value,
+                  newPasswordTextEditingController.text,
+                ),
                 isPasswordTextFormField: true,
                 focusNode: confirmPasswordFocusNode,
                 onFieldSubmittedFunction: (_) =>
@@ -107,7 +110,7 @@ class ChangePasswordContent extends HookWidget {
               SizedBox(
                 height: 40.h,
               ),
-              customElevatedButton(
+              CustomElevatedButton(
                 label: 'Change',
                 isLoading: changePasswordState is ChangePasswordLoadingState,
                 onButtonPressed: (context) => _onChangeTapped(

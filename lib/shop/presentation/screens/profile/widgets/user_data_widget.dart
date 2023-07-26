@@ -21,7 +21,10 @@ class UserDataWidget extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 60.0.r,
-            child: const Icon(Icons.person,size: 40,),
+            child: const Icon(
+              Icons.person,
+              size: 40,
+            ),
           ),
           SizedBox(
             height: 20.h,
@@ -29,7 +32,7 @@ class UserDataWidget extends StatelessWidget {
           Text(
             userData.name,
             style: TextStyle(
-              color: Colors.white,
+              color: R.colors.whiteColor,
               fontWeight: FontWeight.bold,
               fontSize: 28.0.sp,
             ),
@@ -63,16 +66,16 @@ class UserBalanceWidget extends StatelessWidget {
         Text(
           '${R.strings.credit}${credit.toStringAsFixed(1)}',
           style: TextStyle(
-            color: Colors.white,
+            color: R.colors.whiteColor,
             fontSize: 16.sp,
             fontWeight: FontWeight.w500,
           ),
         ),
-        const VerticalDivider(color: Colors.black,width: 2),
+        VerticalDivider(color: R.colors.blackColor, width: 2),
         Text(
           '${R.strings.orderPoints}$points',
           style: TextStyle(
-            color: Colors.white,
+            color: R.colors.whiteColor,
             fontSize: 16.sp,
             fontWeight: FontWeight.w500,
           ),

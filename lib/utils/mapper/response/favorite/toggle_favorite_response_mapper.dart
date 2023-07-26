@@ -6,8 +6,9 @@ class ToggleFavoriteResponseMapper
     implements
         BaseMapper<ToggleFavoriteResponseModel, ToggleFavoriteResponseEntity> {
   @override
-  ToggleFavoriteResponseEntity mapToEntity(
-      {required ToggleFavoriteResponseModel? model}) {
+  ToggleFavoriteResponseEntity mapToEntity({
+    required ToggleFavoriteResponseModel? model,
+  }) {
     return ToggleFavoriteResponseEntity(
       id: NullReplacements.intReplacement.replaceIfNull(
         model?.id,
@@ -16,8 +17,9 @@ class ToggleFavoriteResponseMapper
   }
 
   @override
-  ToggleFavoriteResponseModel mapToModel(
-      {required ToggleFavoriteResponseEntity entity}) {
+  ToggleFavoriteResponseModel mapToModel({
+    required ToggleFavoriteResponseEntity entity,
+  }) {
     return ToggleFavoriteResponseModel(
       id: entity.id,
     );

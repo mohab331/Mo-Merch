@@ -15,7 +15,7 @@ class ToggleAppThemeUseCase
   Future<Either<Failure, bool>> call(
     AppThemeRequestEntity appThemeRequestEntity,
   ) async {
-    return await baseLocalStorageRepo.toggleAppTheme(
+    return baseLocalStorageRepo.toggleAppTheme(
       appThemeRequestEntity: appThemeRequestEntity,
     );
   }

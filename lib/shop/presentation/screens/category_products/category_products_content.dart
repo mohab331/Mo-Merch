@@ -43,7 +43,7 @@ class CategoryProductsContent extends HookWidget {
           controller: scrollController,
           isScrollable: true,
         ),
-        listEmptyWidget: Icon(Icons.category_outlined),
+        listEmptyWidget: const Icon(Icons.category_outlined),
         listEmptyTitle: R.strings.emptyCategoryProducts,
         onScrollCallBack: _onScroll,
       ),
@@ -53,12 +53,18 @@ class CategoryProductsContent extends HookWidget {
   void _onScroll(BuildContext context) {
     final currentPage = context.read<CategoryProductsCubit>().currentPage;
     context.read<CategoryProductsCubit>().getCategoryProductsByID(
-        categoryId: category.id, page: (currentPage + 1));
+          categoryId: category.id,
+          page: (currentPage + 1),
+        );
   }
 
   void _onReloadButtonPressed(
-      CategoryProductsCubit categoryProductsCubit, int categoryId) {
+    CategoryProductsCubit categoryProductsCubit,
+    int categoryId,
+  ) {
     categoryProductsCubit.getCategoryProductsByID(
-        page: categoryProductsCubit.currentPage, categoryId: categoryId);
+      page: categoryProductsCubit.currentPage,
+      categoryId: categoryId,
+    );
   }
 }

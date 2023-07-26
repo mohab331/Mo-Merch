@@ -15,7 +15,7 @@ class RegisterUsecase
   Future<Either<Failure, BaseResponseEntity<UserResponseEntity>>> call(
     RegisterRequestEntity registerRequestEntity,
   ) async {
-    return await baseAuthRepo.registerUser(
+    return baseAuthRepo.registerUser(
       registerRequestEntity: registerRequestEntity,
     );
   }

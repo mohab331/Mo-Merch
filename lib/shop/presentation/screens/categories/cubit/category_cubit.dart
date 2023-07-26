@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:shop_app_clean_architecture/core/index.dart';
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
 
@@ -16,8 +15,8 @@ class CategoryCubit extends Cubit<CategoryState> {
   int currentPage = 1;
 
   void getCategories({
-    bool fromReload = false,
     required int page,
+    bool fromReload = false,
   }) async {
     if (page == 1) {
       hasNext = true;

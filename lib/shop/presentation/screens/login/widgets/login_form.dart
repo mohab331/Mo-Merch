@@ -32,7 +32,7 @@ class LoginForm extends HookWidget {
             Text(
               R.strings.loginWelcome,
               style: TextStyle(
-                color: Colors.black,
+                color: R.colors.blackColor,
                 fontSize: 28.sp,
                 fontWeight: FontWeight.bold,
               ),
@@ -40,9 +40,10 @@ class LoginForm extends HookWidget {
             Text(
               R.strings.loginWelcomeSubtitle,
               style: TextStyle(
-                  color: R.colors.primaryColor,
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.bold),
+                color: R.colors.primaryColor,
+                fontSize: 18.sp,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             SizedBox(
               height: 40.h,
@@ -83,7 +84,7 @@ class LoginForm extends HookWidget {
                 onPressed: () {},
               ),
             ),
-            customElevatedButton(
+            CustomElevatedButton(
               label: R.strings.login,
               onButtonPressed: (context) => _onLoginButtonPressed(
                 context,

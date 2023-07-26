@@ -1,4 +1,3 @@
-import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 
 class OrderResponseEntity {
 

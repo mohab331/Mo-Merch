@@ -13,7 +13,10 @@ class GetFavoriteUsecase
 
   @override
   Future<Either<Failure, BaseListResponseEntity<FavoriteResponseEntity>>> call(
-      int page) async {
-    return  baseFavoriteRepo.getFavoriteData(page: page,);
+    int page,
+  ) async {
+    return baseFavoriteRepo.getFavoriteData(
+      page: page,
+    );
   }
 }

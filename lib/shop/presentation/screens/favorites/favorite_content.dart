@@ -24,7 +24,7 @@ class FavoriteContent extends HookWidget {
         if (state.message != null) {
           R.functions.showToast(
             message: state.message ?? '',
-            color: state.toastColor ?? Colors.white,
+            color: state.toastColor ?? R.colors.whiteColor,
           );
         }
       },
@@ -45,16 +45,16 @@ class FavoriteContent extends HookWidget {
                   isLoading: (favoriteState is FavoriteLoadingState),
                   controller: scrollController,
                   isEmpty: favoriteList.isEmpty,
-                  listEmptyWidget: const Icon(
+                  listEmptyWidget: Icon(
                     Icons.favorite_outlined,
-                    color: Colors.red,
+                    color: R.colors.redColor,
                     size: 60,
                   ),
                   onEmptyReloadButtonPressed: () => _onReloadButtonPressed(
                     context,
                     favoriteCubit,
                   ),
-                  emptyIconColor: Colors.red[900],
+                  emptyIconColor: R.colors.darkRed,
                   listEmptyTitle:
                       'No Favorite Item, Start adding your beloved products',
                   onScrollCallBack: _onScroll,
@@ -96,7 +96,9 @@ class FavoriteContent extends HookWidget {
   }
 
   void _onReloadButtonPressed(
-      BuildContext context, FavoriteCubit favoriteCubit) {
+    BuildContext context,
+    FavoriteCubit favoriteCubit,
+  ) {
     favoriteCubit.getFavoriteData(
       context,
       page: favoriteCubit.currentPage,

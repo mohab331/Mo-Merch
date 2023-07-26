@@ -20,7 +20,7 @@ class OrderDetailsScreen extends StatelessWidget {
       ],
 
       child: Scaffold(
-        backgroundColor: Colors.grey[200],
+        backgroundColor: R.colors.lightGrey,
         appBar: AppBar(
           title: Text(
             orderId.toString(),

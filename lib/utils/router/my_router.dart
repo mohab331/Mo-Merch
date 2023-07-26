@@ -167,6 +167,19 @@ class MyRouter {
       },
     ),
     GoRoute(
+      path: PostAuthRoutes.addAddress.routeModel.path,
+      name: PostAuthRoutes.addAddress.routeModel.name,
+      pageBuilder: (context, state) {
+        final extra = state.extra as AddressCubit;
+        return MaterialPage(
+          child: AddAddressScreen(
+            addressCubit: extra,
+          ),
+          key: state.pageKey,
+        );
+      },
+    ),
+    GoRoute(
       path: PostAuthRoutes.search.routeModel.path,
       name: PostAuthRoutes.search.routeModel.name,
       pageBuilder: (context, state) {

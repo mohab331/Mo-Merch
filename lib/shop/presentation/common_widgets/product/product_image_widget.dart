@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
-import 'package:shop_app_clean_architecture/shop/presentation/common_widgets/index.dart';
-import 'package:shop_app_clean_architecture/shop/presentation/screens/home/widgets/index.dart';
+import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
 
 class ProductImageWidget extends StatelessWidget {
   const ProductImageWidget({

@@ -1,9 +1,7 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shop_app_clean_architecture/shop/domain/index.dart';
-import 'package:shop_app_clean_architecture/shop/presentation/screens/on_boarding/cubit/index.dart';
-
 import 'package:shop_app_clean_architecture/core/index.dart';
+import 'package:shop_app_clean_architecture/shop/domain/index.dart';
+import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
 
 class OnBoardingCubit extends Cubit<OnBoardingStates> {
   OnBoardingCubit({

@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:shop_app_clean_architecture/core/index.dart';
 import 'package:shop_app_clean_architecture/shop/domain/entities/index.dart';
-import 'package:shop_app_clean_architecture/shop/presentation/common_widgets/custom_animated_list.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
 
 class CategoryContent extends HookWidget {
@@ -28,7 +27,7 @@ class CategoryContent extends HookWidget {
         isLoading: isLoading,
         controller: scrollController,
         onScrollCallBack: _onScroll,
-        listEmptyWidget: Icon(Icons.category),
+        listEmptyWidget: const Icon(Icons.category),
         listEmptyTitle: R.strings.emptyCategories,
         onEmptyReloadButtonPressed: () => _onRetryButtonPressed(categoryCubit),
         listChild: CustomAnimatedList(

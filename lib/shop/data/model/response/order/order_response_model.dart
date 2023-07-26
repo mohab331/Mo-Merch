@@ -1,5 +1,4 @@
 import 'package:shop_app_clean_architecture/shop/data/model/json_converter.dart';
-import 'package:shop_app_clean_architecture/shop/data/model/response/index.dart';
 
 class OrderResponseModel implements JsonConverter<OrderResponseModel> {
   const OrderResponseModel({

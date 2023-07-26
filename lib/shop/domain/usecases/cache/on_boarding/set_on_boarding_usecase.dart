@@ -12,6 +12,8 @@ class SetOnBoardingUsecase implements BaseUsecase<bool, bool> {
 
   @override
   Future<Either<Failure, bool>> call(bool isShowOnBoarding) async {
-    return await baseLocalStorageRepo.setOnBoarding(showOnBoarding: isShowOnBoarding,);
+    return baseLocalStorageRepo.setOnBoarding(
+      showOnBoarding: isShowOnBoarding,
+    );
   }
 }

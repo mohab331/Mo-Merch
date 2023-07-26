@@ -1,8 +1,5 @@
-import 'package:shop_app_clean_architecture/core/service_locators/injectors/index.dart';
-import 'package:shop_app_clean_architecture/core/service_locators/service_locator.dart';
-
+import 'package:shop_app_clean_architecture/core/index.dart';
 import 'package:shop_app_clean_architecture/shop/data/index.dart';
-import 'package:shop_app_clean_architecture/shop/data/repository/cache/index.dart';
 
 /// This class is responsible for injecting data source modules into the service locator.
 /// It implements the [BaseInjector] interface.

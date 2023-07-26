@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shop_app_clean_architecture/core/index.dart';
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 import 'package:shop_app_clean_architecture/utils/index.dart';
 
@@ -31,7 +32,7 @@ class OrderSummary extends StatelessWidget {
           amount: 'EGP ${order.vat.doubleToPrice()}',
         ),
         SizedBox(height: 12.h),
-        const Divider(color: Colors.grey, thickness: 1),
+        Divider(color: R.colors.greyColor, thickness: 1),
         SizedBox(height: 12.h),
         OrderRow(
           title: 'Amount Paid',

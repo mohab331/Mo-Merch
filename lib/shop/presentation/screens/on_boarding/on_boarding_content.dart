@@ -21,7 +21,7 @@ class OnBoardingContent extends HookWidget {
         context.watch<OnBoardingCubit>().currentOnBoardingListIndex;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: R.colors.whiteColor,
         actions: [
           CustomTextButton(
             buttonPadding: const EdgeInsets.all(
@@ -56,9 +56,9 @@ class OnBoardingContent extends HookWidget {
                     SmoothPageIndicator(
                       controller: onBoardingPageController,
                       count: onBoardingEntityList.length,
-                      effect: const ExpandingDotsEffect(
+                      effect: ExpandingDotsEffect(
                         expansionFactor: 2.8,
-                        activeDotColor: Colors.deepOrange,
+                        activeDotColor: R.colors.primaryColor,
                       ),
                     ),
                     OnBoardingNavigationWidget(

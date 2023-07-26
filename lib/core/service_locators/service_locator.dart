@@ -11,7 +11,6 @@ class ServiceLocator {
   Future<void> init() async {
     const flutterSecureStorage = FlutterSecureStorage(
       aOptions: AndroidOptions(encryptedSharedPreferences: true),
-      iOptions: IOSOptions.defaultOptions,
     );
     diInstance
       ..registerLazySingleton<FlutterSecureStorage>(

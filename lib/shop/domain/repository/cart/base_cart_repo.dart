@@ -5,8 +5,8 @@ import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 /// Abstract class that defines the contract for interacting with cart-related operations.
 abstract class BaseCartRepo {
   /// Adds an item to the cart based on the provided [addToCartRequestEntity].
-  /// Returns a [Future] of [Either] containing either a [Failure] or a [BaseResponseEntity] of [EmptyResponseEntity] representing the operation result.
-  Future<Either<Failure, BaseResponseEntity<EmptyResponseEntity>>> addToCart({
+  /// Returns a [Future] of [Either] containing either a [Failure] or a [BaseResponseEntity] of [CartItem] representing the operation result.
+  Future<Either<Failure, BaseResponseEntity<CartItem>>> addToCart({
     required AddToCartRequestEntity addToCartRequestEntity,
   });
 
@@ -16,7 +16,8 @@ abstract class BaseCartRepo {
 
   /// Removes an item from the cart based on the provided [deleteCartItemRequestEntity].
   /// Returns a [Future] of [Either] containing either a [Failure] or a [BaseResponseEntity] of [EmptyResponseEntity] representing the operation result.
-  Future<Either<Failure, BaseResponseEntity<EmptyResponseEntity>>> removeFromCart({
+  Future<Either<Failure, BaseResponseEntity<EmptyResponseEntity>>>
+      removeFromCart({
     required DeleteCartItemRequestEntity deleteCartItemRequestEntity,
   });
 

@@ -51,7 +51,7 @@ class OrderRepoImpl
   Future<Either<Failure, BaseResponseEntity<OrderResponseEntity>>> createOrder({
     required AddOrderRequestEntity addOrderRequestEntity,
   }) async {
-    return await executeWithNetworkAndExceptionHandling<
+    return executeWithNetworkAndExceptionHandling<
         BaseResponseEntity<OrderResponseEntity>>(
       () async {
         final response = await baseShopRemoteDS.createOrder(
@@ -77,7 +77,7 @@ class OrderRepoImpl
       getOrderDetails({
     required OrderDetailsRequestEntity orderDetailsRequestEntity,
   }) async {
-    return await executeWithNetworkAndExceptionHandling<
+    return executeWithNetworkAndExceptionHandling<
         BaseResponseEntity<OrderDetailsResponseEntity>>(
       () async {
         final response = await baseShopRemoteDS.getOrderDetails(
@@ -113,8 +113,9 @@ class OrderRepoImpl
   }
 
   @override
-  Future<Either<Failure, BaseResponseEntity<EmptyResponseEntity>>> editOrder(
-      {required int orderId}) {
+  Future<Either<Failure, BaseResponseEntity<EmptyResponseEntity>>> editOrder({
+    required int orderId,
+  }) {
     return executeWithNetworkAndExceptionHandling<
         BaseResponseEntity<EmptyResponseEntity>>(() async {
       final response = await baseShopRemoteDS.editOrder(orderId: orderId);

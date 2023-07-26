@@ -15,7 +15,7 @@ class GetOrderDetailsUsecase
   Future<Either<Failure, BaseResponseEntity<OrderDetailsResponseEntity>>> call(
     OrderDetailsRequestEntity orderDetailsRequestEntity,
   ) async {
-    return await baseOrderRepo.getOrderDetails(
+    return baseOrderRepo.getOrderDetails(
       orderDetailsRequestEntity: orderDetailsRequestEntity,
     );
   }

@@ -41,7 +41,7 @@ class CartContent extends StatelessWidget {
                     ),
                   ),
                   const CartStatistics(),
-                  customElevatedButton(
+                  CustomElevatedButton(
                     label: R.strings.placeOrder,
                     onButtonPressed: (context) {
                       context.navigator.navigateToCheckOutScreen();
@@ -54,7 +54,7 @@ class CartContent extends StatelessWidget {
         if (state.message != null) {
           R.functions.showToast(
             message: state.message ?? '',
-            color: state.toastColor ?? Colors.green,
+            color: state.toastColor ?? R.colors.greenColor,
           );
         }
       },

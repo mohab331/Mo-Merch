@@ -14,6 +14,6 @@ class GetHomeUsecase
   Future<Either<Failure, BaseResponseEntity<HomeResponseEntity>>> call(
     NoParameters parameters,
   ) async {
-    return await baseHomeRepo.getHomeData();
+    return baseHomeRepo.getHomeData();
   }
 }

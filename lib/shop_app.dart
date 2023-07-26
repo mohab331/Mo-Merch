@@ -36,18 +36,17 @@ class ShopApp extends StatelessWidget {
               theme: AppTheme.lightTheme(),
               themeMode: ThemeMode.light,
               routerDelegate: MyRouter.router.routerDelegate,
-              routeInformationParser: MyRouter.router.routeInformationParser,
-              routeInformationProvider:
-                  MyRouter.router.routeInformationProvider,
-            );
-          },
-          designSize: const Size(
-            393,
-            830,
-          ),
-          minTextAdapt: true,
-          child: SplashScreen(),
+            routeInformationParser: MyRouter.router.routeInformationParser,
+            routeInformationProvider: MyRouter.router.routeInformationProvider,
+          );
+        },
+        designSize: const Size(
+          393,
+          830,
         ),
+        minTextAdapt: true,
+        child: const SplashScreen(),
+      ),
       );
   }
 }

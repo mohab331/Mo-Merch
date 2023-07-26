@@ -7,14 +7,17 @@ import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
 import 'package:shop_app_clean_architecture/utils/extensions/index.dart';
 
 class CheckOutDetailsWidget extends StatelessWidget {
-  const CheckOutDetailsWidget(
-      {required this.cartItems, required this.onChoseAddressPressed, Key? key})
-      : super(key: key);
+  const CheckOutDetailsWidget({
+    required this.cartItems,
+    required this.onChoseAddressPressed,
+    Key? key,
+  }) : super(key: key);
   final List<CartItem> cartItems;
   final Function(AddressResponseEntity?) onChoseAddressPressed;
   @override
   Widget build(BuildContext context) {
     final checkOutCubit = context.read<CheckOutCubit>();
+    final checkOutState = context.watch<CheckOutCubit>().state;
     return BlocListener<CheckOutCubit, CheckOutState>(
       listener: (context, state) {
         if (state is PlaceOrderLoadingState) {
@@ -33,7 +36,7 @@ class CheckOutDetailsWidget extends StatelessWidget {
         } else if (state is PlaceOrderSuccessState) {
           R.functions.showToast(
             message: state.message ?? 'Order place successfully',
-            color: state.toastColor ?? Colors.green,
+            color: state.toastColor ?? R.colors.greenColor,
           );
           checkOutCubit.toggleIndex(checkOutCubit.index + 1);
         }else{
@@ -47,7 +50,7 @@ class CheckOutDetailsWidget extends StatelessWidget {
           Text(
             'Order Items:',
             style: TextStyle(
-              color: Colors.black,
+              color: R.colors.blackColor,
               fontWeight: FontWeight.bold,
               fontSize: 20.sp,
             ),
@@ -62,7 +65,7 @@ class CheckOutDetailsWidget extends StatelessWidget {
           Text(
             'Payment:',
             style: TextStyle(
-              color: Colors.black,
+              color: R.colors.blackColor,
               fontWeight: FontWeight.bold,
               fontSize: 20.sp,
             ),
@@ -80,7 +83,7 @@ class CheckOutDetailsWidget extends StatelessWidget {
           Text(
             'Address:',
             style: TextStyle(
-              color: Colors.black,
+              color: R.colors.blackColor,
               fontWeight: FontWeight.bold,
               fontSize: 20.sp,
             ),
@@ -111,6 +114,7 @@ class CheckOutDetailsWidget extends StatelessWidget {
                 context: context,
                 checkOutCubit: checkOutCubit,
               ),
+              isEnabled: checkOutState is! PlaceOrderLoadingState,
             ),
           ),
         ],
@@ -125,7 +129,7 @@ class CheckOutDetailsWidget extends StatelessWidget {
     if (checkOutCubit.chosenAddress == null) {
       R.functions.showToast(
         message: 'Choose address',
-        color: Colors.red,
+        color: R.colors.redColor,
       );
       return;
     }

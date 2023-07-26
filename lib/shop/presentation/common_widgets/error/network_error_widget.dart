@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shop_app_clean_architecture/shop/presentation/common_widgets/index.dart';
+import 'package:shop_app_clean_architecture/core/index.dart';
+import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
 
 class NetworkErrorWidget extends StatelessWidget {
   const NetworkErrorWidget({
@@ -8,8 +9,10 @@ class NetworkErrorWidget extends StatelessWidget {
     required this.isLoading,
     super.key,
   });
+
   final Function() onRetry;
   final bool isLoading;
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -21,7 +24,7 @@ class NetworkErrorWidget extends StatelessWidget {
             Icon(
               Icons.network_check_rounded,
               size: 80,
-              color: Colors.red[900],
+              color: R.colors.darkRed,
             ),
             SizedBox(height: 20.h),
             Text(
@@ -40,7 +43,7 @@ class NetworkErrorWidget extends StatelessWidget {
               style: TextStyle(fontSize: 16.sp),
             ),
             SizedBox(height: 20.h),
-            customElevatedButton(
+            CustomElevatedButton(
               label: 'Retry',
               onButtonPressed: (context) => onRetry(),
               borderRadius: 15.r,

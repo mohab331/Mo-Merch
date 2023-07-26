@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:shop_app_clean_architecture/core/index.dart';
 
-class customElevatedButton extends StatelessWidget {
-  const customElevatedButton({
+class CustomElevatedButton extends StatelessWidget {
+  const CustomElevatedButton({
     required this.label,
     required this.onButtonPressed,
     this.buttonWidth = double.infinity,
@@ -28,7 +28,7 @@ class customElevatedButton extends StatelessWidget {
     return isLoading
         ? Center(
             child: LoadingAnimationWidget.discreteCircle(
-              color: Colors.deepOrange,
+              color: R.colors.primaryColor,
               size: 50,
             ),
           )
@@ -43,18 +43,19 @@ class customElevatedButton extends StatelessWidget {
                       onButtonPressed(context);
                     },
               style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.zero,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(
-                      borderRadius?.r ?? 0.0,
-                    ),
-                  )),
+                padding: EdgeInsets.zero,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(
+                    borderRadius?.r ?? 0.0,
+                  ),
+                ),
+              ),
               child: Text(
                 label,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 16.sp,
-                  color: Colors.white,
+                  color: R.colors.whiteColor,
                 ),
               ),
             ),

@@ -1,8 +1,7 @@
 import 'package:bloc/bloc.dart';
-import 'package:shop_app_clean_architecture/shop/domain/index.dart';
-import 'package:shop_app_clean_architecture/shop/presentation/screens/profile/cubit/index.dart';
-
 import 'package:shop_app_clean_architecture/core/index.dart';
+import 'package:shop_app_clean_architecture/shop/domain/index.dart';
+import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
   ProfileCubit({

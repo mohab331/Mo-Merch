@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:shop_app_clean_architecture/shop/presentation/screens/on_boarding/index.dart';
+import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
 
 class OnBoardingPageViewBuilder extends StatelessWidget {
-  const OnBoardingPageViewBuilder(
-      {required this.onBoardingPageController, Key? key})
-      : super(key: key);
+  const OnBoardingPageViewBuilder({
+    required this.onBoardingPageController,
+    Key? key,
+  }) : super(key: key);
   final PageController onBoardingPageController;
   @override
   Widget build(BuildContext context) {

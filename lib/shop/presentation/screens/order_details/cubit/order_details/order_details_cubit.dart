@@ -17,9 +17,11 @@ class OrderDetailsCubit extends Cubit<OrderDetailsState> {
       ),
     );
     response.fold((failure) {
-      emit(OrderDetailsErrorState(
-        message: failure.failureMessage,
-      ));
+      emit(
+        OrderDetailsErrorState(
+          message: failure.failureMessage,
+        ),
+      );
     }, (orderDetailsResponse) {
       emit(
         OrderDetailsSuccessState(

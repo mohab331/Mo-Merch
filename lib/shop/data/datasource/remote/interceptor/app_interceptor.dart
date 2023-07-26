@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:shop_app_clean_architecture/core/index.dart';
-
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 
 /// An interceptor for handling requests and responses in the ShopApp application.
@@ -14,7 +13,9 @@ class ShopAppInterceptor extends Interceptor {
   final GetCachedUserDataUsecase getCachedUserDataUsecase;
   @override
   void onRequest(
-      RequestOptions options, RequestInterceptorHandler handler) async {
+    RequestOptions options,
+    RequestInterceptorHandler handler,
+  ) async {
     options.headers.addAll({
       'lang': 'en',
     });

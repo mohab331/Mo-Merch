@@ -12,6 +12,6 @@ class ClearCachedUserDataUsecase implements BaseUsecase<dynamic, NoParameters> {
 
   @override
   Future<Either<Failure, dynamic>> call(NoParameters parameters) async {
-    return await baseLocalStorageRepo.clearUserData();
+    return baseLocalStorageRepo.clearUserData();
   }
 }

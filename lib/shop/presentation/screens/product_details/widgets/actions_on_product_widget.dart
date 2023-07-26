@@ -15,23 +15,26 @@ class ActionsOnProductWidget extends StatelessWidget {
     final cartCubit = context.watch<CartCubit>();
     return MultiBlocListener(
       listeners: [
-        BlocListener<FavoriteCubit, FavoriteState>(listener: (context, state) {
-          if (state.message != null) {
-            final toastColors =
-                state is FavoriteToggleSuccessState ? Colors.green : Colors.red;
-            R.functions.showToast(
-              message: state.message ?? '',
-              color: toastColors,
-            );
-          }
-        }),
+        BlocListener<FavoriteCubit, FavoriteState>(
+          listener: (context, state) {
+            if (state.message != null) {
+              final toastColors = state is FavoriteToggleSuccessState
+                  ? R.colors.greenColor
+                  : R.colors.redColor;
+              R.functions.showToast(
+                message: state.message ?? '',
+                color: toastColors,
+              );
+            }
+          },
+        ),
         BlocListener<CartCubit, CartState>(
           listener: (context, state) {
             if (state.message != null) {
               final toastColor = state is UpdateCartSuccessState ||
                       state is AddToCartSuccessState
-                  ? Colors.green
-                  : Colors.red;
+                  ? R.colors.greenColor
+                  : R.colors.redColor;
               R.functions
                   .showToast(message: state.message ?? '', color: toastColor);
             }

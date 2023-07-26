@@ -1,3 +1,4 @@
+export 'add_address/index.dart';
 export 'address/index.dart';
 export 'cart/index.dart';
 export 'categories/index.dart';

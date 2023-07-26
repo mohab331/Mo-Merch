@@ -13,7 +13,7 @@ class SearchUseCase
   Future<Either<Failure, BaseListResponseEntity<ProductResponseEntity>>> call(
     SearchRequestEntity searchRequestEntity,
   ) async {
-    return await baseSearchRepo.searchProduct(
+    return baseSearchRepo.searchProduct(
       searchRequestEntity: searchRequestEntity,
     );
   }

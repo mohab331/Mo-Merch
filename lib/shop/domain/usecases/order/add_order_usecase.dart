@@ -17,7 +17,7 @@ class AddOrderUseCase
   Future<Either<Failure, BaseResponseEntity<OrderResponseEntity>>> call(
     AddOrderRequestEntity addOrderRequestEntity,
   ) async {
-    return await baseOrderRepo.createOrder(
+    return baseOrderRepo.createOrder(
       addOrderRequestEntity: addOrderRequestEntity,
     );
   }

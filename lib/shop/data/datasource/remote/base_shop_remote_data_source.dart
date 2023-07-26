@@ -26,8 +26,8 @@ abstract class BaseShopRemoteDS {
 
   /// Adds a product to the cart.
   ///
-  /// Returns a [BaseResponseModel] with [EmptyResponseModel] if successful.
-  Future<BaseResponseModel<EmptyResponseModel>> addToCart({
+  /// Returns a [BaseResponseModel] with [CartItemModel] if successful.
+  Future<BaseResponseModel<CartItemModel>> addToCart({
     required AddToCartRequestModel addToCartRequestModel,
   });
 

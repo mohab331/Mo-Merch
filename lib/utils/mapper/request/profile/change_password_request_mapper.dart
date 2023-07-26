@@ -6,8 +6,9 @@ class ChangePasswordRequestMapper
     implements
         BaseMapper<ChangePasswordRequestModel, ChangePasswordRequestEntity> {
   @override
-  ChangePasswordRequestEntity mapToEntity(
-      {required ChangePasswordRequestModel? model}) {
+  ChangePasswordRequestEntity mapToEntity({
+    required ChangePasswordRequestModel? model,
+  }) {
     return ChangePasswordRequestEntity(
       currentPassword: NullReplacements.stringReplacement.replaceIfNull(
         model?.currentPassword,
@@ -19,8 +20,9 @@ class ChangePasswordRequestMapper
   }
 
   @override
-  ChangePasswordRequestModel mapToModel(
-      {required ChangePasswordRequestEntity entity}) {
+  ChangePasswordRequestModel mapToModel({
+    required ChangePasswordRequestEntity entity,
+  }) {
     return ChangePasswordRequestModel(
       currentPassword: entity.currentPassword,
       newPassword: entity.newPassword,

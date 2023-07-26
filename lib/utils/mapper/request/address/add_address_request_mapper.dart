@@ -5,8 +5,9 @@ import 'package:shop_app_clean_architecture/utils/index.dart';
 class AddAddressRequestMapper
     implements BaseMapper<AddAddressRequestModel, AddAddressRequestEntity> {
   @override
-  AddAddressRequestEntity mapToEntity(
-      {required AddAddressRequestModel? model}) {
+  AddAddressRequestEntity mapToEntity({
+    required AddAddressRequestModel? model,
+  }) {
     return AddAddressRequestEntity(
       name: NullReplacements.stringReplacement.replaceIfNull(
         model?.name,

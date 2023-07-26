@@ -31,7 +31,7 @@ class AddressRepoImpl
       addNewAddress({
     required AddAddressRequestEntity addAddressRequestEntity,
   }) async {
-    return await executeWithNetworkAndExceptionHandling<
+    return executeWithNetworkAndExceptionHandling<
         BaseResponseEntity<AddressResponseEntity>>(
       () async {
         final response = await baseShopRemoteDataSource.addNewAddress(

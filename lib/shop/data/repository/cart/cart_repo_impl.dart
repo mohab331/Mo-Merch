@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:shop_app_clean_architecture/core/error/failure.dart';
+import 'package:shop_app_clean_architecture/shop/data/index.dart';
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 import 'package:shop_app_clean_architecture/utils/index.dart';
-import 'package:shop_app_clean_architecture/shop/data/index.dart';
 
 /// A repository implementation for handling cart-related operations.
 class CartRepoImpl
@@ -14,42 +14,42 @@ class CartRepoImpl
     required this.baseCartResponseMapper,
     required this.baseCartUpdateResponseMapper,
     required this.baseEmptyResponseMapper,
+    required this.baseCartItemResponseMapper,
     required this.deleteCartRequestMapper,
     required this.updateCartRequestMapper,
   });
 
   final BaseShopRemoteDS baseShopRemoteDS;
-
   final BaseMapper<AddToCartRequestModel, AddToCartRequestEntity>
       addToCartRequestMapper;
   final BaseMapper<UpdateCartRequestModel, UpdateCartRequestEntity>
       updateCartRequestMapper;
   final BaseMapper<DeleteCartItemRequestModel, DeleteCartItemRequestEntity>
       deleteCartRequestMapper;
-  final BaseResponseMapper<EmptyResponseModel, EmptyResponseEntity>
-      baseEmptyResponseMapper;
+  final BaseResponseMapper<CartItemModel, CartItem> baseCartItemResponseMapper;
   final BaseResponseMapper<CartResponseModel, CartResponseEntity>
       baseCartResponseMapper;
+  final BaseResponseMapper<EmptyResponseModel, EmptyResponseEntity>
+      baseEmptyResponseMapper;
   final BaseResponseMapper<CartUpdateResponseModel, CartUpdateResponseEntity>
       baseCartUpdateResponseMapper;
 
   /// Adds an item to the cart.
   ///
-  /// Returns a [BaseResponseEntity] of [EmptyResponseEntity] with an empty response if successful,
+  /// Returns a [BaseResponseEntity] of [CartItem] with an empty response if successful,
   /// or a [Failure] if an error occurs.
   @override
-  Future<Either<Failure, BaseResponseEntity<EmptyResponseEntity>>> addToCart({
+  Future<Either<Failure, BaseResponseEntity<CartItem>>> addToCart({
     required AddToCartRequestEntity addToCartRequestEntity,
   }) async {
-    return await executeWithNetworkAndExceptionHandling<
-        BaseResponseEntity<EmptyResponseEntity>>(
+    return executeWithNetworkAndExceptionHandling<BaseResponseEntity<CartItem>>(
       () async {
         final response = await baseShopRemoteDS.addToCart(
           addToCartRequestModel: addToCartRequestMapper.mapToModel(
             entity: addToCartRequestEntity,
           ),
         );
-        return baseEmptyResponseMapper.mapToEntity(
+        return baseCartItemResponseMapper.mapToEntity(
           model: response,
         );
       },
@@ -63,7 +63,7 @@ class CartRepoImpl
   @override
   Future<Either<Failure, BaseResponseEntity<CartResponseEntity>>>
       getCartData() async {
-    return await executeWithNetworkAndExceptionHandling<
+    return executeWithNetworkAndExceptionHandling<
         BaseResponseEntity<CartResponseEntity>>(
       () async {
         final response = await baseShopRemoteDS.getCartData();
@@ -83,7 +83,7 @@ class CartRepoImpl
       removeFromCart({
     required DeleteCartItemRequestEntity deleteCartItemRequestEntity,
   }) async {
-    return await executeWithNetworkAndExceptionHandling<
+    return executeWithNetworkAndExceptionHandling<
         BaseResponseEntity<EmptyResponseEntity>>(
       () async {
         final response = await baseShopRemoteDS.removeFromCart(
@@ -107,7 +107,7 @@ class CartRepoImpl
       updateCart({
     required UpdateCartRequestEntity updateCartRequestEntity,
   }) async {
-    return await executeWithNetworkAndExceptionHandling<
+    return executeWithNetworkAndExceptionHandling<
         BaseResponseEntity<CartUpdateResponseEntity>>(
       () async {
         final response = await baseShopRemoteDS.updateCart(

@@ -17,14 +17,16 @@ class ProductItemBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<FavoriteCubit>(
       create: (context) => diInstance.get<FavoriteCubit>(),
-      child: Builder(builder: (context) {
-        return ProductItemCard(
-          product: product,
-          onTap: () => _onProductTap(
-            context,
-          ),
-        );
-      }),
+      child: Builder(
+        builder: (context) {
+          return ProductItemCard(
+            product: product,
+            onTap: () => _onProductTap(
+              context,
+            ),
+          );
+        },
+      ),
     );
   }
 
@@ -51,7 +53,7 @@ class ProductItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 4.0,
-      shadowColor: Colors.black,
+      shadowColor: R.colors.whiteColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(
           30.r,

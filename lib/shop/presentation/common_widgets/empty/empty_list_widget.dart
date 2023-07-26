@@ -41,7 +41,7 @@ class EmptyListWidget extends StatelessWidget {
                 Text(
                   emptyString,
                   style: TextStyle(
-                    color: Colors.black,
+                    color: R.colors.blackColor,
                     fontSize: 16.sp,
                     fontWeight: FontWeight.bold,
                   ),
@@ -52,7 +52,7 @@ class EmptyListWidget extends StatelessWidget {
                 ),
                 IconButton(
                   onPressed: onReloadButtonPressed,
-                  icon: Icon(Icons.refresh_outlined),
+                  icon: const Icon(Icons.refresh_outlined),
                 ),
               ],
             ),
