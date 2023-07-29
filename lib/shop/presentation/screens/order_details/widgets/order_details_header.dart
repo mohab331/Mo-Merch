@@ -143,7 +143,7 @@ class CancelButton extends StatelessWidget {
       child: CustomContainer(
         color: R.colors.darkRed,
         child: Text(
-          'cancel',
+          editOrderState is EditOrderLoadingState ? 'cancelling... ':'cancel',
           style: TextStyle(
             color: R.colors.whiteColor,
             fontWeight: FontWeight.bold,

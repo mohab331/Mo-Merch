@@ -1,17 +1,17 @@
 import 'package:dartz/dartz.dart';
 import 'package:shop_app_clean_architecture/core/index.dart';
-import 'package:shop_app_clean_architecture/shop/domain/entities/index.dart';
-import 'package:shop_app_clean_architecture/shop/domain/repository/index.dart';
-import 'package:shop_app_clean_architecture/shop/domain/usecases/auth/auth_helper.dart';
+import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 
-class LoginUsecase extends AuthHelper
+import 'package:shop_app_clean_architecture/utils/index.dart';
+
+class LoginUsecase with AuthMixin
     implements
         BaseUsecase<BaseResponseEntity<UserResponseEntity>,
             LoginRequestEntity>  {
   LoginUsecase({
     required this.baseAuthRepo,
     required this.baseLocalStorageRepo,
-  }) : super(baseLocalStorageRepo: baseLocalStorageRepo,);
+  });
 
   BaseAuthRepo baseAuthRepo;
   BaseLocalStorageRepo baseLocalStorageRepo;

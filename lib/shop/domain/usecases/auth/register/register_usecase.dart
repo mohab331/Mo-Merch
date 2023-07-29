@@ -3,14 +3,16 @@ import 'package:shop_app_clean_architecture/core/error/failure.dart';
 import 'package:shop_app_clean_architecture/core/usecase/base_usecase.dart';
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 
-class RegisterUsecase extends AuthHelper
+import 'package:shop_app_clean_architecture/utils/index.dart';
+
+class RegisterUsecase with AuthMixin
     implements
         BaseUsecase<BaseResponseEntity<UserResponseEntity>,
             RegisterRequestEntity> {
   RegisterUsecase({
     required this.baseAuthRepo,
     required this.baseLocalStorageRepo,
-  }):super(baseLocalStorageRepo: baseLocalStorageRepo);
+  });
 
   BaseAuthRepo baseAuthRepo;
   BaseLocalStorageRepo baseLocalStorageRepo;

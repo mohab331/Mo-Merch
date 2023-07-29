@@ -38,6 +38,7 @@ class CheckOutDetailsWidget extends StatelessWidget {
             message: state.message ?? 'Order place successfully',
             color: state.toastColor ?? R.colors.greenColor,
           );
+
           checkOutCubit.toggleIndex(checkOutCubit.index + 1);
         }else{
           Navigator.pop(context);
