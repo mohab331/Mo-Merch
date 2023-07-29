@@ -55,7 +55,7 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/images/Mo-logo.png"
+  image_path: "assets/images/Mo-logo (2).png"
   adaptive_icon_background: "#FFFFFF"
 
 flutter_native_splash:
