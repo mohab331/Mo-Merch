@@ -4,22 +4,22 @@ Mo Merch is an online shop application that allows users to browse and purchase 
 
 ## Features
 
-1. **Login and Registration:** Users can create an account or log in using email and password. Additionally, they have the option to log in with their Google or Facebook accounts. Auto-login functionality is implemented for a seamless user experience.
+1. **Login and Registration:** Users can create an account or log in using email and password. Auto-login functionality is implemented for a seamless user experience.
 
-2. **Theme Switching:** Users can toggle between light and dark mode to customize their app's appearance based on their preference.
+2. **Favorites:** Users can add products to their favorites list for quick access and later reference. They can also remove products from their favorites.
 
-3. **Favorites:** Users can add products to their favorites list for quick access and later reference. They can also remove products from their favorites.
+3. **Cart Management:** Users can add products to their cart for purchasing. They can easily remove products from the cart as well.
 
-4. **Cart Management:** Users can add products to their cart for purchasing. They can easily remove products from the cart as well.
+4. **Profile Management:** Users can update their profile information, including email, password, name, and phone number.
 
-5. **Profile Management:** Users can update their profile information, including email, password, name, and phone number.
+5. **Order History:** Users can view their previous order history, allowing them to keep track of their purchases.
 
-6. **Order History:** Users can view their previous order history, allowing them to keep track of their purchases.
+6. **Place Order:** Users can place orders for the selected products, initiating the purchasing process.
 
-7. **Place Order:** Users can place orders for the selected products, initiating the purchasing process.
-
-8. **Multiple Addresses:** Users can add and choose from multiple addresses for shipping, providing flexibility and convenience.
-
+7. **Multiple Addresses:** Users can add and choose from multiple addresses for shipping, providing flexibility and convenience.
+   
+8. **Google maps:** Users can add his location on google maps.
+ 
 9. **Product Search:** Users can search for specific products within the app, making it easier to find desired items.
 
 10. **Product Details:** Users can view detailed information about each product, including descriptions, prices, and images.
