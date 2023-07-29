@@ -66,9 +66,10 @@ The Mo Merch project has been developed using the following technologies and pra
 
 To get started with the Mo Merch project, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/your-username/mo-merch.git`.
+1. Clone the repository: `git clone (https://github.com/mohab331/Mo-Merch.git)`.
 2. Install the necessary dependencies using `flutter pub get`.
 3. Run the app on an emulator or physical device using `flutter run`.
+4. add your maps api key
 
 Make sure you have Flutter and Dart installed on your machine.
 
