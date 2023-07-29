@@ -28,14 +28,14 @@ class ShopApp extends StatelessWidget {
             ),
         ),
       ],
-      child:ScreenUtilInit(
-          builder: (context, child) {
-            return MaterialApp.router(
-              debugShowCheckedModeBanner: false,
-              title: R.strings.appTitle,
-              theme: AppTheme.lightTheme(),
-              themeMode: ThemeMode.light,
-              routerDelegate: MyRouter.router.routerDelegate,
+      child: ScreenUtilInit(
+        builder: (context, child) {
+          return MaterialApp.router(
+            debugShowCheckedModeBanner: false,
+            title: R.strings.appTitle,
+            theme: AppTheme.lightTheme(),
+            themeMode: ThemeMode.light,
+            routerDelegate: MyRouter.router.routerDelegate,
             routeInformationParser: MyRouter.router.routeInformationParser,
             routeInformationProvider: MyRouter.router.routeInformationProvider,
           );
@@ -47,6 +47,6 @@ class ShopApp extends StatelessWidget {
         minTextAdapt: true,
         child: const SplashScreen(),
       ),
-      );
+    );
   }
 }

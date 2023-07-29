@@ -28,7 +28,7 @@ class OrderSummary extends StatelessWidget {
         ),
         SizedBox(height: 12.h),
         OrderRow(
-          title: 'VAT',
+          title: R.strings.cartVat,
           amount: 'EGP ${order.vat.doubleToPrice()}',
         ),
         SizedBox(height: 12.h),

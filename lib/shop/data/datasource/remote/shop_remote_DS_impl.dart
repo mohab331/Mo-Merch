@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:shop_app_clean_architecture/core/error/exception.dart';
+import 'package:shop_app_clean_architecture/core/index.dart';
 import 'package:shop_app_clean_architecture/core/network/error_model.dart';
 import 'package:shop_app_clean_architecture/shop/data/datasource/remote/index.dart';
 import 'package:shop_app_clean_architecture/shop/data/model/index.dart';
@@ -13,7 +14,7 @@ class ShopRemoteDSImpl implements BaseShopRemoteDS {
 
   void _checkResponseError(Response response) {
     if (response.data['status'] == false || response.statusCode != 200) {
-      throw ServerException(
+      throw ServerException.fromApi(
         errorModel: ErrorModel.fromJson(
           jsonMap: response.data,
         ),
@@ -28,10 +29,13 @@ class ShopRemoteDSImpl implements BaseShopRemoteDS {
     required T modelInstance,
     bool requiresToken = true,
   }) async {
-    final response = await apiConsumer.postData(
-      url: url,
-      data: data,
-      requiresToken: requiresToken,
+    final response = await apiConsumer.request(
+      networkRequestModel: NetworkRequestModel(
+        method: RequestType.post,
+        path: url,
+        data: data,
+        requiresToken: requiresToken,
+      ),
     );
     _checkResponseError(response);
     return BaseResponseModel<T>.fromJson(
@@ -46,9 +50,12 @@ class ShopRemoteDSImpl implements BaseShopRemoteDS {
     required T modelInstance,
     bool requiresToken = true,
   }) async {
-    final response = await apiConsumer.getData(
-      url: url,
-      requiresToken: requiresToken,
+    final response = await apiConsumer.request(
+      networkRequestModel: NetworkRequestModel(
+        method: RequestType.get,
+        path: url,
+        requiresToken: requiresToken,
+      ),
     );
     _checkResponseError(response);
     return BaseResponseModel<T>.fromJson(
@@ -63,9 +70,12 @@ class ShopRemoteDSImpl implements BaseShopRemoteDS {
     required T modelInstance,
     bool requiresToken = true,
   }) async {
-    final response = await apiConsumer.deleteData(
-      url: url,
-      requiresToken: requiresToken,
+    final response = await apiConsumer.request(
+      networkRequestModel: NetworkRequestModel(
+        method: RequestType.delete,
+        path: url,
+        requiresToken: requiresToken,
+      ),
     );
     _checkResponseError(response);
     return BaseResponseModel<T>.fromJson(
@@ -81,10 +91,13 @@ class ShopRemoteDSImpl implements BaseShopRemoteDS {
     required T modelInstance,
     bool requiresToken = true,
   }) async {
-    final response = await apiConsumer.putData(
-      url: url,
-      data: data,
-      requiresToken: requiresToken,
+    final response = await apiConsumer.request(
+      networkRequestModel: NetworkRequestModel(
+        method: RequestType.put,
+        path: url,
+        data: data,
+        requiresToken: requiresToken,
+      ),
     );
     _checkResponseError(response);
     return BaseResponseModel<T>.fromJson(
@@ -166,12 +179,15 @@ class ShopRemoteDSImpl implements BaseShopRemoteDS {
   Future<BaseListResponseModel<CategoryResponseModel>> getCategories({
     required int page,
   }) async {
-    final response = await apiConsumer.getData(
-      url: Endpoints.categories,
-      requiresToken: false,
-      queryMap: {
-        'page': page,
-      },
+    final response = await apiConsumer.request(
+      networkRequestModel: NetworkRequestModel(
+        method: RequestType.get,
+        path: Endpoints.categories,
+        requiresToken: false,
+        queryParameters: {
+          'page': page,
+        },
+      ),
     );
     _checkResponseError(response);
     return BaseListResponseModel<CategoryResponseModel>.fromJson(
@@ -184,13 +200,16 @@ class ShopRemoteDSImpl implements BaseShopRemoteDS {
   Future<BaseListResponseModel<ProductResponseModel>> getCategoryProductsById({
     required CategoryProductsRequestModel categoryProductsRequestModel,
   }) async {
-    final response = await apiConsumer.getData(
-      url: Endpoints.concatenateEndPoint(
-        endPoint: Endpoints.categories,
-        id: categoryProductsRequestModel.categoryId,
+    final response = await apiConsumer.request(
+      networkRequestModel: NetworkRequestModel(
+        method: RequestType.get,
+        path: Endpoints.concatenateEndPoint(
+          endPoint: Endpoints.categories,
+          id: categoryProductsRequestModel.categoryId,
+        ),
+        requiresToken: false,
+        queryParameters: categoryProductsRequestModel.toJson(),
       ),
-      requiresToken: false,
-      queryMap: categoryProductsRequestModel.toJson(),
     );
     _checkResponseError(response);
     return BaseListResponseModel<ProductResponseModel>.fromJson(
@@ -203,11 +222,14 @@ class ShopRemoteDSImpl implements BaseShopRemoteDS {
   Future<BaseListResponseModel<FavoriteResponseModel>> getFavoriteData({
     required int page,
   }) async {
-    final response = await apiConsumer.getData(
-      url: Endpoints.favorites,
-      queryMap: {
-        'page': page,
-      },
+    final response = await apiConsumer.request(
+      networkRequestModel: NetworkRequestModel(
+        method: RequestType.get,
+        path: Endpoints.favorites,
+        queryParameters: {
+          'page': page,
+        },
+      ),
     );
     _checkResponseError(response);
     return BaseListResponseModel<FavoriteResponseModel>.fromJson(
@@ -246,11 +268,14 @@ class ShopRemoteDSImpl implements BaseShopRemoteDS {
   Future<BaseListResponseModel<OrderResponseModel>> getOrders({
     required int page,
   }) async {
-    final response = await apiConsumer.getData(
-      url: Endpoints.orders,
-      queryMap: {
-        'page': page,
-      },
+    final response = await apiConsumer.request(
+      networkRequestModel: NetworkRequestModel(
+        method: RequestType.get,
+        path: Endpoints.orders,
+        queryParameters: {
+          'page': page,
+        },
+      ),
     );
     _checkResponseError(response);
     return BaseListResponseModel<OrderResponseModel>.fromJson(
@@ -263,11 +288,14 @@ class ShopRemoteDSImpl implements BaseShopRemoteDS {
   Future<BaseListResponseModel<AddressResponseModel>> getUserAddress({
     required int page,
   }) async {
-    final response = await apiConsumer.getData(
-      url: Endpoints.address,
-      queryMap: {
-        'page': page,
-      },
+    final response = await apiConsumer.request(
+      networkRequestModel: NetworkRequestModel(
+        method: RequestType.get,
+        path: Endpoints.address,
+        queryParameters: {
+          'page': page,
+        },
+      ),
     );
     _checkResponseError(response);
     return BaseListResponseModel<AddressResponseModel>.fromJson(
@@ -342,10 +370,14 @@ class ShopRemoteDSImpl implements BaseShopRemoteDS {
   Future<BaseListResponseModel<ProductResponseModel>> searchProduct({
     required SearchRequestModel searchRequestModel,
   }) async {
-    final response = await apiConsumer.postData(
-      url: Endpoints.search,
-      data: searchRequestModel.toJson(),
+    final response = await apiConsumer.request(
+      networkRequestModel: NetworkRequestModel(
+        method: RequestType.post,
+        path: Endpoints.search,
+        data: searchRequestModel.toJson(),
+      ),
     );
+
     _checkResponseError(response);
     return BaseListResponseModel<ProductResponseModel>.fromJson(
       jsonData: response.data,

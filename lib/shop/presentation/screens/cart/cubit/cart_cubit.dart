@@ -43,7 +43,6 @@ class CartCubit extends Cubit<CartState> {
     final response = await addToCartUseCase.call(
       AddToCartRequestEntity(productId: product.id),
     );
-
     response.fold(
       (failure) {
         emit(CartErrorState(message: failure.failureMessage));

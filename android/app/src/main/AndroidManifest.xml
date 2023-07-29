@@ -5,11 +5,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <application
-        android:label="shop_app_clean_architecture"
+        android:label="Mo Merch"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+<!--        TODO add your maps api key-->
         <meta-data android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDWN5pOiS_Nvcx6bmsuIWn0797TZ3fblag"/>
+            android:value="MAP API KEY"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

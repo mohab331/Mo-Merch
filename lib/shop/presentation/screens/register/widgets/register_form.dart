@@ -23,7 +23,7 @@ class RegisterForm extends HookWidget {
     final phoneFocusNode = useFocusNode();
     final phoneController = useTextEditingController();
     final isRegisterButtonLoading =
-        context.watch<AuthCubit>().state == AuthenticationLoadingState();
+        context.watch<AuthCubit>().state is AuthenticationLoadingState ;
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Form(

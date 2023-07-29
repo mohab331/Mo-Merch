@@ -6,6 +6,8 @@
 		<string>$(DEVELOPMENT_LANGUAGE)</string>
 		<key>NSLocationWhenInUseUsageDescription</key>
         <string>The app needs location permission</string>
+        <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+        <string>Your app needs access to your location to provide location-based services.</string>
 		<key>CFBundleDisplayName</key>
 		<string>Shop App Clean Architecture</string>
 		<key>CFBundleExecutable</key>
@@ -49,5 +51,6 @@
 		<true/>
 		<key>UIStatusBarHidden</key>
 		<false/>
+
 	</dict>
 </plist>

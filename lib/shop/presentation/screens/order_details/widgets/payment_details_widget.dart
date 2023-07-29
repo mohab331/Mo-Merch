@@ -27,7 +27,7 @@ class PaymentDetailsWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Payment Method',
+              R.strings.paymentMethod,
               style: TextStyle(
                 fontSize: 18.sp,
                 fontWeight: FontWeight.w600,
@@ -38,7 +38,6 @@ class PaymentDetailsWidget extends StatelessWidget {
             ),
             Text(
               paymentMethod,
-              style: const TextStyle(),
               textAlign: TextAlign.start,
             ),
           ],

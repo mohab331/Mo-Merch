@@ -35,4 +35,5 @@ class AppColors {
   final Color transparent = Colors.transparent;
   final Color whiteColor = Colors.white;
   final Color lightWhite = Colors.white54;
+  final Color lightBlueColor = Colors.blueAccent;
 }

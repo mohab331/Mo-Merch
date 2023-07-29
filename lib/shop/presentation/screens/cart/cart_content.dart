@@ -51,11 +51,16 @@ class CartContent extends StatelessWidget {
               ),
       ),
       listener: (context, state) {
-        if (state.message != null) {
-          R.functions.showToast(
-            message: state.message ?? '',
-            color: state.toastColor ?? R.colors.greenColor,
+        if (state is DeleteCartLoadingState) {
+          R.functions.showCupertinoAlertDialog(
+            context,
+            content: const LoadingWidget(loadingIconSize: 40),
+            title: 'Removing',
+            showNoAction: false,
+            showOkAction: false,
           );
+        } else if (state is DeleteCartSuccessState) {
+          Navigator.of(context).pop();
         }
       },
     );

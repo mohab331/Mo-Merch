@@ -17,6 +17,7 @@ class SearchContent extends StatefulWidget {
 class _SearchContentState extends State<SearchContent> {
   late TextEditingController searchTextEditingController;
   Timer? _debounce;
+  String? previousValue = '';
 
   @override
   void initState() {
@@ -45,10 +46,13 @@ class _SearchContentState extends State<SearchContent> {
             label: R.strings.searchLabel,
             onValidateFunction: (value) => value.validateIsEmpty(),
             onChanged: (value) {
-              _search(
-                context,
-                word: value,
-              );
+              if(previousValue?.toLowerCase() != value?.toLowerCase()) {
+                previousValue = value;
+                _search(
+                  context,
+                  word: value,
+                );
+              }
             },
           ),
           SizedBox(

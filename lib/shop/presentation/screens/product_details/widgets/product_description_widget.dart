@@ -43,7 +43,7 @@ class ProductDescriptionWidget extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w500,
-                  color: Colors.blueAccent,
+                  color: R.colors.lightBlueColor,
                 ),
                 textAlign: TextAlign.left,
               ),

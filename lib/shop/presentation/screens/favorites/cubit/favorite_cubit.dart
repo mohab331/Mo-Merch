@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
 
-
 class FavoriteCubit extends Cubit<FavoriteState> {
   FavoriteCubit({
     required this.getFavoriteUsecase,
@@ -17,11 +16,11 @@ class FavoriteCubit extends Cubit<FavoriteState> {
   bool hasMoreData = true;
   int currentPage = 1;
 
-
-  void getFavoriteData(BuildContext context,{
+  void getFavoriteData(
+    BuildContext context, {
     required int page,
   }) async {
-    if(page == 1){
+    if (page == 1) {
       hasMoreData = true;
       context.read<AppCubit>().favoriteProductsMap = {};
     }
@@ -42,8 +41,8 @@ class FavoriteCubit extends Cubit<FavoriteState> {
       );
     }, (favoriteResponse) {
       context.read<AppCubit>().addProductsToFavoriteMap(
-        favoriteResponse.entityList,
-      );
+            favoriteResponse.entityList,
+          );
       hasMoreData = favoriteResponse.nextPageUrl != null;
       currentPage = favoriteResponse.currentPage ?? 1;
       emit(
@@ -54,10 +53,11 @@ class FavoriteCubit extends Cubit<FavoriteState> {
     });
   }
 
-  void toggleFavorite(AppCubit appCubit,{
+  void toggleFavorite(
+    AppCubit appCubit, {
     required ProductResponseEntity product,
   }) async {
-    _instantToggle(appCubit,product);
+    _instantToggle(appCubit, product);
     final response = await toggleFavoriteUsecase.call(
       FavoriteRequestEntity(
         productId: product.id,
@@ -82,12 +82,10 @@ class FavoriteCubit extends Cubit<FavoriteState> {
     );
   }
 
-
-  void _instantToggle(AppCubit appCubit,ProductResponseEntity product) {
+  void _instantToggle(AppCubit appCubit, ProductResponseEntity product) {
     emit(
       InstantToggleState(),
     );
     appCubit.addOrRemoveFavoriteFromMap(product: product);
   }
-
 }

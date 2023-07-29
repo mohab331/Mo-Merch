@@ -27,7 +27,6 @@ class DioConsumer implements ApiConsumer {
         ApiConstants.contentType: ApiConstants.applicationJson,
       }
       ..connectTimeout = const Duration(seconds: 10)
-      ..receiveTimeout = const Duration(seconds: 10)
       ..receiveDataWhenStatusError = true;
   }
 
@@ -47,65 +46,40 @@ class DioConsumer implements ApiConsumer {
   }
 
   @override
-  Future<Response> deleteData({
-    required String url,
-    Map<String, dynamic>? queryMap,
-    Map<String, dynamic>? data,
-    bool requiresToken = true,
+  Future<Response> request({
+    required NetworkRequestModel networkRequestModel,
   }) async {
-    final options = Options();
-    return dio.delete(
-      url,
-      queryParameters: queryMap,
-      data: data,
-      options: _addTokenHeader(options, requiresToken),
-    ).onError((error, stackTrace) => throw ServerException(errorModel: ErrorModel.fromJson(jsonMap: {'message':error.toString(),}),),);
-  }
-
-  @override
-  Future<Response> getData({
-    required String url,
-    Map<String, dynamic>? queryMap,
-    bool requiresToken = true,
-  }) async {
-    final options = Options();
-    return dio.get(
-      url,
-      queryParameters: queryMap,
-      options: _addTokenHeader(options, requiresToken),
-    ).onError((error, stackTrace) => throw ServerException(errorModel: ErrorModel.fromJson(jsonMap: {'message':error.toString(),}),),);
-  }
-
-  @override
-  Future<Response> postData({
-    required String url,
-    required Map<String, dynamic> data,
-    Map<String, dynamic>? queryMap,
-    bool requiresToken = true,
-  }) async {
-    final options = Options();
-    return dio.post(
-      url,
-      queryParameters: queryMap,
-      data: data,
-      options: _addTokenHeader(options, requiresToken),
-    ).onError((error, stackTrace) => throw ServerException(errorModel: ErrorModel.fromJson(jsonMap: {'message':error.toString(),}),),);
-  }
-
-  @override
-  Future<Response> putData({
-    required String url,
-    required Map<String, dynamic> data,
-    Map<String, dynamic>? queryMap,
-    bool requiresToken = true,
-  }) async {
-    final options = Options();
-    return dio.put(
-      url,
-      queryParameters: queryMap,
-      data: data,
-      options: _addTokenHeader(options, requiresToken),
-    ).onError((error, stackTrace) => throw ServerException(errorModel: ErrorModel.fromJson(jsonMap: {'message':error.toString(),}),),);
+    try {
+      final options = Options();
+      options
+        ..method = networkRequestModel.method.value
+        ..headers?.addAll(networkRequestModel.headers ?? {})
+        ..responseType = networkRequestModel.responseType
+        ..receiveTimeout = Duration(
+          seconds: networkRequestModel.receiveTimeOut ?? 10,
+        );
+      final response = await dio.request(
+        networkRequestModel.path,
+        options: _addTokenHeader(
+          options,
+          networkRequestModel.requiresToken,
+        ),
+        data: networkRequestModel.data,
+        queryParameters: networkRequestModel.queryParameters,
+      );
+      return response;
+    } on DioException catch (error) {
+      NetworkErrorHandler errorHandler =
+          NetworkErrorHandler.fromDioError(error);
+      throw ServerException.fromApi(
+        errorModel: ErrorModel.fromJson(
+          jsonMap: {
+            'message': errorHandler.message,
+            'statusCode': errorHandler.errorStatusCode,
+          },
+        ),
+      );
+    }
   }
 
   /// Adds the `requiresToken` header to the request options if required.
@@ -117,7 +91,9 @@ class DioConsumer implements ApiConsumer {
       if (options.headers == null) {
         options.headers = {'requiresToken': true};
       } else {
-        options.headers?.addAll({'requiresToken': true});
+        options.headers?.addAll({
+          'requiresToken': true,
+        });
       }
     }
     return options;

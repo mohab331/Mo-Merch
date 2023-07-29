@@ -14,8 +14,9 @@ class CartItemUpdateWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final cartItem = context.read<CartCubit>().getCartItem(cartID);
     final cartState = context.watch<CartCubit>().state;
-    final isMinusButtonEnabled =
+    final isUpdateButtonsEnabled =
         !(cartItem.quantity == 1 && cartState is DeleteCartLoadingState);
+
     return Expanded(
       child: Column(
         children: [
@@ -28,6 +29,7 @@ class CartItemUpdateWidget extends StatelessWidget {
                   cartItem: cartItem,
                   quantity: 1,
                 ),
+                isEnabled: isUpdateButtonsEnabled,
               ),
               Expanded(
                 child: Text(
@@ -46,7 +48,7 @@ class CartItemUpdateWidget extends StatelessWidget {
                   cartItem: cartItem,
                   quantity: -1,
                 ),
-                isEnabled: isMinusButtonEnabled,
+                isEnabled: isUpdateButtonsEnabled,
               ),
             ],
           ),

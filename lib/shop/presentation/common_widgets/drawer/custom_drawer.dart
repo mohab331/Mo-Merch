@@ -39,16 +39,6 @@ class CustomDrawer extends StatelessWidget {
                     ),
                   ),
                   DrawerTileWidget(
-                    title: 'Switch mode',
-                    icon: Icons.mode_night,
-                    onItemTapped: () {
-                      // Todo Implement
-                    },
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  DrawerTileWidget(
                     title: R.strings.orders,
                     icon: Icons.price_check,
                     onItemTapped: () => context.navigator.navigateToOrderScreen(),

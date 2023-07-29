@@ -12,22 +12,29 @@ class RegisterContent extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: BlocListener<AuthCubit, AuthState>(
-          listener: (context, state) {
-            if (state is AuthenticatedState) {
-              context.navigator.navigateToShopLayout();
-            }
-            else if (state is AuthenticationErrorState) {
-              R.functions.showToast(
-                message: state.message ?? 'Error Occurred While Registering',
-                color: R.colors.redColor,
-              );
-            }else{}
-          },
-          child: const RegisterForm(),
+    final authState = context.watch<AuthCubit>().state;
+    return WillPopScope(
+      onWillPop: (){
+        if(authState is AuthenticationLoadingState) return Future.value(false);
+        return Future.value(true);
+      },
+      child: SafeArea(
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: BlocListener<AuthCubit, AuthState>(
+            listener: (context, state) {
+              if (state is AuthenticatedState) {
+                context.navigator.navigateToShopLayout();
+              }
+              else if (state is AuthenticationErrorState) {
+                R.functions.showToast(
+                  message: state.message ?? 'Error Occurred While Registering',
+                  color: R.colors.redColor,
+                );
+              }else{}
+            },
+            child: const RegisterForm(),
+          ),
         ),
       ),
     );

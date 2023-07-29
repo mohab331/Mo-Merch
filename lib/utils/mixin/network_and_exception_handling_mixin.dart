@@ -29,7 +29,7 @@ mixin NetworkAndExceptionHandlingMixin {
   Future<void> _checkNetworkConnectivity() async {
     var connectivityResult = await internetConnectionChecker.hasConnection;
     if (!connectivityResult) {
-      throw ServerException(
+      throw ServerException.fromApi(
         errorModel: ErrorModel.fromJson(
           jsonMap: {
             'message': 'No network connection available.',

@@ -19,7 +19,7 @@ class ProductImageWidget extends StatelessWidget {
           imageHeight: 180,
           imageUrl: product.image,
         ),
-        if (product.discount != 0) const DiscountBadge(),
+        if (product.discount != 0)  DiscountBadge(discountPercent: product.discount),
       ],
     );
   }

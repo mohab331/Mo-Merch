@@ -25,6 +25,7 @@ class UsecaseInjector implements BaseInjector {
     () => diInstance.registerLazySingleton<RegisterUsecase>(
           () => RegisterUsecase(
             baseAuthRepo: diInstance.get<BaseAuthRepo>(),
+            baseLocalStorageRepo: diInstance.get<BaseLocalStorageRepo>(),
           ),
         ),
     () => diInstance.registerLazySingleton<LogoutUsecase>(
