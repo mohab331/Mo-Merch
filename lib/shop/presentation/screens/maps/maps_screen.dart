@@ -119,6 +119,7 @@ class _MapsScreenState extends State<MapsScreen> {
         address: address,
         latLng: _currentLocation,
       );
+      setState(() {});
     } catch (e) {
       if (kDebugMode) {
         print('Error getting location: $e');
