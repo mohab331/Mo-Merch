@@ -215,7 +215,7 @@ class _MapsScreenState extends State<MapsScreen> {
     } else {
       return CameraPosition(
         target: markerLatLng ?? _currentLocation ?? const LatLng(0.0, 0.0),
-        zoom: 20.0,
+        zoom: 30.0,
       );
     }
   }

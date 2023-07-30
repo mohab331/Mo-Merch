@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:shop_app_clean_architecture/core/index.dart';
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
@@ -44,10 +45,7 @@ class AddressListTile extends StatelessWidget {
       padding: const EdgeInsets.all(10.0),
       decoration: BoxDecoration(
         border: Border.all(),
-        borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(40.0.r),
-          topRight: Radius.circular(40.0.r),
-        ),
+        color: R.colors.whiteColor
       ),
       child: Column(
         children: [
@@ -59,22 +57,14 @@ class AddressListTile extends StatelessWidget {
           AddressInfoRow(
             label: 'Name',
             value: address.name,
-            sizedBoxSpacing: 55,
           ),
           AddressInfoRow(
             label: 'Address',
             value: address.details,
-            sizedBoxSpacing: 40,
           ),
           AddressInfoRow(
             label: 'City',
             value: address.city,
-            sizedBoxSpacing: 68,
-          ),
-          AddressInfoRow(
-            label: 'Region',
-            value: address.region,
-            sizedBoxSpacing: 48,
           ),
           SizedBox(height: 5.h),
         ],
@@ -97,30 +87,20 @@ class AddressRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(
-          Icons.location_on,
-          color: R.colors.greyColor,
-          size: 30,
-        ),
+        SvgPicture.asset(R.images.address,color: R.colors.greyColor,width: 30.w),
         SizedBox(
           width: 140.w,
           child: Text(
             address.name,
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 18.sp,
+              fontSize: 16.sp,
             ),
             textAlign: TextAlign.left,
           ),
         ),
         const Spacer(),
-        CustomTextButton(
-          onPressed: () {
-            R.functions.showToast(message: 'Not Supported IN API Only For Design', color: R.colors.redColor);
-          },
-          label: 'delete',
-          textColor: R.colors.darkRed,
-        ),
+
         if (address.latitude != 0.0 && address.longitude != 0.0)
           CustomTextButton(
             onPressed: () => _handleOnViewOnMapPressed(
@@ -150,13 +130,11 @@ class AddressInfoRow extends StatelessWidget {
   const AddressInfoRow({
     required this.label,
     required this.value,
-    required this.sizedBoxSpacing,
     Key? key,
   }) : super(key: key);
 
   final String label;
   final String value;
-  final double sizedBoxSpacing;
 
   @override
   Widget build(BuildContext context) {
@@ -167,21 +145,23 @@ class AddressInfoRow extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Text(
-            label,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 18.sp,
+          SizedBox(
+            width: 100.w,
+            child: Text(
+              label,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16.sp,
+              ),
             ),
           ),
-          SizedBox(width: sizedBoxSpacing.w),
           Expanded(
             child: SizedBox(
               width: 20.w,
               child: Text(
-                value,
+               value.toString().toUpperCase(),
                 style: TextStyle(
-                  fontSize: 16.sp,
+                  fontSize: 14.sp,
                 ),
                 textAlign: TextAlign.left,
               ),
