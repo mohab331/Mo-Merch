@@ -105,7 +105,7 @@ class FavoriteCard extends StatelessWidget {
                           style: TextStyle(
                             color: R.colors.blackColor,
                             fontWeight: FontWeight.bold,
-                            fontSize: 17.sp,
+                            fontSize: 14.sp,
                             overflow: TextOverflow.ellipsis,
                           ),
                           textAlign: TextAlign.left,
@@ -149,7 +149,7 @@ class ProductImageCard extends StatelessWidget {
         imageUrl: favoriteProduct.image,
         imageHeight: 90,
         imageWidth: 110,
-        imageFit: BoxFit.fill,
+        imageFit: BoxFit.contain,
       ),
     );
   }

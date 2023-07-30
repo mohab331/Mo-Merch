@@ -16,13 +16,13 @@ class OrderContent extends HookWidget {
     final orderState = context
         .watch<OrderCubit>()
         .state;
-    final ordersList = orderCubit.ordersMap.values.toList();
+    final ordersList = context.watch<OrderCubit>().ordersMap.values.toList();
     final scrollController = useScrollController();
     return StateHandlingWidget(
       isLoading: orderState is OrderLoadingState && ordersList.isEmpty,
       hasError: orderState is OrderErrorState,
       successWidget: PaginatedList(
-        isLoading: orderCubit is OrderLoadingState,
+        isLoading: orderState is OrderLoadingState,
         onEmptyReloadButtonPressed: () => _handleOnReloadPressed(orderCubit),
         controller: scrollController,
         isEmpty: ordersList.isEmpty,
@@ -54,6 +54,8 @@ class OrderContent extends HookWidget {
 
   void _handleScrollCallBack(OrderCubit orderCubit) {
     final page = orderCubit.currentPage + 1;
+    print('PAGE : $page');
+    print('Current Page: ${orderCubit.currentPage}');
     orderCubit.getOrders(page: page);
   }
 }
