@@ -176,6 +176,10 @@ class RepositoryInjector implements BaseInjector {
             ),
           ),
         ),
+
+    () => diInstance.registerLazySingleton<NotificationRepo>(
+          () => NotificationRepoImpl(),
+        ),
   ];
 
   /// Injects the repository modules into the service locator.
