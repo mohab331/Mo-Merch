@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop_app_clean_architecture/core/index.dart';
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
@@ -37,6 +38,11 @@ class ProductDetailsScreen extends StatelessWidget {
             title: Text(
               product.name,
             ),
+            centerTitle: true,
+            titleTextStyle: TextStyle(fontSize: 15.sp,color: R.colors.blackColor,fontWeight: FontWeight.bold,),
+            actions: [
+              Padding(padding:  EdgeInsets.only(right: 16.0.w,),child: AnimatedProductFavoriteButton(product: product,iconSize: 25,),),
+            ],
           ),
           body: ProductDetailsContent(
             product: product,

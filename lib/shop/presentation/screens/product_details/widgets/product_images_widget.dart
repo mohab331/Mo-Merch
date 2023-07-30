@@ -18,7 +18,7 @@ class ProductImagesWidget extends HookWidget {
     final selectedImageIndex = useState(-1);
     final transformController = useTransformationController();
     Matrix4 initialController = Matrix4.identity();
-    return Row(
+    return Column(
       children: [
         InteractiveProductImage(
           transformationController: transformController,
@@ -27,9 +27,9 @@ class ProductImagesWidget extends HookWidget {
           imageSelected: imageToDisplay.value,
         ),
         SizedBox(
-          height: 280.h,
-          width: 100.w,
+          height: 100.h,
           child: ListView.builder(
+            scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: () => _handleOnImageTapped(
@@ -82,7 +82,7 @@ class InteractiveProductImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 250.w,
+      width: 300.w,
       height: 300.h,
       child: InteractiveViewer(
         panEnabled: false,
@@ -97,6 +97,7 @@ class InteractiveProductImage extends StatelessWidget {
           imageUrl: imageSelected,
           id: product.id,
           imageWidth: 30.w,
+          imageFit: BoxFit.contain,
         ),
       ),
     );
@@ -127,6 +128,7 @@ class SelectedImageWidget extends StatelessWidget {
         width: 100.w,
         height: 100.h,
         imageUrl: imageToDisplay,
+        imageFit: BoxFit.contain,
       ),
     );
   }

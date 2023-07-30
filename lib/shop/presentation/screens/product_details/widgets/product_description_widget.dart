@@ -17,7 +17,7 @@ class ProductDescriptionWidget extends StatelessWidget {
               R.strings.productDescription,
               style: TextStyle(
                 color: R.colors.blackColor,
-                fontSize: 19.sp,
+                fontSize: 16.sp,
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -27,8 +27,8 @@ class ProductDescriptionWidget extends StatelessWidget {
               R.strings.clickToExpand,
               style: TextStyle(
                 color: R.colors.greyColor,
-                fontSize: 15.sp,
-                fontWeight: FontWeight.w600,
+                fontSize: 12.sp,
+                fontWeight: FontWeight.w500,
               ),
             ),
             trailing: const Icon(
