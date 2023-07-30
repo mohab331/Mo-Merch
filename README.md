@@ -15,20 +15,22 @@ Mo Merch is an online shop application that allows users to browse and purchase 
 5. **Order History:** Users can view their previous order history, allowing them to keep track of their purchases.
 
 6. **Place Order:** Users can place orders for the selected products, initiating the purchasing process.
-
-7. **Multiple Addresses:** Users can add and choose from multiple addresses for shipping, providing flexibility and convenience.
    
-8. **Google maps:** Users can add his location on google maps.
+8. **Cancel Order:** Users can cancel the order.
+
+9. **Multiple Addresses:** Users can add and choose from multiple addresses for shipping, providing flexibility and convenience.
    
-9.  **Notifications:** This app handles foreground and background notifications when order is placed
+10. **Google maps:** Users can add his location on google maps.
    
-10. **Product Search:** Users can search for specific products within the app, making it easier to find desired items.
+11.  **Notifications:** This app handles foreground and background notifications when order is placed
+   
+12. **Product Search:** Users can search for specific products within the app, making it easier to find desired items.
 
-11. **Product Details:** Users can view detailed information about each product, including descriptions, prices, and images.
+13. **Product Details:** Users can view detailed information about each product, including descriptions, prices, and images.
 
-12. **Pagination:** The app implements pagination to efficiently load and display large lists of products, ensuring a smooth user experience.
+14. **Pagination:** The app implements pagination to efficiently load and display large lists of products, ensuring a smooth user experience.
 
-13. **Animations:** Various animations are incorporated throughout the app to enhance the visual appeal and provide a delightful user experience.
+15. **Animations:** Various animations are incorporated throughout the app to enhance the visual appeal and provide a delightful user experience.
 
 ## Screens
 
@@ -41,9 +43,12 @@ Mo Merch is an online shop application that allows users to browse and purchase 
 - **Search:** Allows users to search for specific products.
 - **Cart:** Displays the products added to the cart for purchase.
 - **Product Description:** Provides detailed information about a selected product.
+- **User Address:** Allows users to select shipping address from their saved addresses.
 - **Add Address:** Allows users to add a new shipping address to their profile.
+- **Maps:** Allows users show his location or add marker on map.
 - **Place Order:** Enables users to finalize their order and proceed to payment.
 - **Order History:** Shows the user's past order details and status.
+- **Order Details:** Allows users show order details and cancel the order.
 - **Categories:** Displays a list of product categories for easy navigation.
 
 ## Implementation Details
@@ -52,7 +57,7 @@ The Mo Merch project has been developed using the following technologies and pra
 
 - **Clean Code and Clean Architecture:** The codebase follows clean code principles and utilizes clean architecture concepts for better organization and maintainability.
 
-- **Networking:** Dio and interceptors are used for efficient and reliable network communication.
+- **Networking:** Dio, hanlding dio errors and interceptors are used for efficient and reliable network communication.
 
 - **Local Storage:** Secure storage is implemented for secure and persistent local storage of user data.
 
