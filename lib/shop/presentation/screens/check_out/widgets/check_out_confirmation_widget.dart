@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -26,6 +27,12 @@ class _CheckOutConfirmationWidgetState
       message: 'You will be returned to home screen in 5 seconds',
       color: R.colors.greenColor,
     );
+    diInstance.get<NotificationRepo>().showLocalNotification(RemoteMessage(
+          notification: RemoteNotification(
+              title: 'Order Confirmed',
+              body:
+                  'Order with ID: ${widget.orderResponseEntity?.id} placed successfully'),
+        ),);
 
     /// [addPostFrameCallback] method is used to schedule the execution of a function after the current frame is
     /// finished rendering. It is commonly used to perform initialization tasks or trigger actions that require
@@ -46,7 +53,7 @@ class _CheckOutConfirmationWidgetState
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: ()=>Future.value(false),
+      onWillPop: () => Future.value(false),
       child: SizedBox(
         height: 400.h,
         child: Column(
