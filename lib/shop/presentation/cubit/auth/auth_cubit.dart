@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:shop_app_clean_architecture/core/index.dart';
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/cubit/auth/index.dart';
+import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit({
@@ -76,7 +77,7 @@ class AuthCubit extends Cubit<AuthState> {
     );
   }
 
-  void logout() async {
+  void logout(AppCubit appCubit,CartCubit cartCubit) async {
     emit(
       AuthenticationLoadingState(),
     );
@@ -90,6 +91,8 @@ class AuthCubit extends Cubit<AuthState> {
         ),
       );
     }, (logoutResponse) {
+      appCubit.favoriteProductsMap.clear();
+      cartCubit.clearCartItems();
       emit(
         UnAuthenticatedState(
           message: logoutResponse.message,

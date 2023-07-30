@@ -69,7 +69,7 @@ class CustomDrawer extends StatelessWidget {
             DrawerTileWidget(
               title: R.strings.logout,
               icon: Icons.logout,
-              onItemTapped: () => context.read<AuthCubit>().logout(),
+              onItemTapped: () => context.read<AuthCubit>().logout(context.read<AppCubit>(),context.read<CartCubit>()),
               isLoading: context.watch<AuthCubit>().state
                   is AuthenticationLoadingState,
             ),

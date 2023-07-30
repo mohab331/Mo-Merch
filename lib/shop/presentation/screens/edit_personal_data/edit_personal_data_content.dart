@@ -66,7 +66,7 @@ class _EditPersonalDataContentState extends State<EditPersonalDataContent> {
           );
         }
         if (state is EditPersonalDataSuccessState) {
-          context.read<AuthCubit>().logout();
+          context.read<AuthCubit>().logout(context.read<AppCubit>(),context.read<CartCubit>());
         }
       },
       child: SingleChildScrollView(
