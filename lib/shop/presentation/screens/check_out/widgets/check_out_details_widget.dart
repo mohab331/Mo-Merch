@@ -34,11 +34,6 @@ class CheckOutDetailsWidget extends StatelessWidget {
             showOkAction: false,
           );
         } else if (state is PlaceOrderSuccessState) {
-          R.functions.showToast(
-            message: state.message ?? 'Order place successfully',
-            color: state.toastColor ?? R.colors.greenColor,
-          );
-
           checkOutCubit.toggleIndex(checkOutCubit.index + 1);
         }else{
           Navigator.pop(context);
@@ -89,9 +84,11 @@ class CheckOutDetailsWidget extends StatelessWidget {
               fontSize: 20.sp,
             ),
           ),
+
           SizedBox(height: 20.h),
+
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10.0.w),
+            padding: EdgeInsets.only(left: 10.0.w),
             child: AddressPaymentListTile(
               title: context.watch<CheckOutCubit>().chosenAddress?.name ??
                   'choose address',

@@ -60,5 +60,11 @@ extension StringConversionExtension on String? {
     }
   }
 
+  String? capitalizeFirstLetter() {
+    if (this == null || this?.isEmpty == true) {
+      return this;
+    }
 
+    return this![0].toUpperCase() + this!.substring(1);
+  }
 }

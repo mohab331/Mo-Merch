@@ -159,7 +159,7 @@ class AddressInfoRow extends StatelessWidget {
             child: SizedBox(
               width: 20.w,
               child: Text(
-               value.toString().toUpperCase(),
+               value.capitalizeFirstLetter() ?? value,
                 style: TextStyle(
                   fontSize: 14.sp,
                 ),
