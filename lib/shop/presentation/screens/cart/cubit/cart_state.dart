@@ -32,16 +32,6 @@ class GetCartSuccessState extends CartState {
   final List<CartItem>? cart;
 }
 
-class UpdateCartSuccessState extends CartState {
-  UpdateCartSuccessState({
-    required this.cartUpdateResponse,
-    super.message,
-    super.toastColor = Colors.green,
-  });
-
-  final CartUpdateResponseEntity cartUpdateResponse;
-}
-
 class DeleteCartSuccessState extends CartState {
   DeleteCartSuccessState({
     super.message,

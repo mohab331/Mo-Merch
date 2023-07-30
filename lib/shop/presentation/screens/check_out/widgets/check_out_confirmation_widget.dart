@@ -27,13 +27,15 @@ class _CheckOutConfirmationWidgetState
       message: 'You will be returned to home screen in 5 seconds',
       color: R.colors.greenColor,
     );
-    diInstance.get<NotificationRepo>().showLocalNotification(RemoteMessage(
-          notification: RemoteNotification(
-              title: 'Order Confirmed',
-              body:
-                  'Order with ID: ${widget.orderResponseEntity?.id} placed successfully'),
-        ),);
-
+    diInstance.get<NotificationRepo>().showLocalNotification(
+          RemoteMessage(
+            notification: RemoteNotification(
+                title: 'Order Confirmed',
+                body:
+                    'Order with ID: ${widget.orderResponseEntity?.id} placed successfully'),
+          ),
+        );
+    //
     /// [addPostFrameCallback] method is used to schedule the execution of a function after the current frame is
     /// finished rendering. It is commonly used to perform initialization tasks or trigger actions that require
     /// the UI to be fully rendered.
@@ -55,48 +57,35 @@ class _CheckOutConfirmationWidgetState
     return WillPopScope(
       onWillPop: () => Future.value(false),
       child: SizedBox(
-        height: 400.h,
+        width: double.infinity,
+        height: 600.h,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 40.h,
-                ),
-                TextWithSpan(
-                  mainText: 'Order ID: ',
-                  spanText: widget.orderResponseEntity?.id.toString() ?? '',
-                ),
-                SizedBox(
-                  height: 15.h,
-                ),
-                TextWithSpan(
-                  mainText: 'Order total: ',
-                  spanText: widget.orderResponseEntity?.total.toString() ?? '',
-                ),
-                SizedBox(
-                  height: 15.h,
-                ),
-                TextWithSpan(
-                  mainText: 'Address: ',
-                  spanText: context.read<CheckOutCubit>().chosenAddress?.name ??
-                      'No address',
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-              ],
-            ),
             Container(
               alignment: Alignment.center,
               child: Icon(
                 Icons.check_circle_outline_rounded,
                 color: R.colors.greenColor,
-                size: 150,
+                size: 120,
               ),
+            ),
+            SizedBox(
+              height: 10.h,
+            ),
+            Text(
+              'Thank you for your purchase !',
+              style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18.sp),
+              textAlign: TextAlign.center,
+            ),
+            Text(
+              'Your order has been received',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.sp),
+              textAlign: TextAlign.center,
+            ),
+            TextWithSpan(
+              mainText: 'Order ID: ',
+              spanText: widget.orderResponseEntity?.id.toString() ?? '',
             ),
           ],
         ),

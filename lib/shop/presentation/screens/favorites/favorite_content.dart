@@ -5,6 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop_app_clean_architecture/core/index.dart';
 import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
 
+import '../../../../utils/enums/index.dart';
+
 class FavoriteContent extends HookWidget {
   const FavoriteContent({
     Key? key,
@@ -58,7 +60,8 @@ class FavoriteContent extends HookWidget {
                   listEmptyTitle:
                       'No Favorite Item, Start adding your beloved products',
                   onScrollCallBack: _onScroll,
-                  listChild: ListView.builder(
+                  listChild: CustomAnimatedList(
+                    products: favoriteList,
                     itemBuilder: (context, index) {
                       final favoriteProduct = favoriteList[index];
                       return FavoriteItem(
@@ -70,10 +73,12 @@ class FavoriteContent extends HookWidget {
                           );
                         },
                       );
-                    },
+                    } ,
+                    animationType: AnimationEnum.slide,
                     controller: scrollController,
-                    itemCount: favoriteList.length,
                   ),
+
+
                   loadingWidgetHeight: 100,
                 ),
               ),

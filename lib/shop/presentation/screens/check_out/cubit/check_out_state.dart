@@ -19,10 +19,7 @@ class ToggleBarIndex extends CheckOutState {
 class PlaceOrderLoadingState extends CheckOutState {}
 
 class PlaceOrderSuccessState extends CheckOutState {
-  const PlaceOrderSuccessState({
-    super.message,
-    super.toastColor = Colors.green,
-  });
+  const PlaceOrderSuccessState();
 }
 
 class PlaceOrderErrorState extends CheckOutState {

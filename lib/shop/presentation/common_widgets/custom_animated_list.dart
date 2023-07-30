@@ -14,7 +14,6 @@ class CustomAnimatedList<T> extends HookWidget {
     required this.itemBuilder,
     this.animationType = AnimationEnum.size,
     this.controller,
-    this.deletedItem,
     Key? key,
   }) : super(key: key);
 
@@ -23,7 +22,6 @@ class CustomAnimatedList<T> extends HookWidget {
 
   /// A callback function that builds the widgets for each item in the list.
   final IndexedWidgetBuilder itemBuilder;
-  T? deletedItem;
 
   /// An optional [ScrollController] for controlling the scroll position of the list.
   final ScrollController? controller;

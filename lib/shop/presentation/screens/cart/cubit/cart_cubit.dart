@@ -119,12 +119,7 @@ class CartCubit extends Cubit<CartState> {
         emit(CartErrorState(message: failure.failureMessage));
       },
       (updateCartResponse) {
-        emit(
-          UpdateCartSuccessState(
-            cartUpdateResponse: updateCartResponse.entity,
-            message: updateCartResponse.message,
-          ),
-        );
+
       },
     );
   }

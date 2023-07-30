@@ -213,13 +213,13 @@ class PriceRowWidget extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(width: 8.0.w),
+          SizedBox(width: 4.0.w),
           Expanded(
             flex: 3,
             child: Text(
-              favoriteProduct.price.doubleToPrice(),
+              '${favoriteProduct.price.doubleToPrice()} EGP',
               style: TextStyle(
-                fontSize: 16.0.sp,
+                fontSize: 14.0.sp,
                 fontWeight: FontWeight.bold,
               ),
             ),

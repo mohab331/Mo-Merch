@@ -25,4 +25,7 @@ class AppImages {
 
   // Google Logo
   final String googleLogo = '$baseAsset/google_logo.svg';
+
+  // Address Image
+  final String address = '$baseAsset/address.svg';
 }

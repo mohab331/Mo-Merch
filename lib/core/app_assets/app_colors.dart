@@ -26,6 +26,7 @@ class AppColors {
   final Color darkGrey = Colors.grey[850] ?? Colors.grey;
   final Color mediumGrey = Colors.grey[800] ?? Colors.grey;
   final Color lightGrey = Colors.grey[200] ?? Colors.grey;
+  final Color extraLightGrey = Colors.grey[50] ?? Colors.grey;
 
   // Opacity Colors
   final Color deepOrangeWithOpacity = Colors.deepOrange.withOpacity(0.8);

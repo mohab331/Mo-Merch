@@ -29,7 +29,7 @@ class CheckOutCubit extends Cubit<CheckOutState>{
     }, (placeOrderResponse) {
       cartCubit.clearCartItems();
       placedOrder =placeOrderResponse.entity;
-      emit(PlaceOrderSuccessState(message: placeOrderResponse.message,),);
+      emit(const PlaceOrderSuccessState(),);
 
     });
   }

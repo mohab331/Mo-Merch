@@ -31,10 +31,7 @@ class ActionsOnProductWidget extends StatelessWidget {
         BlocListener<CartCubit, CartState>(
           listener: (context, state) {
             if (state.message != null) {
-              final toastColor = state is UpdateCartSuccessState ||
-                      state is AddToCartSuccessState
-                  ? R.colors.greenColor
-                  : R.colors.redColor;
+              final toastColor = state.toastColor ?? R.colors.greenColor ;
               R.functions
                   .showToast(message: state.message ?? '', color: toastColor);
             }

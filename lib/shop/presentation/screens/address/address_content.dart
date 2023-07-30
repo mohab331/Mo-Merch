@@ -23,6 +23,7 @@ class AddressContent extends HookWidget {
     final scrollController = useScrollController();
 
     return Scaffold(
+      backgroundColor: R.colors.extraLightGrey,
       appBar: AppBar(
         title: const Text('Address'),
       ),
