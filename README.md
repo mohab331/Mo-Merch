@@ -19,14 +19,16 @@ Mo Merch is an online shop application that allows users to browse and purchase 
 7. **Multiple Addresses:** Users can add and choose from multiple addresses for shipping, providing flexibility and convenience.
    
 8. **Google maps:** Users can add his location on google maps.
- 
-9. **Product Search:** Users can search for specific products within the app, making it easier to find desired items.
+   
+9.  **Notifications:** This app handles foreground and background notifications when order is placed
+   
+10. **Product Search:** Users can search for specific products within the app, making it easier to find desired items.
 
-10. **Product Details:** Users can view detailed information about each product, including descriptions, prices, and images.
+11. **Product Details:** Users can view detailed information about each product, including descriptions, prices, and images.
 
-11. **Pagination:** The app implements pagination to efficiently load and display large lists of products, ensuring a smooth user experience.
+12. **Pagination:** The app implements pagination to efficiently load and display large lists of products, ensuring a smooth user experience.
 
-12. **Animations:** Various animations are incorporated throughout the app to enhance the visual appeal and provide a delightful user experience.
+13. **Animations:** Various animations are incorporated throughout the app to enhance the visual appeal and provide a delightful user experience.
 
 ## Screens
 
