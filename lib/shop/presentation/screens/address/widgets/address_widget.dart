@@ -115,7 +115,9 @@ class AddressRow extends StatelessWidget {
         ),
         const Spacer(),
         CustomTextButton(
-          onPressed: () {},
+          onPressed: () {
+            R.functions.showToast(message: 'Not Supported IN API Only For Design', color: R.colors.redColor);
+          },
           label: 'delete',
           textColor: R.colors.darkRed,
         ),

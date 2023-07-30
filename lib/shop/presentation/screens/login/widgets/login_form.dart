@@ -81,7 +81,9 @@ class LoginForm extends HookWidget {
               alignment: Alignment.bottomRight,
               child: CustomTextButton(
                 label: R.strings.forgetPassword,
-                onPressed: () {},
+                onPressed: () {
+                  R.functions.showToast(message: 'Not Supported IN API Only For Design', color: R.colors.redColor);
+                },
               ),
             ),
             CustomElevatedButton(
