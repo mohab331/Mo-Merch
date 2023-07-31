@@ -77,6 +77,7 @@ To get started with the Mo Merch project, follow these steps:
 2. Install the necessary dependencies using `flutter pub get`.
 3. Run the app on an emulator or physical device using `flutter run`.
 4. add your maps api key
+5. add your google-services for android notification
 
 Make sure you have Flutter and Dart installed on your machine.
 
