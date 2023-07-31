@@ -8,10 +8,12 @@ import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
 class AnimatedProductFavoriteButton extends HookWidget {
   const AnimatedProductFavoriteButton({
     required this.product,
+    required this.showToastOnFavoriteToggle,
     this.iconSize,
     Key? key,
   }) : super(key: key);
   final ProductResponseEntity product;
+  final bool showToastOnFavoriteToggle;
   final double? iconSize;
   @override
   Widget build(BuildContext context) {
@@ -36,8 +38,9 @@ class AnimatedProductFavoriteButton extends HookWidget {
         }
       },
       listenWhen: (previousState, currentState) {
-        return previousState.runtimeType != currentState.runtimeType &&( currentState is FavoriteToggleSuccessState ||
-            currentState is FavoriteToggleErrorState);
+        return (previousState.runtimeType != currentState.runtimeType) && (showToastOnFavoriteToggle) &&
+            (currentState is FavoriteToggleSuccessState ||
+                currentState is FavoriteToggleErrorState);
       },
       buildWhen: (_, currentState) {
         return currentState is InstantToggleState ||
@@ -65,12 +68,12 @@ class AnimatedProductFavoriteButton extends HookWidget {
               id: product.id,
             )
                 ? Icon(
-              Icons.favorite,
+                    Icons.favorite,
                     size: 30,
                     color: R.colors.redColor,
                   )
                 : Icon(
-              Icons.favorite_border,
+                    Icons.favorite_border,
                     size: iconSize ?? 40,
                     color: R.colors.greyColor,
                   ),

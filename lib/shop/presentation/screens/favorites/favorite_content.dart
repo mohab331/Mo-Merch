@@ -58,7 +58,7 @@ class FavoriteContent extends HookWidget {
                   ),
                   emptyIconColor: R.colors.darkRed,
                   listEmptyTitle:
-                      'No Favorite Item, Start adding your beloved products',
+                      'No Favorite Items\nStart adding your beloved products.',
                   onScrollCallBack: _onScroll,
                   listChild: CustomAnimatedList(
                     products: favoriteList,

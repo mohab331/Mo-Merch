@@ -7,10 +7,12 @@ import 'package:shop_app_clean_architecture/shop/presentation/index.dart';
 class ProductDetailsContent extends StatelessWidget {
   const ProductDetailsContent({
     required this.product,
+    required this.showToastOnFavoriteToggle,
     Key? key,
   }) : super(key: key);
 
   final ProductResponseEntity product;
+  final bool showToastOnFavoriteToggle;
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +20,9 @@ class ProductDetailsContent extends StatelessWidget {
     final productDetailsCubit = context.read<ProductDetailsCubit>();
 
     final productResponseEntity =
-    (productDescriptionState is ProductDescriptionSuccessState)
-        ? productDescriptionState.productResponseEntity
-        : product;
+        (productDescriptionState is ProductDescriptionSuccessState)
+            ? productDescriptionState.productResponseEntity
+            : product;
 
     return StateHandlingWidget(
       isLoading: productDescriptionState is ProductDescriptionLoadingState,
@@ -29,30 +31,78 @@ class ProductDetailsContent extends StatelessWidget {
         productDetailsCubit,
         productResponseEntity.id,
       ),
-      successWidget: ProductDetailsBody(
-        product: product,
-        productResponseEntity: productResponseEntity,
-      ),
+      successWidget: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ProductImagesWidget(
+                      product: productResponseEntity,
+                    ),
+                    SizedBox(
+                      height: 30.0.h,
+                    ),
+                    ProductNameAndPriceWidget(
+                      productResponseEntity: productResponseEntity,
+                    ),
+                    SizedBox(
+                      height: 25.0.h,
+                    ),
+                    if (productResponseEntity.oldPrice != 0.0 &&
+                        productResponseEntity.discount != 0.0)
+                      ProductOldPriceAndDiscountWidget(
+                        productResponseEntity: productResponseEntity,
+                      ),
+                    ProductDescriptionWidget(
+                      productDescription: productResponseEntity.description,
+                    ),
+                    SizedBox(
+                      height: 15.h,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(
+              width: double.infinity,
+              child: ActionsOnProductWidget(
+                product: productResponseEntity,
+                showToastOnFavoriteToggle: showToastOnFavoriteToggle,
+              ),
+            ),
+          ],
+        ),
+      )
+      // ProductDetailsBody(
+      //   productResponseEntity: productResponseEntity,
+      // ),
     );
   }
 
   void _onReloadButtonPressed(
-      ProductDetailsCubit productDetailsCubit,
-      int productId,
-      ) {
+    ProductDetailsCubit productDetailsCubit,
+    int productId,
+  ) {
     productDetailsCubit.getProductDetails(productId: productId);
   }
 }
 
 class ProductDetailsBody extends StatelessWidget {
   const ProductDetailsBody({
-    required this.product,
     required this.productResponseEntity,
+    required this.showToastOnFavoriteToggle,
     Key? key,
   }) : super(key: key);
 
-  final ProductResponseEntity product;
   final ProductResponseEntity productResponseEntity;
+  final bool showToastOnFavoriteToggle;
+
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +124,6 @@ class ProductDetailsBody extends StatelessWidget {
                     height: 30.0.h,
                   ),
                   ProductNameAndPriceWidget(
-                    product: product,
                     productResponseEntity: productResponseEntity,
                   ),
                   SizedBox(
@@ -99,6 +148,7 @@ class ProductDetailsBody extends StatelessWidget {
             width: double.infinity,
             child: ActionsOnProductWidget(
               product: productResponseEntity,
+              showToastOnFavoriteToggle: showToastOnFavoriteToggle,
             ),
           ),
         ],
@@ -106,4 +156,3 @@ class ProductDetailsBody extends StatelessWidget {
     );
   }
 }
-

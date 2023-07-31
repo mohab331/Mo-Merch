@@ -5,12 +5,10 @@ import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 import 'package:shop_app_clean_architecture/utils/index.dart';
 class ProductNameAndPriceWidget extends StatelessWidget {
   const ProductNameAndPriceWidget({
-    required this.product,
     required this.productResponseEntity,
     Key? key,
   }) : super(key: key);
 
-  final ProductResponseEntity product;
   final ProductResponseEntity productResponseEntity;
 
   @override
@@ -20,7 +18,7 @@ class ProductNameAndPriceWidget extends StatelessWidget {
         SizedBox(
           width: 230.w,
           child: Text(
-            product.name,
+            productResponseEntity.name,
             style: TextStyle(
               fontSize: 14.sp,
               fontWeight: FontWeight.bold,

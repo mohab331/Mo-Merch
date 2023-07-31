@@ -54,7 +54,12 @@ class CartContent extends StatelessWidget {
         if (state is DeleteCartLoadingState) {
           R.functions.showCupertinoAlertDialog(
             context,
-            content: const LoadingWidget(loadingIconSize: 40),
+            content: Container(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: const LoadingWidget(
+                loadingIconSize: 40,
+              ),
+            ),
             title: 'Removing',
             showNoAction: false,
             showOkAction: false,

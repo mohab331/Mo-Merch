@@ -21,6 +21,7 @@ class CartItemUpdateWidget extends StatelessWidget {
       child: Column(
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               CustomAvatarButton(
                 icon: Icons.add,

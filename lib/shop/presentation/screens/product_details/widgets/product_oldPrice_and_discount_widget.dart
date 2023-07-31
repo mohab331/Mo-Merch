@@ -20,7 +20,7 @@ class ProductOldPriceAndDiscountWidget extends StatelessWidget {
           children: [
             TextWithSpan(
               mainText: 'Old price: ',
-              spanText: '${productResponseEntity.oldPrice.doubleToPrice()}',
+              spanText: productResponseEntity.oldPrice.doubleToPrice(),
               mainTextStyle: TextStyle(
                 color: R.colors.blackColor,
                 fontWeight: FontWeight.w500,

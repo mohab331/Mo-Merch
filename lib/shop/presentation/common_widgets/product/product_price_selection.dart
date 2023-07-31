@@ -21,7 +21,7 @@ class ProductPriceSection extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              '${product.price.doubleToPrice()} \$',
+              'EGP ${product.price.doubleToPrice()}',
               style: TextStyle(
                 fontSize: 14.0.sp,
                 fontWeight: FontWeight.bold,
@@ -31,7 +31,7 @@ class ProductPriceSection extends StatelessWidget {
             SizedBox(height: 10.h),
             if (product.discount != 0)
               Text(
-                '${product.oldPrice.doubleToPrice()} \$',
+                'EGP ${product.oldPrice.doubleToPrice()}',
                 style: TextStyle(
                   fontSize: 12.0.sp,
                   fontWeight: FontWeight.bold,

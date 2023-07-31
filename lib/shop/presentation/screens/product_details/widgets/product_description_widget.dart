@@ -11,7 +11,7 @@ class ProductDescriptionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return productDescription == null
-        ? Container()
+        ? const SizedBox()
         : ExpansionTile(
             title: Text(
               R.strings.productDescription,

@@ -26,7 +26,7 @@ class OrderItemWidget extends StatelessWidget {
               width: 100,
             ),
             subtitle: Text(
-              '${itemInCart.quantity} X ${itemInCart.product.price.doubleToPrice()} = ${(itemInCart.product.price * itemInCart.quantity).doubleToPrice()} \$',
+              '${itemInCart.quantity} X ${itemInCart.product.price.doubleToPrice()} = ${(itemInCart.product.price * itemInCart.quantity).doubleToPrice()} EGP',
               style: TextStyle(fontSize: 14.sp),
             ),
           ),

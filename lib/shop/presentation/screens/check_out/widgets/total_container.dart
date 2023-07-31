@@ -23,12 +23,12 @@ class TotalContainer extends StatelessWidget {
         children: [
           TextWithSpan(
             mainText: 'Total: ',
-            spanText: '${totalCartPrice.doubleToPrice()} \$',
+            spanText: '${totalCartPrice.doubleToPrice()} EGP',
           ),
           SizedBox(height: 10.h),
           TextWithSpan(
             mainText: 'Total Items: ',
-            spanText: '$totalItems items',
+            spanText: '$totalItems item(s)',
           ),
         ],
       ),

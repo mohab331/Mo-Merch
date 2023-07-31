@@ -132,6 +132,7 @@ class MyRouter {
           child: ProductDetailsScreen(
             product: extra['product'],
             favoriteCubit: extra['favoriteCubit'],
+            showToastOnFavoriteToggle: extra['showToastOnFavoriteToggle'],
           ),
           key: state.pageKey,
         );

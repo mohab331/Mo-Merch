@@ -21,6 +21,7 @@ class FavoriteItem extends StatelessWidget {
       onTap: () => context.navigator.navigateToProductDescriptionScreen(
         product: favoriteProduct,
         favoriteCubit: context.read<FavoriteCubit>(),
+        showToastOnFavoriteToggle: false,
       ),
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 10.h),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop_app_clean_architecture/core/index.dart';
 import 'package:shop_app_clean_architecture/shop/domain/index.dart';
 import 'package:shop_app_clean_architecture/utils/index.dart';
@@ -18,13 +19,17 @@ class CartItemInformationWidget extends StatelessWidget {
         children: [
           Text(
             cartItem.product.name,
-            overflow: TextOverflow.ellipsis,
             style: TextStyle(
               color: R.colors.blackColor,
             ),
+            maxLines: 2,
+            textAlign: TextAlign.left,
+          ),
+          SizedBox(
+            height: 10.h,
           ),
           Text(
-            '${cartItem.product.price.toInt().formatPrice()}\$',
+            'EGP ${cartItem.product.price.doubleToPrice()}',
             style: TextStyle(
               color: R.colors.primaryColor,
             ),

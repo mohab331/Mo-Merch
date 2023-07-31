@@ -35,7 +35,6 @@ class FavoriteToggleSuccessState extends FavoriteState {
     super.message,
     super.toastColor = Colors.green,
   });
-
 }
 
 class FavoriteToggleErrorState extends FavoriteState {

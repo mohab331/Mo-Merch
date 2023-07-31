@@ -28,8 +28,8 @@ class CartStatistics extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 StatisticsRow(
-                  title: '${R.strings.cartTotal} \$',
-                  information: cartTotal.doubleToPrice(),
+                  title: R.strings.cartTotal,
+                  information: 'EGP ${cartTotal.doubleToPrice()}',
                 ),
                 SizedBox(
                   height: 15.h,
@@ -42,8 +42,8 @@ class CartStatistics extends StatelessWidget {
                   height: 15.h,
                 ),
                 StatisticsRow(
-                  title: 'pay: ',
-                  information: '${pay.doubleToPrice()} \$',
+                  title: 'pay:',
+                  information: 'EGP ${pay.doubleToPrice()}',
                 ),
               ],
             ),

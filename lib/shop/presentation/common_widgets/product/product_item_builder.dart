@@ -35,6 +35,7 @@ class ProductItemBuilder extends StatelessWidget {
     context.navigator.navigateToProductDescriptionScreen(
       product: product,
       favoriteCubit: favoriteCubit,
+      showToastOnFavoriteToggle: false,
     );
   }
 }

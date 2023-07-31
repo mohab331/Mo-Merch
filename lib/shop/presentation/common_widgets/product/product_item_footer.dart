@@ -20,6 +20,7 @@ class ProductItemFooter extends StatelessWidget {
         ),
         AnimatedProductFavoriteButton(
           product: product,
+          showToastOnFavoriteToggle: true,
           iconSize: 25,
         ),
       ],

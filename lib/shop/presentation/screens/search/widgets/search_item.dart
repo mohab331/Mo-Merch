@@ -19,6 +19,7 @@ class SearchItem extends StatelessWidget {
       onTap: () => context.navigator.navigateToProductDescriptionScreen(
         product: product,
         favoriteCubit: context.read<FavoriteCubit>(),
+        showToastOnFavoriteToggle: false
       ),
       child: Container(
         height: 130.h,
@@ -66,14 +67,14 @@ class SearchItem extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        '${product.price.doubleToPrice()} \$',
+                        'EGP ${product.price.doubleToPrice()}',
                         style: TextStyle(
                           color: R.colors.primaryColor,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
                       const Spacer(),
-                      AnimatedProductFavoriteButton(product: product),
+                      AnimatedProductFavoriteButton(product: product,showToastOnFavoriteToggle: true),
                     ],
                   ),
                 ],

@@ -64,11 +64,12 @@ class _CheckOutConfirmationWidgetState
           children: [
             Container(
               alignment: Alignment.center,
-              child: Icon(
-                Icons.check_circle_outline_rounded,
-                color: R.colors.greenColor,
-                size: 120,
-              ),
+              child:Image.asset(R.images.orderConfirmation),
+              // Icon(
+              //   Icons.check_circle_outline_rounded,
+              //   color: R.colors.greenColor,
+              //   size: 120,
+              // ),
             ),
             SizedBox(
               height: 10.h,

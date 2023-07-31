@@ -73,10 +73,9 @@ flutter:
     - assets/images/onBoard3.png
     - assets/images/ic_cart.png
     - assets/images/empty-order.svg
-    - assets/images/empty-cart.svg
     - assets/images/address.svg
     - assets/images/Mo-logo.png
-    - assets/images/google_logo.svg
+    - assets/images/order_confirm.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

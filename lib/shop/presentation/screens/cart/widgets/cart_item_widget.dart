@@ -15,29 +15,27 @@ class CartItemWidget extends StatelessWidget {
     return Card(
       elevation: 7,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding:  EdgeInsets.symmetric(vertical: 10.0.h,horizontal: 8.w),
         child: Row(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(
-                10.0,
-              ),
-              child: Card(
-                elevation: 5,
-                child: HeroCachedNetworkImage(
-                  id: cartData.id,
-                  imageUrl: cartData.product.image,
-                  imageHeight: 100,
-                  imageWidth: 100,
-                  imageFit: BoxFit.contain,
-                ),
-              ),
-            ),
-            CartItemInformationWidget(
-              cartItem: cartData,
+            HeroCachedNetworkImage(
+              id: cartData.id,
+              imageUrl: cartData.product.image,
+              imageHeight: 100,
+              imageWidth: 100,
+              imageFit: BoxFit.contain,
             ),
             SizedBox(
-              width: 20.w,
+              width: 5.w,
+            ),
+            SizedBox(
+              width: 150.w,
+              child: CartItemInformationWidget(
+                cartItem: cartData,
+              ),
+            ),
+            SizedBox(
+              width: 15.w,
             ),
             CartItemUpdateWidget(
               cartID: cartData.id,

@@ -17,6 +17,7 @@ abstract class AppNavigation {
   void navigateToProductDescriptionScreen({
     required ProductResponseEntity product,
     required FavoriteCubit favoriteCubit,
+    required bool showToastOnFavoriteToggle,
   });
 
   void navigateToChangePasswordScreen();
@@ -98,12 +99,14 @@ class AppNavigationImpl implements AppNavigation {
   void navigateToProductDescriptionScreen({
     required ProductResponseEntity product,
     required FavoriteCubit favoriteCubit,
+    required bool showToastOnFavoriteToggle,
   }) {
     context.pushNamed(
       PostAuthRoutes.productDescription.routeModel.name,
       extra: {
         'product': product,
         'favoriteCubit': favoriteCubit,
+        'showToastOnFavoriteToggle':showToastOnFavoriteToggle,
       },
     );
   }

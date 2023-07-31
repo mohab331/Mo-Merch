@@ -20,12 +20,9 @@ class AppImages {
   // Empty Order Image
   final String emptyOrder = '$baseAsset/empty-order.svg';
 
-  // Empty Cart Image
-  final String emptyCart = '$baseAsset/empty-cart.svg';
-
-  // Google Logo
-  final String googleLogo = '$baseAsset/google_logo.svg';
-
   // Address Image
   final String address = '$baseAsset/address.svg';
+
+  // order confirmation Image
+  final String orderConfirmation = '$baseAsset/order_confirm.png';
 }
