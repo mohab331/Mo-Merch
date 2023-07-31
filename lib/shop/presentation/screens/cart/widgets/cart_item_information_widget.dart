@@ -12,30 +12,28 @@ class CartItemInformationWidget extends StatelessWidget {
   final CartItem cartItem;
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            cartItem.product.name,
-            style: TextStyle(
-              color: R.colors.blackColor,
-            ),
-            maxLines: 2,
-            textAlign: TextAlign.left,
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          cartItem.product.name,
+          style: TextStyle(
+            color: R.colors.blackColor,
           ),
-          SizedBox(
-            height: 10.h,
+          maxLines: 2,
+          textAlign: TextAlign.left,
+        ),
+        SizedBox(
+          height: 10.h,
+        ),
+        Text(
+          'EGP ${cartItem.product.price.doubleToPrice()}',
+          style: TextStyle(
+            color: R.colors.primaryColor,
           ),
-          Text(
-            'EGP ${cartItem.product.price.doubleToPrice()}',
-            style: TextStyle(
-              color: R.colors.primaryColor,
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
